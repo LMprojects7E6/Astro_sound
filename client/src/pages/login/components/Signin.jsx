@@ -21,7 +21,7 @@ const Signin = () => {
               </div>
               <div className="style_title text-center mb-10">
                 <h1 className="flex justify-center font-bold text-gray-900 mb-2">
-                  You music, your &nbsp;<p>Astro Sounds</p>!
+                  You music, your&nbsp;<p>Astro Sounds</p>!
                 </h1>
                 <p>See you on the other side!</p>
               </div>
