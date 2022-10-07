@@ -1,0 +1,76 @@
+
+/* BACKGROUND COLOR */
+.backGround_color_login{
+    background: rgba(240, 171, 252, 0.37);
+    }
+
+.style_title h1{
+  font-size: 25px;
+  text-align: center;
+}
+.style_title h1 p{
+  color: #8629B2;
+}
+
+.style_button_singUp{
+  background: #6a3093;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #a044ff, #6a3093);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #a044ff, #6a3093); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* font-size: 18px; */
+}
+
+.style_img_signin{
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+
+
+/* MEDIA QUERY DESKTOP */
+    @media only screen and (min-width: 768px) {
+        body {
+          background-color: rgba(240, 171, 252, 0.37)
+
+        }
+        .style_div_input{
+          display: flex;
+          flex-direction: row;
+          padding-left: 2rem;
+          padding-right: 2rem;
+        }
+        .style_input{
+          padding-right: 1rem;
+          margin-bottom: 1rem;
+        }
+        .style_margin_bottom{
+          margin-bottom: 2rem;
+        }
+        .container{
+          margin-top:3rem ;
+        }
+        .style_label{
+          margin-top: 0.5rem;
+        }
+
+      }
+
+
+/* MEDIA QUERY MOBILE */
+      @media only screen and (max-width: 768px) {
+        .style_label{
+            text-align: center;
+        }
+        .style_email{
+            text-align: center;
+        }
+        .style_forgot_password{
+            text-align: center;
+        }
+        selection{
+          display: flex;
+        }
+        .style_input{
+          text-align: center;
+        }
+      }

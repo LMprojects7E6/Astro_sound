@@ -1,0 +1,44 @@
+
+/* BACKGROUND COLOR */
+.backGround_color_login{
+background: rgba(240, 171, 252, 0.37);
+}
+
+.style_forgot_password{
+    color:#8629B2;
+    font-weight: 500;
+}
+
+.style_button_singUp{
+    background: #6a3093;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #a044ff, #6a3093);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #a044ff, #6a3093); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    /* font-size: 18px; */
+}
+
+.style_color_a{
+    color:#7F2E9C;
+    font-weight: 500;
+}
+
+.style_email label{
+    margin-bottom: 2rem;
+}
+
+@media only screen and (min-width: 768px) {
+    body {
+      background-color: rgba(240, 171, 252, 0.37)
+    }
+  }
+
+  @media only screen and (max-width: 768px) {
+    .style_label{
+        text-align: center;
+    }
+    .style_email{
+        text-align: center;
+    }
+    .style_forgot_password{
+        text-align: center;
+    }
+  }
