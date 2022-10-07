@@ -1,0 +1,17 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "Astro_sound backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js"
+  },
+  "author": "LMprojects",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.5"
+  }
+}
