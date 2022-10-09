@@ -16,12 +16,7 @@ connect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
-const corsOptions = {
-  //Allow to set cookies in header
-  credentials: true,
-  //allow petitions from this domain when deploying maybe change to actual domain name
-  origin: process.env.CLIENT_URL,
-};
+const corsOptions = require("./config/corsOptions");
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
