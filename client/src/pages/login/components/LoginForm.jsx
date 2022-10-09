@@ -1,3 +1,8 @@
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { logIn } from "../../Api/session";
+
 import { useForm } from "react-hook-form";
 
 import Input from "components/input";
@@ -5,12 +10,25 @@ import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const LoginForm = () => {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+
+  const userLogIn = useMutation(logIn, {
+    onSuccess: () => {
+      navigate("/dashboard");
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
+
+  const onSubmit = (data) => userLogIn.mutate(data);
+
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Input
