@@ -20,6 +20,16 @@ const corsOptions = require("./config/corsOptions");
 app.use(cors(corsOptions));
 app.use(cookieParser());
 
+//!REQUIRE CONST ROUTES
+const playlistsRoutes = require("./routes/playlists-routes");
+const usersRoutes = require("./routes/users-routes");
+const songsRoutes = require("./routes/songs-routes");
+
+//!ROUTES
+app.use("/playlists", playlistsRoutes);
+app.use("/users", usersRoutes);
+app.use("/songs", songsRoutes);
+
 //!PORT TO LISTEN
 app.listen(process.env.PORT, () => {
   console.log(`App express is running in port: ${process.env.PORT}`);
