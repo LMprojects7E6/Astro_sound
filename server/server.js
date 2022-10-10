@@ -21,9 +21,9 @@ app.use(cors(corsOptions));
 app.use(cookieParser());
 
 //!REQUIRE CONST ROUTES
-const playlistsRoutes = require("./routes/playlists-routes");
-const usersRoutes = require("./routes/users-routes");
-const songsRoutes = require("./routes/songs-routes");
+const playlistsRoutes = require("./routes/playlistsRoutes");
+const usersRoutes = require("./routes/usersRoutes");
+const songsRoutes = require("./routes/songsRoutes");
 
 //!ROUTES
 app.use("/playlists", playlistsRoutes);
