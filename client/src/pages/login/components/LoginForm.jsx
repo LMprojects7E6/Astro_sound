@@ -1,7 +1,7 @@
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { logIn } from "../../Api/session";
+import { logIn } from "api/session";
 
 import { useForm } from "react-hook-form";
 
