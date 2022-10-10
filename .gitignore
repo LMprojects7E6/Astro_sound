@@ -1,2 +1,4 @@
-node_modules/
+node_modules
 .env
+#dont touch please i need to store functions for test quickly.
+testIvan
