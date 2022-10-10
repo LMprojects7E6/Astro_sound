@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import loginImage from "assets/login.jpg";
-import LoginForm from "./components/LoginForm";
+import LoginForm from "./loginForm/LoginForm";
 import Logo from "components/logo";
 import FormSection from "components/formSection";
 
