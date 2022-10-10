@@ -18,7 +18,7 @@ const Login = () => {
       <LoginForm />
       <div className=" flex items-center justify-center pb-2">
         <p className="mb-0 mr-2">Don't have an account?</p>
-        <Link to="/" className="text-primary font-semibold">
+        <Link to="/register" className="text-primary font-semibold">
           Sign up
         </Link>
       </div>

@@ -34,7 +34,7 @@ const RegisterForm = () => {
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-4">
-          <div className="">
+          <div>
           <Input
               label="First Name:"
               name="firstName"
@@ -68,7 +68,7 @@ const RegisterForm = () => {
 
             
           </div>
-          <div className="">
+          <div className="mb-3">
           <Input
               label="Last Name:"
               name="lastName"
