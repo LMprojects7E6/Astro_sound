@@ -16,9 +16,16 @@ connect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
+app.use(cookieParser());
 const corsOptions = require("./config/corsOptions");
 app.use(cors(corsOptions));
-app.use(cookieParser());
+
+//!SDK FIREBASE ADMIN
+const admin = require("./config/firebaseConfig");
+const { auth } = admin;
+
+//TODO DELETE TEST
+const User = require("./models/User");
 
 //!PORT TO LISTEN
 app.listen(process.env.PORT, () => {
