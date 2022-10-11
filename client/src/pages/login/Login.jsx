@@ -3,7 +3,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import loginImage from "assets/login.jpg";
+<<<<<<< HEAD
 
+=======
+>>>>>>> Register
 import LoginForm from "./loginForm/LoginForm";
 import Logo from "components/logo";
 import FormSection from "components/formSection";
@@ -19,7 +22,7 @@ const Login = () => {
       <LoginForm />
       <div className=" flex items-center justify-center pb-2">
         <p className="mb-0 mr-2">Don't have an account?</p>
-        <Link to="/" className="text-primary font-semibold">
+        <Link to="/register" className="text-primary font-semibold">
           Sign up
         </Link>
       </div>
