@@ -16,7 +16,6 @@ const Input = ({
         {...register(name, {
           required: true,
           pattern: pattern,
-          message: message,
         })}
         className="w-full pl-5 pr-5 py-2 rounded-lg border-2 border-gray-200  "
         placeholder={placeholder}
