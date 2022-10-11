@@ -39,7 +39,7 @@ const RegisterForm = () => {
               name="firstName"
               register={register}
               required
-              pattern={/[0-9a-zA-Z]{6,}/}
+              pattern={/[a-zA-Z]{1,}/}
               placeholder="First Name"
               errors={errors}
             />
@@ -71,7 +71,7 @@ const RegisterForm = () => {
               name="lastName"
               register={register}
               required
-              pattern={/[a-zA-Z]{3,}/g}
+              pattern={/[a-zA-Z]{1,}/g}
               placeholder="Last Name"
               errors={errors}
             />
@@ -87,7 +87,7 @@ const RegisterForm = () => {
               type="password"
               register={register}
               required
-              pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
+              pattern={/[0-9a-zA-Z]{6,}/}
               placeholder={"*************"}
             />
             {errors.password && errors.password.type === "required" && (
@@ -104,7 +104,7 @@ const RegisterForm = () => {
             bg={"mainButtonBg"}
             width={"w-full"}
             radius={"rounded"}
-            text={"Sign in"}
+            text={"Sign up"}
             type={"submit"}
           />
         </div>
