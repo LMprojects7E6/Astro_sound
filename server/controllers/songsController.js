@@ -8,8 +8,6 @@ const getAllSongs = async (req, res) => {};
 const getThreeSongs = async (req, res) => {
   try {
     const threeSongs = await model.Song.aggregate([{ $sample: { size: 3 } }]);
-    // const threeSongs = await model.Song.find({});
-
     res.status(200).send(threeSongs);
   } catch (error) {
     res.status(404).send({ message: error.message });
