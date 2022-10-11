@@ -20,13 +20,6 @@ app.use(cookieParser());
 const corsOptions = require("./config/corsOptions");
 app.use(cors(corsOptions));
 
-//!SDK FIREBASE ADMIN
-const admin = require("./config/firebaseConfig");
-const { auth } = admin;
-
-//TODO DELETE TEST
-const User = require("./models/User");
-
 //!REQUIRE CONST ROUTES
 const playlistsRoutes = require("./routes/playlistsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
