@@ -22,7 +22,7 @@ const RegisterForm = () => {
 
   const userLogIn = useMutation(logIn, {
     onSuccess: () => {
-      navigate("/dashboard");
+      navigate("/");
     },
     onError: (err) => {
       toast.error(err.response.data.errorMsg);

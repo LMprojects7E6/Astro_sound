@@ -3,10 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import loginImage from "assets/login.jpg";
-<<<<<<< HEAD
-
-=======
->>>>>>> Register
 import LoginForm from "./loginForm/LoginForm";
 import Logo from "components/logo";
 import FormSection from "components/formSection";

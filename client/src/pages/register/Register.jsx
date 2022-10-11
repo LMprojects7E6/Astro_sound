@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-import React from "react";
-
-const Register = () => {
-  return <div>Register</div>;
-};
-
-export default Register;
-=======
 import React from 'react'
 import RegisterSection from '../../components/registerSection/RegisterSection'
 import loginImage from "assets/register.png";
@@ -35,4 +26,3 @@ const Register = () => {
 }
 
 export default Register
->>>>>>> Register

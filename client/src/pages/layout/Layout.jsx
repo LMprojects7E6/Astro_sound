@@ -6,7 +6,7 @@ import MusicPlayer from "./musicPlayer";
 
 const Layout = () => {
   const navigate = useNavigate();
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   useEffect(() => {
     !isLoggedIn && navigate("/login");
