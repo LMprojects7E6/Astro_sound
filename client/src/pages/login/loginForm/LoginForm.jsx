@@ -1,33 +1,31 @@
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { logIn } from "api/session";
-
+import app from "../../../services/firebase";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useForm } from "react-hook-form";
-
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const LoginForm = () => {
   const navigate = useNavigate();
-
+  const auth = getAuth(app);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const userLogIn = useMutation(logIn, {
-    onSuccess: () => {
-      navigate("/dashboard");
-    },
-    onError: (err) => {
-      toast.error(err.response.data.errorMsg);
-    },
-  });
-
-  const onSubmit = (data) => userLogIn.mutate(data);
+  const onSubmit = (data) => {
+    const { email, password } = data;
+    signInWithEmailAndPassword(auth, email, password)
+      .then(() => {
+        navigate("/dashboard");
+      })
+      .catch((error) => {
+        toast.error("User not found, please try again.");
+      });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +51,7 @@ const LoginForm = () => {
         type="password"
         register={register}
         required
-        pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
+        pattern={/[0-9a-zA-Z]{6,}/}
         placeholder={"*************"}
       />
       {errors.password && errors.password.type === "required" && (
