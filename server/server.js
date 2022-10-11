@@ -16,9 +16,9 @@ connect();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(helmet());
+app.use(cookieParser());
 const corsOptions = require("./config/corsOptions");
 app.use(cors(corsOptions));
-app.use(cookieParser());
 
 //!REQUIRE CONST ROUTES
 const playlistsRoutes = require("./routes/playlistsRoutes");
