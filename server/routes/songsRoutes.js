@@ -5,7 +5,7 @@ const songsController =  require("../controllers/songsController.js");
 
 //!CRUD
 router.get("/", songsController.getAllSongs);
-router.get("/", songsController.getThreeSongs);
+router.get("/threeSongs", songsController.getThreeSongs);
 router.get("/:genre", songsController.getSongsByGenre);
 router.get("/:playlistID", songsController.getAllSongsFromPlaylist);
 router.post("/:playlistID", songsController.addSongToPlaylist);

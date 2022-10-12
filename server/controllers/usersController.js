@@ -3,6 +3,7 @@ const model = require("../models");
 
 //!GET USER
 const getUser = async (req, res) => {
+    const { userID } = req.id;
 
 };
 
