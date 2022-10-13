@@ -16,6 +16,20 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       trim: true,
     },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      unique: true,
+      validate: {
+        validator: validator.isEmail,
+        message: "Please provide a valid email",
+      },
+    },
+    password: {
+      type: String,
+      required: [true, "Password is required"],
+      trim: true,
+    },
     currentSong: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Song",
@@ -30,7 +44,8 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
   },
-  { _id: false }
+  { _id: false },
+  { versionKey: false }
 );
 
 module.exports = mongoose.model("User", userSchema);
