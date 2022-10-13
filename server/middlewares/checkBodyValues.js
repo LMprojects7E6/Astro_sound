@@ -3,7 +3,9 @@ const checkBodyValues = (req, res, next) => {
   //I did it in middleware because it's enter in conflict with 2 res error sended
   //email already in DB && password is empty ==  app crash
   //To always create in 2 databases First name and Last name
-  const { email, password, firstName, lastName } = req.body;
+  const { firstName, lastName, email, password } = req.body;
+  console.log(req.body);
+  console.log("middleware");
   if (!email) {
     res.status(400).send("Email is required");
   } else if (!password) {

@@ -2,7 +2,6 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/usersController.js");
-
 //Middleware for create users
 const checkBodyValues = require("../middlewares/checkBodyValues");
 
