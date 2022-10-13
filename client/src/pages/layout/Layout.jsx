@@ -13,9 +13,11 @@ const Layout = () => {
   }, []);
 
   return (
-    <div>
+    <div className="h-100">
+      <div className="flex flex-row">
       <Aside />
       <Outlet />
+      </div>
       <MusicPlayer />
     </div>
   );

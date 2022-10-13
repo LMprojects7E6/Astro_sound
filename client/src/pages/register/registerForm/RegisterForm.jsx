@@ -50,6 +50,7 @@ const RegisterForm = () => {
             {errors.firstName && errors.firstName.type === "pattern" && (
               <ErrorParagraph>Insert a valid first name</ErrorParagraph>
             )}
+            <div className='mt-4 mb-4'>
             <Input
               label="Email:"
               name="email"
@@ -65,41 +66,44 @@ const RegisterForm = () => {
             {errors.email && errors.email.type === "pattern" && (
               <ErrorParagraph>Insert a valid email</ErrorParagraph>
             )}
+            </div>
 
             
           </div>
           <div className="mb-3">
-          <Input
-              label="Last Name:"
-              name="lastName"
-              register={register}
-              required
-              pattern={/[a-zA-Z]{3,}/g}
-              placeholder="Last Name"
-              errors={errors}
-            />
-            {errors.lastName && errors.lastName.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
-            {errors.lastName && errors.lastName.type === "pattern" && (
-              <ErrorParagraph>Insert a valid last name</ErrorParagraph>
-            )}
-            <Input
-              label="Password:"
-              name="password"
-              type="password"
-              register={register}
-              required
-              pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
-              placeholder={"*************"}
-            />
-            {errors.password && errors.password.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
-            {errors.password && errors.password.type === "pattern" && (
-              <ErrorParagraph>Min 6 characters</ErrorParagraph>
-            )}
             
+              <Input
+                  label="Last Name:"
+                  name="lastName"
+                  register={register}
+                  required
+                  pattern={/[a-zA-Z]{3,}/g}
+                  placeholder="Last Name"
+                  errors={errors}
+                />
+                {errors.lastName && errors.lastName.type === "required" && (
+                  <ErrorParagraph>This is field required</ErrorParagraph>
+                )}
+                {errors.lastName && errors.lastName.type === "pattern" && (
+                  <ErrorParagraph>Insert a valid last name</ErrorParagraph>
+                )}
+                <div className='mt-4 mb-4'>
+                <Input
+                  label="Password:"
+                  name="password"
+                  type="password"
+                  register={register}
+                  required
+                  pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
+                  placeholder={"*************"}
+                />
+                {errors.password && errors.password.type === "required" && (
+                  <ErrorParagraph>This is field required</ErrorParagraph>
+                )}
+                {errors.password && errors.password.type === "pattern" && (
+                  <ErrorParagraph>Min 6 characters</ErrorParagraph>
+                )}
+            </div>
           </div>
         </div>
 
@@ -108,7 +112,7 @@ const RegisterForm = () => {
             bg={"mainButtonBg"}
             width={"w-full"}
             radius={"rounded"}
-            text={"Sign in"}
+            text={"Sign up"}
             type={"submit"}
           />
         </div>

@@ -18,7 +18,7 @@ const Register = () => {
       <div className=" flex items-center justify-center pb-2">
         <p className="mb-0 mr-2">Already have an account?</p>
         <Link to="/" className="text-primary font-semibold">
-          Sign up
+          Sign in.
         </Link>
       </div>
     </RegisterSection>
