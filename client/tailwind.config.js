@@ -6,6 +6,9 @@ module.exports = {
       purple: "#F0ABFC",
       white: "#fff",
       grey: "#888888",
+      grey2: "#383838",
+      grey3: "#535353",
+      grey4: "#717171",
       error: "#FFD1D1",
     },
     textColor: {

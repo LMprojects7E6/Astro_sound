@@ -1,13 +1,5 @@
 import React from "react";
-const Input = ({
-  type,
-  name,
-  placeholder,
-  label,
-  register,
-  pattern,
-  message,
-}) => {
+const Input = ({ type, name, placeholder, label, register, pattern }) => {
   return (
     <>
       <label className="text-s font-semibold px-1">{label}</label>
