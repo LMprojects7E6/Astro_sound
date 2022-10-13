@@ -4,11 +4,11 @@ const model = require("../models");
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
   // const { userID } = req.id;
+//!CODE USED FOR TESTING
+  const userID  = "6342151708c75ff62ab26e38";
 
   try {
-    // const playlistsArray = await model.User.findById(userID).populate("playlists");
-    //!CODE USED FOR TESTING
-    const playlistsArray = await model.User.findById("6342151708c75ff62ab26e38").populate("playlists");
+    const playlistsArray = await model.User.findById(userID).populate("playlists");
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
@@ -21,12 +21,12 @@ const getAllPlaylists = async (req, res) => {
 //!GET THE USERS LIKED PLAYLIST
 const getLikedPlaylists = async (req, res) => {
   // const { userID } = req.id;
+//!CODE USED FOR TESTING
+  const userID  = "6342151708c75ff62ab26e38";
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
-    // const playlistsArray = await model.User.findById(userID).populate("playlists",null, {"name": "favorite"});
-    //!CODE USED FOR TESTING
-    const playlistsArray = await model.User.findById("6342151708c75ff62ab26e38").populate("playlists",null, {"name": "favorite"});
+    const playlistsArray = await model.User.findById(userID).populate("playlists",null, {"name": "favorite"});
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
@@ -39,12 +39,17 @@ const getLikedPlaylists = async (req, res) => {
 //!GET 5 PLAYLISTS FROM USER
 const getFivePlaylists = async (req, res) => {
   // const { userID } = req.id;
+//!CODE USED FOR TESTING
+  const userID  = "6342151708c75ff62ab26e38";
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
-    const playlistsArray = await model.User.findById(userID).populate("playlists",null, {"name": {$ne: "favorite"}}, {limit: 5});
-    //!CODE USED FOR TESTING
-    // const playlistsArray = await model.User.findById("6342151708c75ff62ab26e38").populate("playlists",null, {"name": {$ne: "favorite"}}, {limit: 5});
+    const playlistsArray = await model.User.findById(userID).populate(
+      "playlists",
+      null,
+      { name: { $ne: "favorite" } },
+      { limit: 5 }
+    );
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
@@ -68,7 +73,31 @@ const getPlaylistsByID = async (req, res) => {
 
 //!POST NEW PLAYLIST
 const createPlaylist = async (req, res) => {
-  const {} = req.body;
+  const { Name, Description, CreatedBy, PlaylistImage } = req.body;
+  // const { userID } = req.id;
+//!CODE USED FOR TESTING
+  const userID  = "6342151708c75ff62ab26e38";
+
+  try {
+    //Create playlist
+    const playlist = await model.Playlist.create({
+      Name,
+      Description,
+      CreatedBy,
+      PlaylistImage,
+    });
+    await playlist.save();
+
+    //Create playlists reference in User
+    const userPlaylist = await model.User.findByIdAndUpdate(userID, {
+      $push: { Playlists: playlist.id },
+    });
+
+    await userPlaylist.save();
+    res.status(200).send({message: 'Playlist Created'});
+  } catch (error) {
+    res.status(504).send({errorMsg: 'Could not create Playlist', error:error});
+  }
 };
 
 //!PUT UPDATE PLAYLIST WITH ID
