@@ -1,18 +1,15 @@
-import React from 'react'
+import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { logIn } from "api/session";
-
+import { registerUser } from "api/session";
 import { useForm } from "react-hook-form";
-
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const RegisterForm = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -20,12 +17,14 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm();
 
-  const userLogIn = useMutation(logIn, {
+  const userLogIn = useMutation(registerUser, {
     onSuccess: () => {
-      navigate("/");
+      // TODO return JWT token
+      toast.success("User registered");
+      // navigate("/dashboard");
     },
     onError: (err) => {
-      toast.error(err.response.data.errorMsg);
+      toast.error(err.response.data, { style: { maxWidth: "100%" } });
     },
   });
 
@@ -35,12 +34,12 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-4">
           <div>
-          <Input
+            <Input
               label="First Name:"
               name="firstName"
               register={register}
               required
-              pattern={/[a-zA-Z]{3,}/g}
+              pattern={/[a-zA-Z]{1,}/}
               placeholder="First Name"
               errors={errors}
             />
@@ -119,6 +118,6 @@ const RegisterForm = () => {
       </form>
     </div>
   );
-}
+};
 
-export default RegisterForm
+export default RegisterForm;
