@@ -20,17 +20,10 @@ const LoginForm = () => {
     const { email, password } = data;
     try {
       await logIn(email, password);
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       toast.error("Wrong email and password combination");
     }
-    // signInWithEmailAndPassword(auth, email, password)
-    //   .then(() => {
-    //     navigate("/");
-    //   })
-    //   .catch((error) => {
-    //     toast.error("User not found, please try again.");
-    //   });
   };
 
   return (

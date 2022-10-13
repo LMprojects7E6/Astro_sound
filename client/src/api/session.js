@@ -5,17 +5,11 @@ export const registerUser = async (formData) => {
   return response.data;
 };
 
-export const logIn = async (formData) => {
-  const response = await api.post("/login", formData);
-  return response.data;
-};
-
-export const getSession = async () => {
-  const response = await api.get("/session");
-  return response.data;
-};
-
-export const logOut = async () => {
-  const response = await api.post("/logout");
+export const getSession = async (accessToken) => {
+  const response = await api.get("/session", {
+    headers: {
+      Authorization: "Bearer " + accessToken,
+    },
+  });
   return response.data;
 };

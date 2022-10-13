@@ -8,8 +8,8 @@ import {
 import { auth } from "services/firebase";
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState({});
-
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
@@ -24,15 +24,20 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      console.log(currentUser);
-      setUser(currentUser);
+      //   console.log(currentUser);
+      setUser(currentUser?.accessToken);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
     };
   }, []);
   const values = { createUser, logIn, logout, user };
-  return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={values}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 };
 
 export default AuthProvider;

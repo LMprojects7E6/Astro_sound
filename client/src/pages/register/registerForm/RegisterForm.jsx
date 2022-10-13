@@ -20,7 +20,7 @@ const RegisterForm = () => {
 
   const registerMutation = useMutation(registerUser, {
     onSuccess: () => {
-      navigate("/");
+      navigate("/dashboard");
     },
     onError: (err) => {
       toast.error(err.response.data, { style: { maxWidth: "100%" } });

@@ -27,7 +27,7 @@ const userSchema = new mongoose.Schema(
     searchedSongs: [{ type: mongoose.Schema.Types.ObjectId, ref: "Song" }],
     role: {
       type: String,
-      default: "user",
+      default: "admin",
     },
   },
   { _id: false }
