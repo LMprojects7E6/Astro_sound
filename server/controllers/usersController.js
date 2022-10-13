@@ -8,15 +8,10 @@ const getUser = async (req, res) => {};
 //!POST CREATE NEW USER
 const createUser = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
-    // Create user firebase
-    const newFirebaseUser = await auth().createUser({
-      email,
-      password,
-    });
-    //Create user mongodb
+    const { firstName, lastName, _id } = req.body;
+    console.log(_id, firstName);
     const user = await model.User.create({
-      _id: newFirebaseUser.uid,
+      _id: _id,
       firstName,
       lastName,
     });

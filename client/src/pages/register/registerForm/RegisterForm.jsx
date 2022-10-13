@@ -1,34 +1,44 @@
-import React from "react";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "api/session";
+import { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-
+  const { createUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const userLogIn = useMutation(registerUser, {
+  const registerMutation = useMutation(registerUser, {
     onSuccess: () => {
-      // TODO return JWT token
-      toast.success("User registered");
-      // navigate("/dashboard");
+      navigate("/");
     },
     onError: (err) => {
       toast.error(err.response.data, { style: { maxWidth: "100%" } });
     },
   });
 
-  const onSubmit = (data) => userLogIn.mutate(data);
+  const onSubmit = async (data) => {
+    const { email, password, firstName, lastName } = data;
+    try {
+      const data = await createUser(email, password);
+      const { uid } = data.user;
+      registerMutation.mutate({ firstName, lastName, _id: uid });
+    } catch (error) {
+      toast.error("Email already in use", {
+        style: { maxWidth: "100%" },
+      });
+    }
+  };
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
