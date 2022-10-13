@@ -4,11 +4,13 @@ const model = require("../models");
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
   // const { userID } = req.id;
-//!CODE USED FOR TESTING
-  const userID  = "6342151708c75ff62ab26e38";
+  //!CODE USED FOR TESTING
+  const userID = "6342151708c75ff62ab26e38";
 
   try {
-    const playlistsArray = await model.User.findById(userID).populate("playlists");
+    const playlistsArray = await model.User.findById(userID).populate(
+      "playlists"
+    );
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
@@ -21,12 +23,16 @@ const getAllPlaylists = async (req, res) => {
 //!GET THE USERS LIKED PLAYLIST
 const getLikedPlaylists = async (req, res) => {
   // const { userID } = req.id;
-//!CODE USED FOR TESTING
-  const userID  = "6342151708c75ff62ab26e38";
+  //!CODE USED FOR TESTING
+  const userID = "6342151708c75ff62ab26e38";
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
-    const playlistsArray = await model.User.findById(userID).populate("playlists",null, {"name": "favorite"});
+    const playlistsArray = await model.User.findById(userID).populate(
+      "playlists",
+      null,
+      { name: "favorite" }
+    );
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
@@ -39,8 +45,8 @@ const getLikedPlaylists = async (req, res) => {
 //!GET 5 PLAYLISTS FROM USER
 const getFivePlaylists = async (req, res) => {
   // const { userID } = req.id;
-//!CODE USED FOR TESTING
-  const userID  = "6342151708c75ff62ab26e38";
+  //!CODE USED FOR TESTING
+  const userID = "6342151708c75ff62ab26e38";
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
@@ -71,37 +77,52 @@ const getPlaylistsByID = async (req, res) => {
   }
 };
 
-//!POST NEW PLAYLIST
+//!POST CREATE NEW PLAYLIST
 const createPlaylist = async (req, res) => {
-  const { Name, Description, CreatedBy, PlaylistImage } = req.body;
+  const { name, description, createdBy, playlistImage } = req.body;
   // const { userID } = req.id;
-//!CODE USED FOR TESTING
-  const userID  = "6342151708c75ff62ab26e38";
+  //!CODE USED FOR TESTING
+  const userID = "6342151708c75ff62ab26e38";
 
   try {
     //Create playlist
     const playlist = await model.Playlist.create({
-      Name,
-      Description,
-      CreatedBy,
-      PlaylistImage,
+      name,
+      description,
+      createdBy,
+      playlistImage,
     });
     await playlist.save();
 
     //Create playlists reference in User
     const userPlaylist = await model.User.findByIdAndUpdate(userID, {
-      $push: { Playlists: playlist.id },
+      $push: { playlists: playlist.id },
     });
 
     await userPlaylist.save();
-    res.status(200).send({message: 'Playlist Created'});
+    res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
-    res.status(504).send({errorMsg: 'Could not create Playlist', error:error});
+    res
+      .status(504)
+      .send({ errorMsg: "Could not create Playlist", error: error });
   }
 };
 
 //!PUT UPDATE PLAYLIST WITH ID
-const updatePlaylist = async (req, res) => {};
+const updatePlaylist = async (req, res) => {
+  try {
+    const playlist = await model.Playlist.findByIdAndUpdate(
+      req.params.playlistID,
+      req.body,
+			{
+				new: true,
+			}
+    );
+		res.status(200).send(playlist);
+  } catch (error) {
+		res.status(504).send({errorMsg:'Could not update playlist', error:error});
+	}
+};
 
 module.exports = {
   getAllPlaylists: getAllPlaylists,
