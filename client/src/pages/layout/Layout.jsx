@@ -6,16 +6,18 @@ import MusicPlayer from "./musicPlayer";
 
 const Layout = () => {
   const navigate = useNavigate();
-  const isLoggedIn = false;
+  const isLoggedIn = true;
 
   useEffect(() => {
     !isLoggedIn && navigate("/login");
   }, []);
 
   return (
-    <div>
-      <Aside />
-      <Outlet />
+    <div className="min-h-screen">
+      <div className="flex flex-row">
+        <Aside />
+        <Outlet />
+      </div>
       <MusicPlayer />
     </div>
   );
