@@ -1,21 +1,20 @@
 import Button from "components/button";
 import { useState, Children, cloneElement } from "react";
 
-export default function Modal({ modalTitle, children }) {
+export default function Modal({ modalTitle, children, icon, text }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
-      <span>
-        <Button
-          bg={"mainButtonBg"}
-          width={"w-min"}
-          radius={"rounded"}
-          onClick={() => setShowModal(true)}
-          text={"+"}
-        />
-        CREATE PLAYLIST
-      </span>
+      <Button
+        bg={"mainButtonBg"}
+        width={"w-min"}
+        radius={"rounded"}
+        onClick={() => setShowModal(true)}
+        text={text}
+        icon={icon}
+      />
+
       {showModal ? (
         <>
           <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full  md:h-min h-full top-0 left-0 md:left-1/4 md:top-1/4 bg-grey2 ">
