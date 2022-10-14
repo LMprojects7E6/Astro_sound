@@ -19,7 +19,6 @@ const createUser = async (req, res) => {
       firstName,
       lastName,
       email,
-      password
     });
 
     //Create Liked Playlist
@@ -47,7 +46,7 @@ const createUser = async (req, res) => {
 const getUser = async (req, res) => {
   //   const { userID } = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  const userID = "6342151708c75ff62ab26e38";
 
   try {
     const user = await model.User.findById(userID);
