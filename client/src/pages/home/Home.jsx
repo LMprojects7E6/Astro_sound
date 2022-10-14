@@ -1,5 +1,5 @@
-import Dropdown from "components/dropdown";
-import LogoLikedSongs from "components/logoLikedSongs";
+import Dropdown from '../../components/dropdown'
+// import LogoLikedSongs from "components/logoLikedSongs";
 import React from "react";
 
 const Home = () => {
