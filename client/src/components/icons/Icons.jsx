@@ -110,6 +110,8 @@ const PrevIcon = ({ size }) => {
   );
 };
 
+
+
 const NextIcon = ({ size }) => {
   return (
     <svg
