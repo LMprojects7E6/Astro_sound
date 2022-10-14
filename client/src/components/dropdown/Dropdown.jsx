@@ -41,7 +41,7 @@ return(
                 </a>
               )}
             </Menu.Item>
-            <form method="POST" action="#">
+            <hr className='text-white mx-3'/>            <form method="POST" action="#">
               <Menu.Item>
                 {({ active }) => (
                   <button
