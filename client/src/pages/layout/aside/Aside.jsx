@@ -5,9 +5,10 @@ import Icon from "../../../components/icons/Icons";
 const Aside = () => {
   const style =
     "h-10 flex gap-x-4 items-center text-sm font-semibold text-link rounded px-4 hover:text-white";
-  const activeStyle = "bg-active text-white";
+  const activeStyle = "bg-active hover:text-white";
+
   return (
-    <nav className="px-2 mt-4">
+    <nav className="px-2 bg-black text-grey hover:text-grey w-1/6">
       <ul className="flex flex-col">
         <li>
           <NavLink
@@ -47,6 +48,32 @@ const Aside = () => {
               <Icon name={"collection"} size={22} />
             </span>
             My Library
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/collection"}
+            className={({ isActive }) =>
+              isActive ? activeStyle + " " + style : style
+            }
+          >
+            <span>
+              <Icon name={"plus"} size={22} />
+            </span>
+            Created Playlist
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/collection"}
+            className={({ isActive }) =>
+              isActive ? activeStyle + " " + style : style
+            }
+          >
+            <span>
+              <Icon name={"heartFilled"} size={22} />
+            </span>
+            Liked Songs
           </NavLink>
         </li>
       </ul>
