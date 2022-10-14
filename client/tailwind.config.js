@@ -4,10 +4,12 @@ module.exports = {
   theme: {
     colors: {
       purple: "#F0ABFC",
+      purpleDark: "#8629B3",
       black: "#000000",
       white: "#fff",
       error: "#FFD1D1",
       grey: "#888888",
+      blueBG: "#8E8EDF"
     },
     textColor: {
       primary: "#8629B2",

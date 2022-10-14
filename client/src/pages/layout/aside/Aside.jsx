@@ -9,7 +9,7 @@ const Aside = () => {
 
 
     return (
-      <nav className="px-2 bg-black text-grey hover:text-grey w-1/6">
+      <nav className="px-2 bg-black text-grey hover:text-grey w-1/6 h-screen">
         <ul className="flex flex-col">
           <li>
             <NavLink

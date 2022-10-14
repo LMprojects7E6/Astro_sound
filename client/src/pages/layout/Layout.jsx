@@ -13,7 +13,7 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="h-100">
+    <div>
       <div className="flex flex-row">
       <Aside />
       <Outlet />
