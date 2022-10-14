@@ -1,8 +1,16 @@
+import DashboardSection from "components/dashboardSection";
+import Slider from "components/slider";
+import { getThreeSongs } from "api/songs";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
 const Home = () => {
+  const { data: threeSongs } = useQuery(["threeSongs"], getThreeSongs);
+
   return (
-  <div className="bg-grey w-full">home</div>
+    <DashboardSection>
+      <Slider threeSongs={threeSongs} />
+    </DashboardSection>
   );
 };
 
