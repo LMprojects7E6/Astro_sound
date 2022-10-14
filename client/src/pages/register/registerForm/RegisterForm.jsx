@@ -1,18 +1,15 @@
-import React from 'react'
+import React from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
-import { logIn } from "api/session";
-
+import { registerUser } from "api/session";
 import { useForm } from "react-hook-form";
-
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const RegisterForm = () => {
-
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -20,12 +17,14 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm();
 
-  const userLogIn = useMutation(logIn, {
+  const userLogIn = useMutation(registerUser, {
     onSuccess: () => {
-      navigate("/");
+      // TODO return JWT token
+      toast.success("User registered");
+      // navigate("/dashboard");
     },
     onError: (err) => {
-      toast.error(err.response.data.errorMsg);
+      toast.error(err.response.data, { style: { maxWidth: "100%" } });
     },
   });
 
@@ -35,12 +34,12 @@ const RegisterForm = () => {
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="grid sm:grid-cols-1 lg:grid-cols-2 md:grid-cols-1 xl:grid-cols-2 gap-4">
           <div>
-          <Input
+            <Input
               label="First Name:"
               name="firstName"
               register={register}
               required
-              pattern={/[a-zA-Z]{3,}/g}
+              pattern={/[a-zA-Z]{1,}/}
               placeholder="First Name"
               errors={errors}
             />
@@ -50,6 +49,7 @@ const RegisterForm = () => {
             {errors.firstName && errors.firstName.type === "pattern" && (
               <ErrorParagraph>Insert a valid first name</ErrorParagraph>
             )}
+            <div className='mt-4 mb-4'>
             <Input
               label="Email:"
               name="email"
@@ -65,41 +65,44 @@ const RegisterForm = () => {
             {errors.email && errors.email.type === "pattern" && (
               <ErrorParagraph>Insert a valid email</ErrorParagraph>
             )}
+            </div>
 
             
           </div>
           <div className="mb-3">
-          <Input
-              label="Last Name:"
-              name="lastName"
-              register={register}
-              required
-              pattern={/[a-zA-Z]{3,}/g}
-              placeholder="Last Name"
-              errors={errors}
-            />
-            {errors.lastName && errors.lastName.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
-            {errors.lastName && errors.lastName.type === "pattern" && (
-              <ErrorParagraph>Insert a valid last name</ErrorParagraph>
-            )}
-            <Input
-              label="Password:"
-              name="password"
-              type="password"
-              register={register}
-              required
-              pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
-              placeholder={"*************"}
-            />
-            {errors.password && errors.password.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
-            {errors.password && errors.password.type === "pattern" && (
-              <ErrorParagraph>Min 6 characters</ErrorParagraph>
-            )}
             
+              <Input
+                  label="Last Name:"
+                  name="lastName"
+                  register={register}
+                  required
+                  pattern={/[a-zA-Z]{3,}/g}
+                  placeholder="Last Name"
+                  errors={errors}
+                />
+                {errors.lastName && errors.lastName.type === "required" && (
+                  <ErrorParagraph>This is field required</ErrorParagraph>
+                )}
+                {errors.lastName && errors.lastName.type === "pattern" && (
+                  <ErrorParagraph>Insert a valid last name</ErrorParagraph>
+                )}
+                <div className='mt-4 mb-4'>
+                <Input
+                  label="Password:"
+                  name="password"
+                  type="password"
+                  register={register}
+                  required
+                  pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
+                  placeholder={"*************"}
+                />
+                {errors.password && errors.password.type === "required" && (
+                  <ErrorParagraph>This is field required</ErrorParagraph>
+                )}
+                {errors.password && errors.password.type === "pattern" && (
+                  <ErrorParagraph>Min 6 characters</ErrorParagraph>
+                )}
+            </div>
           </div>
         </div>
 
@@ -108,13 +111,13 @@ const RegisterForm = () => {
             bg={"mainButtonBg"}
             width={"w-full"}
             radius={"rounded"}
-            text={"Sign in"}
+            text={"Sign up"}
             type={"submit"}
           />
         </div>
       </form>
     </div>
   );
-}
+};
 
-export default RegisterForm
+export default RegisterForm;

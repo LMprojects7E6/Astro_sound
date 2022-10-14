@@ -13,10 +13,10 @@ const Layout = () => {
   }, []);
 
   return (
-    <div className="min-h-screen">
+    <div className="h-100">
       <div className="flex flex-row">
-        <Aside />
-        <Outlet />
+      <Aside />
+      <Outlet />
       </div>
       <MusicPlayer />
     </div>
