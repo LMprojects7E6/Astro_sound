@@ -1,7 +1,14 @@
 import Button from "components/button";
 import { useState, Children, cloneElement } from "react";
 
-export default function Modal({ modalTitle, children, icon, text }) {
+export default function Modal({
+  modalTitle,
+  children,
+  icon,
+  text,
+  iconSize,
+  iconColor,
+}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -13,6 +20,8 @@ export default function Modal({ modalTitle, children, icon, text }) {
         onClick={() => setShowModal(true)}
         text={text}
         icon={icon}
+        iconColor={iconColor}
+        iconSize={iconSize}
       />
 
       {showModal ? (
@@ -31,6 +40,8 @@ export default function Modal({ modalTitle, children, icon, text }) {
                     width={"w-min"}
                     onClick={() => setShowModal(false)}
                     icon={"CloseWindow"}
+                    iconColor={"currentColor"}
+                    iconSize={30}
                   />
                 </div>
                 <div className="relative pr-4 px-4 hidden md:block">

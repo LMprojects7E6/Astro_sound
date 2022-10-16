@@ -85,7 +85,7 @@ const CreatePlaylist = ({ setShowModal }) => {
                 validate: {
                   lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
                 },
-                accept: "image/png, image/jpeg",
+                accept: "image/png, image/jpg, image/jpeg",
               })}
               type="file"
               onChange={handleUpload}
