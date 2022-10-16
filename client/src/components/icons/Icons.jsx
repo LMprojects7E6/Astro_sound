@@ -415,7 +415,7 @@ const ArrowLeftIcon = ({ size }) => {
   );
 };
 
-const FullScreenOffIcon = ({ size }) => {
+const FullScreenOffIcon2 = ({ size }) => {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -423,8 +423,21 @@ const FullScreenOffIcon = ({ size }) => {
       height={size}
       xmlns="http://www.w3.org/2000/svg"
     >
+      <path d="M22.125 2.582l-.707-.707-4.273 4.273L15 4.001v5h5l-2.146-2.146 4.271-4.273zM6.147 17.146l-4.273 4.272.707.707 4.273-4.272L9 19.999v-5H4l2.147 2.147z" />
+    </svg>
+  );
+};
+
+const CloseWindowIcon = ({ size }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+    >
       <path
-        d="M22.125 2.582l-.707-.707-4.273 4.273L15 4.001v5h5l-2.146-2.146 4.271-4.273zM6.147 17.146l-4.273 4.272.707.707 4.273-4.272L9 19.999v-5H4l2.147 2.147z"
+        d="m16.192 6.344-4.243 4.242-4.242-4.242-1.414 1.414L10.535 12l-4.242 4.242 1.414 1.414 4.242-4.242 4.243 4.242 1.414-1.414L13.364 12l4.242-4.242z"
         fill="currentColor"
       />
     </svg>
@@ -444,6 +457,21 @@ const AddImageIcon = ({ size }) => {
         fill="currentColor"
       />
       <path d="M19 14h-2v3h-3v2h3v3h2v-3h3v-2h-3z" fill="currentColor" />
+    </svg>
+  );
+};
+const FullScreenOffIcon = ({ size }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M22.125 2.582l-.707-.707-4.273 4.273L15 4.001v5h5l-2.146-2.146 4.271-4.273zM6.147 17.146l-4.273 4.272.707.707 4.273-4.272L9 19.999v-5H4l2.147 2.147z"
+        fill="currentColor"
+      />
     </svg>
   );
 };
@@ -480,6 +508,7 @@ const Icon = ({ name, size = 24 }) => {
     lyrics: LyricsIcon,
     arrow: ArrowLeftIcon,
     addImage: AddImageIcon,
+    CloseWindow: CloseWindowIcon,
   };
 
   const Component = icons[name];

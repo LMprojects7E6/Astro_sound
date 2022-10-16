@@ -1,8 +1,7 @@
 import React from "react";
-
 import loginImage from "assets/register.png";
 import Logo from "components/logo";
-import RegisterForm from "pages/register";
+import RegisterForm from "./registerForm/RegisterForm";
 import { Link } from "react-router-dom";
 import FormSection from "components/formSection";
 
@@ -19,8 +18,8 @@ const Register = () => {
       <RegisterForm />
       <div className=" flex items-center justify-center pb-2">
         <p className="mb-0 mr-2">Already have an account?</p>
-        <Link to="/" className="text-primary font-semibold">
-          Sign up
+        <Link to="/login" className="text-primary font-semibold">
+          Sign in
         </Link>
       </div>
     </FormSection>

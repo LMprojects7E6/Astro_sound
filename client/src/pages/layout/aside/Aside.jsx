@@ -1,23 +1,22 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Icon from "components/icons/Icons";
-import Modal from "components/modal/Modal";
-import DeletePlaylist from "components/playlistModals/deletePlaylist";
+import Icon from "../../../components/icons/Icons";
 
 const Aside = () => {
   const style =
-    "h-10 flex gap-x-4 items-center text-sm font-semibold text-NavLink rounded px-4 hover:text-white";
-  const activeStyle = "bg-active text-white";
+    "h-10 flex gap-x-4 items-center text-sm font-semibold text-link rounded px-4 hover:text-white";
+  const activeStyle = "bg-active hover:text-white";
 
   return (
-    <nav className="px-2 mt-4">
+    <nav className="px-2 bg-black text-grey hover:text-grey w-1/6">
       <ul className="flex flex-col">
         <li>
           <NavLink
-            to={"/home"}
+            to={"/index"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
+            exact
           >
             <span>
               <Icon name={"home"} size={22} />
@@ -40,7 +39,7 @@ const Aside = () => {
         </li>
         <li>
           <NavLink
-            to={"/library"}
+            to={"/collection"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
@@ -52,9 +51,30 @@ const Aside = () => {
           </NavLink>
         </li>
         <li>
-          <Modal modalTitle={"Delete Playlist"}>
-            <DeletePlaylist />
-          </Modal>
+          <NavLink
+            to={"/collection"}
+            className={({ isActive }) =>
+              isActive ? activeStyle + " " + style : style
+            }
+          >
+            <span>
+              <Icon name={"plus"} size={22} />
+            </span>
+            Created Playlist
+          </NavLink>
+        </li>
+        <li>
+          <NavLink
+            to={"/collection"}
+            className={({ isActive }) =>
+              isActive ? activeStyle + " " + style : style
+            }
+          >
+            <span>
+              <Icon name={"heartFilled"} size={22} />
+            </span>
+            Liked Songs
+          </NavLink>
         </li>
       </ul>
     </nav>

@@ -1,33 +1,30 @@
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
-import { logIn } from "api/session";
-
-import { useForm } from "react-hook-form";
-
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 
 const LoginForm = () => {
+  const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const userLogIn = useMutation(logIn, {
-    onSuccess: () => {
+  const onSubmit = async (data) => {
+    const { email, password } = data;
+    try {
+      await logIn(email, password);
       navigate("/dashboard");
-    },
-    onError: (err) => {
-      toast.error(err.response.data.errorMsg);
-    },
-  });
-
-  const onSubmit = (data) => userLogIn.mutate(data);
+    } catch (error) {
+      toast.error("Wrong email and password combination");
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -53,7 +50,7 @@ const LoginForm = () => {
         type="password"
         register={register}
         required
-        pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
+        pattern={/[0-9a-zA-Z]{6,}/}
         placeholder={"*************"}
       />
       {errors.password && errors.password.type === "required" && (

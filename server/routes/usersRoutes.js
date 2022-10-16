@@ -1,7 +1,7 @@
 //!IMPORT DEPENDENCIES
 const express = require("express");
 const router = express.Router();
-const userController =  require("../controllers/usersController.js");
+const userController = require("../controllers/usersController.js");
 
 //!CRUD
 router.get("/", userController.getUser);
