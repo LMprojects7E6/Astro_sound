@@ -8,6 +8,7 @@ import Loader from "components/loader/Loader";
 import Aside from "./aside";
 import MusicPlayer from "./musicPlayer";
 import Admin from "pages/admin/Admin";
+import Logout from "components/button/Logout";
 
 const Layout = () => {
   const { user } = useContext(AuthContext);
@@ -26,6 +27,8 @@ const Layout = () => {
       <div className="h-100">
         <div className="flex flex-row">
           <Aside />
+          {/*//TODO get component and add to menu  */}
+          <Logout></Logout>
           <Outlet />
         </div>
         <MusicPlayer />
