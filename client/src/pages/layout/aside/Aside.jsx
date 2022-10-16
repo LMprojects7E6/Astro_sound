@@ -1,3 +1,5 @@
+import Modal from "components/modal";
+import CreatePlaylist from "components/playlistModals/createPlaylist";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
@@ -12,11 +14,10 @@ const Aside = () => {
       <ul className="flex flex-col">
         <li>
           <NavLink
-            to={"/index"}
+            to={"/"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
-            exact
           >
             <span>
               <Icon name={"home"} size={22} />
@@ -39,7 +40,7 @@ const Aside = () => {
         </li>
         <li>
           <NavLink
-            to={"/collection"}
+            to={"/library"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
@@ -51,21 +52,17 @@ const Aside = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to={"/collection"}
-            className={({ isActive }) =>
-              isActive ? activeStyle + " " + style : style
-            }
+          <Modal
+            modalTitle={"Create PLaylist"}
+            icon={"plus"}
+            text={"Create Playlist"}
           >
-            <span>
-              <Icon name={"plus"} size={22} />
-            </span>
-            Created Playlist
-          </NavLink>
+            <CreatePlaylist />
+          </Modal>
         </li>
         <li>
           <NavLink
-            to={"/collection"}
+            to={"/library"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }

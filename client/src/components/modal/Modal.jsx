@@ -30,7 +30,7 @@ export default function Modal({ modalTitle, children, icon, text }) {
                     bg={"grey2"}
                     width={"w-min"}
                     onClick={() => setShowModal(false)}
-                    text={"X"}
+                    icon={"CloseWindow"}
                   />
                 </div>
                 <div className="relative pr-4 px-4 hidden md:block">

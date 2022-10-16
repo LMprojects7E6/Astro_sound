@@ -1,7 +1,7 @@
 import Button from "components/button";
 import React from "react";
 
-const AddToPlaylistModal = ({ setShowModal }) => {
+const AddToPlaylist = ({ setShowModal }) => {
   return (
     <>
       <ul className="pr-4 px-10 list-disc">
@@ -28,4 +28,4 @@ const AddToPlaylistModal = ({ setShowModal }) => {
   );
 };
 
-export default AddToPlaylistModal;
+export default AddToPlaylist;

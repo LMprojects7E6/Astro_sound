@@ -22,7 +22,7 @@ const Layout = () => {
     navigate("/login", { replace: true });
   } else if (data === "admin") {
     return <Admin></Admin>;
-  } else {
+  } else if (data === "user") {
     return (
       <div className="h-100">
         <div className="flex flex-row">

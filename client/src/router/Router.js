@@ -11,14 +11,15 @@ import Register from "pages/register";
 const Router = () => {
   return (
     <Routes>
-      <Route index element={<Login />} />
-      <Route index path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/dashboard" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="library" element={<Library />} />
-        <Route path="search" element={<Search />} />
-        <Route path="profile" element={<Profile />} />
+      <Route path="/">
+        <Route index path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="library" element={<Library />} />
+          <Route path="search" element={<Search />} />
+          <Route path="profile" element={<Profile />} />
+        </Route>
       </Route>
     </Routes>
   );

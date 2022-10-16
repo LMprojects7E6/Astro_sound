@@ -1,1 +1,1 @@
-export { default } from "./PlaylistModal";
+export { default } from "./AddToPlaylist";
