@@ -23,13 +23,13 @@ const Layout = () => {
     return <Admin></Admin>;
   } else {
     return (
-      <div className="h-100">
-        <div className="flex flex-row">
+      <section className="flex flex-col justify-between min-w-screen min-h-screen">
+        <div className="flex flex-row grow">
           <Aside />
           <Outlet />
         </div>
         <MusicPlayer />
-      </div>
+      </section>
     );
   }
 };
