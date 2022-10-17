@@ -20,14 +20,14 @@ const LoginForm = () => {
     const { email, password } = data;
     try {
       await logIn(email, password);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       toast.error("Wrong email and password combination");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="min-h-min" onSubmit={handleSubmit(onSubmit)}>
       <Input
         label="Email"
         name="email"
@@ -68,7 +68,7 @@ const LoginForm = () => {
           Forgot password
         </a>
       </div>
-      <div className=" flex items-center justify-center pb-2">
+      <div className=" flex  items-center justify-center pb-2">
         <Button
           bg={"mainButtonBg"}
           width={"w-full"}

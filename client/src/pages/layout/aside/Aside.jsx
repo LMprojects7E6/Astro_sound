@@ -1,4 +1,6 @@
 import Logo from "components/logo";
+import Modal from "components/modal";
+import CreatePlaylist from "components/playlistModals/createPlaylist";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
@@ -18,14 +20,14 @@ const Aside = () => {
               <h3 className="text-white flex flex-col justify-center">Astro Sounds</h3>
             </div>
             <NavLink
-              to={"/index"}
+              to={"/"}
               className={({ isActive }) =>
                 isActive ? activeStyle + " " + style : style
               }
               exact
             >
               <span>
-                <Icon name={"home"} size={22} />
+                <Icon name={"home"} size={22} color={"currentColor"}/>
               </span>
               <p className="">Home</p>
             </NavLink>
@@ -38,46 +40,44 @@ const Aside = () => {
               }
             >
               <span>
-                <Icon name={"search"} size={22} />
+                <Icon name={"search"} size={22} color={"currentColor"}/>
               </span>
               Search
             </NavLink>
           </li>
           <li className="mobile:flex-col">
             <NavLink
-              to={"/collection"}
+              to={"/library"}
               className={({ isActive }) =>
                 isActive ? activeStyle + " " + style : style
               }
             >
               <span>
-                <Icon name={"collection"} size={22} />
+                <Icon name={"collection"} size={22} color={"currentColor"}/>
               </span>
               My Library
             </NavLink>
           </li>
+          <li>
+          <Modal
+            modalTitle={"Create PLaylist"}
+            icon={"plus"}
+            iconSize={30}
+            iconColor={"currentColor"}
+            text={"Create Playlist"}
+          >
+            <CreatePlaylist />
+          </Modal>
+        </li>
           <li className="mobile:hidden flex">
             <NavLink
-              to={"/collection"}
+              to={"/likedsongs"}
               className={({ isActive }) =>
                 isActive ? activeStyle + " " + style : style
               }
             >
               <span>
-                <Icon name={"plus"} size={22} />
-              </span>
-              Created Playlist
-            </NavLink>
-          </li>
-          <li className="mobile:hidden flex">
-            <NavLink
-              to={"/collection"}
-              className={({ isActive }) =>
-                isActive ? activeStyle + " " + style : style
-              }
-            >
-              <span>
-                <Icon name={"heartFilled"} size={22} />
+                <Icon name={"heartFilled"} size={22} color={"currentColor"}/>
               </span>
               Liked Songs
             </NavLink>

@@ -8,15 +8,21 @@ module.exports = {
     colors: {
       purple: "#F0ABFC",
       purpleDark: " #8629B3",
+      purple2: "#8629B2",
+      purple3: "#220B28",
       black: "#000000",
       white: "#fff",
-      error: "#FFD1D1",
       grey: "#888888",
-      blueBG: "#8E8EDF"
+      grey2: "#383838",
+      grey3: "#535353",
+      grey4: "#717171",
+      grey5: "#282828",
+      error: "#FFD1D1",
     },
     textColor: {
       primary: "#8629B2",
       grey: "#888888",
+      black: "#000000",
       white: "#fff",
       error: "#FF0000",
     },
