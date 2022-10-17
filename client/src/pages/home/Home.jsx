@@ -1,4 +1,5 @@
 import DashboardSection from "components/dashboardSection";
+import CardsTable from "components/cardsTable"
 import Slider from "components/slider";
 import { getThreeSongs } from "api/songs";
 import { useQuery } from "@tanstack/react-query";
@@ -7,15 +8,19 @@ import { AuthContext } from "context/AuthProvider";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
-  const { data: threeSongs } = useQuery(["threeSongs"], () =>
-    getThreeSongs(user)
-  );
+  const { isLoading, data: threeSongs } = useQuery(["threeSongs"], () =>getThreeSongs(user));
 
-  return (
-    <DashboardSection>
-      <Slider threeSongs={threeSongs} />
-    </DashboardSection>
-  );
+  if (isLoading) {
+    return <p>Loading...</p>;
+  } else {
+    return (
+      <DashboardSection>
+        <Slider threeSongs={threeSongs} />
+        <p>My Library</p>
+        <CardsTable />
+      </DashboardSection>
+    );
+  }
 };
 
 export default Home;

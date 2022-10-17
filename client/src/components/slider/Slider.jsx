@@ -1,9 +1,6 @@
 import React from "react";
 
 const Slider = ({ threeSongs }) => {
-  console.log(threeSongs);
-  // const slide1 = threeSongs[0];
-  // console.log(slide1);
 
   const artist = threeSongs[0].artist
   return (
