@@ -13,8 +13,8 @@ const connect = require("./config/db");
 connect();
 
 //!MIDDLEWARE
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ extended: true, limit: "50mb" }));
 app.use(helmet());
 app.use(cookieParser());
 const corsOptions = require("./config/corsOptions");
@@ -27,6 +27,7 @@ const playlistsRoutes = require("./routes/playlistsRoutes");
 const usersRoutes = require("./routes/usersRoutes");
 const songsRoutes = require("./routes/songsRoutes");
 const sessionRoutes = require("./routes/sessionRoutes");
+
 //!ROUTES
 app.use("/playlists", validateToken, playlistsRoutes);
 app.use("/users", usersRoutes);
