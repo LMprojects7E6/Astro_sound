@@ -2,7 +2,7 @@ import React from "react";
 
 const DashboardSection = ({ children, imgUrl }) => {
   return (
-    <section className="container min-w-screen pt-5 bg-gradient-to-b from-purpleDark to-black lg:flex">
+    <section className=" h-screen w-full  bg-gradient-to-b from-purpleDark to-black mobile:h-full mobile:w-full overflow-y-auto">
       <div>{children}</div>
     </section>
   );

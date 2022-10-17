@@ -23,12 +23,12 @@ const Layout = () => {
     return <Admin></Admin>;
   } else {
     return (
-      <section className="flex flex-col justify-between lg:min-w-screen lg:min-h-screen sm:min-w-screen sm:h-screen">
-        <div className="flex lg:flex-row grow sm:flex-col-reverse sm:justify-between">
+      <section className="flex flex-col justify-between h-screen">
+        <div className="flex flex-row mobile:h-screen mobile:w-screen  mobile:flex-col-reverse">
           <Aside />
-          <Outlet />
+          <Outlet />  
         </div>
-        <MusicPlayer />
+      <MusicPlayer />
       </section>
     );
   }

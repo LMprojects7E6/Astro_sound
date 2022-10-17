@@ -1,17 +1,22 @@
+import Logo from "components/logo";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
 
 const Aside = () => {
   const style =
-    "h-10 flex gap-x-4 lg:items-center text-sm font-semibold text-link px-4 hover:text-white";
-  const activeStyle = "bg-active hover:text-white";
+    "px-5 py-3  mobile:py-5 mobile:px-6 flex gap-x-4 items-center text-mobile font-semibold text-link px-4 hover:text-white mobile:flex mobile:flex-col mobile:items-center";
+  const activeStyle = "bg-active hover:text-white mobile:flex mobile:flex-column mobile:items-center";
 
 
     return (
-      <nav className="px-2 bg-black text-grey hover:text-grey lg:w-2/6 tablet:bg-white mobile:flex sm:w-full">
-        <ul className="flex lg:flex-col sm:flex-row sm:justify-center">
-          <li className="sm:flex sm:flex-col">
+      <nav className="px-2 bg-black text-grey hover:text-grey mobile:w-full w-1/6 mobile:flex mobile:justify-center ">
+        <ul className="flex flex-col mobile:flex-row">
+          <li className="flex flex-col ">
+            <div className="mobile:hidden flex justify-center pr-3 my-3">
+              <Logo width={"w-14"} />
+              <h3 className="text-white flex flex-col justify-center">Astro Sounds</h3>
+            </div>
             <NavLink
               to={"/index"}
               className={({ isActive }) =>
@@ -25,7 +30,7 @@ const Aside = () => {
               <p className="">Home</p>
             </NavLink>
           </li>
-          <li className="sm:flex-col">
+          <li className="mobile:flex-col">
             <NavLink
               to={"/search"}
               className={({ isActive }) =>
@@ -38,7 +43,7 @@ const Aside = () => {
               Search
             </NavLink>
           </li>
-          <li className="sm:flex-col">
+          <li className="mobile:flex-col">
             <NavLink
               to={"/collection"}
               className={({ isActive }) =>
@@ -51,7 +56,7 @@ const Aside = () => {
               My Library
             </NavLink>
           </li>
-          <li className="sm:hidden lg:flex">
+          <li className="mobile:hidden flex">
             <NavLink
               to={"/collection"}
               className={({ isActive }) =>
@@ -64,7 +69,7 @@ const Aside = () => {
               Created Playlist
             </NavLink>
           </li>
-          <li className="sm:hidden lg:flex">
+          <li className="mobile:hidden flex">
             <NavLink
               to={"/collection"}
               className={({ isActive }) =>

@@ -7,6 +7,7 @@ function Button({ bg, width, text, radius, type }) {
       className={`${bg} ${width} ${radius} px-5 py-1 text-white font-semibold`}
     >
       {text}
+      
     </button>
   );
 }
