@@ -45,9 +45,9 @@ const getLikedPlaylists = async (req, res) => {
 
 //!GET 5 PLAYLISTS FROM USER
 const getFivePlaylists = async (req, res) => {
-  // const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
