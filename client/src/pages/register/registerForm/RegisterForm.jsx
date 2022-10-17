@@ -41,7 +41,7 @@ const RegisterForm = () => {
   };
   return (
     <form className="min-h-min " onSubmit={handleSubmit(onSubmit)}>
-      <div className="grid md:grid-cols-2 ">
+      <div className="grid md:grid-cols-2 gap-2 ">
         <div>
           <Input
             label="First Name:"
