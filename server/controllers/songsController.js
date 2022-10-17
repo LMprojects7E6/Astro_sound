@@ -17,6 +17,7 @@ const addSong = async (req, res, next) => {
         songImage,
         genre,
       });
+      console.log(song);
       res.status(200).send("Song uploaded successfully");
     }
   } catch (error) {
