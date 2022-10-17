@@ -1,8 +1,21 @@
-import CardImage from "components/songCard";
-import React from "react";
+import DashboardSection from "components/dashboardSection";
+import Slider from "components/slider";
+import { getThreeSongs } from "api/songs";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 
 const Home = () => {
-  return <div className="bg-grey w-full"></div>;
+  const { user } = useContext(AuthContext);
+  const { data: threeSongs } = useQuery(["threeSongs"], () =>
+    getThreeSongs(user)
+  );
+
+  return (
+    <DashboardSection>
+      <Slider threeSongs={threeSongs} />
+    </DashboardSection>
+  );
 };
 
 export default Home;
