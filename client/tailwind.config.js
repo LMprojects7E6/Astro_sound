@@ -5,14 +5,15 @@ module.exports = {
     colors: {
       purple: "#F0ABFC",
       purple2: "#8629B2",
+      purple3: "#220B28",
       black: "#000000",
       white: "#fff",
       grey: "#888888",
       grey2: "#383838",
       grey3: "#535353",
       grey4: "#717171",
+      grey5: "#282828",
       error: "#FFD1D1",
-      grey: "#888888",
     },
     textColor: {
       primary: "#8629B2",

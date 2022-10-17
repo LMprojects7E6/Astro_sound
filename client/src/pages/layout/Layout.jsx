@@ -28,12 +28,12 @@ const Layout = () => {
     return (
       <div className="h-100">
         <div className="flex flex-row">
-          <Aside />
+          {/* <Aside /> */}
           {/*//TODO get component and add to menu  */}
           <Logout></Logout>
           <Outlet />
         </div>
-        <MusicPlayer />
+        {/* <MusicPlayer /> */}
       </div>
     );
   }
