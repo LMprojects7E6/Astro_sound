@@ -5,12 +5,23 @@ const model = require("../models");
 const addSong = async (req, res, next) => {
   try {
     if (!req.files?.songFile || !req.files?.songImage) {
-      res.status(400).send("No files passed");
+      res.status(400).send("Something went wrong try again!!");
     } else {
+      const songFile = req.files.songFile[0].path;
+      const songImage = req.files.songImage[0].path;
+      const { artist, album, genre, title } = req.body;
+      const song = await model.Song.create({
+        songFile,
+        title,
+        artist,
+        album,
+        songImage,
+        genre,
+      });
       res.status(200).send("Song uploaded successfully");
     }
   } catch (error) {
-    console.log(error.message);
+    res.status(400).send("Something went wrong try again!!" + error);
   }
 };
 
