@@ -2,7 +2,7 @@ import React from "react";
 
 const FormSection = ({ children, imgUrl }) => {
   return (
-    <section className="bg-purple min-w-screen min-h-screen ">
+    <section className="bg-purple min-w-screen min-h-screen">
       <div className=" rounded-3xl shadow-xl overflow-hidden flex absolute h-max w-6/12 inset-0 m-auto">
         <div className=" bg-white w-full md:w-1/2 p-10 md:px-10  ">
           {children}

@@ -9,6 +9,7 @@ const createUser = async (req, res) => {
       _id: _id,
       firstName,
       lastName,
+      email,
     });
 
     //Create Liked Playlist
@@ -36,6 +37,7 @@ const getUser = async (req, res) => {
   //   const { userID } = req.id;
   //!CODE USED FOR TESTING
   const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+
   try {
     const user = await model.User.findById(userID);
     res.status(200).send(user);

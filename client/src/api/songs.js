@@ -5,3 +5,8 @@ export const postSong = async (data) => {
   const response = await api.post("/songs", data);
   return response.data;
 };
+export const getThreeSongs = async () => {
+  const response = await api.get("/songs/threeSongs");
+  console.log(response.data);
+  return response.data;
+};

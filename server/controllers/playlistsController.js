@@ -36,7 +36,7 @@ const getLikedPlaylists = async (req, res) => {
     );
 
     //GET PLAYLISTS OBJECTS
-    const {playlists} = playlistsArray;
+    const { playlists } = playlistsArray;
     res.status(200).send(playlists);
   } catch (error) {
     res.status(504).send({ message: error.message });
@@ -72,7 +72,6 @@ const getPlaylistsByID = async (req, res) => {
 
   try {
     const playlist = await model.Playlist.findById(playlistID);
-    console.log(playlist);
     res.status(200).send(playlist);
   } catch (error) {
     res.status(504).send({ message: error.message });
@@ -114,7 +113,7 @@ const createPlaylist = async (req, res) => {
 const updatePlaylist = async (req, res) => {
   console.log(req.params.playlistID);
   console.log(req.body);
-  
+
   try {
     const playlist = await model.Playlist.findByIdAndUpdate(
       req.params.playlistID,
@@ -131,6 +130,34 @@ const updatePlaylist = async (req, res) => {
   }
 };
 
+//!DELETE PLAYLIST
+const deletePlaylist = async (req, res) => {
+  // const { userID } = req.id;
+  //!CODE USED FOR TESTING
+  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  const { playlistID } = req.params;
+  console.log("enter delete");
+
+  try {
+    // Delete playlist from user
+    const userPlaylist = await model.User.updateOne(
+      { _id: userID },
+      {
+        $pull: {
+          playlists: playlistID,
+        },
+      }
+    );
+
+    const playlist = await model.Playlist.findByIdAndRemove(playlistID);
+    res.status(200).send(playlist);
+  } catch (error) {
+    res
+      .status(504)
+      .send({ errorMsg: "Could not delete playlist", error: error });
+  }
+};
+
 module.exports = {
   getAllPlaylists: getAllPlaylists,
   getLikedPlaylists: getLikedPlaylists,
@@ -138,4 +165,5 @@ module.exports = {
   getPlaylistsByID: getPlaylistsByID,
   createPlaylist: createPlaylist,
   updatePlaylist: updatePlaylist,
+  deletePlaylist: deletePlaylist,
 };
