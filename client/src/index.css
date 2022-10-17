@@ -21,3 +21,15 @@ code {
   background: -webkit-linear-gradient(to right, #6a3093, #a044ff);
   background: linear-gradient(to right, #6a3093, #a044ff);
 }
+
+/* .backgroundColor{
+  background-color: ${({ background }) => textToColor[background]}
+}
+
+
+
+const textToColor = {
+  black: "#010606",
+  white: "#fff",
+  transparent: "#0c0c0c",
+}; */

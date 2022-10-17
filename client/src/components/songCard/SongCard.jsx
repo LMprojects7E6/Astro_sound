@@ -2,6 +2,7 @@ import React from "react";
 
 import photo from "assets/login.jpg";
 import Button from "components/button";
+import Icon from "components/icons";
 
 const songCard = ({ song, songName, artistName, imgUrl }) => {
   return (
@@ -19,14 +20,23 @@ const songCard = ({ song, songName, artistName, imgUrl }) => {
         </div>
       </div>
       <div className=" grow flex flex-col justify-between  ">
-        <h5 className=" md:text-2xl w-max font-bold tracking-tight dark:text-white">
+        <h5 className=" md:text-xl w-max font-bold tracking-tight dark:text-white">
           Song name
         </h5>
         <p className=" text-white">Artist name</p>
       </div>
-      <div className=" flex-none flex  mb-2 pr-5 max-w-full">
-        <Button icon={"heartFilled"} iconSize={30} color={"red"} />
-        <span>...</span>
+      <div className=" flex-none flex  mb-2 pr-5 max-w-full md:ml-40">
+        <Button
+          icon={"heart"}
+          iconSize={24}
+          iconColor={"white"}
+          onClick={() => {
+            console.log("add to favorites");
+          }}
+        />
+        <span className="ml-2">
+          <Icon name={"dotsHorizontal"} size={24} color={"#fff"} />
+        </span>
       </div>
     </div>
   );
