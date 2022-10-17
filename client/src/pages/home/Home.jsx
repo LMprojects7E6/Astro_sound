@@ -1,15 +1,20 @@
-import Dropdown from '../../components/dropdown'
-// import LogoLikedSongs from "components/logoLikedSongs";
-import React from "react";
+import DashboardSection from "components/dashboardSection";
+import Slider from "components/slider";
+import { getThreeSongs } from "api/songs";
+import { useQuery } from "@tanstack/react-query";
+import React, { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
+  const { data: threeSongs } = useQuery(["threeSongs"], () =>
+    getThreeSongs(user)
+  );
+
   return (
-    <>
-    <div className="bg-grey w-full ">home
-    {/* <LogoLikedSongs /> */}
-    <Dropdown />
-    </div>
-    </>
+    <DashboardSection>
+      <Slider threeSongs={threeSongs} />
+    </DashboardSection>
   );
 };
 
