@@ -26,7 +26,7 @@ const Register = () => {
         <p>See you on the other side!</p>
       </div>
       <RegisterForm />
-      <div className=" flex items-center justify-center pb-2">
+      <div className=" flex flex-col md:flex-row items-center justify-center pb-2">
         <p className="mb-0 mr-2">Already have an account?</p>
         <Link to="/login" className="text-primary font-semibold">
           Sign in
