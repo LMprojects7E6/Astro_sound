@@ -3,7 +3,7 @@ import  Icon  from '../../../components/icons/Icons';
 
 const MusicPlayer = () => {
   return (
-  <div className="flex bg-black shadow-lg overflow-hidden">
+  <div className="flex bg-black overflow-hidden sm:hidden md:hidden lg:flex">
     <div className="flex w-full justify-around text-xs font-semibold text-white px-4 py-2">
       <div>
         0:00

@@ -23,8 +23,8 @@ const Layout = () => {
     return <Admin></Admin>;
   } else {
     return (
-      <section className="flex flex-col justify-between min-w-screen min-h-screen">
-        <div className="flex flex-row grow">
+      <section className="flex flex-col justify-between lg:min-w-screen lg:min-h-screen sm:min-w-screen sm:h-screen">
+        <div className="flex lg:flex-row grow sm:flex-col-reverse sm:justify-between">
           <Aside />
           <Outlet />
         </div>

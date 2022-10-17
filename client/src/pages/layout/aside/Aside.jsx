@@ -4,14 +4,14 @@ import Icon from "../../../components/icons/Icons";
 
 const Aside = () => {
   const style =
-    "h-10 flex gap-x-4 items-center text-sm font-semibold text-link rounded px-4 hover:text-white";
+    "h-10 flex gap-x-4 lg:items-center text-sm font-semibold text-link px-4 hover:text-white";
   const activeStyle = "bg-active hover:text-white";
 
 
     return (
-      <nav className="px-2 bg-black text-grey hover:text-grey w-1/6">
-        <ul className="flex flex-col">
-          <li>
+      <nav className="px-2 bg-black text-grey hover:text-grey lg:w-2/6 tablet:bg-white mobile:flex sm:w-full">
+        <ul className="flex lg:flex-col sm:flex-row sm:justify-center">
+          <li className="sm:flex sm:flex-col">
             <NavLink
               to={"/index"}
               className={({ isActive }) =>
@@ -22,10 +22,10 @@ const Aside = () => {
               <span>
                 <Icon name={"home"} size={22} />
               </span>
-              Home
+              <p className="">Home</p>
             </NavLink>
           </li>
-          <li>
+          <li className="sm:flex-col">
             <NavLink
               to={"/search"}
               className={({ isActive }) =>
@@ -38,7 +38,7 @@ const Aside = () => {
               Search
             </NavLink>
           </li>
-          <li>
+          <li className="sm:flex-col">
             <NavLink
               to={"/collection"}
               className={({ isActive }) =>
@@ -51,7 +51,7 @@ const Aside = () => {
               My Library
             </NavLink>
           </li>
-          <li>
+          <li className="sm:hidden lg:flex">
             <NavLink
               to={"/collection"}
               className={({ isActive }) =>
@@ -64,7 +64,7 @@ const Aside = () => {
               Created Playlist
             </NavLink>
           </li>
-          <li>
+          <li className="sm:hidden lg:flex">
             <NavLink
               to={"/collection"}
               className={({ isActive }) =>
