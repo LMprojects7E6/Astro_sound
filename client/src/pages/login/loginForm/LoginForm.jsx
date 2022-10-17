@@ -20,7 +20,7 @@ const LoginForm = () => {
     const { email, password } = data;
     try {
       await logIn(email, password);
-      navigate("/dashboard");
+      navigate("/");
     } catch (error) {
       toast.error("Wrong email and password combination");
     }

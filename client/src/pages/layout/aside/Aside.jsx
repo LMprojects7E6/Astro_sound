@@ -1,3 +1,5 @@
+import Modal from "components/modal";
+import CreatePlaylist from "components/playlistModals/createPlaylist";
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
@@ -5,21 +7,21 @@ import Icon from "../../../components/icons/Icons";
 const Aside = () => {
   const style =
     "h-10 flex gap-x-4 items-center text-sm font-semibold text-link rounded px-4 hover:text-white";
-  const activeStyle = "bg-active hover:text-white";
+  const activeStyle = "text-white";
 
   return (
     <nav className="px-2 bg-black text-grey hover:text-grey w-1/6">
       <ul className="flex flex-col">
         <li>
           <NavLink
-            to={"/index"}
+            to={""}
+            end
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
-            exact
           >
             <span>
-              <Icon name={"home"} size={22} />
+              <Icon name={"home"} size={24} color={"currentColor"} />
             </span>
             Home
           </NavLink>
@@ -32,46 +34,44 @@ const Aside = () => {
             }
           >
             <span>
-              <Icon name={"search"} size={22} />
+              <Icon name={"search"} size={24} color={"currentColor"} />
             </span>
             Search
           </NavLink>
         </li>
         <li>
           <NavLink
-            to={"/collection"}
+            to={"/library"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
           >
             <span>
-              <Icon name={"collection"} size={22} />
+              <Icon name={"collection"} size={24} color={"currentColor"} />
             </span>
             My Library
           </NavLink>
         </li>
         <li>
-          <NavLink
-            to={"/collection"}
-            className={({ isActive }) =>
-              isActive ? activeStyle + " " + style : style
-            }
+          <Modal
+            modalTitle={"Create PLaylist"}
+            icon={"plus"}
+            iconSize={30}
+            iconColor={"currentColor"}
+            text={"Create Playlist"}
           >
-            <span>
-              <Icon name={"plus"} size={22} />
-            </span>
-            Created Playlist
-          </NavLink>
+            <CreatePlaylist />
+          </Modal>
         </li>
         <li>
           <NavLink
-            to={"/collection"}
+            to={"/library"}
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
           >
             <span>
-              <Icon name={"heartFilled"} size={22} />
+              <Icon name={"heartFilled"} size={24} color={"currentColor"} />
             </span>
             Liked Songs
           </NavLink>
