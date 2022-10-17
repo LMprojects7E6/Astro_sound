@@ -2,10 +2,14 @@ import DashboardSection from "components/dashboardSection";
 import Slider from "components/slider";
 import { getThreeSongs } from "api/songs";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 
 const Home = () => {
-  const { data: threeSongs } = useQuery(["threeSongs"], getThreeSongs);
+  const { user } = useContext(AuthContext);
+  const { data: threeSongs } = useQuery(["threeSongs"], () =>
+    getThreeSongs(user)
+  );
 
   return (
     <DashboardSection>

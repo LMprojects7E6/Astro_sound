@@ -1,34 +1,44 @@
-import React from "react";
-import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "api/session";
+import { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const RegisterForm = () => {
   const navigate = useNavigate();
-
+  const { createUser } = useContext(AuthContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const userLogIn = useMutation(registerUser, {
+  const registerMutation = useMutation(registerUser, {
     onSuccess: () => {
-      // TODO return JWT token
-      toast.success("User registered");
-      // navigate("/dashboard");
+      navigate("/dashboard");
     },
     onError: (err) => {
       toast.error(err.response.data, { style: { maxWidth: "100%" } });
     },
   });
 
-  const onSubmit = (data) => userLogIn.mutate(data);
+  const onSubmit = async (data) => {
+    const { email, password, firstName, lastName } = data;
+    try {
+      const data = await createUser(email, password);
+      const { uid } = data.user;
+      registerMutation.mutate({ firstName, lastName, _id: uid });
+    } catch (error) {
+      toast.error("Email already in use", {
+        style: { maxWidth: "100%" },
+      });
+    }
+  };
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)}>
@@ -49,59 +59,56 @@ const RegisterForm = () => {
             {errors.firstName && errors.firstName.type === "pattern" && (
               <ErrorParagraph>Insert a valid first name</ErrorParagraph>
             )}
-            <div className='mt-4 mb-4'>
-            <Input
-              label="Email:"
-              name="email"
-              register={register}
-              required
-              pattern={/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g}
-              placeholder="Enter your email"
-              errors={errors}
-            />
-            {errors.email && errors.email.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
-            {errors.email && errors.email.type === "pattern" && (
-              <ErrorParagraph>Insert a valid email</ErrorParagraph>
-            )}
+            <div className="mt-4 mb-4">
+              <Input
+                label="Email:"
+                name="email"
+                register={register}
+                required
+                pattern={/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g}
+                placeholder="Enter your email"
+                errors={errors}
+              />
+              {errors.email && errors.email.type === "required" && (
+                <ErrorParagraph>This is field required</ErrorParagraph>
+              )}
+              {errors.email && errors.email.type === "pattern" && (
+                <ErrorParagraph>Insert a valid email</ErrorParagraph>
+              )}
             </div>
-
-            
           </div>
           <div className="mb-3">
-            
+            <Input
+              label="Last Name:"
+              name="lastName"
+              register={register}
+              required
+              pattern={/[a-zA-Z]{1,}/}
+              placeholder="Last Name"
+              errors={errors}
+            />
+            {errors.lastName && errors.lastName.type === "required" && (
+              <ErrorParagraph>This is field required</ErrorParagraph>
+            )}
+            {errors.lastName && errors.lastName.type === "pattern" && (
+              <ErrorParagraph>Insert a valid last name</ErrorParagraph>
+            )}
+            <div className="mt-4 mb-4">
               <Input
-                  label="Last Name:"
-                  name="lastName"
-                  register={register}
-                  required
-                  pattern={/[a-zA-Z]{3,}/g}
-                  placeholder="Last Name"
-                  errors={errors}
-                />
-                {errors.lastName && errors.lastName.type === "required" && (
-                  <ErrorParagraph>This is field required</ErrorParagraph>
-                )}
-                {errors.lastName && errors.lastName.type === "pattern" && (
-                  <ErrorParagraph>Insert a valid last name</ErrorParagraph>
-                )}
-                <div className='mt-4 mb-4'>
-                <Input
-                  label="Password:"
-                  name="password"
-                  type="password"
-                  register={register}
-                  required
-                  pattern={/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/g}
-                  placeholder={"*************"}
-                />
-                {errors.password && errors.password.type === "required" && (
-                  <ErrorParagraph>This is field required</ErrorParagraph>
-                )}
-                {errors.password && errors.password.type === "pattern" && (
-                  <ErrorParagraph>Min 6 characters</ErrorParagraph>
-                )}
+                label="Password:"
+                name="password"
+                type="password"
+                register={register}
+                required
+                pattern={/[0-9a-zA-Z]{6,}/}
+                placeholder={"*************"}
+              />
+              {errors.password && errors.password.type === "required" && (
+                <ErrorParagraph>This is field required</ErrorParagraph>
+              )}
+              {errors.password && errors.password.type === "pattern" && (
+                <ErrorParagraph>Min 6 characters</ErrorParagraph>
+              )}
             </div>
           </div>
         </div>

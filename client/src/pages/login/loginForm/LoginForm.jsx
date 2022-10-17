@@ -1,30 +1,29 @@
-import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
-import app from "../../../services/firebase";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import { useForm } from "react-hook-form";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "context/AuthProvider";
 
 const LoginForm = () => {
+  const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
-  const auth = getAuth(app);
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
     const { email, password } = data;
-    signInWithEmailAndPassword(auth, email, password)
-      .then(() => {
-        navigate("/dashboard");
-      })
-      .catch((error) => {
-        toast.error("User not found, please try again.");
-      });
+    try {
+      await logIn(email, password);
+      navigate("/dashboard");
+    } catch (error) {
+      toast.error("Wrong email and password combination");
+    }
   };
 
   return (

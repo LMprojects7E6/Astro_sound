@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const validator = require("validator");
 
 const userSchema = new mongoose.Schema(
   {
@@ -30,7 +29,8 @@ const userSchema = new mongoose.Schema(
       default: "user",
     },
   },
-  { _id: false }
+  { _id: false },
+  { versionKey: false }
 );
 
 module.exports = mongoose.model("User", userSchema);
