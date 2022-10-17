@@ -27,7 +27,7 @@ const Login = () => {
         <p>Welcome to Astro sounds! Enter your credentials.</p>
       </div>
       <LoginForm />
-      <div className=" flex items-center justify-center pb-2">
+      <div className=" flex flex-col md:flex-row items-center justify-center pb-2">
         <p className="mb-0 mr-2">Don't have an account?</p>
         <Link to="/register" className="text-primary font-semibold">
           Sign up

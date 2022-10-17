@@ -1,10 +1,11 @@
-const admin = require("../config/firebaseConfig");
+const admin = require("../services/firebase");
 const { auth } = admin;
 
 const validateToken = async (req, res, next) => {
   try {
     //Get the header where token is stored
     const authHeader = req.headers.authorization || req.headers.Authorization;
+    console.log(authHeader);
     //Check if token exist
     if (!authHeader) return res.status(401).send("Token not found or invalid");
     //Skip the Bearer and get the token

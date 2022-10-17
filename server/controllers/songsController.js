@@ -1,6 +1,28 @@
 //!CONNECTION TO MODELS
 const model = require("../models");
-
+//!POST SONGS CLOUDINARY
+const addSong = async (req, res, next) => {
+  try {
+    if (!req.files?.songFile || !req.files?.songImage) {
+      res.status(400).send("Something went wrong try again!!");
+    } else {
+      const songFile = req.files.songFile[0].path;
+      const songImage = req.files.songImage[0].path;
+      const { artist, album, genre, title } = req.body;
+      const song = await model.Song.create({
+        songFile,
+        title,
+        artist,
+        album,
+        songImage,
+        genre,
+      });
+      res.status(200).send("Song uploaded successfully");
+    }
+  } catch (error) {
+    res.status(400).send("Something went wrong try again!!" + error);
+  }
+};
 //!GET ALL SONGS
 const getAllSongs = async (req, res) => {
   try {
@@ -92,21 +114,21 @@ const removeSongFromPlaylist = async (req, res) => {
 };
 
 const getSongSearch = async (req, res) => {
-    // const { id, search } = req.query;
-
-    // try {
-    //     if(id){
-    //         const song = model.Song.findById(id)
-    //         res.status(200).send(song);
-    //     }
-    //     if(search){
-    //         const results =
-    //     }
-    // } catch (error) {
-    // }
-}
+  // const { id, search } = req.query;
+  // try {
+  //     if(id){
+  //         const song = model.Song.findById(id)
+  //         res.status(200).send(song);
+  //     }
+  //     if(search){
+  //         const results =
+  //     }
+  // } catch (error) {
+  // }
+};
 
 module.exports = {
+  addSong: addSong,
   getAllSongs: getAllSongs,
   getThreeSongs: getThreeSongs,
   getSongsByGenre: getSongsByGenre,

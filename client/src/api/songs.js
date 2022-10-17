@@ -1,6 +1,12 @@
 import api from "./api";
-import { headersAuth } from "./api";
-export const getThreeSongs = async (accessToken) => {
-  const response = await api.get("/songs/threeSongs", headersAuth(accessToken));
+
+//!POST SONG CLOUDINARY
+export const postSong = async (data) => {
+  const response = await api.post("/songs", data);
+  return response.data;
+};
+export const getThreeSongs = async () => {
+  const response = await api.get("/songs/threeSongs");
+  console.log(response.data);
   return response.data;
 };

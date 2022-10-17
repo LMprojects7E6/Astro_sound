@@ -2,19 +2,15 @@ import DashboardSection from "components/dashboardSection";
 import Slider from "components/slider";
 import { getThreeSongs } from "api/songs";
 import { useQuery } from "@tanstack/react-query";
-import React, { useContext } from "react";
-import { AuthContext } from "context/AuthProvider";
 import toast from "react-hot-toast";
 
 const Home = () => {
-  const { user } = useContext(AuthContext);
-
   const {
+    data: threeSongs,
     isLoading,
     isError,
     error,
-    data: threeSongs,
-  } = useQuery(["threeSongs"], () => getThreeSongs(user));
+  } = useQuery(["threeSongs"], getThreeSongs);
 
   if (isLoading) {
     return <p>Loading...</p>;
