@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import loginImage from "assets/register.png";
 import Logo from "components/logo";
 import RegisterForm from "./registerForm/RegisterForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FormSection from "components/formSection";
+import { AuthContext } from "context/AuthProvider";
 
 const Register = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (user != undefined) {
+      navigate("/", { replace: true });
+    }
+  }, [user]);
+
   return (
     <FormSection imgUrl={loginImage}>
       <Logo width={"w-28"} />

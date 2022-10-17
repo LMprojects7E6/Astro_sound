@@ -6,6 +6,7 @@ import Library from "pages/library";
 import Profile from "pages/profile";
 
 const Dashboard = ({ page }) => {
+  console.log(page);
   return <>{chooseDashboard[page]}</>;
 };
 
