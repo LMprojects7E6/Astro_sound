@@ -19,7 +19,7 @@ const Home = () => {
   } else {
     return (
       <DashboardSection>
-        <Slider threeSongs={threeSongs} />
+        {/* <Slider threeSongs={threeSongs} /> */}
       </DashboardSection>
     );
   }
