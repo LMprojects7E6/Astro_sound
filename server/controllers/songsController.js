@@ -114,20 +114,6 @@ const removeSongFromPlaylist = async (req, res) => {
   }
 };
 
-const getSongSearch = async (req, res) => {
-  // const { id, search } = req.query;
-  // try {
-  //     if(id){
-  //         const song = model.Song.findById(id)
-  //         res.status(200).send(song);
-  //     }
-  //     if(search){
-  //         const results =
-  //     }
-  // } catch (error) {
-  // }
-};
-
 module.exports = {
   addSong: addSong,
   getAllSongs: getAllSongs,
