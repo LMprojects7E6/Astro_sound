@@ -2,6 +2,9 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
+    screens:{
+      mobile: {'max': '780px'},
+    },
     colors: {
       purple: "#F0ABFC",
       purpleDark: "#8629B3",
@@ -19,6 +22,7 @@ module.exports = {
     textColor: {
       primary: "#8629B2",
       grey: "#888888",
+      black: "#000000",
       white: "#fff",
       error: "#FF0000",
     },

@@ -160,6 +160,7 @@ const CreatePlaylist = ({ setShowModal }) => {
             radius={"rounded"}
             text={"Save"}
             type={"submit"}
+            className={"font-bold"}
           />
         </div>
       </form>

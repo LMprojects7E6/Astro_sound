@@ -4,7 +4,8 @@ import CardsRow from "components/cardsRow";
 import { getThreeSongs } from "api/songs";
 import { getFivePlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import Dropdown from "components/dropdown";
+import  toast  from "react-hot-toast";
 
 const Home = () => {
   const {
@@ -29,6 +30,7 @@ const Home = () => {
   } else {
     return (
       <DashboardSection>
+        <Dropdown />
         <Slider threeSongs={threeSongs} />
         <CardsRow fivePlaylist={fivePlaylist} />
       </DashboardSection>
