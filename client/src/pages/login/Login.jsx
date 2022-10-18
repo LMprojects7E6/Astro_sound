@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getSession } from "api/session";
 
@@ -18,13 +18,15 @@ const Login = () => {
 
   const { isLoading, data } = useQuery(["getSession"], getSession);
 
-  if (user && isLoading) {
-    return <Loader></Loader>;
-  }
+  useEffect(() => {
+    if (user && isLoading) {
+      return <Loader></Loader>;
+    }
 
-  if (user && data) {
-    navigate("/", { replace: true });
-  }
+    if (user && data) {
+      navigate("/", { replace: true });
+    }
+  }, [data]);
 
   return (
     <FormSection imgUrl={loginImage}>
