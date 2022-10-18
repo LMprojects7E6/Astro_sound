@@ -17,10 +17,10 @@ const Layout = () => {
     return <Admin></Admin>;
   } else if (data === "user") {
     return (
-      <section className="flex flex-col justify-between h-screen">
-        <div className="flex flex-row mobile:h-screen mobile:w-screen  mobile:flex-col-reverse">
+      <section className="flex md:flex-col md:justify-between h-screen">
+        <div className="flex md:flex-row h-screen w-screen flex-col-reverse">
           <Aside />
-          <Outlet />  
+          <Outlet />
         </div>
       <MusicPlayer />
       </section>
