@@ -5,10 +5,10 @@ const cardsRow = ({ fivePlaylist }) => {
   console.log("cardsRows", fivePlaylist);
   return (
     <div className="flex flex-row">
-      {fivePlaylist.map((song) => (
+      {fivePlaylist.map((playlist) => (
         <SongCard
 					song="test"
-          songName={song.name}
+          songName={playlist.name}
           artistName="test"
           imgUrl="test"
         />

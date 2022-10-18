@@ -1,11 +1,7 @@
 import toast from "react-hot-toast";
-
-import { useMutation, useQueryClient } from "@tanstack/react-query";
-
+import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-
 import ErrorParagraph from "components/errorParagraph";
-
 import Icon from "components/icons/Icons";
 import Button from "components/button";
 import { useRef, useState } from "react";
@@ -21,6 +17,14 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const queryClient = useQueryClient();
 
+  //Get createPlaylist
+  // const {
+  //   data: createPlaylist,
+  //   isLoading,
+  //   isError,
+  //   error,
+  // } = useQuery(["createPlaylist"], createPlaylist);
+
   // To implement with backend don't remove
   // const newPLaylist = useMutation(CreateNewPlaylist, {
   //   onSuccess: (resp) => {
@@ -31,11 +35,11 @@ const CreatePlaylist = ({ setShowModal }) => {
   //   },
   // });
 
-  // const playlistCreated = (data) => {
-  //   queryClient.invalidateQueries(["getPlaylists"]);
-  //   setShowModal(false);
-  //   toast.success(data);
-  // };
+  const playlistCreated = (data) => {
+    queryClient.invalidateQueries(["getPlaylists"]);
+    setShowModal(false);
+    toast.success(data);
+  };
 
   const onSubmit = (data) => {
     console.log(data);
