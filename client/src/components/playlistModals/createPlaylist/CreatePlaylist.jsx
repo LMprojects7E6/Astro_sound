@@ -5,6 +5,7 @@ import ErrorParagraph from "components/errorParagraph";
 import Icon from "components/icons/Icons";
 import Button from "components/button";
 import { useRef, useState } from "react";
+import createPlaylist from ".";
 
 const CreatePlaylist = ({ setShowModal }) => {
   const [uploadedPhoto, setUploadedPhoto] = useState();
@@ -17,23 +18,15 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const queryClient = useQueryClient();
 
-  //Get createPlaylist
-  // const {
-  //   data: createPlaylist,
-  //   isLoading,
-  //   isError,
-  //   error,
-  // } = useQuery(["createPlaylist"], createPlaylist);
-
-  // To implement with backend don't remove
-  // const newPLaylist = useMutation(CreateNewPlaylist, {
-  //   onSuccess: (resp) => {
-  //     playlistCreated(resp);
-  //   },
-  //   onError: (err) => {
-  //     toast.error(err.response.data.errorMsg);
-  //   },
-  // });
+  //POST createPlaylist
+  const newPLaylist = useMutation(createPlaylist, {
+    onSuccess: (resp) => {
+      playlistCreated(resp);
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
 
   const playlistCreated = (data) => {
     queryClient.invalidateQueries(["getPlaylists"]);
@@ -43,7 +36,7 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const onSubmit = (data) => {
     console.log(data);
-    //newPLaylist.mutate(data);
+    newPLaylist.mutate(data);
   };
 
   const handleUpload = (e) => {
