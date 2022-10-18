@@ -3,9 +3,9 @@ const model = require("../models");
 
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
-  // const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     const playlistsArray = await model.User.findById(userID).populate(
@@ -23,9 +23,9 @@ const getAllPlaylists = async (req, res) => {
 
 //!GET THE USERS LIKED PLAYLIST
 const getLikedPlaylists = async (req, res) => {
-  // const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
@@ -45,9 +45,10 @@ const getLikedPlaylists = async (req, res) => {
 
 //!GET 5 PLAYLISTS FROM USER
 const getFivePlaylists = async (req, res) => {
-  // const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // console.log(userID);
 
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
@@ -81,9 +82,9 @@ const getPlaylistsByID = async (req, res) => {
 //!POST CREATE NEW PLAYLIST
 const createPlaylist = async (req, res) => {
   const { name, description, createdBy, playlistImage } = req.body;
-  // const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     //Create playlist
@@ -132,9 +133,9 @@ const updatePlaylist = async (req, res) => {
 
 //!DELETE PLAYLIST
 const deletePlaylist = async (req, res) => {
-  // const { userID } = req.id;
-  //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  const userID = req.id;
+  // //!CODE USED FOR TESTING
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   const { playlistID } = req.params;
   console.log("enter delete");
 
