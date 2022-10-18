@@ -36,6 +36,8 @@ const CreatePlaylist = ({ setShowModal }) => {
   //   setShowModal(false);
   //   toast.success(data);
   // };
+  const style = "px-5 py-3  mobile:py-5 mobile:px-6 flex gap-x-4 items-center text-mobile font-semibold text-link px-4 hover:text-white mobile:flex mobile:flex-col mobile:items-center";
+  const activeStyle = "bg-active hover:text-white mobile:flex mobile:flex-column mobile:items-center";
 
   const onSubmit = (data) => {
     console.log(data);
@@ -156,6 +158,7 @@ const CreatePlaylist = ({ setShowModal }) => {
             radius={"rounded"}
             text={"Save"}
             type={"submit"}
+            className={"font-bold"}
           />
         </div>
       </form>

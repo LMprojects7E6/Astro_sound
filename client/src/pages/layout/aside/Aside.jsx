@@ -15,7 +15,7 @@ const Aside = () => {
       <nav className="px-2 bg-black text-grey hover:text-grey mobile:w-full w-1/6 mobile:flex mobile:justify-center ">
         <ul className="flex flex-col mobile:flex-row">
           <li className="flex flex-col ">
-            <div className="mobile:hidden flex justify-center pr-3 my-3">
+            <div className="mobile:hidden flex justify-center my-3 pr-16">
               <Logo width={"w-14"} />
               <h3 className="text-white flex flex-col justify-center">Astro Sounds</h3>
             </div>
@@ -29,7 +29,7 @@ const Aside = () => {
               <span>
                 <Icon name={"home"} size={22} color={"currentColor"}/>
               </span>
-              <p className="">Home</p>
+              Home
             </NavLink>
           </li>
           <li className="mobile:flex-col">
@@ -58,18 +58,20 @@ const Aside = () => {
               My Library
             </NavLink>
           </li>
-          <li>
+          <li className="mobile:hidden flex">
           <Modal
+            className="font-bold"
             modalTitle={"Create PLaylist"}
             icon={"plus"}
-            iconSize={30}
+            iconSize={22}
             iconColor={"currentColor"}
             text={"Create Playlist"}
+            
           >
             <CreatePlaylist />
           </Modal>
         </li>
-          <li className="mobile:hidden flex">
+          <li className="mobile:hidden flex ">
             <NavLink
               to={"/likedsongs"}
               className={({ isActive }) =>

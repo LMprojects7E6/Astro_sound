@@ -16,11 +16,13 @@ function Button({
     <>
       {icon ? (
         text ? (
-          <button onClick={onClick} className="flex">
-            <span className="px-4 pr-4">
+          <button onClick={onClick} className="flex font-semibold bg-active hover:text-white mobile:flex mobile:flex-column mobile:items-center">
+            <div className="flex flex-row items-center">
+            <span className="px-5 pr-4 my-4">
               <Icon name={icon} size={iconSize} color={iconColor} />
             </span>
-            {text}
+            {text }
+            </div>
           </button>
         ) : (
           <button onClick={onClick}>
