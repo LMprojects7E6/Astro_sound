@@ -3,6 +3,7 @@ import Icon from "components/icons";
 
 function Button({
   bg,
+  background,
   width,
   text,
   radius,
@@ -30,7 +31,7 @@ function Button({
       ) : (
         <button
           type={type}
-          className={`${bg} ${width} ${radius} px-5 py-1 text-white font-semibold`}
+          className={`${bg} ${background} ${width} ${radius} px-5 py-1 text-white font-semibold`}
           onClick={onClick}
         >
           {text}
