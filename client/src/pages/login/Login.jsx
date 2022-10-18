@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { getSession } from "api/session";
 
@@ -16,7 +16,7 @@ const Login = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
-  const { isLoading, isError, data } = useQuery(["getSession"], getSession);
+  const { isLoading, data } = useQuery(["getSession"], getSession);
 
   if (user && isLoading) {
     return <Loader></Loader>;

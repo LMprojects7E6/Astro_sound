@@ -31,9 +31,11 @@ const Dropdown = () => {
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-grey2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-3">
             <Menu.Item>
-              <Link to={"profile"} className="text-white hover:text-grey  pl-5  cursor-pointer">
-                  Profile
-
+              <Link
+                to={"profile"}
+                className="text-white hover:text-grey  pl-5  cursor-pointer"
+              >
+                Profile
               </Link>
             </Menu.Item>
             <hr className="text-grey mx-2 my-2" />
