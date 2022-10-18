@@ -9,6 +9,7 @@ import Admin from "pages/admin/Admin";
 const Layout = () => {
   const navigate = useNavigate();
   const { isLoading, isError, data } = useQuery(["getSession"], getSession);
+
   if (isLoading) {
     return <Loader></Loader>;
   } else if (isError) {
