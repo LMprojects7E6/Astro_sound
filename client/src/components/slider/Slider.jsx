@@ -1,11 +1,11 @@
 import React from "react";
-import SwipeableViews from "react-swipeable-views";
+// import SwipeableViews from "react-swipeable-views";
 import Button from "components/button/Button";
 
 const Slider = ({ threeSongs }) => {
   return (
     <section className="flex pt-5 min-w-screen m-4 rounded-md h-72 bg-gradient-to-b from-purpleDark to-black">
-      <SwipeableViews enableMouseEvents>
+      {/* <SwipeableViews enableMouseEvents>
         {threeSongs.map((song) => {
           return (
             <SwipeableViews>
@@ -32,7 +32,7 @@ const Slider = ({ threeSongs }) => {
             </SwipeableViews>
           );
         })}
-      </SwipeableViews>
+      </SwipeableViews> */}
     </section>
   );
 };
