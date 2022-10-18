@@ -1,18 +1,41 @@
 import DashboardSection from "components/dashboardSection";
 import Slider from "components/slider";
+import CardsRow from "components/cardsRow";
 import { getThreeSongs } from "api/songs";
+import { getFivePlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import Dropdown from "components/dropdown";
+import  toast  from "react-hot-toast";
 
 const Home = () => {
-  const { data: threeSongs } = useQuery(["threeSongs"], getThreeSongs);
+  const {
+    data: threeSongs,
+    isLoading: isLoadingSong,
+    isError: isSongError,
+    error: songError,
+  } = useQuery(["threeSongs"], getThreeSongs);
 
-  return (
-    <DashboardSection>
-      <Dropdown />
-      <Slider threeSongs={threeSongs} />
-    </DashboardSection>
-  );
+  //Get fivePlaylist
+  const {
+    data: fivePlaylist,
+    isLoading: isLoadingPlaylist,
+    isError: isPlaylistError,
+    error: playlistError,
+  } = useQuery(["fivePlaylist"], getFivePlaylists);
+
+  if (isLoadingSong || isLoadingPlaylist) {
+    return <p>Loading...</p>;
+  } else if (isSongError || isPlaylistError) {
+    toast.error(songError || playlistError);
+  } else {
+    return (
+      <DashboardSection>
+        <Dropdown />
+        <Slider threeSongs={threeSongs} />
+        <CardsRow fivePlaylist={fivePlaylist} />
+      </DashboardSection>
+    );
+  }
 };
 
 export default Home;
