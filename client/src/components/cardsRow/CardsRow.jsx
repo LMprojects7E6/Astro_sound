@@ -12,8 +12,8 @@ const CardsRow = ({ fivePlaylist }) => {
   } = useQuery(["five-playlist"], getFivePlaylists);
   return (
     <>
-      <h2 className="text-2xl text-white md:px-5 md:mb-5">My Library</h2>
-      <div className="grid md:grid-cols-5 md:gap-6 md:px-5 md:mb-20">
+      <h2 className="text-2xl text-white px-5 md:mb-5 mb-2">My Library</h2>
+      <div className="grid md:grid-cols-5 grid-cols-3 gap-5 md:gap-6 md:px-5 md:mb-20 overflow-x-auto p-5">
         {fivePlaylist.map((playlist) => (
           <PlaylistCard
             playListImage={playlist.playListImage}
