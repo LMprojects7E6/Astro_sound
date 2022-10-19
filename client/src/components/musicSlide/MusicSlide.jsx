@@ -1,9 +1,14 @@
 import React from "react";
 import Button from "components/button/Button";
-import './style.css'
+import "./style.css";
 
 const MusicSlide = ({ key, index, songIndex, song }) => {
-  let { artist, title, songImage } = song;
+  let { artist, title, songImage, songFile } = song;
+
+  let audio = new Audio(`${songFile}`);
+  const start = () => {
+    audio.play();
+  };
 
   let position = "nextSlide";
   if (songIndex === index) {
@@ -28,7 +33,7 @@ const MusicSlide = ({ key, index, songIndex, song }) => {
             type={"button"}
             text={"Play"}
             radius={"rounded-md"}
-            // onClick={onLogout}
+            onClick={start}
             background={"bg-purple"}
           />
         </div>
