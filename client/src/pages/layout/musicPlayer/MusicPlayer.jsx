@@ -3,9 +3,11 @@ import Icon from "../../../components/icons/Icons";
 
 const MusicPlayer = () => {
   return (
-    <div className="flex bg-black shadow-lg overflow-hidden">
-      <div className="flex w-full justify-around text-xs font-semibold text-white px-4 py-2">
-        <div>0:00</div>
+  <div className="md:flex bg-black hidden absolute w-full bottom-0">
+    <div className="flex w-full justify-around text-xs font-semibold text-white px-4 py-2">
+      <div>
+        0:00
+    </div>
         <div className="flex space-x-3 p-2">
           <button className="focus:outline-none">
             <Icon name={"shuffle"} size={24} color={"currentColor"} />

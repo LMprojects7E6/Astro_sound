@@ -33,3 +33,7 @@ const textToColor = {
   white: "#fff",
   transparent: "#0c0c0c",
 }; */
+
+.bg-opacity-loader {
+  background-color: #000000e3;
+}
