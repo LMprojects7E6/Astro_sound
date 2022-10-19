@@ -28,7 +28,7 @@ const Layout = () => {
     return (
       <section className="flex flex-col justify-between min-w-screen min-h-screen">
         <div className="flex flex-row grow">
-          {/* <Aside /> */}
+          <Aside />
           {/*//TODO get component and add to menu  */}
           {/* <Logout></Logout> */}
           <Outlet />

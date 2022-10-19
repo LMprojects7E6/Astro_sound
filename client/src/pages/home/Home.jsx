@@ -16,8 +16,6 @@ const Home = () => {
   return (
     <DashboardSection>
       <Slider threeSongs={threeSongs} />
-      <FavoriteSongContainer />
-      <SongCard />
     </DashboardSection>
   );
 };
