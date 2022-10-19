@@ -7,6 +7,7 @@ import Library from "pages/library";
 import Search from "pages/search";
 import Profile from "pages/profile";
 import Register from "pages/register";
+import LikedSongs from "pages/likedSongs";
 
 const Router = () => {
   return (
@@ -17,6 +18,7 @@ const Router = () => {
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="library" element={<Library />} />
+          <Route path="likedSongs" element={<LikedSongs />} />
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profile />} />
         </Route>

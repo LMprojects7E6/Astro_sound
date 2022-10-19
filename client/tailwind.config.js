@@ -19,6 +19,7 @@ module.exports = {
     textColor: {
       primary: "#8629B2",
       grey: "#888888",
+      black: "#000000",
       white: "#fff",
       error: "#FF0000",
     },
