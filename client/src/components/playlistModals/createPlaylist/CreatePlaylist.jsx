@@ -17,6 +17,7 @@ const CreatePlaylist = ({ setShowModal }) => {
   //POST createPlaylist
   const newPLaylist = useMutation(createNewPlaylist, {
     onSuccess: (resp) => {
+      console.log(resp);
       playlistCreated(resp);
     },
     onError: (err) => {
@@ -27,11 +28,10 @@ const CreatePlaylist = ({ setShowModal }) => {
   const playlistCreated = (data) => {
     queryClient.invalidateQueries(["playlists"]);
     setShowModal(false);
-    toast.success(data);
+    toast.success(data.message);
   };
 
   const onSubmit = (data) => {
-    console.log(data);
     newPLaylist.mutate(data);
   };
 
@@ -44,11 +44,7 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   return (
     <div>
-      <form
-        className="grid md:grid-cols-2 
-      md:gap-1 p-5"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="grid md:grid-cols-2 md:gap-1 p-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex justify-center items-center ">
           <label htmlFor="playlistImage" className="bg-grey3 rounded">
             {photoPreview ? (
@@ -81,12 +77,11 @@ const CreatePlaylist = ({ setShowModal }) => {
                 accept: "image/png, image/jpg, image/jpeg",
               })}
               type="file"
-              onChange={handleUpload}
+              // onChange={handleUpload}
               name="playlistImage"
               id="playlistImage"
               accept="image/png, image/jpeg"
-              className="hidden "
-            />
+              className="hidden " />
             {errors.playlistImage && (
               <ErrorParagraph>{errors.playlistImage.message}</ErrorParagraph>
             )}
@@ -119,10 +114,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               <ErrorParagraph>{errors.PlaylistName.message}</ErrorParagraph>
             )}
           </label>
-          <label
-            htmlFor="PlaylistDescription"
-            className="bg-grey4 rounded my-2 w-full"
-          >
+          <label htmlFor="PlaylistDescription" className="bg-grey4 rounded my-2 w-full">
             <textarea
               {...register("PlaylistDescription", {
                 maxLength: {
@@ -134,8 +126,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               placeholder="Playlist Description"
               name="PlaylistDescription"
               id="PlaylistDescription"
-              className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white"
-            />
+              className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white" />
             {errors.PlaylistDescription && (
               <ErrorParagraph>
                 {errors.PlaylistDescription.message}
@@ -143,13 +134,7 @@ const CreatePlaylist = ({ setShowModal }) => {
             )}
           </label>
 
-          <Button
-            bg={"mainButtonBg"}
-            width={"w-full"}
-            radius={"rounded"}
-            text={"Save"}
-            type={"submit"}
-          />
+          <Button bg={"mainButtonBg"} width={"w-full"} radius={"rounded"} text={"Save"} type={"submit"}/>
         </div>
       </form>
     </div>
