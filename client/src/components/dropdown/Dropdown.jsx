@@ -4,16 +4,18 @@ import { Menu, Transition } from "@headlessui/react";
 import Icons from "components/icons";
 import Logout from "components/button/Logout";
 import { Link } from "react-router-dom";
+import ImageProfile from "components/imageProfile";
 
-function classNames(...classes) {
-  return classes.filter(Boolean).join(" ");
-}
+// function classNames(...classes) {
+//   return classes.filter(Boolean).join(" ");
+// }
 
 const Dropdown = () => {
   return (
-    <Menu as="div" className="absolute right-10 top-3 mr-1 mobile:right-2">
-      <div>
+    <Menu as="div" className="absolute right-10 top-3 mr-1 right-2">
+      <div className="flex flex-row items-center">
         <Menu.Button className="inline-flex w-full justify-center rounded-md bg-grey2 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+        <ImageProfile name={"userImage"} size={22} />
           Elliot Alderson
           <Icons name={"downDir"} size={20} color={"currentColor"} />
         </Menu.Button>
@@ -31,9 +33,11 @@ const Dropdown = () => {
         <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-grey2 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-3">
             <Menu.Item>
-              <Link to={"profile"} className="text-white hover:text-grey  pl-5  cursor-pointer">
-                  Profile
-
+              <Link
+                to={"profile"}
+                className="text-white hover:text-grey  pl-5  cursor-pointer"
+              >
+                Profile
               </Link>
             </Menu.Item>
             <hr className="text-grey mx-2 my-2" />

@@ -1,4 +1,6 @@
 import React, { useContext, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { getSession } from "api/session";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -7,17 +9,28 @@ import LoginForm from "./loginForm/LoginForm";
 import Logo from "components/logo";
 import FormSection from "components/formSection";
 
+<<<<<<< HEAD
 import { AuthContext } from "hooks/context/AuthProvider";
+=======
+import { AuthContext } from "context/AuthProvider";
+import Loader from "components/loader/Loader";
+>>>>>>> develop
 
 const Login = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
+  const { isLoading, data } = useQuery(["getSession"], getSession);
+
   useEffect(() => {
-    if (user != undefined) {
+    if (user && isLoading) {
+      return <Loader></Loader>;
+    }
+
+    if (user && data) {
       navigate("/", { replace: true });
     }
-  }, [user]);
+  }, [data]);
 
   return (
     <FormSection imgUrl={loginImage}>

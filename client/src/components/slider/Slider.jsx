@@ -4,8 +4,6 @@ import "tw-elements";
 
 const Slider = ({ threeSongs }) => {
   const [index, setIndex] = useState(0);
-
-  console.log(threeSongs);
   return (
     <section className="flex flex-col min-w-screen mt-20 m-4 h-72">
       {threeSongs.map((song, songIndex) => {

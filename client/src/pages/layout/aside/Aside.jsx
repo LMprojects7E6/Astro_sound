@@ -7,17 +7,16 @@ import Icon from "../../../components/icons/Icons";
 
 const Aside = () => {
   const style =
-    "px-5 py-3  mobile:py-5 mobile:px-6 flex gap-x-4 items-center text-mobile font-semibold text-link px-4 hover:text-white mobile:flex mobile:flex-col mobile:items-center";
-  const activeStyle = "bg-active hover:text-white mobile:flex mobile:flex-column mobile:items-center";
-
+  "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col md:flex-row items-center";
+const activeStyle = "bg-active hover:text-white flex flex-col items-center";
 
     return (
-      <nav className="px-2 bg-black text-grey hover:text-grey mobile:w-full w-1/6 mobile:flex mobile:justify-center ">
-        <ul className="flex flex-col mobile:flex-row">
-          <li className="flex flex-col ">
-            <div className="mobile:hidden flex justify-center my-3 pr-16">
+      <nav className="px-2 bg-black text-grey hover:text-grey w-full md:w-1/6 flex justify-center md:justify-start">
+        <ul className="flex md:flex-col ">
+          <li className="flex flex-col">
+            <div className="hidden md:flex md:justify-center md:my-3">
               <Logo width={"w-14"} />
-              <h3 className="text-white flex flex-col justify-center">Astro Sounds</h3>
+              <h3 className="text-white flex md:flex-col justify-center">Astro Sounds</h3>
             </div>
             <NavLink
               to={"/"}
@@ -32,7 +31,7 @@ const Aside = () => {
               Home
             </NavLink>
           </li>
-          <li className="mobile:flex-col">
+          <li className="flex-col">
             <NavLink
               to={"/search"}
               className={({ isActive }) =>
@@ -45,7 +44,7 @@ const Aside = () => {
               Search
             </NavLink>
           </li>
-          <li className="mobile:flex-col">
+          <li className="flex-col">
             <NavLink
               to={"/library"}
               className={({ isActive }) =>
@@ -58,7 +57,7 @@ const Aside = () => {
               My Library
             </NavLink>
           </li>
-          <li className="mobile:hidden flex">
+          <li className="hidden md:flex">
           <Modal
             className="font-bold"
             modalTitle={"Create PLaylist"}
@@ -71,9 +70,9 @@ const Aside = () => {
             <CreatePlaylist />
           </Modal>
         </li>
-          <li className="mobile:hidden flex ">
+          <li className="hidden md:flex ">
             <NavLink
-              to={"/likedsongs"}
+              to={"/likedSongs"}
               className={({ isActive }) =>
                 isActive ? activeStyle + " " + style : style
               }

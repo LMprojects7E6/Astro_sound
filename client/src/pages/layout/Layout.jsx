@@ -5,10 +5,13 @@ import Loader from "components/loader/Loader";
 import Aside from "./aside";
 import MusicPlayer from "./musicPlayer";
 import Admin from "pages/admin/Admin";
+import PlaylistContainer from "components/playlistContainer";
+import CardsRow from "components/cardsRow";
 
 const Layout = () => {
   const navigate = useNavigate();
   const { isLoading, isError, data } = useQuery(["getSession"], getSession);
+
   if (isLoading) {
     return <Loader></Loader>;
   } else if (isError) {
@@ -17,10 +20,10 @@ const Layout = () => {
     return <Admin></Admin>;
   } else if (data === "user") {
     return (
-      <section className="flex flex-col justify-between h-screen">
-        <div className="flex flex-row mobile:h-screen mobile:w-screen  mobile:flex-col-reverse">
+      <section className="flex md:flex-col md:justify-between h-screen">
+        <div className="flex md:flex-row h-screen w-screen flex-col-reverse">
           <Aside />
-          <Outlet />  
+          <Outlet />
         </div>
       <MusicPlayer />
       </section>
