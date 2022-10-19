@@ -13,11 +13,12 @@ const Login = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
-  useEffect(() => {
-    if (user != undefined) {
-      navigate("/", { replace: true });
-    }
-  }, [user]);
+  //!BUGS
+  // useEffect(() => {
+  //   if (user != undefined) {
+  //     navigate("/", { replace: true });
+  //   }
+  // }, [user]);
 
   return (
     <FormSection imgUrl={loginImage}>
