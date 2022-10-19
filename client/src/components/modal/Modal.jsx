@@ -26,7 +26,7 @@ export default function Modal({
 
       {showModal ? (
         <>
-          <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full  md:h-min h-full top-0 left-0 md:left-1/4 md:top-1/4 bg-grey2 ">
+          <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full md:h-min h-full bg-grey2 m-auto">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className=" bg-grey2 border-0 rounded md:shadow-lg relative flex flex-col w-full text-white outline-none focus:outline-none">
