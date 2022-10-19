@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import MusicSlide from "components/musicSlide";
-import "tw-elements";
+
 
 const Slider = ({ threeSongs }) => {
   const [index, setIndex] = useState(0);

@@ -9,12 +9,8 @@ import LoginForm from "./loginForm/LoginForm";
 import Logo from "components/logo";
 import FormSection from "components/formSection";
 
-<<<<<<< HEAD
-import { AuthContext } from "hooks/context/AuthProvider";
-=======
 import { AuthContext } from "context/AuthProvider";
 import Loader from "components/loader/Loader";
->>>>>>> develop
 
 const Login = () => {
   const navigate = useNavigate();
