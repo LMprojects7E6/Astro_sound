@@ -5,7 +5,7 @@ import { getThreeSongs } from "api/songs";
 import { getFivePlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import Dropdown from "components/dropdown";
-import  toast  from "react-hot-toast";
+import toast from "react-hot-toast";
 
 const Home = () => {
   const {

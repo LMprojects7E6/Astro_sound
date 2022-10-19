@@ -7,7 +7,7 @@ import LoginForm from "./loginForm/LoginForm";
 import Logo from "components/logo";
 import FormSection from "components/formSection";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 
 const Login = () => {
   const navigate = useNavigate();

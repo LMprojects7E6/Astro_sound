@@ -4,7 +4,7 @@ import Logo from "components/logo";
 import RegisterForm from "./registerForm/RegisterForm";
 import { Link, useNavigate } from "react-router-dom";
 import FormSection from "components/formSection";
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 
 const Register = () => {
   const navigate = useNavigate();

@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { registerUser } from "api/session";
 import { useContext } from "react";
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import Input from "components/input";

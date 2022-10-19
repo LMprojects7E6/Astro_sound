@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 
 const LoginForm = () => {
   const { logIn } = useContext(AuthContext);

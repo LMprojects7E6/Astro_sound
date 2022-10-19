@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { postSong } from "api/songs";
 import Loader from "components/loader/Loader";
 
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 import { useContext } from "react";
 import { toast } from "react-hot-toast";
 
