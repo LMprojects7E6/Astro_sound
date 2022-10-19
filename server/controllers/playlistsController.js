@@ -81,7 +81,7 @@ const getPlaylistsByID = async (req, res) => {
 
 //!POST CREATE NEW PLAYLIST
 const createNewPlaylist = async (req, res) => {
-  const { PlaylistName, PlaylistDescription, playlistImage } = req.body;
+  const { PlaylistName, PlaylistDescription, playListImage } = req.body;
   const userID = req.id;
   //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
@@ -94,7 +94,7 @@ const createNewPlaylist = async (req, res) => {
       name: PlaylistName,
       description: PlaylistDescription,
       createdBy: createdBy,
-      playlistImage: playlistImage,
+      playListImage: playListImage,
     });
     await playlist.save();
 
@@ -104,7 +104,6 @@ const createNewPlaylist = async (req, res) => {
     });
     await userPlaylist.save();
 
-    console.log(userPlaylist);
     res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
     res
