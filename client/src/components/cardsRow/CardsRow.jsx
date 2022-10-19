@@ -1,20 +1,29 @@
 import React from "react";
-import SongCard from "components/songCard"
 
-const cardsRow = ({ fivePlaylist }) => {
-  console.log("cardsRows", fivePlaylist);
+import { useQuery } from "@tanstack/react-query";
+import { getFivePlaylists } from "api/playlists";
+import PlaylistCard from "components/playlistCard/PlaylistCard";
+
+const CardsRow = ({ fivePlaylist }) => {
+  const {
+    isLoading,
+    isError,
+    data: playlist,
+  } = useQuery(["five-playlist"], getFivePlaylists);
   return (
-    <div className="flex flex-row">
-      {fivePlaylist.map((playlist) => (
-        <SongCard
-					song="test"
-          songName={playlist.name}
-          artistName="test"
-          imgUrl="test"
-        />
-      ))}
-    </div>
+    <>
+      <h2 className="text-2xl text-white md:px-5 md:mb-5">My Library</h2>
+      <div className="grid md:grid-cols-5 md:gap-6 md:px-5 md:mb-20">
+        {fivePlaylist.map((playlist) => (
+          <PlaylistCard
+            playListImage={playlist.playListImage}
+            description={playlist.description}
+            name={playlist.name}
+          />
+        ))}
+      </div>
+    </>
   );
 };
 
-export default cardsRow;
+export default CardsRow;
