@@ -9,6 +9,7 @@ import Admin from "pages/admin/Admin";
 const Layout = () => {
   const navigate = useNavigate();
   const { isLoading, isError, data } = useQuery(["getSession"], getSession);
+
   if (isLoading) {
     return <Loader></Loader>;
   } else if (isError) {
@@ -17,12 +18,12 @@ const Layout = () => {
     return <Admin></Admin>;
   } else if (data === "user") {
     return (
-      <section className="flex flex-col justify-between min-w-screen min-h-screen">
-        <div className="flex flex-row grow">
+      <section className="flex flex-col justify-between h-screen">
+        <div className="flex flex-row mobile:h-screen mobile:w-screen  mobile:flex-col-reverse">
           <Aside />
-          <Outlet />
+          <Outlet />  
         </div>
-        <MusicPlayer />
+      <MusicPlayer />
       </section>
     );
   }
