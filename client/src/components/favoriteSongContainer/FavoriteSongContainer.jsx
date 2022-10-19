@@ -2,7 +2,11 @@ import Button from "components/button";
 import React from "react";
 import Icon from "components/icons/Icons";
 import image from "assets/threeSongs/quevedo.png";
+import { useQuery } from "@tanstack/react-query";
+import { getLikedPlaylists } from "api/playlists";
 const FavoriteSongContainer = () => {
+  const { isLoading, data } = useQuery(["liked-songs"], getLikedPlaylists);
+  console.log(data);
   return (
     <>
       <h2 className="text-xl m-2 text-white font-bold  mb-8 flex">
