@@ -2,8 +2,8 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    screens:{
-      mobile: {'max': '780px'},
+    screens: {
+      mobile: { max: "780px" },
     },
     colors: {
       purple: "#F0ABFC",
@@ -28,5 +28,5 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [require("tw-elements/dist/plugin")],
 };
