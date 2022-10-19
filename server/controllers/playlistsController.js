@@ -80,19 +80,21 @@ const getPlaylistsByID = async (req, res) => {
 };
 
 //!POST CREATE NEW PLAYLIST
-const createPlaylist = async (req, res) => {
-  const { name, description, createdBy, playlistImage } = req.body;
+const createNewPlaylist = async (req, res) => {
+  const { PlaylistName, PlaylistDescription, playlistImage } = req.body;
   const userID = req.id;
   //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
-
   try {
+    const user = await model.User.findById(userID);
+    const createdBy = user.firstName + " " + user.lastName;
+
     //Create playlist
     const playlist = await model.Playlist.create({
-      name,
-      description,
-      createdBy,
-      playlistImage,
+      name: PlaylistName,
+      description: PlaylistDescription,
+      createdBy: createdBy,
+      playlistImage: playlistImage,
     });
     await playlist.save();
 
@@ -100,8 +102,9 @@ const createPlaylist = async (req, res) => {
     const userPlaylist = await model.User.findByIdAndUpdate(userID, {
       $push: { playlists: playlist.id },
     });
-
     await userPlaylist.save();
+
+    console.log(userPlaylist);
     res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
     res
@@ -164,7 +167,7 @@ module.exports = {
   getLikedPlaylists: getLikedPlaylists,
   getFivePlaylists: getFivePlaylists,
   getPlaylistsByID: getPlaylistsByID,
-  createPlaylist: createPlaylist,
+  createNewPlaylist: createNewPlaylist,
   updatePlaylist: updatePlaylist,
   deletePlaylist: deletePlaylist,
 };

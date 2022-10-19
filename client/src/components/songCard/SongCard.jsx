@@ -4,7 +4,6 @@ import photo from "assets/login.jpg";
 import Button from "components/button";
 
 const songCard = ({ song, songName, artistName, imgUrl }) => {
-  console.log(song, songName, artistName, imgUrl);
   return (
     <div className="flex flex-row m-5 space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  md:m-20">
       <div

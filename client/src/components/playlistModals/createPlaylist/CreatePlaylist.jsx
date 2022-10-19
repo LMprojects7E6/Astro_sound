@@ -1,25 +1,21 @@
 import toast from "react-hot-toast";
-import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import ErrorParagraph from "components/errorParagraph";
 import Icon from "components/icons/Icons";
 import Button from "components/button";
-import { useRef, useState } from "react";
-import createPlaylist from ".";
+import { useState } from "react";
+import { createNewPlaylist } from "api/playlists";
 
 const CreatePlaylist = ({ setShowModal }) => {
   const [uploadedPhoto, setUploadedPhoto] = useState();
   const [photoPreview, setPhotoPreview] = useState();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const queryClient = useQueryClient();
 
   //POST createPlaylist
-  const newPLaylist = useMutation(createPlaylist, {
+  const newPLaylist = useMutation(createNewPlaylist, {
     onSuccess: (resp) => {
       playlistCreated(resp);
     },
@@ -29,7 +25,7 @@ const CreatePlaylist = ({ setShowModal }) => {
   });
 
   const playlistCreated = (data) => {
-    queryClient.invalidateQueries(["getPlaylists"]);
+    queryClient.invalidateQueries(["playlists"]);
     setShowModal(false);
     toast.success(data);
   };
@@ -76,11 +72,11 @@ const CreatePlaylist = ({ setShowModal }) => {
             <input
               {...register("playlistImage", {
                 required: {
-                  value: true,
+                  value: false,
                   message: "Image is required.",
                 },
                 validate: {
-                  lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
+                  // lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
                 },
                 accept: "image/png, image/jpg, image/jpeg",
               })}

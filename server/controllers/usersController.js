@@ -9,7 +9,6 @@ const createUser = async (req, res) => {
       _id: _id,
       firstName,
       lastName,
-      email,
     });
 
     //Create Liked Playlist
