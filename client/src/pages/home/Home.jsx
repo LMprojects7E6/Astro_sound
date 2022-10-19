@@ -6,6 +6,7 @@ import { getFivePlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import Dropdown from "components/dropdown";
 import toast from "react-hot-toast";
+import FavoriteSongContainer from "components/favoriteSongContainer/FavoriteSongContainer";
 
 const Home = () => {
   const {
@@ -33,6 +34,7 @@ const Home = () => {
         <Dropdown />
         <Slider threeSongs={threeSongs} />
         <CardsRow fivePlaylist={fivePlaylist} />
+        <FavoriteSongContainer />
       </DashboardSection>
     );
   }
