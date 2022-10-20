@@ -1,5 +1,4 @@
 import DashboardSection from "components/dashboardSection";
-import Slider from "components/slider";
 import CardsRow from "components/cardsRow";
 import { getThreeSongs } from "api/songs";
 import { getFivePlaylists, getLikedPlaylists } from "api/playlists";
