@@ -7,7 +7,7 @@ import img from "assets/threeSongs/index";
 const Carrousel = ({ threeSongs }) => {
   let pos = -1;
   return (
-    <div className="h-90 md:flex hidden  mainButtonBg rounded-lg mt-8 ">
+    <div className="h-90 md:flex hidden  mainButtonBg rounded-lg mt-10 ">
       <Carousel slideInterval={5000}>
         {threeSongs.map((song) => {
           pos++;
@@ -20,7 +20,6 @@ const Carrousel = ({ threeSongs }) => {
               description={description[pos]}
             />
           );
-          pos++;
         })}
       </Carousel>
     </div>
