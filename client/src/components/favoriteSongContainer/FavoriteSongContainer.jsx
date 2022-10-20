@@ -27,14 +27,13 @@ const FavoriteSongContainer = ({ likedSongs }) => {
               );
             })}
           </div>
-          <div className="flex justify-between items-center">
+          <div className="flex md:justify-start justify-between items-center">
             <div className="flex flex-col ">
-              <h2 className="font-semibold text-3xl mb-4">Liked songs</h2>
-              <p className="font-normal text-xl">
+              <p className="font-normal text-2xl">
                 {likedSongs.length} Liked songs
               </p>
             </div>
-            <div className=" rounded-full border-2 border-white md:hidden pl-0.5 pt-0.5 w-8 h-8  flex ">
+            <div className="md:ml-5 cursor-pointer rounded-full border-2 border-white  pl-0.5 pt-0.5 w-8 h-8  flex ">
               <Icon name={"play"} size={24} color={"white"} />
             </div>
           </div>

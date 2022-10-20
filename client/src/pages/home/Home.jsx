@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import Dropdown from "components/dropdown";
 import toast from "react-hot-toast";
 import FavoriteSongContainer from "components/favoriteSongContainer/FavoriteSongContainer";
+import Carrousel from "components/carrousel";
 
 const Home = () => {
   const {
@@ -39,7 +40,8 @@ const Home = () => {
     return (
       <DashboardSection>
         <Dropdown />
-        <Slider threeSongs={threeSongs} />
+        <Carrousel threeSongs={threeSongs}></Carrousel>
+        {/* <Slider threeSongs={threeSongs} /> */}
         <CardsRow fivePlaylist={fivePlaylist} />
         <FavoriteSongContainer likedSongs={likedSongs} />
       </DashboardSection>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "components/button/Button";
-
+//!TODO DELETE
 const Slider = ({ threeSongs }) => {
   return (
     <section className="flex pt-5 min-w-screen rounded-md h-72 bg-gradient-to-b from-purpleDark to-black mt-16">
