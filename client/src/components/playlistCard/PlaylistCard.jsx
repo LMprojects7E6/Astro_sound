@@ -1,6 +1,8 @@
 import React from "react";
 
 const PlaylistCard = ({ name, description, playListImage }) => {
+
+
   return (
     <div className="text-white text-center md:bg-grey5  md:px-5 md:py-6 rounded-md">
       <div className="playlist--image md:mb-3">
@@ -17,3 +19,21 @@ const PlaylistCard = ({ name, description, playListImage }) => {
 };
 
 export default PlaylistCard;
+
+
+// <>
+//       <h1>Users</h1>
+//       <ul>
+//         {users && users.map((user) => { const { id: oldId, name, username, email } = user;
+//             const id = oldId.toString();
+//             return (
+//               <li key={oldId}>
+//                 <Link to={id} state={user}>
+//                   {name}
+//                 </Link>
+//               </li>
+//             );
+//           })}
+//       </ul>
+//       <Outlet />
+//     </>
