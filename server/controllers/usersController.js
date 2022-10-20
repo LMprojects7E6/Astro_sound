@@ -2,14 +2,13 @@
 const model = require("../models");
 
 //!POST CREATE NEW USER
-const createUser = async (req, res) => {
+const registerUser = async (req, res) => {
   try {
     const { firstName, lastName, _id } = req.body;
     const user = await model.User.create({
       _id: _id,
       firstName,
       lastName,
-      email,
     });
 
     //Create Liked Playlist
@@ -34,7 +33,7 @@ const createUser = async (req, res) => {
 
 //!GET  GET USER
 const getUser = async (req, res) => {
-    const { userID } = req.id;
+  const { userID } = req.id;
   //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
@@ -53,6 +52,6 @@ const updateUser = async (req, res) => {};
 
 module.exports = {
   getUser: getUser,
-  createUser: createUser,
+  registerUser: registerUser,
   updateUser: updateUser,
 };

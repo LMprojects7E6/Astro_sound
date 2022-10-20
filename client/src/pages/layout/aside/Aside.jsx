@@ -7,8 +7,8 @@ import Icon from "../../../components/icons/Icons";
 
 const Aside = () => {
   const style =
-    "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col md:flex-row items-center";
-  const activeStyle = "bg-active hover:text-white flex flex-col items-center";
+  "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col md:flex-row items-center";
+const activeStyle = "bg-active hover:text-white flex flex-col items-center";
 
     return (
       <nav className="px-2 bg-black text-grey hover:text-grey w-full md:w-1/6 flex justify-center md:justify-start">
