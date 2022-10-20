@@ -43,7 +43,7 @@ const Admin = () => {
       )}
 
       <DashboardSection>
-        <Dropdown />
+        <Dropdown admin={true}/>
         <AsideAdmin />
         <div className="md:w-full md:h-screen h-full flex justify-center items-center text-white flex-col">
           <div className="">

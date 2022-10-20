@@ -38,7 +38,7 @@ const Home = () => {
   } else {
     return (
       <DashboardSection>
-        <Dropdown />
+        <Dropdown/>
         <Slider threeSongs={threeSongs} />
         <CardsRow fivePlaylist={fivePlaylist} />
         <FavoriteSongContainer likedSongs={likedSongs} />
