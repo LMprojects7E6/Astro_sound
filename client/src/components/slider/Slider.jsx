@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import MusicSlide from "components/musicSlide";
 
-
+import Button from "components/button/Button";
+//!TODO DELETE
 const Slider = ({ threeSongs }) => {
   const [index, setIndex] = useState(0);
   return (
-    <section className="flex flex-col min-w-screen mt-20 m-4 h-72">
-      {threeSongs.map((song, songIndex) => {
+    <section className="flex pt-5 min-w-screen rounded-md h-72 bg-gradient-to-b from-purpleDark to-black mt-16">
+      {threeSongs.map((song) => {
+        let { _id, artist, title, songImage } = song;
+        console.log(songImage);
         return (
           <MusicSlide
             key={song._id}

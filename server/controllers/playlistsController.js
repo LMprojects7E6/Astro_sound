@@ -24,10 +24,6 @@ const getAllPlaylists = async (req, res) => {
 //!GET THE USERS LIKED PLAYLIST
 const getLikedPlaylists = async (req, res) => {
   const userID = req.id;
-  console.log(userID);
-  //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
-
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
     const playlistsArray = await model.User.findById(userID).populate(
@@ -38,7 +34,9 @@ const getLikedPlaylists = async (req, res) => {
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
-    res.status(200).send(playlists);
+    const songsArrayId = playlists[0].songList;
+    const songs = await model.Song.find().where("_id").in(songsArrayId).exec();
+    res.status(200).send(songs);
   } catch (error) {
     res.status(504).send({ message: error.message });
   }
