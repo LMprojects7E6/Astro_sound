@@ -2,7 +2,9 @@ import React from "react";
 import Icon from "components/icons/Icons";
 import image from "assets/threeSongs/quevedo.png";
 import LikedSong from "./LikedSong";
+import { Link } from "react-router-dom";
 const FavoriteSongContainer = ({ likedSongs }) => {
+  console.log(likedSongs);
   return (
     <>
       <h2 className="text-2xl m-2 text-white font-bold  mb-8 flex">
@@ -14,18 +16,26 @@ const FavoriteSongContainer = ({ likedSongs }) => {
       <section className="w-full mainButtonBg flex text-white rounded-lg mb-20 ">
         <div className="md:p-5 p-3 w-full flex flex-col justify-around ml-5">
           <div className="overflow-y-auto h-52">
-            {/* <h2 className="text-xl font-bold mb-5 md:flex hidden">
-              Songs that come from your heart❤️:
-            </h2> */}
-            {likedSongs.map((song) => {
-              return (
-                <LikedSong
-                  key={song._id}
-                  artist={song.artist}
-                  title={song.title}
-                />
-              );
-            })}
+            {likedSongs.length > 0 ? (
+              likedSongs.map((song) => {
+                return (
+                  <LikedSong
+                    key={song._id}
+                    artist={song.artist}
+                    title={song.title}
+                  />
+                );
+              })
+            ) : (
+              <div>
+                <h2 className="md:text-2xl text-xl mb-8">
+                  You don't have any liked songs
+                </h2>
+                <Link className="dark-button" to={"search"}>
+                  Search some songs
+                </Link>
+              </div>
+            )}
           </div>
           <div className="flex md:justify-start justify-between items-center">
             <div className="flex flex-col ">
