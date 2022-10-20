@@ -41,7 +41,6 @@ const Home = () => {
       <DashboardSection>
         <Dropdown />
         <Carrousel threeSongs={threeSongs}></Carrousel>
-        {/* <Slider threeSongs={threeSongs} /> */}
         <CardsRow fivePlaylist={fivePlaylist} />
         <FavoriteSongContainer likedSongs={likedSongs} />
       </DashboardSection>
