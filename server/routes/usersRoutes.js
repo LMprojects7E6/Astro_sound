@@ -5,7 +5,7 @@ const userController = require("../controllers/usersController.js");
 
 //!CRUD
 router.get("/", userController.getUser);
-router.post("/", userController.createUser);
+router.post("/", userController.registerUser);
 router.put("/", userController.updateUser);
 
 module.exports = router;

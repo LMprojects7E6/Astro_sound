@@ -2,15 +2,16 @@ import React from "react";
 
 import photo from "assets/login.jpg";
 import Button from "components/button";
+import Icon from "components/icons";
 
 const songCard = ({ song, songName, artistName, imgUrl }) => {
   return (
-    <div className="flex md:flex-col items-center bg-grey3 rounded-xl  flex-row md:max-w-min max-h-96  m-20">
+    <div className="flex flex-row m-5 space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  md:m-20">
       <div
-        className=" z-0 m-5 w-36  h-36 bg-cover bg-no-repeat bg-center  md:rounded-full "
+        className=" z-0 m-2 w-16 h-16 md:w-36  md:h-36 bg-cover bg-no-repeat bg-center  md:rounded-full "
         style={{ backgroundImage: `url(${photo})` }}
       >
-        <div className="z-50  hidden md:block  pl-1.5 pt-1 w-10 h-10 mt-24 ml-24   overflow-auto rounded-full bg-purple2 flex align-center ">
+        <div className=" flex-none z-50 hidden md:block  pl-1.5 pt-1 w-10 h-10 mt-24 ml-24   overflow-auto rounded-full bg-purple2 align-center ">
           <Button
             icon={"play"}
             iconSize={30}
@@ -18,20 +19,24 @@ const songCard = ({ song, songName, artistName, imgUrl }) => {
           />
         </div>
       </div>
-      <div className="flex flex-col justify-between py-5 ">
-        <h5 className=" md:text-2xl w-max font-bold tracking-tight dark:text-white">
+      <div className=" grow flex flex-col justify-between  ">
+        <h5 className=" md:text-xl w-max font-bold tracking-tight dark:text-white">
           Song name
         </h5>
         <p className=" text-white">Artist name</p>
       </div>
-      <div className="flex mb-2">
+      <div className=" flex-none flex  mb-2 pr-5 max-w-full md:ml-40">
         <Button
-          icon={"heartFilled"}
-          iconSize={30}
-          color={"red"}
-          onClick={() => console.log("play")}
+          icon={"heart"}
+          iconSize={24}
+          iconColor={"white"}
+          onClick={() => {
+            console.log("add to favorites");
+          }}
         />
-        <span>...</span>
+        <span className="ml-2">
+          <Icon name={"dotsHorizontal"} size={24} color={"#fff"} />
+        </span>
       </div>
     </div>
   );

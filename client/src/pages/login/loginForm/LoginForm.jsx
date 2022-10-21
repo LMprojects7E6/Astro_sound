@@ -5,7 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 
 const LoginForm = () => {
   const { logIn } = useContext(AuthContext);
@@ -27,7 +27,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className="min-h-min" onSubmit={handleSubmit(onSubmit)}>
       <Input
         label="Email"
         name="email"
@@ -68,7 +68,7 @@ const LoginForm = () => {
           Forgot password
         </a>
       </div>
-      <div className=" flex items-center justify-center pb-2">
+      <div className=" flex  items-center justify-center pb-2">
         <Button
           bg={"mainButtonBg"}
           width={"w-full"}

@@ -1,45 +1,38 @@
 import toast from "react-hot-toast";
-
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-
 import { useForm } from "react-hook-form";
-
 import ErrorParagraph from "components/errorParagraph";
-
 import Icon from "components/icons/Icons";
 import Button from "components/button";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { createNewPlaylist } from "api/playlists";
 
 const CreatePlaylist = ({ setShowModal }) => {
   const [uploadedPhoto, setUploadedPhoto] = useState();
   const [photoPreview, setPhotoPreview] = useState();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const queryClient = useQueryClient();
 
-  // To implement with backend don't remove
-  // const newPLaylist = useMutation(CreateNewPlaylist, {
-  //   onSuccess: (resp) => {
-  //     playlistCreated(resp);
-  //   },
-  //   onError: (err) => {
-  //     toast.error(err.response.data.errorMsg);
-  //   },
-  // });
+  //POST createPlaylist
+  const newPLaylist = useMutation(createNewPlaylist, {
+    onSuccess: (resp) => {
+      console.log(resp);
+      playlistCreated(resp);
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
 
-  // const playlistCreated = (data) => {
-  //   queryClient.invalidateQueries(["getPlaylists"]);
-  //   setShowModal(false);
-  //   toast.success(data);
-  // };
+  const playlistCreated = (data) => {
+    queryClient.invalidateQueries(["playlists"]);
+    setShowModal(false);
+    toast.success(data.message);
+  };
 
   const onSubmit = (data) => {
-    console.log(data);
-    //newPLaylist.mutate(data);
+    newPLaylist.mutate(data);
   };
 
   const handleUpload = (e) => {
@@ -51,11 +44,7 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   return (
     <div>
-      <form
-        className="grid md:grid-cols-2 
-      md:gap-1 p-5"
-        onSubmit={handleSubmit(onSubmit)}
-      >
+      <form className="grid md:grid-cols-2 md:gap-1 p-5" onSubmit={handleSubmit(onSubmit)}>
         <div className="flex justify-center items-center ">
           <label htmlFor="playlistImage" className="bg-grey3 rounded">
             {photoPreview ? (
@@ -79,21 +68,20 @@ const CreatePlaylist = ({ setShowModal }) => {
             <input
               {...register("playlistImage", {
                 required: {
-                  value: true,
+                  value: false,
                   message: "Image is required.",
                 },
                 validate: {
-                  lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
+                  // lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
                 },
                 accept: "image/png, image/jpg, image/jpeg",
               })}
               type="file"
-              onChange={handleUpload}
+              // onChange={handleUpload}
               name="playlistImage"
               id="playlistImage"
               accept="image/png, image/jpeg"
-              className="hidden "
-            />
+              className="hidden " />
             {errors.playlistImage && (
               <ErrorParagraph>{errors.playlistImage.message}</ErrorParagraph>
             )}
@@ -126,10 +114,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               <ErrorParagraph>{errors.PlaylistName.message}</ErrorParagraph>
             )}
           </label>
-          <label
-            htmlFor="PlaylistDescription"
-            className="bg-grey4 rounded my-2 w-full"
-          >
+          <label htmlFor="PlaylistDescription" className="bg-grey4 rounded my-2 w-full">
             <textarea
               {...register("PlaylistDescription", {
                 maxLength: {
@@ -141,8 +126,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               placeholder="Playlist Description"
               name="PlaylistDescription"
               id="PlaylistDescription"
-              className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white"
-            />
+              className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white" />
             {errors.PlaylistDescription && (
               <ErrorParagraph>
                 {errors.PlaylistDescription.message}
@@ -150,13 +134,7 @@ const CreatePlaylist = ({ setShowModal }) => {
             )}
           </label>
 
-          <Button
-            bg={"mainButtonBg"}
-            width={"w-full"}
-            radius={"rounded"}
-            text={"Save"}
-            type={"submit"}
-          />
+          <Button bg={"mainButtonBg"} width={"w-full"} radius={"rounded"} text={"Save"} type={"submit"}/>
         </div>
       </form>
     </div>

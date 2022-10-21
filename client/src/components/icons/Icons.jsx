@@ -447,6 +447,21 @@ const AddImageIcon = ({ size, color }) => {
     </svg>
   );
 };
+const UserProfile = ({ size, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"
+        fill={color}
+      ></path>
+    </svg>
+  );
+};
 const FullScreenOffIcon = ({ size, color }) => {
   return (
     <svg
@@ -462,9 +477,43 @@ const FullScreenOffIcon = ({ size, color }) => {
     </svg>
   );
 };
+const DotsHorizontal = ({ size, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"
+        fill={color}
+      />
+    </svg>
+  );
+};
+
+const DotsMenuIcon = ({ size, color }) => {
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={color}>
+      <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
+      </svg>
+  )
+}
+
+const PencilIcon = ({ size, color }) => {
+  return(
+    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
+      <path d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"
+      fill={color}
+      ></path>
+      </svg>
+  )
+}
 
 const Icon = ({ name, size, color }) => {
   const icons = {
+    userProfile: UserProfile,
     home: HomeIcon,
     logo: LogoIcon,
     search: SearchIcon,
@@ -496,6 +545,10 @@ const Icon = ({ name, size, color }) => {
     arrow: ArrowLeftIcon,
     addImage: AddImageIcon,
     CloseWindow: CloseWindowIcon,
+    DotsMenu: DotsMenuIcon,
+    Pencil: PencilIcon,
+    dotsHorizontal: DotsHorizontal,
+    DotsMenuIcon: DotsMenuIcon,
   };
 
   const Component = icons[name];

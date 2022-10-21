@@ -1,8 +1,11 @@
 import React from "react";
+import Dropdown from "components/dropdown/Dropdown";
 
-const DashboardSection = ({ children, imgUrl }) => {
+const DashboardSection = ({ children }) => {
   return (
-    <section className="container min-w-screen pt-5 bg-gradient-to-b from-purpleDark to-black">
+    // <section className=" h-screen w-full bg-gradient-to-b from-purpleDark to-black mobile:h-full mobile:w-full overflow-y-auto p-8">
+    <section className=" h-screen w-full bg-gradient-to-b from-purpleDark to-black mobile:h-full mobile:w-full overflow-y-auto p-8">
+      <Dropdown />
       <div>{children}</div>
     </section>
   );

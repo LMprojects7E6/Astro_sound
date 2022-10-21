@@ -1,22 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
 import { getSession } from "api/session";
-import { useContext, useEffect } from "react";
-import { AuthContext } from "context/AuthProvider";
 import { Outlet, useNavigate } from "react-router-dom";
 import Loader from "components/loader/Loader";
-
 import Aside from "./aside";
 import MusicPlayer from "./musicPlayer";
 import Admin from "pages/admin/Admin";
-import Logout from "components/button/Logout";
+import PlaylistContainer from "components/playlistContainer";
+import CardsRow from "components/cardsRow";
 
 const Layout = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
-
-  const { isLoading, isError, data } = useQuery(["getSession"], () =>
-    getSession(user)
-  );
+  const { isLoading, isError, data } = useQuery(["getSession"], getSession);
 
   if (isLoading) {
     return <Loader></Loader>;
@@ -26,14 +20,12 @@ const Layout = () => {
     return <Admin></Admin>;
   } else if (data === "user") {
     return (
-      <section className="flex flex-col justify-between min-w-screen min-h-screen">
-        <div className="flex flex-row grow">
+      <section className="flex md:flex-col md:justify-between h-screen">
+        <div className="flex md:flex-row h-screen w-screen flex-col-reverse">
           <Aside />
-          {/*//TODO get component and add to menu  */}
-          {/* <Logout></Logout> */}
           <Outlet />
         </div>
-        <MusicPlayer />
+      <MusicPlayer />
       </section>
     );
   }

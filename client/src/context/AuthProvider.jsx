@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
 } from "firebase/auth";
 import { auth } from "services/firebase";
+import { setTokenHeader } from "api/api";
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -26,6 +27,7 @@ const AuthProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       //   console.log(currentUser);
       setUser(currentUser?.accessToken);
+      setTokenHeader(currentUser?.accessToken);
       setLoading(false);
     });
     return () => {

@@ -3,9 +3,9 @@ const model = require("../models");
 
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
-  // const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     const playlistsArray = await model.User.findById(userID).populate(
@@ -23,10 +23,7 @@ const getAllPlaylists = async (req, res) => {
 
 //!GET THE USERS LIKED PLAYLIST
 const getLikedPlaylists = async (req, res) => {
-  // const { userID } = req.id;
-  //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
-
+  const userID = req.id;
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
     const playlistsArray = await model.User.findById(userID).populate(
@@ -37,7 +34,9 @@ const getLikedPlaylists = async (req, res) => {
 
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
-    res.status(200).send(playlists);
+    const songsArrayId = playlists[0].songList;
+    const songs = await model.Song.find().where("_id").in(songsArrayId).exec();
+    res.status(200).send(songs);
   } catch (error) {
     res.status(504).send({ message: error.message });
   }
@@ -46,9 +45,12 @@ const getLikedPlaylists = async (req, res) => {
 //!GET 5 PLAYLISTS FROM USER
 const getFivePlaylists = async (req, res) => {
   const userID = req.id;
+<<<<<<< HEAD
   //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
+=======
+>>>>>>> ba89769ec8acbfb1f30ad36fb140fcb307bc8818
   try {
     //Get 5 playlists from the user that isn't the favorite playlist
     const playlistsArray = await model.User.findById(userID).populate(
@@ -57,7 +59,6 @@ const getFivePlaylists = async (req, res) => {
       { name: { $ne: "LikedPlaylist" } },
       { limit: 5 }
     );
-
     //GET PLAYLISTS OBJECTS
     const { playlists } = playlistsArray;
     res.status(200).send(playlists);
@@ -79,19 +80,20 @@ const getPlaylistsByID = async (req, res) => {
 };
 
 //!POST CREATE NEW PLAYLIST
-const createPlaylist = async (req, res) => {
-  const { name, description, createdBy, playlistImage } = req.body;
-  // const { userID } = req.id;
+const createNewPlaylist = async (req, res) => {
+  const { PlaylistName, PlaylistDescription, playListImage } = req.body;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
-
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   try {
+    const user = await model.User.findById(userID);
+
     //Create playlist
     const playlist = await model.Playlist.create({
-      name,
-      description,
-      createdBy,
-      playlistImage,
+      name: PlaylistName,
+      description: PlaylistDescription,
+      createdBy: user.firstName,
+      playListImage: playListImage,
     });
     await playlist.save();
 
@@ -99,8 +101,8 @@ const createPlaylist = async (req, res) => {
     const userPlaylist = await model.User.findByIdAndUpdate(userID, {
       $push: { playlists: playlist.id },
     });
-
     await userPlaylist.save();
+
     res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
     res
@@ -132,9 +134,9 @@ const updatePlaylist = async (req, res) => {
 
 //!DELETE PLAYLIST
 const deletePlaylist = async (req, res) => {
-  // const { userID } = req.id;
-  //!CODE USED FOR TESTING
-  const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
+  const userID = req.id;
+  // //!CODE USED FOR TESTING
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   const { playlistID } = req.params;
   console.log("enter delete");
 
@@ -163,7 +165,7 @@ module.exports = {
   getLikedPlaylists: getLikedPlaylists,
   getFivePlaylists: getFivePlaylists,
   getPlaylistsByID: getPlaylistsByID,
-  createPlaylist: createPlaylist,
+  createNewPlaylist: createNewPlaylist,
   updatePlaylist: updatePlaylist,
   deletePlaylist: deletePlaylist,
 };

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import Button from "./Button";
-import { AuthContext } from "context/AuthProvider";
-import { useNavigate } from "react-router-dom";
-const Logout = () => {
+import { AuthContext } from "hooks/context/AuthProvider";
+import { Link, useNavigate } from "react-router-dom";
+const Logout = ({className}) => {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
   const onLogout = async () => {
@@ -10,12 +10,8 @@ const Logout = () => {
     navigate("/login");
   };
   return (
-    <Button
-      type={"button"}
-      text={"Log out"}
-      onClick={onLogout}
-      bg={"mainButtonBg"}
-    />
+
+  <a onClick={onLogout} className={className}>Logout</a>
   );
 };
 
