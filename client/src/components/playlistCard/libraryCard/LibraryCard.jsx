@@ -1,7 +1,7 @@
 import React from "react";
 import PlaylistDropdown from "components/dropdown/playlistDropdown";
 
-const PlaylistCard = ({ name, description, playListImage }) => {
+const LibraryCard = ({ name, playListImage, description }) => {
   return (
     <div className="relative text-white text-center md:bg-grey5  md:px-5 md:py-6 rounded-md">
       <div className="playlist--image md:mb-3">
@@ -19,4 +19,4 @@ const PlaylistCard = ({ name, description, playListImage }) => {
   );
 };
 
-export default PlaylistCard;
+export default LibraryCard;
