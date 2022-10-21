@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 import PlaylistCard from "components/playlistCard/PlaylistCard";
 
 const CardsRow = ({ fivePlaylist }) => {
@@ -10,12 +10,14 @@ const CardsRow = ({ fivePlaylist }) => {
       </h2>
       <div className="grid md:grid-cols-5 grid-cols-3 gap-5 md:gap-6  overflow-x-auto p-5">
         {fivePlaylist.map((playlist) => (
-          <PlaylistCard
-            playListImage={playlist.playListImage}
-            description={playlist.description}
-            name={playlist.name}
-            key={playlist._id}
-          />
+          <Link to={"/playlist"} state={playlist}>
+            <PlaylistCard
+              key={playlist._id}
+              playListImage={playlist.playListImage}
+              description={playlist.description}
+              name={playlist.name}
+            />
+          </Link>
         ))}
       </div>
     </section>

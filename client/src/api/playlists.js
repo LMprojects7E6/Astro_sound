@@ -25,7 +25,7 @@ export const getPlaylistsByID = async (data) => {
 };
 
 //!POST CREATE NEW PLAYLIST (TODO)
-export const createPlaylist = async (data) => {
+export const createNewPlaylist = async (data) => {
   const response = await api.post("/playlists", data);
   return response.data;
 };

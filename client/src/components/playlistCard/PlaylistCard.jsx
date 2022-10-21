@@ -21,3 +21,20 @@ const PlaylistCard = ({ name, description, playListImage }) => {
 };
 
 export default PlaylistCard;
+
+// <>
+//       <h1>Users</h1>
+//       <ul>
+//         {users && users.map((user) => { const { id: oldId, name, username, email } = user;
+//             const id = oldId.toString();
+//             return (
+//               <li key={oldId}>
+//                 <Link to={id} state={user}>
+//                   {name}
+//                 </Link>
+//               </li>
+//             );
+//           })}
+//       </ul>
+//       <Outlet />
+//     </>
