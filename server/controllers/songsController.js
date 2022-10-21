@@ -60,10 +60,8 @@ const getAllSongsFromPlaylist = async (req, res) => {
   const { playlistID } = req.params;
 
   try {
-    const songs = await model.Playlist.findById(playlistID).populate(
-      "songList"
-    );
-    res.status(200).send(songs.songList);
+    const playlist = await model.Playlist.findById(playlistID).populate("songList" );
+    res.status(200).send(playlist.songList);
   } catch (error) {
     res.status(504).send({ errMessage: "Could not fetch songs", error: error });
   }

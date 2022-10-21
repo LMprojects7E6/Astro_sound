@@ -81,13 +81,12 @@ const createNewPlaylist = async (req, res) => {
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   try {
     const user = await model.User.findById(userID);
-    const createdBy = user.firstName + " " + user.lastName;
 
     //Create playlist
     const playlist = await model.Playlist.create({
       name: PlaylistName,
       description: PlaylistDescription,
-      createdBy: createdBy,
+      createdBy: user.firstName,
       playListImage: playListImage,
     });
     await playlist.save();
