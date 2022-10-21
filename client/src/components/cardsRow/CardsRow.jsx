@@ -10,9 +10,8 @@ const CardsRow = ({ fivePlaylist }) => {
       </h2>
       <div className="grid md:grid-cols-5 grid-cols-3 gap-5 md:gap-6  overflow-x-auto p-5">
         {fivePlaylist.map((playlist) => (
-          <Link to={"/playlist"} state={playlist}>
+          <Link to={"/playlist"} state={playlist} key={playlist._id}>
             <PlaylistCard
-              key={playlist._id}
               playListImage={playlist.playListImage}
               description={playlist.description}
               name={playlist.name}
