@@ -41,3 +41,10 @@ export const deletePlaylist = async (data) => {
   const response = await api.delete("/playlists", data);
   return response.data;
 };
+
+// import { headersAuth } from "./api";
+
+// export const getFivePlaylists = async (accessToken) => {
+//   const response = await api.get("/playlists/fivePlaylists", headersAuth(accessToken));
+//   return response.data;
+// };

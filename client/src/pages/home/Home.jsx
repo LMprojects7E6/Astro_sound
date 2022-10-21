@@ -1,5 +1,4 @@
 import DashboardSection from "components/dashboardSection";
-import Slider from "components/slider";
 import CardsRow from "components/cardsRow";
 import { getThreeSongs } from "api/songs";
 import { getFivePlaylists, getLikedPlaylists } from "api/playlists";
@@ -41,7 +40,6 @@ const Home = () => {
       <DashboardSection>
         <Dropdown />
         <Carrousel threeSongs={threeSongs}></Carrousel>
-        {/* <Slider threeSongs={threeSongs} /> */}
         <CardsRow fivePlaylist={fivePlaylist} />
         <FavoriteSongContainer likedSongs={likedSongs} />
       </DashboardSection>
