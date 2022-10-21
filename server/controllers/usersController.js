@@ -46,7 +46,13 @@ const getUser = async (req, res) => {
 };
 
 //!PUT UPDATE USER
-const updateUser = async (req, res) => {};
+const updateUser = async (req, res) => {
+  try {
+    res.status(200).send("OOOOOOOK");
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
 
 //!DELETE USER
 

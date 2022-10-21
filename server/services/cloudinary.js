@@ -18,6 +18,8 @@ const checkTypes = (req, file, cb) => {
     cb(null, true);
   } else if (fileName === "playListImage" && type == "image") {
     cb(null, true);
+  } else if (fileName === "profileImage" && type == "image") {
+    cb(null, true);
   } else {
     cb(null, false);
   }

@@ -6,7 +6,7 @@ const songsController = require("../controllers/songsController.js");
 const upload = require("../services/cloudinary");
 const multipleUpload = upload.fields([
   { name: "songFile", maxCount: 1 },
-  { name: "songImage", maxCount: 8 },
+  { name: "songImage", maxCount: 1 },
 ]);
 //!CRUD
 router.get("/", songsController.getAllSongs);

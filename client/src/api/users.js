@@ -11,7 +11,7 @@ export const registerUser = async (data) => {
   return response.data;
 };
 //!PUT UPDATE USER
-export const updateUser = async () => {
-  const response = await api.put("/users");
+export const updateUser = async (data) => {
+  const response = await api.put("/users", data);
   return response.data;
 };
