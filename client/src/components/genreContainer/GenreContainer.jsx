@@ -1,7 +1,6 @@
 import React from "react";
-import SongCard from "components/songCard";
 
-const PlaylistContainer = ({ bgColor, text }) => {
+const GenreContainer = ({ bgColor, text }) => {
   return (
     <div className={`bg-${bgColor} rounded-xl max-w-xs m-5`}>
       <h4 className="text-xl m-2 text-white font-bold flex">Your top genres</h4>
@@ -10,4 +9,4 @@ const PlaylistContainer = ({ bgColor, text }) => {
   );
 };
 
-export default PlaylistContainer;
+export default GenreContainer;

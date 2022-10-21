@@ -5,7 +5,7 @@ import Loader from "components/loader/Loader";
 import Aside from "./aside";
 import MusicPlayer from "./musicPlayer";
 import Admin from "pages/admin/Admin";
-import PlaylistContainer from "components/playlistContainer";
+import PlaylistContainer from "components/genreContainer";
 import CardsRow from "components/cardsRow";
 
 const Layout = () => {
@@ -25,7 +25,7 @@ const Layout = () => {
           <Aside />
           <Outlet />
         </div>
-      <MusicPlayer />
+        <MusicPlayer />
       </section>
     );
   }
