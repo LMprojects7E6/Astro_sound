@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import Button from "./Button";
-import { AuthContext } from "context/AuthProvider";
+import { AuthContext } from "hooks/context/AuthProvider";
 import { Link, useNavigate } from "react-router-dom";
 const Logout = ({className}) => {
   const { logout } = useContext(AuthContext);

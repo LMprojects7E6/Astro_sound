@@ -3,7 +3,6 @@ import CardsRow from "components/cardsRow";
 import { getThreeSongs } from "api/songs";
 import { getFivePlaylists, getLikedPlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
-import Dropdown from "components/dropdown";
 import toast from "react-hot-toast";
 import FavoriteSongContainer from "components/favoriteSongContainer/FavoriteSongContainer";
 import Carrousel from "components/carrousel";
@@ -38,7 +37,6 @@ const Home = () => {
   } else {
     return (
       <DashboardSection>
-        <Dropdown />
         <Carrousel threeSongs={threeSongs}></Carrousel>
         <CardsRow fivePlaylist={fivePlaylist} />
         <FavoriteSongContainer likedSongs={likedSongs} />
