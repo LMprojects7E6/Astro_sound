@@ -8,9 +8,7 @@ const getAllPlaylists = async (req, res) => {
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
-    const playlistsArray = await model.User.findById(userID).populate(
-      "playlists"
-    );
+    const playlistsArray = await model.User.findById(userID).populate( "playlists" );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
       const { playlists } = playlistsArray;
@@ -25,7 +23,7 @@ const getAllPlaylists = async (req, res) => {
 const getLikedPlaylists = async (req, res) => {
   const userID = req.id;
   try {
-    //Get 5 playlists from the user that isn't the favorite playlist
+    //Get liked playlist from the user
     const playlistsArray = await model.User.findById(userID).populate(
       "playlists",
       null,

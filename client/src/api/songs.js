@@ -27,11 +27,16 @@ export const getAllSongsFromPlaylist = async (playlistID) => {
 };
 //!POST UPDATE PLAYLIST WITH A NEW SONG
 export const addSongToPlaylist = async (songID, playlistID) => {
-  const response = await api.get(`/songs/${songID}/${playlistID}`);
+  const response = await api.post(`/songs/${songID}/${playlistID}`);
+  return response.data;
+};
+//!POST UPDATE LIKED PLAYLIST WITH A NEW SONG
+export const addSongToLikedPlaylist = async (songID) => {
+  const response = await api.post(`/songs/${songID}`);
   return response.data;
 };
 //!DELETE REMOVE SONG FROM PLAYLIST
 export const removeSongFromPlaylist = async (songID, playlistID) => {
-  const response = await api.get(`/songs/${songID}/${playlistID}`);
+  const response = await api.delete(`/songs/${songID}/${playlistID}`);
   return response.data;
 };
