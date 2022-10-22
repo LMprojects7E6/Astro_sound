@@ -36,7 +36,9 @@ const Home = () => {
     return <p>Loading...</p>;
   } else if (isSongError || isPlaylistError || isErrorLikedSongs) {
     toast.error(songError || playlistError || likedSongsError);
-  } else {
+  } 
+  else{
+  console.log(likedSongs);
     return (
       <DashboardSection>
         <Dropdown />
