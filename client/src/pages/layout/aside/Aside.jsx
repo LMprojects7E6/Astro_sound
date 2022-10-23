@@ -22,10 +22,10 @@ const Aside = () => {
           </div>
           <NavLink
             to={"/"}
-            end
             className={({ isActive }) =>
               isActive ? activeStyle + " " + style : style
             }
+            exact="true"
           >
             <span>
               <Icon name={"home"} size={22} color={"currentColor"} />

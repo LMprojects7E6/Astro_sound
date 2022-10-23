@@ -8,14 +8,16 @@ export default function Modal({
   text,
   iconSize,
   iconColor,
+  background,
+  width,
 }) {
   const [showModal, setShowModal] = useState(false);
 
   return (
     <>
       <Button
-        bg={"mainButtonBg"}
-        width={"w-min"}
+        background={background}
+        width={width}
         radius={"rounded"}
         onClick={() => setShowModal(true)}
         text={text}

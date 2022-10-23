@@ -17,7 +17,7 @@ function useSearchSongs(searchText) {
     return [];
   }
 
-  return search.length > 3
+  return search.length >= 3
     ? data?.filter((song) =>
         keys.some((key) => String(song[key]).toLowerCase().includes(search))
       )

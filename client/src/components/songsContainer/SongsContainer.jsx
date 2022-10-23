@@ -11,22 +11,12 @@ const SongsContainer = ({ searchedSongs, value }) => {
       <div
         className={`${
           searchedSongs.length > 0
-            ? " flex flex-col md:grid md:grid-cols-5 md:grid-cols-3 md:gap-5 md:gap-6  overflow-x-auto md:p-5"
+            ? " flex flex-col md:grid lg:grid-cols-4 md:grid-cols-3 md:gap-5   overflow-x-auto "
             : "flex flex-col"
         }`}
       >
         {searchedSongs.map((song) => {
-          console.log(song);
-          return (
-            <SongCard
-              key={song._id}
-              album={song.album}
-              artist={song.artist}
-              songFile={song.songImage}
-              songImage={song.songImage}
-              title={song.title}
-            />
-          );
+          return <SongCard key={song._id} song={song} />;
         })}
       </div>
     </section>
