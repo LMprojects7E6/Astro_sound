@@ -28,7 +28,7 @@ const SongCard = ({ song }) => {
         <p className=" text-white">{song.artist}</p>
       </div>
       <div className=" flex-none flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
-        {/* <AddRemoveLikedSongs song={song} /> */}
+        <AddRemoveLikedSongs song={song} />
         <span className="ml-2">
           <SongDropDown />
         </span>

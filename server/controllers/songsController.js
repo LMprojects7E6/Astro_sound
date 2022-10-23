@@ -97,11 +97,9 @@ const addSongToLikedPlaylist = async (req, res) => {
 
   try {
     //Get user
-    const user = await model.User.findById(userID).populate(
-      "playlists",
-      null,
-      { name: "LikedPlaylist" }
-    );
+    const user = await model.User.findById(userID).populate("playlists", null, {
+      name: "LikedPlaylist",
+    });
     //Get liked playlist from user
     const likedPlaylist = user.playlists[0];
     //Add song to liked playlist
@@ -115,6 +113,33 @@ const addSongToLikedPlaylist = async (req, res) => {
     res
       .status(200)
       .send({ errMessage: "Song cannot be added to playlist", error: error });
+  }
+};
+
+//!DELETE SONG FROM LIKED PLAYLIST
+const removeSongFromLikedPlaylist = async (req, res) => {
+  const userID = req.id;
+  const { songID } = req.params;
+
+  try {
+    //Get user
+    const user = await model.User.findById(userID).populate("playlists", null, {
+      name: "LikedPlaylist",
+    });
+    //Get liked playlist from user
+    const likedPlaylist = user.playlists[0];
+    //Add song to liked playlist
+    const playlist = await model.Playlist.findByIdAndUpdate(likedPlaylist._id, {
+      $pull: { songList: songID },
+    });
+    await playlist.save();
+
+    res.status(200).send(playlist);
+  } catch (error) {
+    res.status(200).send({
+      errMessage: "Song cannot be removed from playlist",
+      error: error,
+    });
   }
 };
 
@@ -149,5 +174,6 @@ module.exports = {
   getAllSongsFromPlaylist: getAllSongsFromPlaylist,
   addSongToPlaylist: addSongToPlaylist,
   addSongToLikedPlaylist: addSongToLikedPlaylist,
+  removeSongFromLikedPlaylist: removeSongFromLikedPlaylist,
   removeSongFromPlaylist: removeSongFromPlaylist,
 };

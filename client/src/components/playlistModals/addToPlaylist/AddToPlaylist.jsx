@@ -4,22 +4,19 @@ import { getSession } from "api/session";
 import { addSongToPlaylist } from "api/songs";
 
 import Button from "components/button";
+import { AuthContext } from "context/AuthProvider";
 
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 
 const AddToPlaylist = ({ setShowModal, song }) => {
   const queryClient = useQueryClient();
 
-  const {
-    isLoading: isSessionLoading,
-    isError: isSessionError,
-    data: sessionData,
-  } = useQuery(["getSession"], getSession);
+  const { userId } = useContext(AuthContext);
 
   const { isLoading, isError, data, error } = useQuery(
     ["getAllPlaylists"],
-    () => getAllPlaylists(sessionData.id)
+    () => getAllPlaylists(userId)
   );
 
   const addToPlaylist = useMutation(addSongToPlaylist, {
@@ -39,8 +36,9 @@ const AddToPlaylist = ({ setShowModal, song }) => {
       <ul className="pr-4 px-10 list-disc">
         {data?.map((list) => (
           <li
+            className="cursor-pointer"
             key={list._id}
-            // onClick={addToPlaylist({ songId: song._id, playlistId: list._id })}
+            onClick={addToPlaylist({ songId: song._id, playlistId: list._id })}
           >
             {list.name}
           </li>

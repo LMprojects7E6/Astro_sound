@@ -1,7 +1,9 @@
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getLikedPlaylists } from "api/playlists";
+import { addSongToLikedPlaylist, removeSongFromLikedPlaylist } from "api/songs";
 import Icon from "components/icons";
-import React from "react";
+
+import toast from "react-hot-toast";
 
 const AddRemoveLikedSongs = ({ song }) => {
   const queryClient = useQueryClient();
@@ -12,44 +14,35 @@ const AddRemoveLikedSongs = ({ song }) => {
     data: likedSongs,
     error: likedSongsError,
   } = useQuery(["liked-songs"], getLikedPlaylists);
-  console.log(likedSongs);
 
-  // const addToLikedSongs = useMutation(updateUser, {
-  //   onSuccess: (resp) => {
-  //     userUpdated(resp);
-  //   },
-  //   onError: (err) => {
-  //     toast.error(err.response.data.errorMsg);
-  //   },
-  // });
+  const addToLikedSongs = useMutation(addSongToLikedPlaylist, {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["liked-songs"]);
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
 
-  // const userUpdated = (data) => {
-  //   queryClient.invalidateQueries(["getEmployees"]);
-  //   setShowModal(false);
-  //   toast.success(data);
-  // };
-  // const removeUser = useMutation(deleteUser, {
-  //   onSuccess: (resp) => userDeleted(resp),
-  // });
+  const removeFromLikedSongs = useMutation(removeSongFromLikedPlaylist, {
+    onSuccess: () => queryClient.invalidateQueries(["liked-songs"]),
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
 
-  // const userDeleted = (data) => {
-  //   const userName = data.first_name;
-  //   queryClient.invalidateQueries(["getCustomers"]);
-  //   queryClient.invalidateQueries(["getEmployees"]);
-  //   setShowModal(false);
-  //   toast.success(`${userName} has been deleted`);
-  // };
-
-  const isLiked = likedSongs.find((likedSong) => likedSong._id === song._id);
+  const isLiked = likedSongs?.find((likedSong) => likedSong._id === song._id);
 
   return (
     <>
       {isLiked ? (
-        <span onClick={() => console.log("")}>
+        <span onClick={() => removeFromLikedSongs.mutate(song._id)}>
           <Icon name={"heartFilled"} size={24} color={"#fff"} />
         </span>
       ) : (
-        <Icon name={"heart"} size={24} color={"#fff"} />
+        <span onClick={() => addToLikedSongs.mutate(song._id)}>
+          <Icon name={"heart"} size={24} color={"#fff"} />
+        </span>
       )}
     </>
   );
