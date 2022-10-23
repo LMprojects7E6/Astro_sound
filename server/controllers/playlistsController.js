@@ -8,7 +8,9 @@ const getAllPlaylists = async (req, res) => {
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
-    const playlistsArray = await model.User.findById(userID).populate( "playlists" );
+    const playlistsArray = await model.User.findById(userID).populate(
+      "playlists"
+    );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
       const { playlists } = playlistsArray;
@@ -131,7 +133,6 @@ const deletePlaylist = async (req, res) => {
   // //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   const { playlistID } = req.params;
-  console.log("enter delete");
 
   try {
     // Delete playlist from user

@@ -1,4 +1,5 @@
-import ReactDOM from "react-dom"; // Update this line
+import { useEffect, useState } from "react";
+import ReactDOM from "react-dom";
 
 const Portal = ({ children }) => {
   const el = document.getElementById("portal");

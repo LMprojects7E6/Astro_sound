@@ -28,6 +28,7 @@ export const getAllSongsFromPlaylist = async (playlistID) => {
 //!POST UPDATE PLAYLIST WITH A NEW SONG
 export const addSongToPlaylist = async (data) => {
   const response = await api.post(`/songs/${data.songId}/${data.playlistId}`);
+  return response.data;
 };
 //!POST UPDATE LIKED PLAYLIST WITH A NEW SONG
 export const addSongToLikedPlaylist = async (songID) => {

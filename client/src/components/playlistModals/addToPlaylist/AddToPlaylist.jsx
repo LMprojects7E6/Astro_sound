@@ -1,27 +1,27 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getAllPlaylists } from "api/playlists";
-import { getSession } from "api/session";
+
 import { addSongToPlaylist } from "api/songs";
 
-import Button from "components/button";
-import { AuthContext } from "context/AuthProvider";
-
-import React, { useContext } from "react";
+import React from "react";
 import toast from "react-hot-toast";
+import Modal from "components/modal/Modal";
+import CreatePlaylist from "../createPlaylist";
 
-const AddToPlaylist = ({ setShowModal, song }) => {
+const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
   const queryClient = useQueryClient();
-
-  const { userId } = useContext(AuthContext);
 
   const { isLoading, isError, data, error } = useQuery(
     ["getAllPlaylists"],
-    () => getAllPlaylists(userId)
+    getAllPlaylists
   );
 
   const addToPlaylist = useMutation(addSongToPlaylist, {
     onSuccess: (resp) => {
       playlistUpdated(resp);
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
     },
   });
 
@@ -31,14 +31,22 @@ const AddToPlaylist = ({ setShowModal, song }) => {
     toast.success(data);
   };
 
+  const handelClick = (list) => {
+    addToPlaylist.mutate({
+      songId: song._id,
+      playlistId: list._id,
+    });
+    setOpen(!open);
+  };
+
   return (
     <>
-      <ul className="pr-4 px-10 list-disc">
+      <ul className="m-5 pr-4 px-10 list-disc">
         {data?.map((list) => (
           <li
             className="cursor-pointer"
             key={list._id}
-            onClick={addToPlaylist({ songId: song._id, playlistId: list._id })}
+            onClick={() => handelClick(list)}
           >
             {list.name}
           </li>
@@ -49,13 +57,14 @@ const AddToPlaylist = ({ setShowModal, song }) => {
         <hr />
       </div>
       <div className="flex items-center justify-start p-6 ">
-        <Button
-          bg={"mainButtonBg"}
+        <Modal
+          background={"mainButtonBg"}
           width={"w-max"}
           radius={"rounded"}
           text={"+ Create new playlist"}
-          onClick={() => setShowModal(false)}
-        />
+        >
+          <CreatePlaylist />
+        </Modal>
       </div>
     </>
   );

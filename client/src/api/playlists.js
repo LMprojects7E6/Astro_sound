@@ -1,8 +1,8 @@
 import api from "./api";
 
 //!GET ALL USER PLAYLISTS
-export const getAllPlaylists = async (data) => {
-  const response = await api.get("/playlists", data);
+export const getAllPlaylists = async () => {
+  const response = await api.get("/playlists");
   return response.data;
 };
 
@@ -31,8 +31,8 @@ export const createNewPlaylist = async (data) => {
 };
 
 // //!PUT UPDATE PLAYLIST WITH ID (TODO)
-export const updatePlaylist = async (data) => {
-  const response = await api.put("/playlists", data);
+export const updatePlaylist = async (playlistId) => {
+  const response = await api.put(`/playlists/${playlistId}`);
   return response.data;
 };
 

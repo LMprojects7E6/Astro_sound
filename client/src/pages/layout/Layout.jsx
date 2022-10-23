@@ -13,7 +13,7 @@ const Layout = () => {
   if (isLoading) {
     return <Loader></Loader>;
   } else if (isError) {
-    navigate("/login", { replace: true });
+    // navigate("/login", { replace: true });
   } else if (data.role === "admin") {
     return <Admin></Admin>;
   } else if (data.role === "user") {

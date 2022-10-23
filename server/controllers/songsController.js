@@ -82,7 +82,7 @@ const addSongToPlaylist = async (req, res) => {
     });
     await playlist.save();
 
-    res.status(200).send(playlist);
+    res.status(200).send(`Song added to ${playlist.name}`);
   } catch (error) {
     res
       .status(200)

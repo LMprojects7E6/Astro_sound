@@ -1,3 +1,4 @@
+import Portal from "components/portal";
 import Button from "components/button";
 import { useState, Children, cloneElement } from "react";
 
@@ -10,6 +11,8 @@ export default function Modal({
   iconColor,
   background,
   width,
+  open,
+  setOpen,
 }) {
   const [showModal, setShowModal] = useState(false);
 
@@ -27,7 +30,7 @@ export default function Modal({
       />
 
       {showModal ? (
-        <>
+        <Portal>
           <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full md:h-min h-full bg-grey2 m-auto">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
@@ -51,13 +54,13 @@ export default function Modal({
                 </div>
                 {/*body*/}
                 {Children.map(children, (child) =>
-                  cloneElement(child, { setShowModal })
+                  cloneElement(child, { setShowModal, open, setOpen })
                 )}
               </div>
             </div>
           </div>
           <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
-        </>
+        </Portal>
       ) : null}
     </>
   );
