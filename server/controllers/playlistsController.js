@@ -8,9 +8,7 @@ const getAllPlaylists = async (req, res) => {
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
-    const playlistsArray = await model.User.findById(userID).populate(
-      "playlists"
-    );
+    const playlistsArray = await model.User.findById(userID).populate( "playlists" );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
       const { playlists } = playlistsArray;
@@ -25,7 +23,7 @@ const getAllPlaylists = async (req, res) => {
 const getLikedPlaylists = async (req, res) => {
   const userID = req.id;
   try {
-    //Get 5 playlists from the user that isn't the favorite playlist
+    //Get liked playlist from the user
     const playlistsArray = await model.User.findById(userID).populate(
       "playlists",
       null,
@@ -74,19 +72,21 @@ const getPlaylistsByID = async (req, res) => {
 };
 
 //!POST CREATE NEW PLAYLIST
-const createPlaylist = async (req, res) => {
-  const { name, description, createdBy, playListImage } = req.body;
-  // const userID = req.id;
+const createNewPlaylist = async (req, res) => {
+  const { PlaylistName, PlaylistDescription, playListImage } = req.body;
+  const userID = req.id;
   //!CODE USED FOR TESTING
-  const userID = "lWyZO1CoQiVsb0ufUMDKAC5oXSf2";
-
+  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   try {
+    const user = await model.User.findById(userID);
+    const createdBy = user.firstName + " " + user.lastName;
+
     //Create playlist
     const playlist = await model.Playlist.create({
-      name,
-      description,
-      createdBy,
-      playListImage,
+      name: PlaylistName,
+      description: PlaylistDescription,
+      createdBy: createdBy,
+      playListImage: playListImage,
     });
     await playlist.save();
 
@@ -94,8 +94,8 @@ const createPlaylist = async (req, res) => {
     const userPlaylist = await model.User.findByIdAndUpdate(userID, {
       $push: { playlists: playlist.id },
     });
-
     await userPlaylist.save();
+
     res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
     res
@@ -158,7 +158,7 @@ module.exports = {
   getLikedPlaylists: getLikedPlaylists,
   getFivePlaylists: getFivePlaylists,
   getPlaylistsByID: getPlaylistsByID,
-  createPlaylist: createPlaylist,
+  createNewPlaylist: createNewPlaylist,
   updatePlaylist: updatePlaylist,
   deletePlaylist: deletePlaylist,
 };

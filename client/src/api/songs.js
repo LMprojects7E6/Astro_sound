@@ -26,8 +26,18 @@ export const getAllSongsFromPlaylist = async (playlistID) => {
   return response.data;
 };
 //!POST UPDATE PLAYLIST WITH A NEW SONG
+<<<<<<< HEAD
 export const addSongToPlaylist = async (data) => {
   const response = await api.post(`/songs/${data.songId}/${data.playlistId}`);
+=======
+export const addSongToPlaylist = async (songID, playlistID) => {
+  const response = await api.post(`/songs/${songID}/${playlistID}`);
+  return response.data;
+};
+//!POST UPDATE LIKED PLAYLIST WITH A NEW SONG
+export const addSongToLikedPlaylist = async (songID) => {
+  const response = await api.post(`/songs/${songID}`);
+>>>>>>> develop
   return response.data;
 };
 //!DELETE REMOVE SONG FROM PLAYLIST

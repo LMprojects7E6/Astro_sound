@@ -90,6 +90,34 @@ const addSongToPlaylist = async (req, res) => {
   }
 };
 
+//!POST UPDATE LIKED PLAYLIST WITH A NEW SONG
+const addSongToLikedPlaylist = async (req, res) => {
+  const userID = req.id;
+  const { songID } = req.params;
+
+  try {
+    //Get user
+    const user = await model.User.findById(userID).populate(
+      "playlists",
+      null,
+      { name: "LikedPlaylist" }
+    );
+    //Get liked playlist from user
+    const likedPlaylist = user.playlists[0];
+    //Add song to liked playlist
+    const playlist = await model.Playlist.findByIdAndUpdate(likedPlaylist._id, {
+      $push: { songList: songID },
+    });
+    await playlist.save();
+
+    res.status(200).send(playlist);
+  } catch (error) {
+    res
+      .status(200)
+      .send({ errMessage: "Song cannot be added to playlist", error: error });
+  }
+};
+
 //!DELETE REMOVE SONG FROM PLAYLIST
 const removeSongFromPlaylist = async (req, res) => {
   const { playlistID } = req.params;
@@ -120,5 +148,6 @@ module.exports = {
   getSongsByGenre: getSongsByGenre,
   getAllSongsFromPlaylist: getAllSongsFromPlaylist,
   addSongToPlaylist: addSongToPlaylist,
+  addSongToLikedPlaylist: addSongToLikedPlaylist,
   removeSongFromPlaylist: removeSongFromPlaylist,
 };

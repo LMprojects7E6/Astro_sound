@@ -10,6 +10,7 @@ import MusicPlayer from "pages/layout/musicPlayer";
 import { useContext } from "react";
 import { toast } from "react-hot-toast";
 import AsideAdmin from "./asideAdmin";
+import DashboardAdmin from "./dashboardAdmin";
 import FormAdmin from "./formAdmin";
 
 
@@ -42,14 +43,14 @@ const Admin = () => {
           <Loader />
         </div>
       )}
-      <DashboardSection>
+      <DashboardAdmin>
       <div className="flex flex-col-reverse h-screen">
         <Dropdown admin={true}/>
         <AsideAdmin />
         <FormAdmin mutate={mutate}/>
         <MusicPlayer />
       </div>
-      </DashboardSection>
+      </DashboardAdmin>
     </>
   );
 };

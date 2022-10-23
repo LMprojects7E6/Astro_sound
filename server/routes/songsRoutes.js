@@ -14,6 +14,7 @@ router.get("/threeSongs", songsController.getThreeSongs);
 router.get("/:genre", songsController.getSongsByGenre);
 router.get("/playlist/:playlistID", songsController.getAllSongsFromPlaylist);
 router.post("/:songID/:playlistID", songsController.addSongToPlaylist);
+router.post("/:songID", songsController.addSongToLikedPlaylist);
 router.delete("/:songID/:playlistID", songsController.removeSongFromPlaylist);
 //upload songs admin
 router.post("/", multipleUpload, songsController.addSong);
