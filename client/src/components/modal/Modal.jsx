@@ -16,6 +16,11 @@ export default function Modal({
 }) {
   const [showModal, setShowModal] = useState(false);
 
+  const handelCloseModal = () => {
+    setOpen(!open);
+    setShowModal(false);
+  };
+
   return (
     <>
       <Button
@@ -43,7 +48,7 @@ export default function Modal({
                   <Button
                     bg={"grey2"}
                     width={"w-min"}
-                    onClick={() => setShowModal(false)}
+                    onClick={() => handelCloseModal()}
                     icon={"CloseWindow"}
                     iconColor={"currentColor"}
                     iconSize={30}

@@ -2,6 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getLikedPlaylists } from "api/playlists";
 import { addSongToLikedPlaylist, removeSongFromLikedPlaylist } from "api/songs";
 import Icon from "components/icons";
+import { useEffect } from "react";
 
 import toast from "react-hot-toast";
 
@@ -40,11 +41,17 @@ const AddRemoveLikedSongs = ({ song }) => {
   return (
     <>
       {isLiked ? (
-        <span onClick={() => removeFromLikedSongs.mutate(song._id)}>
+        <span
+          className="cursor-pointer"
+          onClick={() => removeFromLikedSongs.mutate(song._id)}
+        >
           <Icon name={"heartFilled"} size={24} color={"#fff"} />
         </span>
       ) : (
-        <span onClick={() => addToLikedSongs.mutate(song._id)}>
+        <span
+          className="cursor-pointer"
+          onClick={() => addToLikedSongs.mutate(song._id)}
+        >
           <Icon name={"heart"} size={24} color={"#fff"} />
         </span>
       )}

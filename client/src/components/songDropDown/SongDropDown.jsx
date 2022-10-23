@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, Children, cloneElement } from "react";
 
 const SongDropDown = ({ song, children }) => {
   const [open, setOpen] = useState(false);
-  // console.log(open);
 
   const menuRef = useRef();
 
@@ -12,7 +11,7 @@ const SongDropDown = ({ song, children }) => {
     <div className="relative inline-block text-left" ref={menuRef}>
       <div>
         <div
-          className="inline-flex w-full justify-center rounded-md  bg-grey5 px-4 py-2 text-sm font-medium  "
+          className=" cursor-pointer inline-flex w-full justify-center rounded-md  bg-grey5 px-4 py-2 text-sm font-medium  "
           onClick={() => {
             setOpen(true);
           }}
