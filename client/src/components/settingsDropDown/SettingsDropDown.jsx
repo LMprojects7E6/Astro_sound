@@ -2,7 +2,7 @@ import Icon from "components/icons";
 
 import { useState, useEffect, useRef, Children, cloneElement } from "react";
 
-const SongDropDown = ({ song, children }) => {
+const SettingsDropDown = ({ song, children }) => {
   const [open, setOpen] = useState(false);
 
   const menuRef = useRef();
@@ -37,4 +37,4 @@ const SongDropDown = ({ song, children }) => {
   );
 };
 
-export default SongDropDown;
+export default SettingsDropDown;

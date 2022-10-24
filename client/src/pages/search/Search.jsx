@@ -7,7 +7,7 @@ import Icon from "components/icons/Icons";
 import SongsContainer from "components/songsContainer";
 import GenreSection from "components/genreSection";
 import AddToPlaylist from "components/playlistModals/addToPlaylist";
-import SongDropDown from "components/songDropDown";
+import SongDropDown from "components/settingsDropDown";
 
 const Search = () => {
   const [value, setValue] = useState("");

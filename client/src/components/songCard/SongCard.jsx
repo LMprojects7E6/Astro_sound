@@ -3,8 +3,7 @@ import React from "react";
 import Button from "components/button";
 import Icon from "components/icons";
 import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
-import SongDropDown from "components/songDropDown/SongDropDown";
-import Example from "components/songDropDown/SongDropDown";
+import SettingsDropDown from "components/settingsDropDown";
 import Modal from "components/modal";
 import AddToPlaylist from "components/playlistModals/addToPlaylist";
 
@@ -32,7 +31,7 @@ const SongCard = ({ song }) => {
       <div className=" flex-none flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
         <AddRemoveLikedSongs song={song} />
         <span className="ml-2">
-          <SongDropDown song={song}>
+          <SettingsDropDown song={song}>
             <Modal
               background={"bg-grey5"}
               modalTitle={"Add to playlist"}
@@ -40,7 +39,7 @@ const SongCard = ({ song }) => {
             >
               <AddToPlaylist song={song} />
             </Modal>
-          </SongDropDown>
+          </SettingsDropDown>
         </span>
       </div>
     </div>
