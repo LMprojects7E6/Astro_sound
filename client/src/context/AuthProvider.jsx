@@ -10,10 +10,10 @@ import {
   updateEmail,
   updatePassword,
   fetchSignInMethodsForEmail,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "services/firebase";
 import { setTokenHeader } from "api/api";
-import { toast } from "react-hot-toast";
 export const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
@@ -47,6 +47,14 @@ const AuthProvider = ({ children }) => {
   const updatePasswordProfile = (password) => {
     return updatePassword(auth.currentUser, password);
   };
+  //! RESET EMAIL
+  const forgotPassword = (email) => {
+    const config = {
+      url: process.env.REACT_APP_FORGOT_PASSWORD_REDIRECT,
+      handleCodeInApp: true,
+    };
+    return sendPasswordResetEmail(auth, email, config);
+  };
   //!RE-AUTH
   const reAuth = (email, password) => {
     const credential = EmailAuthProvider.credential(email, password);
@@ -58,7 +66,6 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       setTokenHeader(currentUser?.accessToken);
       setLoading(false);
-      console.log(currentUser?.accessToken);
     });
     return () => {
       unsubscribe();
@@ -74,6 +81,7 @@ const AuthProvider = ({ children }) => {
     updatePhotoUrlProfile,
     updatePasswordProfile,
     checkIfEmailExist,
+    forgotPassword,
   };
   return (
     <AuthContext.Provider value={values}>
