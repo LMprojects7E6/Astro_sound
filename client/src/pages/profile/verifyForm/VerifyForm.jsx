@@ -4,7 +4,14 @@ import { AuthContext } from "context/AuthProvider";
 import { useContext } from "react";
 import { convertFormData } from "utils/convertFormData";
 import { toast } from "react-hot-toast";
-const VerifyForm = ({ formRef, profileImage: inputPicture }) => {
+import { useNavigate } from "react-router-dom";
+const VerifyForm = ({
+  formRef,
+  profileImage: inputPicture,
+  inputFileRef,
+  setShowModal,
+}) => {
+  const navigate = useNavigate();
   const {
     reAuth,
     updatePhotoUrlProfile,
@@ -29,7 +36,8 @@ const VerifyForm = ({ formRef, profileImage: inputPicture }) => {
   //!UPLOAD TO CLOUDINARY
   const uploadPhotoURL = async () => {
     const data = new FormData(formRef.current);
-    if (currentPicture !== inputPicture) {
+    console.log(inputPicture);
+    if (currentPicture !== inputPicture && inputFileRef.current.value) {
       mutate(data);
     }
     await updateEmail();
@@ -38,7 +46,8 @@ const VerifyForm = ({ formRef, profileImage: inputPicture }) => {
   const { mutate } = useMutation(updateUser, {
     onSuccess: async (data) => {
       await updatePhotoUrlProfile(data);
-      toast.success("Profile picture updated!!");
+      inputFileRef.current.value = null;
+      // toast.success("Profile picture updated!!");
     },
     onError: async () => {
       toast.error("Cannot update profile picture!!");
@@ -52,7 +61,8 @@ const VerifyForm = ({ formRef, profileImage: inputPicture }) => {
     try {
       await checkIfEmailExist(email);
       await updateEmailProfile(email);
-      toast.success("Email updated!!");
+      toast.success("Profile updated correctly!!");
+      setShowModal(false);
     } catch (error) {
       toast.error("Cannot update the email!!");
     }

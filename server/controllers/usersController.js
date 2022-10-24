@@ -47,12 +47,10 @@ const getUser = async (req, res) => {
 
 //!PUT UPDATE USER
 const updateUser = async (req, res) => {
-  console.log(req.file);
   try {
     const { file } = req;
     res.status(200).send(file.path);
   } catch (error) {
-    console.log(error);
     res.status(400).send(error);
   }
 };

@@ -3,7 +3,12 @@ import { useContext, useState } from "react";
 import { AuthContext } from "context/AuthProvider";
 import Modal from "components/modal/Modal";
 import PasswordChangeForm from "../passwordChangeForm/PasswordChangeForm";
-const ProfileForm = ({ formRef, profileImage, setProfileImage }) => {
+const ProfileForm = ({
+  formRef,
+  profileImage,
+  setProfileImage,
+  inputFileRef,
+}) => {
   const { user } = useContext(AuthContext);
   const [email, setEmail] = useState(user.email);
 
@@ -31,6 +36,7 @@ const ProfileForm = ({ formRef, profileImage, setProfileImage }) => {
           name="profileImage"
           onChange={handlePreview}
           id="profileImage"
+          ref={inputFileRef}
         />
         EMAIL:
         <input
@@ -41,7 +47,7 @@ const ProfileForm = ({ formRef, profileImage, setProfileImage }) => {
         />
       </form>
       PASSWORD:
-      <input type="password" disabled={false} placeholder="**************" />
+      <input type="password" disabled={true} placeholder="**************" />
       <Modal modalTitle={"Change password"} text={"Change password"}>
         <PasswordChangeForm />
       </Modal>

@@ -39,4 +39,7 @@ const storage = new CloudinaryStorage({
 //!UPLOAD FILE
 const upload = multer({ storage: storage, fileFilter: checkTypes });
 
-module.exports = upload;
+module.exports = {
+  upload,
+  cloudinary,
+};

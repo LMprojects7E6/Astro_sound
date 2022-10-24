@@ -7,6 +7,7 @@ import { AuthContext } from "context/AuthProvider";
 const Profile = () => {
   const { user } = useContext(AuthContext);
   const [profileImage, setProfileImage] = useState(user.photoURL);
+  const inputFileRef = useRef(null);
   const formRef = useRef(null);
 
   return (
@@ -17,9 +18,14 @@ const Profile = () => {
           formRef={formRef}
           profileImage={profileImage}
           setProfileImage={setProfileImage}
+          inputFileRef={inputFileRef}
         />
         <Modal modalTitle={"Verify account"} text={"Submit"}>
-          <VerifyForm formRef={formRef} profileImage={profileImage} />
+          <VerifyForm
+            formRef={formRef}
+            profileImage={profileImage}
+            inputFileRef={inputFileRef}
+          />
         </Modal>
       </div>
     </div>
