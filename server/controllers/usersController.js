@@ -1,6 +1,6 @@
 //!CONNECTION TO MODELS
 const model = require("../models");
-
+const admin = require("../services/firebase");
 //!POST CREATE NEW USER
 const registerUser = async (req, res) => {
   try {
@@ -47,9 +47,12 @@ const getUser = async (req, res) => {
 
 //!PUT UPDATE USER
 const updateUser = async (req, res) => {
+  console.log(req.file);
   try {
-    res.status(200).send("OOOOOOOK");
+    const { file } = req;
+    res.status(200).send(file.path);
   } catch (error) {
+    console.log(error);
     res.status(400).send(error);
   }
 };
