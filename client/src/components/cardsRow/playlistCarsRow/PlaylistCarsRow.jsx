@@ -19,18 +19,22 @@ const PlaylistCarsRow = () => {
     toast.error(allPlaylistError);
   } else {
     return (
-      <div className="grid md:grid-cols-4 grid-cols-3 gap-5 md:gap-6  overflow-x-auto ">
-        {allPlaylists.map((playlist) => (
-          <Link to={"/playlist"} state={playlist}>
-            <LibraryCard
-              key={playlist._id}
-              playListImage={playlist.playListImage}
-              description={playlist.description}
-              name={playlist.name}
-            />
-          </Link>
-        ))}
-      </div>
+      <>
+        {allPlaylists?.length === 0 && <h1>Your library is empty.</h1>}
+
+        <div className="grid md:grid-cols-4 grid-cols-3 gap-5 md:gap-6  overflow-x-auto ">
+          {allPlaylists.map((playlist) => (
+            <Link to={"/playlist"} state={playlist}>
+              <LibraryCard
+                key={playlist._id}
+                playListImage={playlist.playListImage}
+                description={playlist.description}
+                name={playlist.name}
+              />
+            </Link>
+          ))}
+        </div>
+      </>
     );
   }
 };

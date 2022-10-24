@@ -1,6 +1,6 @@
 import api from "./api";
 
-//!GET ALL USER PLAYLISTS
+//!GET ALL USER 
 export const getUser = async () => {
   const response = await api.get("/users");
   return response.data;

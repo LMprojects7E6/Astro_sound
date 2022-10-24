@@ -36,6 +36,7 @@ export const updatePlaylist = async (data) => {
   return response.data;
 };
 
+
 // //!DELETE PLAYLIST (TODO)
 export const deletePlaylist = async (data) => {
   const response = await api.delete("/playlists", data);
