@@ -494,22 +494,64 @@ const DotsHorizontal = ({ size, color }) => {
 };
 
 const DotsMenuIcon = ({ size, color }) => {
-  return(
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24" fill={color}>
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill={color}
+    >
       <path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path>
-      </svg>
-  )
-}
+    </svg>
+  );
+};
 
 const PencilIcon = ({ size, color }) => {
-  return(
-    <svg xmlns="http://www.w3.org/2000/svg" width={size} height={size} viewBox="0 0 24 24">
-      <path d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"
-      fill={color}
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M4 21a1 1 0 0 0 .24 0l4-1a1 1 0 0 0 .47-.26L21 7.41a2 2 0 0 0 0-2.82L19.42 3a2 2 0 0 0-2.83 0L4.3 15.29a1.06 1.06 0 0 0-.27.47l-1 4A1 1 0 0 0 3.76 21 1 1 0 0 0 4 21zM18 4.41 19.59 6 18 7.59 16.42 6zM5.91 16.51 15 7.41 16.59 9l-9.1 9.1-2.11.52z"
+        fill={color}
       ></path>
-      </svg>
-  )
-}
+    </svg>
+  );
+};
+const LeftArrow = ({ size, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M13.939 4.939 6.879 12l7.06 7.061 2.122-2.122L11.121 12l4.94-4.939z"
+        fill={color}
+      ></path>
+    </svg>
+  );
+};
+const RightArrow = ({ size, color }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10.061 19.061 17.121 12l-7.06-7.061-2.122 2.122L12.879 12l-4.94 4.939z"
+        fill={color}
+      ></path>
+    </svg>
+  );
+};
 
 const Icon = ({ name, size, color }) => {
   const icons = {
@@ -542,13 +584,15 @@ const Icon = ({ name, size, color }) => {
     volNormal: VolumeNormalIcon,
     volFull: VolumeFullIcon,
     lyrics: LyricsIcon,
-    arrow: ArrowLeftIcon,
+    arrowLeft: ArrowLeftIcon,
     addImage: AddImageIcon,
     CloseWindow: CloseWindowIcon,
     DotsMenu: DotsMenuIcon,
     Pencil: PencilIcon,
     dotsHorizontal: DotsHorizontal,
     DotsMenuIcon: DotsMenuIcon,
+    leftArrow: LeftArrow,
+    rightArrow: RightArrow,
   };
 
   const Component = icons[name];

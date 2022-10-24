@@ -1,7 +1,7 @@
 //!CONNECTION TO MODELS
 const model = require("../models");
 
-//!GET ALL USER PLAYLISTS
+//!GET ALL USER PLAYLISTS  EXCEPT THE FAVORITES PLAYLIST
 const getAllPlaylists = async (req, res) => {
   const userID = req.id;
   //!CODE USED FOR TESTING
@@ -9,7 +9,9 @@ const getAllPlaylists = async (req, res) => {
 
   try {
     const playlistsArray = await model.User.findById(userID).populate(
-      "playlists"
+      "playlists",
+      null,
+      { name: { $ne: "LikedPlaylist" } },
     );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
@@ -25,7 +27,7 @@ const getAllPlaylists = async (req, res) => {
 const getLikedPlaylists = async (req, res) => {
   const userID = req.id;
   try {
-    //Get 5 playlists from the user that isn't the favorite playlist
+    //Get liked playlist from the user
     const playlistsArray = await model.User.findById(userID).populate(
       "playlists",
       null,
@@ -135,7 +137,6 @@ const deletePlaylist = async (req, res) => {
   // //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   const { playlistID } = req.params;
-  console.log("enter delete");
 
   try {
     // Delete playlist from user

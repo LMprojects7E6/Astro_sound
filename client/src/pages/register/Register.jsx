@@ -18,7 +18,7 @@ const Register = () => {
 
   useEffect(() => {
     if (user && isLoading) {
-      return <Loader></Loader>;
+      <Loader></Loader>;
     }
 
     if (user && data) {

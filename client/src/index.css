@@ -22,18 +22,27 @@ code {
   background: linear-gradient(to right, #6a3093, #a044ff);
 }
 
-/* .backgroundColor{
-  background-color: ${({ background }) => textToColor[background]}
-}
-
-
-
-const textToColor = {
-  black: "#010606",
-  white: "#fff",
-  transparent: "#0c0c0c",
-}; */
-
 .bg-opacity-loader {
   background-color: #000000e3;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.dark-button {
+  @apply rounded-md bg-black text-white py-3 px-3 hover:bg-white hover:text-black ease-in-out duration-300 hover:scale-105;
+}
+
+.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: var(--speed) ease;
+}
+
+.inactive {
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-20px);
+  transition: var(--speed) ease;
 }

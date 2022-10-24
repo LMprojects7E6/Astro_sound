@@ -35,6 +35,7 @@ const Home = () => {
   } else if (isSongError || isPlaylistError || isErrorLikedSongs) {
     toast.error(songError || playlistError || likedSongsError);
   } else {
+    console.log(likedSongs);
     return (
       <DashboardSection>
         <Carrousel threeSongs={threeSongs}></Carrousel>
