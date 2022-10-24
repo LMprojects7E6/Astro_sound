@@ -2,7 +2,7 @@ import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "hooks/context/AuthProvider";
@@ -61,12 +61,12 @@ const LoginForm = () => {
       )}
 
       <div className="style_forgot_password w-full px-3 mb-5 text-right">
-        <a
+        <Link
+          to={"/forgotPassword"}
           className="text-primary font-semibold cursor-pointer"
-          onClick={() => console.log("send email")}
         >
           Forgot password
-        </a>
+        </Link>
       </div>
       <div className=" flex  items-center justify-center pb-2">
         <Button

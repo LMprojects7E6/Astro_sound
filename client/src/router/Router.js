@@ -9,12 +9,14 @@ import Search from "pages/search";
 import Profile from "pages/profile";
 import Register from "pages/register";
 import LikedSongs from "pages/likedSongs";
+import ForgotPassword from "pages/forgotPassword/ForgotPassword";
 
 const Router = () => {
   return (
     <Routes>
       <Route path="/">
         <Route index path="/login" element={<Login />} />
+        <Route path="/forgotPassword" element={<ForgotPassword />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

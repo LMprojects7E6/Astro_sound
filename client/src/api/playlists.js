@@ -18,26 +18,25 @@ export const getFivePlaylists = async (data) => {
   return response.data;
 };
 
-//!GET PLAYLISTS WITH ID (TODO)
-export const getPlaylistsByID = async (data) => {
-  const response = await api.get("/playlists", data);
+//!GET PLAYLISTS WITH ID
+export const getPlaylistsByID = async (playlistId) => {
+  const response = await api.get(`/playlists/${playlistId}`);
   return response.data;
 };
 
-//!POST CREATE NEW PLAYLIST (TODO)
+//!POST CREATE NEW PLAYLIST
 export const createNewPlaylist = async (data) => {
   const response = await api.post("/playlists", data);
   return response.data;
 };
 
-// //!PUT UPDATE PLAYLIST WITH ID (TODO)
+// //!PUT UPDATE PLAYLIST WITH ID
 export const updatePlaylist = async (playlistId) => {
   const response = await api.put(`/playlists/${playlistId}`);
   return response.data;
 };
 
-
-// //!DELETE PLAYLIST (TODO)
+// //!DELETE PLAYLIST
 export const deletePlaylist = async (playlistId) => {
   const response = await api.delete(`/playlists/${playlistId}`);
   return response.data;

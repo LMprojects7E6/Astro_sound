@@ -3,10 +3,10 @@ const express = require("express");
 const router = express.Router();
 const songsController = require("../controllers/songsController.js");
 //!CLOUDINARY
-const upload = require("../services/cloudinary");
+const { upload } = require("../services/cloudinary");
 const multipleUpload = upload.fields([
   { name: "songFile", maxCount: 1 },
-  { name: "songImage", maxCount: 8 },
+  { name: "songImage", maxCount: 1 },
 ]);
 //!CRUD
 router.get("/", songsController.getAllSongs);
