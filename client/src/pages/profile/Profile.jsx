@@ -20,7 +20,11 @@ const Profile = () => {
           setProfileImage={setProfileImage}
           inputFileRef={inputFileRef}
         />
-        <Modal modalTitle={"Verify account"} text={"Submit"}>
+        <Modal
+          modalTitle={"Verify account"}
+          text={"Submit"}
+          background={"bg-purple"}
+        >
           <VerifyForm
             formRef={formRef}
             profileImage={profileImage}

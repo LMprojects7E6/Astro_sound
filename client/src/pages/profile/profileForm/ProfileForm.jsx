@@ -28,7 +28,7 @@ const ProfileForm = ({
           {profileImage ? (
             <img src={profileImage} alt="profile photo" />
           ) : (
-            <div className="w-32 h-32 bg-gray-600 rounded-full"></div>
+            <div className="w-32 h-32 bg-grey3 rounded-full"></div>
           )}
         </label>
         <input
@@ -46,9 +46,15 @@ const ProfileForm = ({
           onChange={(e) => setEmail(e.target.value)}
         />
       </form>
-      PASSWORD:
-      <input type="password" disabled={true} placeholder="**************" />
-      <Modal modalTitle={"Change password"} text={"Change password"}>
+      <div>
+        PASSWORD:
+        <input type="password" disabled={true} placeholder="**************" />
+      </div>
+      <Modal
+        modalTitle={"Change password"}
+        text={"Change password"}
+        background={"bg-purple"}
+      >
         <PasswordChangeForm />
       </Modal>
     </>

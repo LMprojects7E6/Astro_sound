@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
 
 //!GET  GET USER
 const getUser = async (req, res) => {
-  const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
