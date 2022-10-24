@@ -1,12 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import PlaylistCard from "components/playlistCard/PlaylistCard";
 import { getFivePlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Modal from "components/modal/Modal";
 import CreatePlaylist from "components/playlistModals/createPlaylist";
-
 
 const CardsRow = () => {
   //Get fivePlaylist
@@ -36,9 +34,7 @@ const CardsRow = () => {
         >
           {fivePlaylist.length > 0 ? (
             fivePlaylist.map((playlist, index) => (
-              <Link to={"/playlist"} state={playlist} key={playlist._id}>
-                <PlaylistCard playlist={playlist} key={index} />
-              </Link>
+              <PlaylistCard playlist={playlist} key={index} />
             ))
           ) : (
             <h2 className="md:text-2xl text-xl mb-8 text-white">
