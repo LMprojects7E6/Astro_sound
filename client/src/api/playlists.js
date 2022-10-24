@@ -38,6 +38,6 @@ export const updatePlaylist = async (playlistId) => {
 
 // //!DELETE PLAYLIST
 export const deletePlaylist = async (playlistId) => {
-  const response = await api.put(`/playlists/${playlistId}`);
+  const response = await api.delete(`/playlists/${playlistId}`);
   return response.data;
 };
