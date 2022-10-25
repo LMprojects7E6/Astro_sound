@@ -44,13 +44,13 @@ const formRef = useRef(null);
 
   return (
     <div className="md:w-full md:h-screen h-full flex justify-center items-center text-white flex-col">
-      <div className="md:flex md:text-8xl text-5xl font-bold top-0 absolute mt-16 md:mt-0">
+      <div className="md:flex md:text-8xl text-5xl font-bold">
         <h1>
           Upload Songs
         </h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-        <div className="flex flex-row w-full p-6 mt-16 md:mt-0">
+        <div className="flex flex-row w-full md:px-6 mt-16 md:mt-5">
           <div className="flex flex-col w-5/10 px-3 py-2 space-y-1 text-black">
             {/* INPUT TITLE */}
             <Input
@@ -212,7 +212,7 @@ const formRef = useRef(null);
             </div>
           </div>
         </div>
-        <div className=" flex items-center justify-around">
+        <div className=" flex items-center justify-around mx-3 mt-3">
           <div>
             <Button
               bg={"mainButtonBg"}
