@@ -18,7 +18,7 @@ const ResultContainer = ({ setShowModal, song }) => {
   const handelClick = () => {
     console.log("play");
     saveSearchedSong.mutate(song._id);
-    // setShowModal(false);
+    setShowModal(false);
   };
   return (
     <div

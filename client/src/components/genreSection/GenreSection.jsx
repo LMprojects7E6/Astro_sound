@@ -21,10 +21,10 @@ const GenreSection = () => {
   };
 
   return (
-    <section className="w-full  flex text-white rounded-lg mb-20 ">
-      <div className=" flex items-center m-1">
+    <section className="w-full  md:flex text-white rounded-lg mb-20 ">
+      <div className="hidden md:flex items-center m-1">
         <div
-          className="  cursor-pointer hover:opacity-50 w-10 h-10 rounded-full bg-white  "
+          className=" cursor-pointer flex hover:opacity-50 w-10 h-10 rounded-full bg-white  "
           onClick={slideLeft}
         >
           <Icon name={"leftArrow"} size={40} color={"black"} />
@@ -32,13 +32,13 @@ const GenreSection = () => {
       </div>
       <div
         id="slider"
-        className="w-max flex  scrollbar-hide overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide"
+        className="w-max grid grid-cols-2 items center md:flex scrollbar-hide overflow-x-scroll scroll whitespace-nowrap scroll-smooth scrollbar-hide"
       >
         {genre.map((genre) => {
           return <GenreContainer genre={genre} key={genre.genre} />;
         })}
       </div>
-      <div className=" flex items-center m-1">
+      <div className="hidden md:flex items-center m-1">
         <div
           className="  cursor-pointer hover:opacity-50 w-10 h-10 rounded-full bg-white  "
           onClick={slideRight}

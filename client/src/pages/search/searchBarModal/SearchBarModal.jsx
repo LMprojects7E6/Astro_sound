@@ -20,7 +20,7 @@ export default function SearchBarModal({ modalTitle, children }) {
 
       {showModal ? (
         <Portal>
-          <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full md:h-min h-full bg-purple3 md:bg-grey2  m-auto">
+          <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full  md:h-min h-full bg-purple3 md:bg-grey2  m-auto">
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className=" border-0 rounded md:shadow-lg relative flex flex-col w-full text-white outline-none focus:outline-none">

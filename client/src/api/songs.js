@@ -38,30 +38,38 @@ export const getSearchedSongs = async () => {
 
 //!POST UPDATE PLAYLIST WITH A NEW SONG
 export const addSongToPlaylist = async (data) => {
-  const response = await api.post(`/songs/${data.songId}/${data.playlistId}`);
+  const response = await api.post(
+    `/songs/playlist/${data.songId}/${data.playlistId}`
+  );
   return response.data;
 };
 
 //!POST UPDATE LIKED PLAYLIST WITH A NEW SONG
 export const addSongToLikedPlaylist = async (songID) => {
-  const response = await api.post(`/songs/${songID}`);
+  const response = await api.post(`/songs/likedSongs/${songID}`);
   return response.data;
 };
 
 //!POST UPDATE LIKED PLAYLIST WITH A NEW SONG
 export const addToSearchedSongs = async (songID) => {
-  const response = await api.post(`/songs/${songID}`);
+  const response = await api.post(`/songs/searchedSongs/${songID}`);
   return response.data;
 };
 
 //!DELETE SONG FROM LIKED PLAYLIST
 export const removeSongFromLikedPlaylist = async (songID) => {
-  const response = await api.delete(`/songs/searchedSongs/${songID}`);
+  const response = await api.delete(`/songs/likedSongs/${songID}`);
   return response.data;
 };
 
 //!DELETE REMOVE SONG FROM PLAYLIST
 export const removeSongFromPlaylist = async (songID, playlistID) => {
   const response = await api.delete(`/songs/${songID}/${playlistID}`);
+  return response.data;
+};
+
+//!DELETE REMOVE SONG FROM PLAYLIST
+export const removeSearchedSongs = async () => {
+  const response = await api.delete(`/songs/searchedSongs`);
   return response.data;
 };

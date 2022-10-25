@@ -5,7 +5,21 @@ import { useState, useEffect, useRef, Children, cloneElement } from "react";
 const SettingsDropDown = ({ song, children }) => {
   const [open, setOpen] = useState(false);
 
-  const menuRef = useRef();
+  let menuRef = useRef();
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("mousedown", handler);
+    };
+  });
 
   return (
     <div className="relative inline-block text-left" ref={menuRef}>

@@ -4,8 +4,9 @@ import DashboardSection from "components/dashboardSection";
 import Dropdown from "components/dropdown";
 
 import GenreSection from "components/genreSection";
-import SongsContainer from "components/songsContainer";
+
 import SearchBarModal from "./searchBarModal";
+import SearchedSongsContainer from "./searchedSongsContainer";
 import SearchResults from "./searchResults/SearchResults";
 
 const Search = () => {
@@ -26,8 +27,8 @@ const Search = () => {
       <SearchBarModal modalTitle={"Search"}>
         <SearchResults />
       </SearchBarModal>
-      <GenreSection />
-      <SongsContainer
+      {!recentSearches.length > 0 && <GenreSection />}
+      <SearchedSongsContainer
         searchedSongs={recentSearches}
         title={recentSearchesTitle}
       />
