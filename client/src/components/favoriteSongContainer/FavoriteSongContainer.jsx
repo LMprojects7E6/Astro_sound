@@ -4,7 +4,6 @@ import image from "assets/threeSongs/quevedo.png";
 import LikedSong from "./LikedSong";
 import { Link } from "react-router-dom";
 const FavoriteSongContainer = ({ likedSongs }) => {
-  console.log(likedSongs);
   return (
     <>
       <h2 className="text-2xl m-2 text-white font-bold  mb-8 flex">

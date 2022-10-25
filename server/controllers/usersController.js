@@ -1,6 +1,6 @@
 //!CONNECTION TO MODELS
 const model = require("../models");
-
+const admin = require("../services/firebase");
 //!POST CREATE NEW USER
 const registerUser = async (req, res) => {
   try {
@@ -33,7 +33,7 @@ const registerUser = async (req, res) => {
 
 //!GET  GET USER
 const getUser = async (req, res) => {
-  const { userID } = req.id;
+  const userID = req.id;
   //!CODE USED FOR TESTING
   // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
@@ -46,7 +46,14 @@ const getUser = async (req, res) => {
 };
 
 //!PUT UPDATE USER
-const updateUser = async (req, res) => {};
+const updateUser = async (req, res) => {
+  try {
+    const { file } = req;
+    res.status(200).send(file.path);
+  } catch (error) {
+    res.status(400).send(error);
+  }
+};
 
 //!DELETE USER
 

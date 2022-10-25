@@ -1,10 +1,11 @@
 import toast from "react-hot-toast";
-import { useMutation, useQueryClient, useQuery } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import ErrorParagraph from "components/errorParagraph";
 import Icon from "components/icons/Icons";
 import Button from "components/button";
-import { useRef, useState } from "react";
+import { useState } from "react";
+import { createNewPlaylist } from "api/playlists";
 
 const CreatePlaylist = ({ setShowModal }) => {
   const [uploadedPhoto, setUploadedPhoto] = useState();
@@ -17,33 +18,25 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const queryClient = useQueryClient();
 
-  //Get createPlaylist
-  // const {
-  //   data: createPlaylist,
-  //   isLoading,
-  //   isError,
-  //   error,
-  // } = useQuery(["createPlaylist"], createPlaylist);
-
-  // To implement with backend don't remove
-  // const newPLaylist = useMutation(CreateNewPlaylist, {
-  //   onSuccess: (resp) => {
-  //     playlistCreated(resp);
-  //   },
-  //   onError: (err) => {
-  //     toast.error(err.response.data.errorMsg);
-  //   },
-  // });
+  //POST createPlaylist
+  const newPLaylist = useMutation(createNewPlaylist, {
+    onSuccess: (resp) => {
+      console.log(resp);
+      playlistCreated(resp);
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
 
   const playlistCreated = (data) => {
-    queryClient.invalidateQueries(["getPlaylists"]);
+    queryClient.invalidateQueries(["playlists"]);
     setShowModal(false);
-    toast.success(data);
+    toast.success(data.message);
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-    //newPLaylist.mutate(data);
+    newPLaylist.mutate(data);
   };
 
   const handleUpload = (e) => {
@@ -56,8 +49,7 @@ const CreatePlaylist = ({ setShowModal }) => {
   return (
     <div>
       <form
-        className="grid md:grid-cols-2 
-      md:gap-1 p-5"
+        className="grid md:grid-cols-2 md:gap-1 p-5"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex justify-center items-center ">
@@ -83,7 +75,7 @@ const CreatePlaylist = ({ setShowModal }) => {
             <input
               {...register("playlistImage", {
                 required: {
-                  value: true,
+                  value: false,
                   message: "Image is required.",
                 },
                 validate: {
@@ -160,7 +152,6 @@ const CreatePlaylist = ({ setShowModal }) => {
             radius={"rounded"}
             text={"Save"}
             type={"submit"}
-            className={"font-bold"}
           />
         </div>
       </form>
