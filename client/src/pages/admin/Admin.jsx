@@ -44,7 +44,7 @@ const Admin = () => {
         </div>
       )}
       <DashboardAdmin>
-      <div className="flex flex-col-reverse h-screen">
+      <div className="flex flex-col-reverse h-screen md:flex-row">
         <Dropdown admin={true}/>
         <AsideAdmin />
         <FormAdmin mutate={mutate}/>
