@@ -1,12 +1,9 @@
-import PlaylistCard from "components/playlistCard";
 import SongCard from "components/songCard";
 
-const SongsContainer = ({ searchedSongs, value }) => {
+const SongsContainer = ({ searchedSongs, title }) => {
   return (
     <section className="md:my-10 my-5">
-      <h2 className="text-2xl m-2 text-white font-bold mb-5 mx-2">
-        {searchedSongs.length > 0 ? `Your  search for ${value}` : ""}
-      </h2>
+      <h2 className="text-2xl m-2 text-white font-bold mb-5 mx-2">{title}</h2>
 
       <div
         className={`${

@@ -7,7 +7,9 @@ const ResultContainer = ({ setShowModal, song }) => {
   const queryClient = useQueryClient();
 
   const saveSearchedSong = useMutation(addToSearchedSongs, {
-    onSuccess: () => {},
+    onSuccess: () => {
+      queryClient.invalidateQueries(["searchedSongs"]);
+    },
     onError: (err) => {
       toast.error(err.response.data.errorMsg);
     },
@@ -15,8 +17,8 @@ const ResultContainer = ({ setShowModal, song }) => {
 
   const handelClick = () => {
     console.log("play");
-    //queryClient.invalidateQueries(["searchedSongs"]);
-    setShowModal(false);
+    saveSearchedSong.mutate(song._id);
+    // setShowModal(false);
   };
   return (
     <div

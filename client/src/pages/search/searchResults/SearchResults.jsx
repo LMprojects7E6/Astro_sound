@@ -2,7 +2,6 @@ import useSearchSongs from "hooks/useSearch";
 import { useState } from "react";
 import Icon from "components/icons";
 
-import SongCard from "components/songCard";
 import ResultContainer from "./ResultContainer";
 
 const SearchResults = ({ setShowModal }) => {
@@ -14,6 +13,7 @@ const SearchResults = ({ setShowModal }) => {
   };
 
   const searchData = useSearchSongs(value);
+
   return (
     <>
       <div className=" flex items-center m-2 mr-10 ml-10 rounded-lg  bg-white   ">
