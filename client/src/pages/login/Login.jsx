@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from "react";
-import { useQuery } from "@tanstack/react-query";
-import { getSession } from "api/session";
+// import { useQuery } from "@tanstack/react-query";
+// import { getSession } from "api/session";
 
 import { Link, useNavigate } from "react-router-dom";
 
@@ -14,19 +14,22 @@ import Loader from "components/loader/Loader";
 
 const Login = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
-
-  const { isLoading, data } = useQuery(["getSession"], getSession);
+  const { user, verifyTokenExpiration, signOut } = useContext(AuthContext);
 
   useEffect(() => {
-    if (user && isLoading) {
-      <Loader></Loader>;
+    if (user) {
+      const verifyToken = async () => {
+        try {
+          await verifyTokenExpiration();
+          navigate("/", { replace: true });
+        } catch (error) {
+          await signOut();
+          console.log("Token expired, SIGN OUT!!");
+        }
+      };
+      verifyToken();
     }
-
-    if (user && data) {
-      navigate("/", { replace: true });
-    }
-  }, [data]);
+  }, []);
 
   return (
     <FormSection imgUrl={loginImage}>

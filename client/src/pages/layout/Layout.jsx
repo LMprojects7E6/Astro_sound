@@ -5,15 +5,21 @@ import Loader from "components/loader/Loader";
 import Aside from "./aside";
 import MusicPlayer from "./musicPlayer";
 import Admin from "pages/admin/Admin";
+import { useContext, useEffect } from "react";
+import { AuthContext } from "context/AuthProvider";
 
 const Layout = () => {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  const { isLoading, isError, data } = useQuery(["getSession"], getSession);
+  const { isLoading, data } = useQuery(["getSession"], getSession);
+  useEffect(() => {
+    if (!user) {
+      navigate("/login", { replace: true });
+    }
+  }, []);
 
   if (isLoading) {
     return <Loader></Loader>;
-  } else if (isError) {
-    // navigate("/login", { replace: true });
   } else if (data.role === "admin") {
     return <Admin></Admin>;
   } else if (data.role === "user") {

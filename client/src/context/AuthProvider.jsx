@@ -11,6 +11,7 @@ import {
   updatePassword,
   fetchSignInMethodsForEmail,
   sendPasswordResetEmail,
+  getIdToken,
 } from "firebase/auth";
 import { auth } from "services/firebase";
 import { setTokenHeader } from "api/api";
@@ -60,6 +61,11 @@ const AuthProvider = ({ children }) => {
     const credential = EmailAuthProvider.credential(email, password);
     return reauthenticateWithCredential(user, credential);
   };
+
+  //!VERIFY TOKEN EXPIRATION
+  const verifyTokenExpiration = () => {
+    return getIdToken(auth.currentUser);
+  };
   //! LISTEN TO CHANGES IN USER FIREBASE : TRIGGERED WHEN SING IN , SIGN OUT , REGISTER...etc
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -82,6 +88,7 @@ const AuthProvider = ({ children }) => {
     updatePasswordProfile,
     checkIfEmailExist,
     forgotPassword,
+    verifyTokenExpiration,
   };
   return (
     <AuthContext.Provider value={values}>
