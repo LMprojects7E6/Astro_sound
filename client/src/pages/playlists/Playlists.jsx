@@ -25,7 +25,6 @@ const Playlist = () => {
   } else if (isError) {
     toast.error(error);
   } else {
-    console.log("getAllSongsFromPlaylist: ", AllSongsFromPlaylist);
     return (
       <DashboardSection>
         <div className="text-gray-300 min-h-screen p-10 text-white w-full">
@@ -56,7 +55,6 @@ const Playlist = () => {
                 <div className="p-2 w-12 flex-shrink-0 text-right">⏱</div>
               </div>
               {AllSongsFromPlaylist.map((song) => (
-                
                 <SongRow
                   key={song._id}
                   songFile={song.songFile}
