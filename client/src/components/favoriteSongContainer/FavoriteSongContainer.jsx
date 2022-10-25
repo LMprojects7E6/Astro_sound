@@ -2,16 +2,25 @@ import React from "react";
 import Icon from "components/icons/Icons";
 import image from "assets/threeSongs/quevedo.png";
 import LikedSong from "./LikedSong";
+import { getLikedPlaylists } from "api/playlists";
+import { useQuery } from "@tanstack/react-query";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
-const FavoriteSongContainer = ({ likedSongs }) => {
-  return (
-    <>
-      <h2 className="text-2xl m-2 text-white font-bold  mb-8 flex">
-        Liked Songs{" "}
-        <span className="mx-3">
-          <Icon name={"heart"} size={24} color={"white"} />
-        </span>
-      </h2>
+
+const FavoriteSongContainer = () => {
+  const {
+    isLoading: isLoadingLikedSongs,
+    isError: isErrorLikedSongs,
+    data: likedSongs,
+    error: likedSongsError,
+  } = useQuery(["liked-songs"], getLikedPlaylists);
+
+  if (isLoadingLikedSongs) {
+    return <p>Loading...</p>;
+  } else if (isErrorLikedSongs) {
+    toast.error(likedSongsError);
+  } else {
+    return (
       <section className="w-full mainButtonBg flex text-white rounded-lg mb-20 ">
         <div className="md:p-5 p-3 w-full flex flex-col justify-around ml-5">
           <div className="overflow-y-auto h-52">
@@ -51,8 +60,8 @@ const FavoriteSongContainer = ({ likedSongs }) => {
           <img src={image} alt="" />
         </div>
       </section>
-    </>
-  );
+    );
+  }
 };
 
 export default FavoriteSongContainer;
