@@ -1,8 +1,21 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { addToSearchedSongs } from "api/songs";
 import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
+import toast from "react-hot-toast";
 
 const ResultContainer = ({ setShowModal, song }) => {
+  const queryClient = useQueryClient();
+
+  const saveSearchedSong = useMutation(addToSearchedSongs, {
+    onSuccess: () => {},
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
+
   const handelClick = () => {
     console.log("play");
+    //queryClient.invalidateQueries(["searchedSongs"]);
     setShowModal(false);
   };
   return (
