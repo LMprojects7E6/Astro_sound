@@ -5,10 +5,7 @@ function useSearchSongs(searchText) {
   const keys = ["album", "artist", "genre", "title"];
   const search = searchText.toLowerCase();
 
-  const { isLoading, isError, data, error } = useQuery(
-    ["searchedSongs"],
-    getSongs
-  );
+  const { isLoading, isError, data } = useQuery(["getAllSongs"], getSongs);
 
   if (isLoading) {
     return [];

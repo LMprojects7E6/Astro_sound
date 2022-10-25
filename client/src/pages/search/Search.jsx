@@ -1,43 +1,37 @@
+import { useQuery } from "@tanstack/react-query";
+import { getSearchedSongs } from "api/songs";
 import DashboardSection from "components/dashboardSection";
 import Dropdown from "components/dropdown";
 
-import useSearchSongs from "hooks/useSearch";
-import { useState } from "react";
-import Icon from "components/icons/Icons";
-import SongsContainer from "components/songsContainer";
 import GenreSection from "components/genreSection";
-import AddToPlaylist from "components/playlistModals/addToPlaylist";
-import SongDropDown from "components/settingsDropDown";
+
+import SearchBarModal from "./searchBarModal";
+import SearchedSongsContainer from "./searchedSongsContainer";
+import SearchResults from "./searchResults/SearchResults";
 
 const Search = () => {
-  const [value, setValue] = useState("");
+  const { isLoading, isError, data } = useQuery(
+    ["searchedSongs"],
+    getSearchedSongs
+  );
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setValue(value);
-  };
-
-  const searchData = useSearchSongs(value);
+  const recentSearches = !isLoading && !isError ? data : [];
+  const recentSearchesTitle =
+    !isLoading && !isError && recentSearches.length > 0
+      ? "Recent Searches"
+      : "Find and listen to the latests songs...";
 
   return (
     <DashboardSection>
       <Dropdown />
-      <div className="w-full content-center ">
-        <div className=" flex items-center m-10 rounded-lg  lg:ml-80 bg-white  md:max-w-sm ">
-          <span className="p-2">
-            <Icon name={"search"} size={22} color={"currentColor"} />
-          </span>
-          <input
-            className="outline-none appearance-none"
-            value={value}
-            name="searchInput"
-            placeholder="Search"
-            onChange={handleChange}
-          />
-        </div>
-      </div>
-      <GenreSection />
-      <SongsContainer searchedSongs={searchData} value={value} />
+      <SearchBarModal modalTitle={"Search"}>
+        <SearchResults />
+      </SearchBarModal>
+      {!recentSearches.length > 0 && <GenreSection />}
+      <SearchedSongsContainer
+        searchedSongs={recentSearches}
+        title={recentSearchesTitle}
+      />
     </DashboardSection>
   );
 };
