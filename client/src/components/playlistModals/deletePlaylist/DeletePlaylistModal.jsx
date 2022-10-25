@@ -5,6 +5,8 @@ import Button from "components/button";
 import toast from "react-hot-toast";
 
 const DeletePlaylistModal = ({ setShowModal, playlist }) => {
+
+console.log(playlist._id);
   const queryClient = useQueryClient();
 
   const removePlaylist = useMutation(deletePlaylist, {
@@ -16,14 +18,13 @@ const DeletePlaylistModal = ({ setShowModal, playlist }) => {
 
   const playlistDeleted = () => {
     queryClient.invalidateQueries(["getAllPlaylists"]);
-    setShowModal(false);
     toast.success(`${playlist.name} has been deleted`);
   };
 
   return (
     <div className="flex flex-col text-center">
       <p className="text-xl  p-5">
-        Are you sure you want to delete {"PlaylistName"} ?
+        Are you sure you want to delete {playlist.name} ?
       </p>
 
       <div className="flex items-center justify-between p-6 ">

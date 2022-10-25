@@ -35,12 +35,7 @@ const CardsRow = () => {
         >
           {fivePlaylist.length > 0 ? (
             fivePlaylist.map((playlist) => (
-              <PlaylistCard
-                playListImage={playlist.playListImage}
-                description={playlist.description}
-                name={playlist.name}
-                key={playlist._id}
-              />
+              <PlaylistCard playlist={playlist} key={playlist._id} />
             ))
           ) : (
             <h2 className="md:text-2xl text-xl mb-8 text-white">
