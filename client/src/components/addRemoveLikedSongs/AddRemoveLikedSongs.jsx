@@ -19,7 +19,7 @@ const AddRemoveLikedSongs = ({ song }) => {
   const addToLikedSongs = useMutation(addSongToLikedPlaylist, {
     onSuccess: () => {
       queryClient.invalidateQueries(["liked-songs"]);
-      toast.success(`Add  ${song.title} to liked songs`);
+      toast.success(`${song.title} added to liked songs`);
     },
     onError: (err) => {
       toast.error(err.response.data.errorMsg);
@@ -29,7 +29,7 @@ const AddRemoveLikedSongs = ({ song }) => {
   const removeFromLikedSongs = useMutation(removeSongFromLikedPlaylist, {
     onSuccess: () => {
       queryClient.invalidateQueries(["liked-songs"]);
-      toast.success(`Remove  ${song.title} to liked songs`);
+      toast.success(`${song.title} removed from liked songs`);
     },
     onError: (err) => {
       toast.error(err.response.data.errorMsg);

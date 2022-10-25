@@ -10,7 +10,7 @@ const SongsContainer = ({ searchedSongs, value }) => {
 
       <div
         className={`${
-          searchedSongs.length > 0
+          searchedSongs.length > 1
             ? " flex flex-col md:grid lg:grid-cols-4 md:grid-cols-3 md:gap-5   overflow-x-auto "
             : "flex flex-col"
         }`}
