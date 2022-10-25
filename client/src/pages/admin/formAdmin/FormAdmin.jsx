@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
+import { registerUser } from "api/session";
 
 const FormAdmin = ({ mutate }) => {
 
@@ -11,7 +12,7 @@ const formRef = useRef(null);
 
   const onSubmit = () => {
     const data = new FormData(formRef.current);
-    mutate(data);
+    mutate(data)
   };
 
   const [image, setImage] = useState({ preview: "", raw: "" });
@@ -43,13 +44,13 @@ const formRef = useRef(null);
 
   return (
     <div className="md:w-full md:h-screen h-full flex justify-center items-center text-white flex-col">
-      <div className="md:flex md:text-8xl text-5xl font-bold top-0 absolute mt-16 md:mt-0">
+      <div className="md:flex md:text-8xl text-5xl font-bold">
         <h1>
           Upload Songs
         </h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-        <div className="flex flex-row w-full p-6 mt-16 md:mt-0">
+        <div className="flex flex-row w-full md:px-6 mt-16 md:mt-5">
           <div className="flex flex-col w-5/10 px-3 py-2 space-y-1 text-black">
             {/* INPUT TITLE */}
             <Input
@@ -127,31 +128,21 @@ const formRef = useRef(null);
             <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
             )}
             {/* INPUT GENRE */}
-            <Input
-              className="rounded-lg py-1 pl-2"
-              label="Genre"
-              name="genre"
-              type="text"
-              pattern={/[a-zA-Z]{1,}/}
-              placeholder="Genre"
-              maxLength={30}
-              register={register}
-              errors={errors}
-              {...register("genre", {
-                required: true,
-                message: "Genre required",
-                maxLength:30
-              })}
-            />
-             {errors.genre?.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
-            {errors.genre?.type === "pattern" && (
-            <ErrorParagraph>Insert a valid genre</ErrorParagraph>
-            )}
-            {errors.genre?.type === "maxLength" && (
-            <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
-            )}
+            <div className="flex flex-col">
+            <label className="pl-1">
+              Genre
+            </label>
+            <select className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1"
+              name="genre">
+              <option value="electronic">Dance / Electronic</option>
+              <option value="jazz">Jazz</option>
+              <option value="rap">Rap</option>
+              <option value="reggaeton">Reggaeton</option>
+              <option value="rock">Rock</option>
+              <option value="pop">Pop</option>
+              <option value="soul">Soul</option>
+            </select>
+            </div>
           </div>
           <div className="flex flex-col w-8/12 space-y-4">
             {/* INPUT IMAGE SONG */}
@@ -221,7 +212,7 @@ const formRef = useRef(null);
             </div>
           </div>
         </div>
-        <div className=" flex items-center justify-around">
+        <div className=" flex items-center justify-around mx-3 mt-3">
           <div>
             <Button
               bg={"mainButtonBg"}
