@@ -12,11 +12,15 @@ const multipleUpload = upload.fields([
 router.get("/", songsController.getAllSongs);
 router.get("/threeSongs", songsController.getThreeSongs);
 router.get("/:genre", songsController.getSongsByGenre);
+router.get("/searchedSongs", songsController.getSearchedSongs);
 router.get("/playlist/:playlistID", songsController.getAllSongsFromPlaylist);
 router.post("/:songID/:playlistID", songsController.addSongToPlaylist);
 router.post("/:songID", songsController.addSongToLikedPlaylist);
+router.post("/searchedSongs/:songID", songsController.addToSearchedSongs);
 router.delete("/:songID", songsController.removeSongFromLikedPlaylist);
 router.delete("/:songID/:playlistID", songsController.removeSongFromPlaylist);
+router.delete("/:searchedSongs", songsController.removeSearchedSongs);
+
 //upload songs admin
 router.post("/", multipleUpload, songsController.addSong);
 module.exports = router;
