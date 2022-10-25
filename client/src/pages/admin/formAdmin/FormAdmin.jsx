@@ -49,8 +49,8 @@ const formRef = useRef(null);
         </h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
-        <div className="flex flex-row w-full text-white p-6 mt-16 md:mt-0">
-          <div className="flex flex-col w-5/10 px-3 py-2 space-y-1">
+        <div className="flex flex-row w-full p-6 mt-16 md:mt-0">
+          <div className="flex flex-col w-5/10 px-3 py-2 space-y-1 text-black">
             {/* INPUT TITLE */}
             <Input
               className="text-black rounded-lg py-1 pl-2 mt-2"
@@ -128,7 +128,7 @@ const formRef = useRef(null);
             )}
             {/* INPUT GENRE */}
             <Input
-              className="text-white rounded-lg py-1 pl-2"
+              className="rounded-lg py-1 pl-2"
               label="Genre"
               name="genre"
               type="text"
@@ -155,7 +155,7 @@ const formRef = useRef(null);
           </div>
           <div className="flex flex-col w-8/12 space-y-4">
             {/* INPUT IMAGE SONG */}
-            <div className="flex flex-col md:flex-col items-center w-full mt-10 md:mt-8 md:mb-2 justify-evenly " >
+            <div className="flex flex-col md:flex-col items-center w-full mt-10 md:mt-8 md:mb-2 justify-evenly" >
               <label
                 htmlFor="upload-button"
                 className="flex flex-col justify-center items-center text-black bg-white rounded-lg cursor-pointer hover:bg-white w-52 h-52"
@@ -201,8 +201,9 @@ const formRef = useRef(null);
                 )}
             {/* INPUT SONGFILE */}
             </div>
+            <div>
             <input
-              className="flex w-full text-sm text-gray-900 text-white"
+              className="flex w-full text-sm text-gray-900 text-white mt-2 px-5"
               id="file_input"
               type="file"
               name="songFile"
@@ -217,6 +218,7 @@ const formRef = useRef(null);
              {errors.songFile?.type === "required" && (
               <ErrorParagraph>This is field required</ErrorParagraph>
             )}
+            </div>
           </div>
         </div>
         <div className=" flex items-center justify-around">
