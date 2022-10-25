@@ -20,7 +20,7 @@ export const getThreeSongs = async () => {
 
 //!GET SONGS BY GENRE
 export const getSongsByGenre = async (genre) => {
-  const response = await api.get(`/songs/${genre}`);
+  const response = await api.get(`/songs/genre/${genre}`);
   return response.data;
 };
 

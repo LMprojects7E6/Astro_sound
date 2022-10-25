@@ -234,6 +234,6 @@ module.exports = {
   removeSongFromLikedPlaylist: removeSongFromLikedPlaylist,
   removeSongFromPlaylist: removeSongFromPlaylist,
   getSearchedSongs: getSearchedSongs,
-  addToSearchedSongs: addToSearchedSongs,
-  removeSearchedSongs: removeSearchedSongs,
+  // addToSearchedSongs: addToSearchedSongs,
+  // removeSearchedSongs: removeSearchedSongs,
 };
