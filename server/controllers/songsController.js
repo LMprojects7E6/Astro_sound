@@ -75,7 +75,6 @@ const addSongToPlaylist = async (req, res) => {
   const { songID } = req.params;
 
   try {
-    // const song = await model.Song.findById(songID);
     //Add song to playlist
     const playlist = await model.Playlist.findByIdAndUpdate(playlistID, {
       $push: { songList: songID },
@@ -184,6 +183,7 @@ const getSearchedSongs = async (req, res) => {
   }
 };
 
+//!POST SEARCHED SONGS
 const addToSearchedSongs = async (req, res) => {
   const userID = req.id;
   const { songID } = req.params;

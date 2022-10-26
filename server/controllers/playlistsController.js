@@ -4,12 +4,12 @@ const model = require("../models");
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
   const userID = req.id;
-  //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     const playlistsArray = await model.User.findById(userID).populate(
-      "playlists"
+      "playlists",
+      null,
+      { name: { $ne: "LikedPlaylist" } },
     );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
@@ -77,8 +77,6 @@ const getPlaylistsByID = async (req, res) => {
 const createNewPlaylist = async (req, res) => {
   const { PlaylistName, PlaylistDescription, playListImage } = req.body;
   const userID = req.id;
-  //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   try {
     const user = await model.User.findById(userID);
     const createdBy = user.firstName + " " + user.lastName;
@@ -130,8 +128,6 @@ const updatePlaylist = async (req, res) => {
 //!DELETE PLAYLIST
 const deletePlaylist = async (req, res) => {
   const userID = req.id;
-  // //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   const { playlistID } = req.params;
 
   try {
