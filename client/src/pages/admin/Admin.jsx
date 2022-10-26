@@ -27,15 +27,6 @@ const Admin = () => {
     },
   });
 
-  // const uploadSong = (e) => {
-  //   e.preventDefault();
-  //   const data = new FormData(e.target);
-  //   mutate(data);
-  // };
- 
-  // if (isLoading) {
-  //   return <Loader></Loader>;
-  // }
   return (
     <>
       {isLoading && (

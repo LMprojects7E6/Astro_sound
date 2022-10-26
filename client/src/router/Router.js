@@ -9,6 +9,7 @@ import Profile from "pages/profile";
 import Register from "pages/register";
 import LikedSongs from "pages/likedSongs";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
+import Estatistics from "pages/admin/estatistics";
 
 const Router = () => {
   return (
@@ -23,6 +24,7 @@ const Router = () => {
           <Route path="likedSongs" element={<LikedSongs />} />
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="estatistics" element={<Estatistics/>} />
         </Route>
       </Route>
     </Routes>

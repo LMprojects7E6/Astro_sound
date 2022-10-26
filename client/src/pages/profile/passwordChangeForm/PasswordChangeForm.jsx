@@ -19,20 +19,21 @@ const PasswordChangeForm = ({ setShowModal }) => {
     }
   };
   return (
+    <div className="">
     <form
-      className="flex flex-col mt-3 px-5 text-black"
-      onSubmit={updatePassword}
-    >
-      email:
+      className="flex flex-col mt-3 px-5 text-black space-y-3"
+      onSubmit={updatePassword}>
+      <label>Email:</label>
       <input type="email" name="verifyEmail" id="" />
-      password:
+      <label>Password:</label>
       <input type="password" name="verifyPassword" />
-      New password:
+      <label>New password:</label>
       <input type="password" name="newPassword" />
-      <button type="submit" className="bg-purple-500">
+      <button type="submit" className="bg-purple2 rounded-lg">
         VERIFY
       </button>
     </form>
+    </div>
   );
 };
 

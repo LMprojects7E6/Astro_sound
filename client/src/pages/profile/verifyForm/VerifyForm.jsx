@@ -71,12 +71,12 @@ const VerifyForm = ({
   return (
     <form
       action=""
-      className="flex flex-col mt-3 px-5 text-black"
+      className="flex flex-col mt-3 px-5 text-white"
       onSubmit={verifyCredentials}
     >
-      email:
+      Email:
       <input type="email" name="verifyEmail" id="" />
-      password:
+      Password:
       <input type="password" name="verifyPassword" />
       <button type="submit" className="bg-purple-500">
         VERIFY

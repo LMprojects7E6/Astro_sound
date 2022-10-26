@@ -47,7 +47,7 @@ const AsideAdmin = () => {
           </li>
           <li className="flex-col">
             <NavLink
-              to={"/library"}
+              to={"/estatistics"}
               className={({ isActive }) =>
                 isActive ? activeStyle + " " + style : style
               }
@@ -55,7 +55,7 @@ const AsideAdmin = () => {
               <span>
                 <Icon name={"collection"} size={22} color={"currentColor"}/>
               </span>
-              Stadistics
+              Estatistics
             </NavLink>
           </li>
         </ul>
