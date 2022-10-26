@@ -35,7 +35,6 @@ export default function Modal({
         iconColor={iconColor}
         iconSize={iconSize}
       />
-
       {showModal ? (
         <Portal>
           <div className="md:justify-center md:items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none md:w-fit w-full md:h-min h-full bg-grey2 m-auto">
