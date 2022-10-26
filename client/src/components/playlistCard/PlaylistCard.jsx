@@ -26,11 +26,11 @@ const PlaylistCard = ({ playlist }) => {
 
       <div className="flex-none flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
         <SettingsDropDown playlist={playlist}>
-          <Modal background={"bg-grey5"} modalTitle={"Delete"} text={"Delete"}>
+          <Modal background={"bg-grey5"} text={"Delete"}>
             <DeletePlaylistModal playlist={playlist} />
           </Modal>
-          <Modal background={"bg-grey5"} modalTitle={"Edit"} text={"Edit"}>
-            <EditPlaylistModal />
+          <Modal background={"bg-grey5"} modalTitle={`Edit playlist ${playlist.name}`} text={"Edit"}>
+            <EditPlaylistModal playlist={playlist} />
           </Modal>
         </SettingsDropDown>
       </div>
