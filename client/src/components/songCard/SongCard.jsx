@@ -9,7 +9,7 @@ import AddToPlaylist from "components/playlistModals/addToPlaylist";
 
 const SongCard = ({ song }) => {
   return (
-    <div className="flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  md:m-20">
+    <div className=" relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  md:m-20">
       <div
         className=" z-0 m-2 w-16 h-16 md:w-36  md:h-36 bg-cover bg-no-repeat bg-center  md:rounded-full "
         style={{ backgroundImage: `url(${song.songImage})` }}
@@ -28,9 +28,11 @@ const SongCard = ({ song }) => {
         </h5>
         <p className=" text-white">{song.artist}</p>
       </div>
-      <div className=" flex-none flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
-        <AddRemoveLikedSongs song={song} />
-        <span className="ml-2">
+      <div className=" flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
+        <span className="mt-2">
+          <AddRemoveLikedSongs song={song} />
+        </span>
+        <span className="ml-10">
           <SettingsDropDown song={song}>
             <Modal
               background={"bg-grey5"}

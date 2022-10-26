@@ -16,8 +16,6 @@ export default function Modal({
 }) {
   const [showModal, setShowModal] = useState(false);
 
-  console.log();
-
   const handelCloseModal = () => {
     open && setOpen(!open);
     setShowModal(false);

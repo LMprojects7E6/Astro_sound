@@ -37,3 +37,5 @@ const Search = () => {
 };
 
 export default Search;
+
+user == "admin" && <component />;

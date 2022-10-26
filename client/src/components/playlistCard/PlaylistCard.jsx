@@ -7,7 +7,7 @@ import EditPlaylistModal from "../playlistModals/editPlaylistModal";
 
 const PlaylistCard = ({ playlist }) => {
   return (
-    <div className=" text-white text-center md:bg-grey5  md:px-5 md:py-6 rounded-md">
+    <div className="relative text-white text-center md:bg-grey5  md:px-5 md:py-6 rounded-md">
       <Link to={"/playlist"} state={playlist} key={playlist._id}>
         <div className="playlist--image md:mb-3">
           <img
@@ -24,16 +24,15 @@ const PlaylistCard = ({ playlist }) => {
         </div>
       </Link>
 
-      <div className="flex-none flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
-        <SettingsDropDown playlist={playlist}>
-          <Modal background={"bg-grey5"} modalTitle={"Delete"} text={"Delete"}>
-            <DeletePlaylistModal playlist={playlist} />
-          </Modal>
-          <Modal background={"bg-grey5"} modalTitle={"Edit"} text={"Edit"}>
-            <EditPlaylistModal />
-          </Modal>
-        </SettingsDropDown>
-      </div>
+      <SettingsDropDown playlist={playlist}>
+        <Modal background={"bg-grey5"} modalTitle={"Delete"} text={"Delete"}>
+          <DeletePlaylistModal playlist={playlist} />
+        </Modal>
+        <hr className="ml-5 mr-5" />
+        <Modal background={"bg-grey5"} modalTitle={"Edit"} text={"Edit"}>
+          <EditPlaylistModal />
+        </Modal>
+      </SettingsDropDown>
     </div>
   );
 };

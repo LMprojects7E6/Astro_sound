@@ -12,8 +12,6 @@ const GenreContainer = ({ genre }) => {
     () => getSongsByGenre(genre.genre)
   );
 
-  const songsByGenre = data;
-
   if (isLoading) {
     return (
       <div className={`bg-${genre.color} rounded-xl  md:max-w-xs m-5`}>

@@ -15,7 +15,11 @@ export default function SearchBarModal({ modalTitle, children }) {
         <span className="p-2">
           <Icon name={"search"} size={22} color={"currentColor"} />
         </span>
-        <input className="outline-none appearance-none" placeholder="Search" />
+        <input
+          className="outline-none appearance-none"
+          placeholder="Search"
+          readOnly
+        />
       </div>
 
       {showModal ? (

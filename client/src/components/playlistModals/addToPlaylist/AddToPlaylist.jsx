@@ -25,10 +25,12 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
     },
   });
 
-  const playlistUpdated = (data) => {
+  const playlistUpdated = (resp) => {
     queryClient.invalidateQueries(["getAllPlaylists"]);
     setShowModal(false);
-    toast.success(data);
+    console.log(typeof resp.status, typeof 208);
+    console.log(resp.status === 208);
+    resp.status === 208 ? toast.error(resp.data) : toast.success(resp.data);
   };
 
   const handelClick = (list) => {

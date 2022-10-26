@@ -5,8 +5,6 @@ import Button from "components/button";
 import toast from "react-hot-toast";
 
 const DeletePlaylistModal = ({ setShowModal, playlist }) => {
-
-console.log(playlist._id);
   const queryClient = useQueryClient();
 
   const removePlaylist = useMutation(deletePlaylist, {
