@@ -4,15 +4,13 @@ import { useForm } from "react-hook-form";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
-import { registerUser } from "api/session";
 
 const FormAdmin = ({ mutate }) => {
-
-const formRef = useRef(null);
+  const formRef = useRef(null);
 
   const onSubmit = () => {
     const data = new FormData(formRef.current);
-    mutate(data)
+    mutate(data);
   };
 
   const [image, setImage] = useState({ preview: "", raw: "" });
@@ -33,21 +31,16 @@ const formRef = useRef(null);
   //   formData.append("image", image.raw);
   // };
 
-
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-
   return (
     <div className="md:w-full md:h-screen h-full flex justify-center items-center text-white flex-col">
       <div className="md:flex md:text-8xl text-5xl font-bold">
-        <h1>
-          Upload Songs
-        </h1>
+        <h1>Upload Songs</h1>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} ref={formRef}>
         <div className="flex flex-row w-full md:px-6 mt-16 md:mt-5">
@@ -65,17 +58,19 @@ const formRef = useRef(null);
               {...register("title", {
                 required: true,
                 message: "Title required",
-                maxLength: 30
+                maxLength: 30,
               })}
             />
             {errors.title?.type === "required" && (
-            <ErrorParagraph className="m-0">This is field required</ErrorParagraph>
+              <ErrorParagraph className="m-0">
+                This is field required
+              </ErrorParagraph>
             )}
             {errors.title?.type === "pattern" && (
-            <ErrorParagraph>Insert a valid title</ErrorParagraph>
+              <ErrorParagraph>Insert a valid title</ErrorParagraph>
             )}
             {errors.title?.type === "maxLength" && (
-            <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
+              <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
             )}
             {/* INPUT ARTIST */}
             <Input
@@ -91,17 +86,17 @@ const formRef = useRef(null);
               {...register("artist", {
                 required: true,
                 message: "Artist name required",
-                maxLength: 30
+                maxLength: 30,
               })}
             />
             {errors.artist?.type === "required" && (
               <ErrorParagraph>This is field required</ErrorParagraph>
             )}
             {errors.artist?.type === "pattern" && (
-            <ErrorParagraph>Insert a valid artist</ErrorParagraph>
+              <ErrorParagraph>Insert a valid artist</ErrorParagraph>
             )}
             {errors.artist?.type === "maxLength" && (
-            <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
+              <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
             )}
             {/* INPUT ALBUM */}
             <Input
@@ -115,63 +110,63 @@ const formRef = useRef(null);
               {...register("album", {
                 required: true,
                 message: "Album name required",
-                maxLength: 30
+                maxLength: 30,
               })}
             />
             {errors.album?.type === "required" && (
               <ErrorParagraph>This is field required</ErrorParagraph>
             )}
             {errors.album?.type === "pattern" && (
-            <ErrorParagraph>Insert a valid album</ErrorParagraph>
+              <ErrorParagraph>Insert a valid album</ErrorParagraph>
             )}
             {errors.album?.type === "maxLength" && (
-            <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
+              <ErrorParagraph>This field requires 30 characters</ErrorParagraph>
             )}
             {/* INPUT GENRE */}
             <div className="flex flex-col">
-            <label className="pl-1">
-              Genre
-            </label>
-            <select className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1"
-              name="genre">
-              <option value="electronic">Dance / Electronic</option>
-              <option value="jazz">Jazz</option>
-              <option value="rap">Rap</option>
-              <option value="reggaeton">Reggaeton</option>
-              <option value="rock">Rock</option>
-              <option value="pop">Pop</option>
-              <option value="soul">Soul</option>
-            </select>
+              <label className="pl-1">Genre</label>
+              <select
+                className="border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500 mt-1"
+                name="genre"
+              >
+                <option value="electronic">Dance / Electronic</option>
+                <option value="jazz">Jazz</option>
+                <option value="rap">Rap</option>
+                <option value="reggaeton">Reggaeton</option>
+                <option value="rock">Rock</option>
+                <option value="pop">Pop</option>
+                <option value="soul">Soul</option>
+              </select>
             </div>
           </div>
           <div className="flex flex-col w-8/12 space-y-4">
             {/* INPUT IMAGE SONG */}
-            <div className="flex flex-col md:flex-col items-center w-full mt-10 md:mt-8 md:mb-2 justify-evenly" >
+            <div className="flex flex-col md:flex-col items-center w-full mt-10 md:mt-8 md:mb-2 justify-evenly">
               <label
                 htmlFor="upload-button"
                 className="flex flex-col justify-center items-center text-black bg-white rounded-lg cursor-pointer hover:bg-white w-52 h-52"
               >
-                  {image.preview ? (
-                    <img
-                      src={image.preview}
-                      alt="songImage"
-                      className="w-full h-full"
-                      name="songImage"
-                    />
-                  ) : (
-                    <>
-                      <Icons name={"Pencil"} size={52} color={"black"} />
-                      <span className="mb-1 mx-2 text-xs md:text-sm">
-                        <span className="font-semibold">Click to upload</span>{" "}
-                        <span className="hidden md:flex">or drag and drop</span>
-                      </span>
-                      <span className="hidden md:flex text-xs text-gray-500">
-                        PNG or JPG (MAX. 800x 400px)
-                      </span>
-                    </>
-                  )}
-                  
-               <input
+                {image.preview ? (
+                  <img
+                    src={image.preview}
+                    alt="songImage"
+                    className="w-full h-full"
+                    name="songImage"
+                  />
+                ) : (
+                  <>
+                    <Icons name={"Pencil"} size={52} color={"black"} />
+                    <span className="mb-1 mx-2 text-xs md:text-sm">
+                      <span className="font-semibold">Click to upload</span>{" "}
+                      <span className="hidden md:flex">or drag and drop</span>
+                    </span>
+                    <span className="hidden md:flex text-xs text-gray-500">
+                      PNG or JPG (MAX. 800x 400px)
+                    </span>
+                  </>
+                )}
+
+                <input
                   id="upload-button"
                   name="songImage"
                   type="file"
@@ -179,36 +174,36 @@ const formRef = useRef(null);
                   accept=".jpg, .jpeg, .png"
                   errors={errors}
                   {...register("songImage", {
-                    onChange: (e) => {handleChange(e)},
+                    onChange: (e) => {
+                      handleChange(e);
+                    },
                     required: true,
                     message: "Song image required",
                   })}
-                  
                 />
-             
               </label>
-           {errors.songImage?.type === "required" && (
+              {errors.songImage?.type === "required" && (
                 <ErrorParagraph>This is field required</ErrorParagraph>
-                )}
-            {/* INPUT SONGFILE */}
+              )}
+              {/* INPUT SONGFILE */}
             </div>
             <div>
-            <input
-              className="flex w-full text-sm text-gray-900 text-white mt-2 px-5"
-              id="file_input"
-              type="file"
-              name="songFile"
-              register={register}
-              errors={errors}
-              accept=".mp3, .mp4"
-              {...register("songFile", {
-                required: true,
-                message: "Song file required",
-              })}
-            />
-             {errors.songFile?.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
+              <input
+                className="flex w-full text-sm text-gray-900 text-white mt-2 px-5"
+                id="file_input"
+                type="file"
+                name="songFile"
+                register={register}
+                errors={errors}
+                accept=".mp3, .mp4"
+                {...register("songFile", {
+                  required: true,
+                  message: "Song file required",
+                })}
+              />
+              {errors.songFile?.type === "required" && (
+                <ErrorParagraph>This is field required</ErrorParagraph>
+              )}
             </div>
           </div>
         </div>

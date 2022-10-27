@@ -22,14 +22,14 @@ const SongCard = ({ song }) => {
           />
         </div>
       </div>
-      <div className=" grow flex flex-col justify-between  ">
+      <div className=" grow flex flex-col justify-between md:my-10  ">
         <h5 className=" md:text-xl w-max font-bold tracking-tight dark:text-white">
           {song.title}
         </h5>
         <p className=" text-white">{song.artist}</p>
       </div>
       <div className=" flex  mb-2 pr-5 max-w-full lg:ml-40 md:ml-28">
-        <span className="mt-2">
+        <span className="absolute right-16 bottom-2">
           <AddRemoveLikedSongs song={song} />
         </span>
         <span className="ml-10">

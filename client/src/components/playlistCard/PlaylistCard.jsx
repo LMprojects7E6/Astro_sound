@@ -28,7 +28,6 @@ const PlaylistCard = ({ playlist }) => {
         <Modal background={"bg-grey5"} modalTitle={"Delete"} text={"Delete"}>
           <DeletePlaylistModal playlist={playlist} />
         </Modal>
-        <hr className="ml-5 mr-5" />
         <Modal background={"bg-grey5"} modalTitle={"Edit"} text={"Edit"}>
           <EditPlaylistModal />
         </Modal>
