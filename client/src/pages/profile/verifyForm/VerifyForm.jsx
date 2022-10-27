@@ -71,16 +71,17 @@ const VerifyForm = ({
   return (
     <form
       action=""
-      className="flex flex-col mt-3 px-5 text-black"
-      onSubmit={verifyCredentials}
-    >
-      email:
-      <input type="email" name="verifyEmail" id="" />
-      password:
-      <input type="password" name="verifyPassword" />
-      <button type="submit" className="bg-purple-500">
+      className="flex flex-col mt-3 px-5 text-white"
+      onSubmit={verifyCredentials}>
+      <label>Email:</label>
+      <input type="email" name="verifyEmail" id="" className="rounded my-1"/>
+      <label>Password:</label>
+      <input type="password" name="verifyPassword" className="rounded my-1"/>
+      <div className="flex flex-row justify-center mt-3">
+      <button type="submit" className="font-medium w-28 bg-purple2 rounded">
         VERIFY
       </button>
+      </div>
     </form>
   );
 };
