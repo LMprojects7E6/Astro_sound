@@ -5,7 +5,7 @@ import { useForm, Controller } from "react-hook-form";
 import ErrorParagraph from "components/errorParagraph";
 import Icon from "components/icons/Icons";
 import Button from "components/button";
-import { updateMyPlaylist } from "api/playlists";
+import { updatePlaylist } from "api/playlists";
 
 const EditPlaylistModal = ({ setShowModal, playlist }) => {
   const { _id, name, description } = playlist;
@@ -21,31 +21,32 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
     setValue,
     formState: { errors },
   } = useForm({ defaultValues: initialFormState });
-  setValue("name", name);
-  setValue("username", description);
 
   const queryClient = useQueryClient();
 
   //PUT updatePlaylist
-  const playlistUpdated = useMutation(updateMyPlaylist, {
+  const editPlaylist = useMutation(updatePlaylist, {
     onSuccess: (resp) => {
       console.log(resp);
-      updatePlaylist(resp);
+      playlistUpdated(resp);
     },
     onError: (err) => {
       toast.error(err.response.data.errorMsg);
     },
   });
 
-  const updatePlaylist = (data) => {
+  const playlistUpdated = (data) => {
     queryClient.invalidateQueries(["getAllPlaylists"]);
     setShowModal(false);
     toast.success(data.message);
   };
 
-  const onSubmit = (data) => {
-    playlistUpdated.mutate(_id);
-    setShowModal(false);
+  const onSubmit = (e) => {
+    const formData = new FormData(e.target);
+    const dataPlaylist = Object.fromEntries(formData);
+    const updatedData = { ...dataPlaylist };
+    editPlaylist.mutate({ playlistId: _id, data: updatedData });
+    // setShowModal(false);
   };
 
   const handleUpload = (e) => {
@@ -80,6 +81,7 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
               name="PlaylistName"
               id="PlaylistName"
               className="bg-grey4 w-full my-2 pl-5 pr-5 py-2 placeholder-white"
+              onChange={(e) => setValue(e.target.value)}
             />
             {errors.PlaylistName && (
               <ErrorParagraph>{errors.PlaylistName.message}</ErrorParagraph>
@@ -101,6 +103,7 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
               name="PlaylistDescription"
               id="PlaylistDescription"
               className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white"
+              onChange={(e) => setValue(e.target.value)}
             />
             {errors.PlaylistDescription && (
               <ErrorParagraph>
