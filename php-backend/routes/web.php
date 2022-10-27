@@ -38,4 +38,4 @@ Route::get('users', function (Request $request) {
 
 Route::get('/genres', [phpSongsController::class, 'getGenres']);
 
-Route::get('/genreCount', [phpSongsController::class, 'getGenreCount']);
+Route::get('/genresCount', [phpSongsController::class, 'getGenresCount']);

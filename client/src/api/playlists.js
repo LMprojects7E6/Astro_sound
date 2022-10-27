@@ -31,8 +31,8 @@ export const createNewPlaylist = async (data) => {
 };
 
 // //!PUT UPDATE PLAYLIST WITH ID
-export const updatePlaylist = async (playlistId) => {
-  const response = await api.put(`/playlists/${playlistId}`);
+export const updatePlaylist = async (playlistId, data) => {
+  const response = await api.put(`/playlists/${playlistId}`, data);
   return response.data;
 };
 

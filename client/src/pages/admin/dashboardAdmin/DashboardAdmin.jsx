@@ -1,11 +1,16 @@
-import React from 'react'
+import React from "react";
+import FormAdmin from "../formAdmin";
+import Statistics from "../statistics";
 
-const DashboardAdmin = ({ children }) => {
-  return (
-    <section className="w-full bg-gradient-to-b from-purpleDark to-black overflow-y-auto">
-      <div>{children}</div>
-    </section>
-  )
-}
+const DashboardAdmin = ({ page }) => {
+  return <>{chooseDashboard[page]}</>;
+};
 
-export default DashboardAdmin
+const chooseDashboard = {
+  home: <FormAdmin />,
+  search: "<Search />",
+  statistics: <Statistics />,
+  profile: "<Profile />",
+};
+
+export default DashboardAdmin;

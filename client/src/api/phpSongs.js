@@ -7,7 +7,7 @@ export const getGenres = async () => {
 };
 
 //!GET SEARCHED SONGS
-export const getCount = async () => {
-  const response = await phpApi.get("/genreCount");
+export const getGenresCount = async () => {
+  const response = await phpApi.get("/genresCount");
   return response.data;
 };

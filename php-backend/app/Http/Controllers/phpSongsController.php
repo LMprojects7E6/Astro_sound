@@ -21,12 +21,13 @@ class phpSongsController extends Controller
 	}
 
 	//select genre, count(1) as songs from songs group by genre;
-	public function getGenreCount(){
-		$genreCount = DB::table('songs')
-		->select(DB::raw('genre, count(*) as songs'))
-		->groupBy('genre')
-		->get();
-		return response()->json(['status' => 200, 'genreCount' => $genreCount]);
+	public function getGenresCount()
+	{
+		$genresCount = DB::table('songs')
+			->select(DB::raw('genre, count(*) as songs'))
+			->groupBy('genre')
+			->get();
+		return response()->json(['status' => 200, 'genresCount' => $genresCount]);
 	}
 
 	// public function getCount($genre)
