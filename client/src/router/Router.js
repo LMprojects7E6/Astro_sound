@@ -24,7 +24,6 @@ const Router = () => {
           <Route path="likedSongs" element={<LikedSongs />} />
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profile />} />
-          <Route path="estatistics" element={<Estatistics/>} />
         </Route>
       </Route>
     </Routes>

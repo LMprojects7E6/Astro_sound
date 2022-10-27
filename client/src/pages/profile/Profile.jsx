@@ -13,8 +13,8 @@ const Profile = () => {
 
   return (
     <div className="w-full flex flex-col justify-around h-screen bg-gradient-to-b from-purpleDark to-black">
-      <div className="flex flex-col md:pl-6 md:h-full md:mt-5">
-          <h1 className="text-4xl md:text-8xl text-center text-white font-bold my-3 md:mb-10">Profile details</h1>
+      <div className="flex flex-col md:pl-6 md:h-full mt-5 md:mt-5">
+          <h1 className="text-4xl md:text-6xl text-center text-white font-bold my-3 ">Profile details</h1>
         <Dropdown/>
         <ProfileForm
           formRef={formRef}
@@ -22,7 +22,7 @@ const Profile = () => {
           setProfileImage={setProfileImage}
           inputFileRef={inputFileRef}
         />
-        <div className="password-change__container md:flex md:flex-row md:items-start md:h-full md:mb-52">
+        <div className="password-change__container md:h-full">
         <Modal
           modalTitle={"Verify account"}
           text={"Submit"}

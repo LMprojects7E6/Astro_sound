@@ -12,6 +12,7 @@ import { toast } from "react-hot-toast";
 import AsideAdmin from "./asideAdmin";
 import DashboardAdmin from "./dashboardAdmin";
 import FormAdmin from "./formAdmin";
+// import Dashboard from "./dashboard/Dashboard"
 
 
 const Admin = () => {
@@ -38,6 +39,7 @@ const Admin = () => {
       <div className="flex flex-col-reverse h-screen">
         <Dropdown admin={true}/>
         <AsideAdmin />
+        {/* <Dashboard /> */}
         <FormAdmin mutate={mutate}/>
         <MusicPlayer />
       </div>

@@ -30,7 +30,7 @@ const ProfileForm = ({
               <img
                 src={profileImage}
                 alt="profile photo"
-                className="w-60 md:w-72 rounded-full"
+                className="w-60 md:max-w-sm rounded-full"
               />
             ) : (
               <div className="w-32 h-32 bg-grey3 rounded-full"></div>
@@ -59,9 +59,9 @@ const ProfileForm = ({
       </form>
         <div className="flex flex-col text-white w-80 md:w-10/12 md:pl-3">
           <div className="flex flex-col  md:w-full md:items-center">
-            <label className="font-medium pb-2 md:mr-60 md:mt-3">PASSWORD:</label>
+            <label className="font-medium pb-2 md:mr-60">PASSWORD:</label>
             <input
-              className="rounded pl-2 w-full md:w-80 mb-2 md:mr-2 md:mb-10"
+              className="rounded pl-2 w-full md:w-80 mb-2 md:mr-2 md:mb-5"
               type="password"
               disabled={true}
               placeholder="**************"
