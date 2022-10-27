@@ -1,5 +1,5 @@
 import { MusicPlayerContext } from "context/MusicPlayerProvider";
-import React, { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import ReactPlayer from "react-player";
 import actions from "store/actions/musicPlayerActions";
 import { secondsToMinutes } from "utils/convertSecondsMinute";
