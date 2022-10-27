@@ -30,7 +30,7 @@ const ProfileForm = ({
               <img
                 src={profileImage}
                 alt="profile photo"
-                className="w-60 md:max-w-sm rounded-full"
+                className="w-60 h-60 rounded-full"
               />
             ) : (
               <div className="w-32 h-32 bg-grey3 rounded-full"></div>
