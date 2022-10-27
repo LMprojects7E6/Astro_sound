@@ -1,7 +1,5 @@
 import React from 'react'
 import Logo from "components/logo";
-import Modal from "components/modal";
-import CreatePlaylist from "components/playlistModals/createPlaylist";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
 
@@ -46,7 +44,7 @@ const AsideAdmin = () => {
           </li>
           <li className="flex-col">
             <NavLink
-              to={"/stadistic"}
+              to={"/statistics"}
               className={({ isActive }) =>
                 isActive ? activeStyle + " " + style : style
               }
@@ -54,7 +52,7 @@ const AsideAdmin = () => {
               <span>
                 <Icon name={"collection"} size={22} color={"currentColor"}/>
               </span>
-              Stadistics
+              Statistics
             </NavLink>
           </li>
         </ul>

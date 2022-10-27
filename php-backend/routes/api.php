@@ -14,10 +14,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/genres', [phpSongsController::class, 'getGenres']);
-
-Route::get('/genres/:genre', [phpSongsController::class, 'getCount']);
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });

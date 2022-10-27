@@ -16,19 +16,19 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::create([
-        //     "userID"=> "4eUlzCQ7H5dck1Pm0F7AbPfUWiA2",
-        //     "firstName"=> "admin",
-        //     "lastName"=> "adminlast",
-        //     "role"=> "admin",
-        // ]);
+        User::create([
+            "userID"=> "4eUlzCQ7H5dck1Pm0F7AbPfUWiA2",
+            "firstName"=> "admin",
+            "lastName"=> "adminlast",
+            "role"=> "admin",
+        ]);
 
-        // User::create([
-        //     "userID"=> "kp3HAGXrvsdO5exDvawwIaUeUAt1",
-        //     "firstName"=> "notAdmin",
-        //     "lastName"=> "notAdminlast",
-        //     "role"=> "user",
-        // ]);
+        User::create([
+            "userID"=> "kp3HAGXrvsdO5exDvawwIaUeUAt1",
+            "firstName"=> "notAdmin",
+            "lastName"=> "notAdminlast",
+            "role"=> "user",
+        ]);
 
         Songs::create([
             "title"=> "Por siempre",

@@ -2,21 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
+
 use App\Models\Songs;
 use Illuminate\Http\Request;
 
 class phpSongsController extends Controller
 {
 
+	//select distinct genre from songs
 	public function getGenres()
 	{
-		$genres = Songs::select('select distinct genre from songs');
-		return response()->json(['status' => 200, 'data' => $genres]);
+		$genres = DB::table('songs')
+			->select('genre')
+			->distinct()
+			->get();
+		return response()->json(['status' => 200, 'genres' => $genres]);
 	}
 
-	public function getCount($genre)
-	{
-		$genreCount = Songs::select('select count(genre) from songs where genre=:gerne', ['genre' => $genre]);
-		return response()->json(['status' => 200, 'data' => $genreCount]);
+	//select genre, count(1) as songs from songs group by genre;
+	public function getGenreCount(){
+		$genreCount = DB::table('songs')
+		->select(DB::raw('genre, count(*) as songs'))
+		->groupBy('genre')
+		->get();
+		return response()->json(['status' => 200, 'genreCount' => $genreCount]);
 	}
+
+	// public function getCount($genre)
+	// {
+	// 	$genreCount = Songs::select('select count(genre) from songs where genre=:gerne', ['genre' => $genre]);
+	// 	return response()->json(['status' => 200, 'count' => $genreCount]);
+	// }
 }

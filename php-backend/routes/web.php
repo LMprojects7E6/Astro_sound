@@ -3,6 +3,7 @@
 use App\Models\Songs;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\phpSongsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,3 +35,7 @@ Route::get('/songs/{songID}', function ($songID) {
 Route::get('users', function (Request $request) {
     return $request->name; //http://127.0.0.1:8000/users?name=mikepence
 });
+
+Route::get('/genres', [phpSongsController::class, 'getGenres']);
+
+Route::get('/genreCount', [phpSongsController::class, 'getGenreCount']);
