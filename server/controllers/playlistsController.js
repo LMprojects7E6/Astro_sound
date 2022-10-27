@@ -9,7 +9,7 @@ const getAllPlaylists = async (req, res) => {
     const playlistsArray = await model.User.findById(userID).populate(
       "playlists",
       null,
-      { name: { $ne: "LikedPlaylist" } },
+      { name: { $ne: "LikedPlaylist" } }
     );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
@@ -75,18 +75,22 @@ const getPlaylistsByID = async (req, res) => {
 
 //!POST CREATE NEW PLAYLIST
 const createNewPlaylist = async (req, res) => {
-  const { PlaylistName, PlaylistDescription, playListImage } = req.body;
+  const { playListName, playListDescription } = req.body;
   const userID = req.id;
   try {
+    if (!req.file) {
+      return res.status(400).send("File doesn't exist");
+    }
+    const playListImage = req.file.path;
     const user = await model.User.findById(userID);
     const createdBy = user.firstName + " " + user.lastName;
 
     //Create playlist
     const playlist = await model.Playlist.create({
-      name: PlaylistName,
-      description: PlaylistDescription,
+      name: playListName,
+      description: playListDescription,
       createdBy: createdBy,
-      playListImage: playListImage,
+      playListImage,
     });
     await playlist.save();
 
@@ -95,7 +99,6 @@ const createNewPlaylist = async (req, res) => {
       $push: { playlists: playlist.id },
     });
     await userPlaylist.save();
-
     res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
     res
