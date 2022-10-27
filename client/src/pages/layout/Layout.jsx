@@ -13,8 +13,6 @@ const Layout = () => {
   const navigate = useNavigate();
   const { isLoading, data } = useQuery(["getSession"], getSession);
 
-  console.log(data);
-
   useEffect(() => {
     if (!user) {
       navigate("/login", { replace: true });

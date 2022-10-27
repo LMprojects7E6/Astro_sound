@@ -4,27 +4,17 @@ import { useForm } from "react-hook-form";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
-import { registerUser } from "api/session";
-import Loader from "components/loader/Loader";
-import { toast } from "react-hot-toast";
-import { useMutation } from "@tanstack/react-query";
-import { postSong } from "api/songs";
 
-const FormAdmin = () => {
-  const { mutate, isLoading } = useMutation(postSong, {
-    onSuccess: (res) => {
-      console.log(res);
-      toast.success(res);
-    },
-    onError: (error) => {
-      toast.error(error.response.data);
-    },
-  });
-
+const FormAdmin = ({ mutate }) => {
   const formRef = useRef(null);
 
-  const onSubmit = () => {
-    const data = new FormData(formRef.current);
+
+  const onSubmit = (e) => {
+    // e.preventDefault();
+    console.log(e)
+    console.log(e.target)
+    const data = new FormData(e.target);
+    console.log(data);
     mutate(data);
   };
 
@@ -32,7 +22,6 @@ const FormAdmin = () => {
 
   const handleChange = (e) => {
     if (e.target.files.length) {
-      console.log(e.target.files[0]);
       setImage({
         preview: URL.createObjectURL(e.target.files[0]),
         raw: e.target.files[0],
@@ -40,19 +29,12 @@ const FormAdmin = () => {
     }
   };
 
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
-  // if (isLoading) {
-  //   return (
-  //     <div className="bg-opacity-loader absolute flex justify-center md:w-screen md:h-screen text-white">
-  //       <Loader />
-  //     </div>
-  //   );
-  // }
 
   return (
     <>

@@ -6,8 +6,11 @@ import Icon from "components/icons/Icons";
 import Button from "components/button";
 import { useState } from "react";
 import { createNewPlaylist } from "api/playlists";
+import { useRef } from "react";
+import { convertFormData } from "utils/convertFormData";
 
 const CreatePlaylist = ({ setShowModal }) => {
+  const formRef = useRef(null);
   const [uploadedPhoto, setUploadedPhoto] = useState();
   const [photoPreview, setPhotoPreview] = useState();
   const {
@@ -35,8 +38,9 @@ const CreatePlaylist = ({ setShowModal }) => {
     toast.success(data.message);
   };
 
-  const onSubmit = (data) => {
-    newPLaylist.mutate(data);
+  const onSubmit = () => {
+    const dataForm = new FormData(formRef.current);
+    newPLaylist.mutate(dataForm);
   };
 
   const handleUpload = (e) => {
@@ -51,9 +55,10 @@ const CreatePlaylist = ({ setShowModal }) => {
       <form
         className="grid md:grid-cols-2 md:gap-1 p-5"
         onSubmit={handleSubmit(onSubmit)}
+        ref={formRef}
       >
         <div className="flex justify-center items-center ">
-          <label htmlFor="playlistImage" className="bg-grey3 rounded">
+          <label htmlFor="playListImage" className="bg-grey3 rounded">
             {photoPreview ? (
               <img
                 className="w-60 "
@@ -73,7 +78,7 @@ const CreatePlaylist = ({ setShowModal }) => {
             )}
 
             <input
-              {...register("playlistImage", {
+              {...register("playListImage", {
                 required: {
                   value: false,
                   message: "Image is required.",
@@ -85,20 +90,20 @@ const CreatePlaylist = ({ setShowModal }) => {
               })}
               type="file"
               onChange={handleUpload}
-              name="playlistImage"
-              id="playlistImage"
+              name="playListImage"
+              id="playListImage"
               accept="image/png, image/jpeg"
               className="hidden "
             />
-            {errors.playlistImage && (
-              <ErrorParagraph>{errors.playlistImage.message}</ErrorParagraph>
+            {errors.playListImage && (
+              <ErrorParagraph>{errors.playListImage.message}</ErrorParagraph>
             )}
           </label>
         </div>
         <div className="p-5 flex flex-col justify-center items-center w-full ">
-          <label htmlFor="PlaylistName" className="bg-grey4 rounded">
+          <label htmlFor="playListName" className="bg-grey4 rounded">
             <input
-              {...register("PlaylistName", {
+              {...register("playListName", {
                 required: {
                   value: true,
                   message: "Required name.",
@@ -114,20 +119,20 @@ const CreatePlaylist = ({ setShowModal }) => {
               })}
               type="text"
               placeholder="Playlist Name"
-              name="PlaylistName"
-              id="PlaylistName"
+              name="playListName"
+              id="playListName"
               className="bg-grey4 w-full my-2 pl-5 pr-5 py-2 placeholder-white"
             />
-            {errors.PlaylistName && (
-              <ErrorParagraph>{errors.PlaylistName.message}</ErrorParagraph>
+            {errors.playListName && (
+              <ErrorParagraph>{errors.playListName.message}</ErrorParagraph>
             )}
           </label>
           <label
-            htmlFor="PlaylistDescription"
+            htmlFor="playListDescription"
             className="bg-grey4 rounded my-2 w-full"
           >
             <textarea
-              {...register("PlaylistDescription", {
+              {...register("playListDescription", {
                 maxLength: {
                   value: 100,
                   message: "Max length exceeded ",
@@ -135,13 +140,13 @@ const CreatePlaylist = ({ setShowModal }) => {
               })}
               type="text"
               placeholder="Playlist Description"
-              name="PlaylistDescription"
-              id="PlaylistDescription"
+              name="playListDescription"
+              id="playListDescription"
               className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white"
             />
-            {errors.PlaylistDescription && (
+            {errors.playListDescription && (
               <ErrorParagraph>
-                {errors.PlaylistDescription.message}
+                {errors.playListDescription.message}
               </ErrorParagraph>
             )}
           </label>
