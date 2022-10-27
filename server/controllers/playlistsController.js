@@ -109,23 +109,23 @@ const createNewPlaylist = async (req, res) => {
 
 //!PUT UPDATE PLAYLIST WITH ID
 const updatePlaylist = async (req, res) => {
-  console.log(req.params.playlistID);
+  console.log("hello yuki");
   console.log(req.body);
-
-  try {
-    const playlist = await model.Playlist.findByIdAndUpdate(
-      req.params.playlistID,
-      req.body,
-      {
-        new: true,
-      }
-    );
-    res.status(200).send(playlist);
-  } catch (error) {
-    res
-      .status(504)
-      .send({ errorMsg: "Could not update playlist", error: error });
-  }
+  // console.log(req.file);
+  // try {
+  //   const playlist = await model.Playlist.findByIdAndUpdate(
+  //     req.params.playlistID,
+  //     req.body,
+  //     {
+  //       new: true,
+  //     }
+  //   );
+  //   res.status(200).send(playlist);
+  // } catch (error) {
+  //   res
+  //     .status(504)
+  //     .send({ errorMsg: "Could not update playlist", error: error });
+  // }
 };
 
 //!DELETE PLAYLIST

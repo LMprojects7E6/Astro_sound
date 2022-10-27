@@ -40,6 +40,7 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const onSubmit = () => {
     const dataForm = new FormData(formRef.current);
+    console.log(dataForm);
     newPLaylist.mutate(dataForm);
   };
 
