@@ -14,11 +14,18 @@ const MusicPlayer = () => {
   } = useContext(MusicPlayerContext);
   const { songNumber } = controls;
   const songsURL = musicPlayerSongs.map((song) => song.songFile);
+
   //!ACTION PLAY/PAUSE
   const handlePlay = () => {
     dispatch({
       type: actions.isPlay,
-      payload: { ...musicPlayerRef },
+    });
+  };
+  //!HANDLE ON START
+  const handleOnReady = () => {
+    dispatch({
+      type: actions.onReady,
+      payload: { duration: musicPlayerRef.current.getDuration() },
     });
   };
   //!ACTION PROGRESS
@@ -42,6 +49,24 @@ const MusicPlayer = () => {
       payload: { volume: e.target.value },
     });
   };
+  //!HANDLE NEXT SONG
+  const handleNext = () => {
+    dispatch({
+      type: actions.nextSong,
+      payload: {
+        songLength: songsURL.length,
+      },
+    });
+  };
+  //!HANDLE PREVIOUS SONG
+  const handlePrevious = () => {
+    dispatch({
+      type: actions.previousSong,
+      payload: {
+        songLength: songsURL.length,
+      },
+    });
+  };
   return (
     <>
       {/* //!REACT PLAYER  */}
@@ -54,6 +79,8 @@ const MusicPlayer = () => {
           volume={controls.volume}
           ref={musicPlayerRef}
           onProgress={(e) => handleProgress(e)}
+          onEnded={() => handleNext()}
+          onReady={() => handleOnReady()}
         ></ReactPlayer>
       </div>
       {/*//!CUSTOM PLAYER */}
@@ -64,7 +91,10 @@ const MusicPlayer = () => {
             <button className="focus:outline-none">
               <Icon name={"shuffle"} size={24} color={"currentColor"} />
             </button>
-            <button className="focus:outline-none">
+            <button
+              className="focus:outline-none"
+              onClick={(e) => handlePrevious(e)}
+            >
               <Icon name={"playerPrev"} size={24} color={"currentColor"} />
             </button>
             <button
@@ -77,7 +107,10 @@ const MusicPlayer = () => {
                 <Icon name={"play"} size={24} color={"currentColor"} />
               )}
             </button>
-            <button className="focus:outline-none">
+            <button
+              className="focus:outline-none"
+              onClick={(e) => handleNext(e)}
+            >
               <Icon name={"playerNext"} size={24} color={"currentColor"} />
             </button>
             <button className="focus:outline-none">

@@ -46,7 +46,6 @@ const MusicPlayerProvider = ({ children }) => {
     played: 0,
     volume: 0.5,
     muted: false,
-    seeking: false,
     songNumber: 0,
   };
   const [musicPlayer, setMusicPlayer] = useState(testData);
