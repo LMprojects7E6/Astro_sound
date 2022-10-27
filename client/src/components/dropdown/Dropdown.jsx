@@ -5,18 +5,22 @@ import Icons from "components/icons";
 import Logout from "components/button/Logout";
 import { Link } from "react-router-dom";
 import ImageProfile from "components/imageProfile";
+import { useQuery } from "react-query";
+import { getSession } from "api/session";
 
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(" ");
-// }
 
-const Dropdown = ({ admin }) => {
+
+const Dropdown = ({ admin, data }) => {
+
+
   return (
     <Menu as="div" className="absolute right-2 top-3 mr-1  md:right-7 z-10">
       <div className="flex flex-row items-center">
         <Menu.Button className="inline-flex w-full justify-center rounded-md bg-grey2 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-50 hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-          <ImageProfile name={"userImage"} size={22} />
-          Elliot Alderson
+          <ImageProfile/>
+          {data.data?.firstName }
+          &nbsp;
+          {data.data?.lastName}
           <Icons name={"downDir"} size={20} color={"currentColor"} />
         </Menu.Button>
       </div>
