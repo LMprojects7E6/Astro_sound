@@ -5,8 +5,7 @@ import Button from "components/button";
 import toast from "react-hot-toast";
 
 const DeletePlaylistModal = ({ setShowModal, playlist }) => {
-
-console.log(playlist._id);
+  const { name, _id } = playlist;
   const queryClient = useQueryClient();
 
   const removePlaylist = useMutation(deletePlaylist, {
@@ -17,23 +16,24 @@ console.log(playlist._id);
   });
 
   const playlistDeleted = () => {
-    queryClient.invalidateQueries(["getAllPlaylists"]);
-    toast.success(`${playlist.name} has been deleted`);
+    queryClient.invalidateQueries(["playlists"]);
+    toast.success(`${name} has been deleted`);
   };
 
   return (
     <div className="flex flex-col text-center">
-      <p className="text-xl  p-5">
-        Are you sure you want to delete {playlist.name} ?
-      </p>
+      <p className="text-xl  p-5">Are you sure you want to delete {name} ?</p>
 
-      <div className="flex items-center justify-between p-6 ">
+      <div className="flex items-center justify-around p-6 ">
         <Button
           bg={"mainButtonBg"}
           width={"w-max"}
           radius={"rounded"}
           text={"Yes"}
-          onClick={() => removePlaylist.mutate(playlist._id)}
+          onClick={() => {
+            removePlaylist.mutate(_id);
+            setShowModal(false);
+          }}
         />
         <Button
           bg={"mainButtonBg"}
