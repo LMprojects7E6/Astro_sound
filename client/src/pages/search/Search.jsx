@@ -9,12 +9,17 @@ import SearchBarModal from "./searchBarModal";
 import SearchedSongsContainer from "./searchedSongsContainer";
 import SearchResults from "./searchResults/SearchResults";
 
+import { useOutletContext } from "react-router-dom";
+
 const Search = () => {
+  const sessionData = useOutletContext();
+  console.log(sessionData);
+
   const { isLoading, isError, data } = useQuery(
     ["searchedSongs"],
     getSearchedSongs
   );
-
+  
   const recentSearches = !isLoading && !isError ? data : [];
   const recentSearchesTitle =
     !isLoading && !isError && recentSearches.length > 0
@@ -23,7 +28,6 @@ const Search = () => {
 
   return (
     <DashboardSection>
-      <Dropdown />
       <SearchBarModal modalTitle={"Search"}>
         <SearchResults />
       </SearchBarModal>

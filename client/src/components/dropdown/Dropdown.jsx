@@ -12,7 +12,6 @@ import { getSession } from "api/session";
 
 const Dropdown = ({ admin, data }) => {
 
-
   return (
     <Menu as="div" className="absolute right-2 top-3 mr-1  md:right-7 z-10">
       <div className="flex flex-row items-center">
