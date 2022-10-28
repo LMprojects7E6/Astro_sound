@@ -10,6 +10,7 @@ import Profile from "pages/profile";
 import Register from "pages/register";
 import LikedSongs from "pages/likedSongs";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
+import Genre from "pages/genre";
 
 const Router = () => {
   return (
@@ -22,7 +23,8 @@ const Router = () => {
           <Route index element={<Home />} />
           <Route path="library" element={<Library />} />
           <Route path="likedSongs" element={<LikedSongs />} />
-          <Route path="playlist" element={<Playlists />} />
+          <Route path="playlist/:id" element={<Playlists />} />
+          <Route path="genre/:genre" element={<Genre />} />
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profile />} />
         </Route>

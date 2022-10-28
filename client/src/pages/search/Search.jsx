@@ -7,7 +7,7 @@ import GenreSection from "components/genreSection";
 
 import SearchBarModal from "components/searchBarModal";
 import SearchedSongsContainer from "./searchedSongsContainer";
-import SearchResults from "./searchResults/SearchResults";
+import SearchResults from "../../components/searchResults/SearchResults";
 
 const Search = () => {
   const { isLoading, isError, data } = useQuery(

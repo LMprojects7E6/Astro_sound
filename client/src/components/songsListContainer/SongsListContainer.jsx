@@ -6,7 +6,7 @@ import Modal from "components/modal/Modal";
 import React from "react";
 
 const SongsListContainer = ({ songs }) => {
-  const thStyle = "border-b-2 border-white  ";
+  const thStyle = "border-b-2 border-white text-left ";
   const tdStyle = "";
   return (
     <>
@@ -16,7 +16,7 @@ const SongsListContainer = ({ songs }) => {
         ))}
       </div>
       <div className="text-white hidden md:flex ">
-        <table className=" table-auto  min-w-full mt-5">
+        <table className=" table-auto  w-full mt-5">
           <thead>
             <tr>
               <th className={`${thStyle}`}>Title</th>
