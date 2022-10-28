@@ -4,7 +4,7 @@ import Icon from "components/icons";
 
 import ResultContainer from "./ResultContainer";
 
-const SearchResults = ({ setShowModal }) => {
+const SearchResults = ({ setShowModal, songs }) => {
   const [value, setValue] = useState("");
 
   const handleChange = (e) => {
@@ -12,7 +12,7 @@ const SearchResults = ({ setShowModal }) => {
     setValue(value);
   };
 
-  const searchData = useSearchSongs(value);
+  const searchData = useSearchSongs(value, songs);
 
   return (
     <>

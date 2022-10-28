@@ -5,7 +5,7 @@ import Dropdown from "components/dropdown";
 
 import GenreSection from "components/genreSection";
 
-import SearchBarModal from "./searchBarModal";
+import SearchBarModal from "components/searchBarModal";
 import SearchedSongsContainer from "./searchedSongsContainer";
 import SearchResults from "./searchResults/SearchResults";
 

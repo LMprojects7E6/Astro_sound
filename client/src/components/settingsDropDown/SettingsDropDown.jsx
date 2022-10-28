@@ -28,7 +28,7 @@ const SettingsDropDown = ({ song, children }) => {
     >
       <div>
         <div
-          className=" cursor-pointer inline-flex w-full justify-center rounded-md  bg-purple3 md:bg-grey5 px-4 py-2 text-sm font-medium  "
+          className=" cursor-pointer inline-flex w-full justify-center rounded-md  px-4 py-2 text-sm font-medium  "
           onClick={() => {
             setOpen(true);
           }}
