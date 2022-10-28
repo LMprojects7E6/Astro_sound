@@ -13,7 +13,7 @@ const AsideAdmin = ({ setPage, page }) => {
     "bg-active text-white hover:text-white flex flex-col items-center";
 
   return (
-    <nav className="px-2 bg-black text-grey hover:text-grey w-full md:h-full md:w-1/6 flex justify-center md:justify-start">
+    <nav className="px-2 bg-black text-grey hover:text-grey w-full md:h-full md:w-1/6 md:flex justify-center md:justify-start absolute md:relative">
       <ul className="flex md:flex-col ">
         <li className="flex flex-col">
           <div className="hidden md:flex md:justify-center md:my-3">
