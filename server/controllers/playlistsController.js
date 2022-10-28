@@ -1,6 +1,5 @@
 //!CONNECTION TO MODELS
 const model = require("../models");
-
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
   const userID = req.id;
@@ -109,23 +108,42 @@ const createNewPlaylist = async (req, res) => {
 
 //!PUT UPDATE PLAYLIST WITH ID
 const updatePlaylist = async (req, res) => {
-  console.log("hello yuki");
-  console.log(req.body);
-  // console.log(req.file);
-  // try {
-  //   const playlist = await model.Playlist.findByIdAndUpdate(
-  //     req.params.playlistID,
-  //     req.body,
-  //     {
-  //       new: true,
-  //     }
-  //   );
-  //   res.status(200).send(playlist);
-  // } catch (error) {
-  //   res
-  //     .status(504)
-  //     .send({ errorMsg: "Could not update playlist", error: error });
-  // }
+  try {
+    const { playListName: name, playListDescription: description } = req.body;
+    if (!req.file) {
+      return res.status(400).send("playlist doesn't have image");
+    }
+    const playListImage = req.file.path;
+    const playlist = await model.Playlist.findByIdAndUpdate(
+      req.params.playlistID,
+      {
+        name,
+        description,
+        playListImage,
+      }
+    );
+    res.status(200).send("Playlist updated");
+  } catch (error) {
+    res.status(504).send({ errorMsg: "Could not update playlist", error });
+  }
+};
+
+//!UPDATE ONLY NAME AND DESCRIPTION
+const updatePlaylistNameDescription = async (req, res) => {
+  try {
+    const { playListName: name, playListDescription: description } = req.body;
+    const playlist = await model.Playlist.findByIdAndUpdate(
+      req.params.playlistID,
+      {
+        name,
+        description,
+      }
+    );
+    console.log(playlist);
+    res.status(200).send("Playlist updated");
+  } catch (error) {
+    res.status(504).send({ errorMsg: "Could not update playlist", error });
+  }
 };
 
 //!DELETE PLAYLIST
@@ -161,4 +179,5 @@ module.exports = {
   createNewPlaylist: createNewPlaylist,
   updatePlaylist: updatePlaylist,
   deletePlaylist: deletePlaylist,
+  updatePlaylistNameDescription: updatePlaylistNameDescription,
 };

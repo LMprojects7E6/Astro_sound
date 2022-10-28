@@ -31,8 +31,21 @@ export const createNewPlaylist = async (data) => {
 };
 
 // //!PUT UPDATE PLAYLIST WITH ID
-export const updatePlaylist = async (playlistId, data) => {
-  const response = await api.put(`/playlists/${playlistId}`, data);
+export const updatePlaylist = async (data) => {
+  const playlistImage =
+    data.dataForm.get("playListImage").name &&
+    data.dataForm.get("playListImage").size;
+  let response;
+  if (playlistImage) {
+    console.log("new file");
+    response = await api.put(`/playlists/${data.playlistId}`, data.dataForm);
+  } else {
+    console.log("no new file");
+    response = await api.put(
+      `/playlists/noImage/${data.playlistId}`,
+      data.dataForm
+    );
+  }
   return response.data;
 };
 

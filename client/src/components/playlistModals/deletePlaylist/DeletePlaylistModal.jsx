@@ -16,7 +16,7 @@ const DeletePlaylistModal = ({ setShowModal, playlist }) => {
   });
 
   const playlistDeleted = () => {
-    queryClient.invalidateQueries(["getAllPlaylists"]);
+    queryClient.invalidateQueries(["playlists"]);
     toast.success(`${name} has been deleted`);
   };
 

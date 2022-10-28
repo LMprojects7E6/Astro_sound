@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useForm, Controller } from "react-hook-form";
-import ErrorParagraph from "components/errorParagraph";
-import Icon from "components/icons/Icons";
-import Button from "components/button";
+import { useForm } from "react-hook-form";
 import { updatePlaylist } from "api/playlists";
 import { useRef } from "react";
-import { convertFormData } from "utils/convertFormData";
+import Icon from "components/icons/Icons";
+import Button from "components/button";
+import ErrorParagraph from "components/errorParagraph";
 
 const EditPlaylistModal = ({ setShowModal, playlist }) => {
   const { _id, name, description, playListImage } = playlist;
@@ -34,19 +33,19 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
       playlistUpdated(resp);
     },
     onError: (err) => {
-      toast.error(err.response.data.errorMsg);
+      toast.error("Something went wrong");
     },
   });
 
   const playlistUpdated = (data) => {
-    queryClient.invalidateQueries(["getAllPlaylists"]);
+    queryClient.invalidateQueries(["playlists"]);
     setShowModal(false);
-    toast.success(data.message);
+    toast.success("Playlist updated");
   };
 
   const onSubmit = () => {
     const dataForm = new FormData(formRef.current);
-    editPlaylist.mutate(_id, dataForm);
+    editPlaylist.mutate({ playlistId: _id, dataForm });
   };
 
   const handleUpload = (e) => {
