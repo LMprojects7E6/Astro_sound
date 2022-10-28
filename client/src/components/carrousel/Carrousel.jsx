@@ -4,11 +4,16 @@ import { getThreeSongs } from "api/songs";
 import { useQuery } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 import Slide from "./Slide";
-import description from "assets/description/description";
-import img from "assets/threeSongs/index";
+import img from "assets/slides/index";
 
 const Carrousel = () => {
   let pos = -1;
+
+  const threeSlides = [
+    { text: "Don’t just listen, feel the music.", image: img.first },
+    { text: "it will transport you to another world.", image: img.second },
+    { text: "Where the music never stops!", image: img.third },
+  ];
   const {
     data: threeSongs,
     isLoading: isLoadingSong,
@@ -22,18 +27,12 @@ const Carrousel = () => {
     toast.error(songError);
   } else {
     return (
-      <div className="h-90 md:flex hidden  mainButtonBg rounded-lg mt-8 ">
+      <div className="md:flex hidden mt-8 ">
         <Carousel slideInterval={5000}>
-          {threeSongs.map((song) => {
+          {threeSlides.map((slide, index) => {
             pos++;
             return (
-              <Slide
-                key={song._id}
-                artist={song.artist}
-                title={song.title}
-                songImage={img.amyCover}
-                description={description[pos]}
-              />
+              <Slide key={index} title={slide.text} slideImage={slide.image} />
             );
           })}
         </Carousel>
