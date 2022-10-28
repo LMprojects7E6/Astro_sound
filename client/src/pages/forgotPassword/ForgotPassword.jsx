@@ -16,6 +16,7 @@ const ForgotPassword = () => {
     if (user) {
       navigate("/");
     }
+    // eslint-disable-next-line
   }, []);
 
   const handleSubmit = async (e) => {

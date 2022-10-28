@@ -1,5 +1,5 @@
 import React from 'react'
-import { getSongs } from 'api/songs'
+// import { getSongs } from 'api/songs'
 
 const LikedSongs = () => {
 
@@ -9,7 +9,7 @@ const LikedSongs = () => {
   
     {/* <!-- header --> */}
     <div className="flex">
-      <img className="mr-6" src={require('../../assets/likedsong.png')} />
+      <img className="mr-6" src={require('../../assets/likedsong.png')} alt=''/>
       <div className="flex flex-col justify-center">
         {/* <!-- content --> */}
         <h4 className="mt-0 mb-2 uppercase text-gray-500 tracking-widest text-xs">Playlist</h4>

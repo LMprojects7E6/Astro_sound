@@ -1,4 +1,4 @@
-import Search from "pages/search";
+// import Search from "pages/search";
 import React from "react";
 import FormAdmin from "../formAdmin";
 import Statistics from "../statistics";

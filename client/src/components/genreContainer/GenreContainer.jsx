@@ -2,16 +2,18 @@ import React from "react";
 
 import { useQuery } from "@tanstack/react-query";
 import { getSongsByGenre } from "api/songs";
-import Loader from "components/loader/Loader";
+// import Loader from "components/loader/Loader";
 
 import { DotSpinner } from "@uiball/loaders";
 
 const GenreContainer = ({ genre }) => {
+  // eslint-disable-next-line no-unused-vars
   const { isLoading, isError, data, error } = useQuery(
     [`genre-${genre.genre}`],
     () => getSongsByGenre(genre.genre)
   );
 
+  // eslint-disable-next-line no-unused-vars
   const songsByGenre = data;
 
   if (isLoading) {

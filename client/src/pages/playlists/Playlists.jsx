@@ -30,7 +30,7 @@ const Playlist = () => {
         <div className="text-gray-300 min-h-screen p-10 text-white w-full">
           {/* <!-- header --> */}
           <div className="flex">
-            <img className="mr-6" src={require("../../assets/likedsong.png")} />
+            <img className="mr-6" src={require("../../assets/likedsong.png")} alt=''/>
             {/* <img className="mr-6" src={require(playlist.playListImage)} /> */}
             <div className="flex flex-col justify-center">
               {/* <!-- content --> */}

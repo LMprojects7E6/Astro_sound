@@ -4,14 +4,14 @@ import { AuthContext } from "context/AuthProvider";
 import { useContext } from "react";
 import { convertFormData } from "utils/convertFormData";
 import { toast } from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 const VerifyForm = ({
   formRef,
   profileImage: inputPicture,
   inputFileRef,
   setShowModal,
 }) => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     reAuth,
     updatePhotoUrlProfile,

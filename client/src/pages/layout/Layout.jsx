@@ -17,6 +17,7 @@ const Layout = () => {
     if (!user) {
       navigate("/login", { replace: true });
     }
+    // eslint-disable-next-line
   }, []);
 
   if (isLoading) {

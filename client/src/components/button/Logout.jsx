@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import Button from "./Button";
+// import Button from "./Button";
 import { AuthContext } from "context/AuthProvider";
-import { Link, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 const Logout = ({className}) => {
   const { logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -11,6 +11,7 @@ const Logout = ({className}) => {
   };
   return (
 
+  // eslint-disable-next-line jsx-a11y/anchor-is-valid
   <a onClick={onLogout} className={className}>Logout</a>
   );
 };

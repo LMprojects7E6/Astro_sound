@@ -1,7 +1,7 @@
 import React from "react";
 
 import Button from "components/button";
-import Icon from "components/icons";
+// import Icon from "components/icons";
 import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
 import SettingsDropDown from "components/settingsDropDown";
 import Modal from "components/modal";
