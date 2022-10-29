@@ -10,9 +10,9 @@ const Carrousel = () => {
   let pos = -1;
 
   const threeSlides = [
-    { text: "Don’t just listen, feel the music.", image: img.first },
-    { text: "it will transport you to another world.", image: img.second },
-    { text: "Where the music never stops!", image: img.third },
+    { text: "Don’t just listen, feel the music.", image: img.firstCover },
+    { text: "it will transport you to another world.", image: img.secondCover },
+    { text: "Where the music never stops!", image: img.thirdCover },
   ];
   const {
     data: threeSongs,

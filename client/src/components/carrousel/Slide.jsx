@@ -3,10 +3,8 @@ import React from "react";
 
 const Slide = ({ title, slideImage }) => {
   return (
-    <div className=" text-white flex bg-cover ">
-      <div className="flex rounded-lg flex-auto ">
-        <img src={slideImage} alt="" className="" />
-      </div>
+    <div className="w-full flex rounded-lg flex-auto ">
+      <img src={slideImage} alt="" className="h-50" />
     </div>
   );
 };

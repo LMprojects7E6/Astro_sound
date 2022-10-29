@@ -1,22 +1,23 @@
-import React from 'react'
+import { AuthContext } from 'context/AuthProvider';
+import React, { useContext } from 'react'
 
-const ImageData = ({size}) => {
-  return (
-    <div>
-        <img src="https://picsum.photos/200" className='rounded-2xl mr-3' height={size} width={size}/>
-    </div>
-  )
-}
+// const ImageData = ({size}) => {
+//   return (
+//     <div>
+//         <img src="https://picsum.photos/200" className='rounded-2xl mr-3' height={size} width={size}/>
+//     </div>
+//   )
+// }
 
-const ImageProfile = ({size, name}) => {
-    const imageProfile ={
-        userImage:ImageData,
-    };
-
-    const Component = imageProfile[name];
+const ImageProfile = () => {
+  const {user} = useContext(AuthContext);
+  
 
     return (
-      <Component size={size} />
+      <>
+      <div><img src={user.photoURL} alt="" className='w-7 h-7 rounded-full mr-3' /></div>
+      </>
+      // <Component size={size} />
     )
   }
 
