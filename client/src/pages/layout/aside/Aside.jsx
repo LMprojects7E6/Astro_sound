@@ -1,17 +1,28 @@
 import Logo from "components/logo";
 import Modal from "components/modal";
 import CreatePlaylist from "components/playlistModals/createPlaylist";
-import React from "react";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
+
 
 const Aside = () => {
   const style =
     "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col md:flex-row items-center";
   const activeStyle = "bg-active hover:text-white flex flex-col items-center";
 
+
+const {musicPlayer: musicPlayerSongs }= useContext(MusicPlayerContext)
+const songs = musicPlayerSongs.map((song) => song);
+const songsInfo = songs.map((e) => e.songImage)
+
+
+
+
   return (
-    <nav className="px-2 bg-black text-grey hover:text-grey w-full md:w-1/6 flex justify-center md:justify-start">
+    <section className="bg-black flex flex-col justify-between md:w-72">
+    <nav className="  text-grey hover:text-grey w-full md:w-44 flex justify-center md:justify-start md:flex-col">
       <ul className="flex md:flex-col ">
         <li className="flex flex-col">
           <div className="hidden md:flex md:justify-center md:my-3">
@@ -86,6 +97,10 @@ const Aside = () => {
         </li>
       </ul>
     </nav>
+      <div className="md:flex hidden w-full">
+          <img src={songsInfo[0]} alt="photo" className="md:w-full md:mb-24 pr-1 md:pr-0"/>
+      </div>
+    </section>
   );
 };
 

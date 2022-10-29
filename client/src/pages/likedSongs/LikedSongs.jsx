@@ -12,7 +12,6 @@ const LikedSongs = () => {
     ["liked-songs"],
     getLikedPlaylists
   );
-  console.log(data);
 
   if (isLoading) {
     return <Loader />;

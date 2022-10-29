@@ -11,6 +11,7 @@ import Register from "pages/register";
 import LikedSongs from "pages/likedSongs";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
 import Genre from "pages/genre";
+import CheckEmail from "pages/checkEmail/CheckEmail";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
       <Route path="/">
         <Route index path="/login" element={<Login />} />
         <Route path="/forgotPassword" element={<ForgotPassword />} />
+        <Route path="/checkEmail" element={<CheckEmail />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />

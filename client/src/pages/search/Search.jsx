@@ -9,7 +9,11 @@ import SearchBarModal from "components/searchBarModal";
 import SearchedSongsContainer from "./searchedSongsContainer";
 import SearchResults from "../../components/searchResults/SearchResults";
 
+import { useOutletContext } from "react-router-dom";
+
 const Search = () => {
+  const sessionData = useOutletContext();
+
   const { isLoading, isError, data } = useQuery(
     ["searchedSongs"],
     getSearchedSongs
@@ -23,7 +27,6 @@ const Search = () => {
 
   return (
     <DashboardSection>
-      <Dropdown />
       <SearchBarModal modalTitle={"Search"}>
         <SearchResults />
       </SearchBarModal>

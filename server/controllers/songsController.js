@@ -189,6 +189,7 @@ const getSearchedSongs = async (req, res) => {
   }
 };
 
+//!POST SEARCHED SONGS
 const addToSearchedSongs = async (req, res) => {
   const userID = req.id;
   const { songID } = req.params;

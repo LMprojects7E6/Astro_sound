@@ -1,19 +1,12 @@
+import FormAdmin from "pages/admin/formAdmin";
 import React from "react";
 
-import Home from "pages/home";
-import Search from "pages/search";
-import Library from "pages/library";
-import Profile from "pages/profile";
-
 const Dashboard = ({ page }) => {
-  console.log(page);
   return <>{chooseDashboard[page]}</>;
 };
 
 const chooseDashboard = {
-  home: <Home />,
-  search: <Search />,
-  library: <Library />,
-  profile: <Profile />,
+  home: <FormAdmin />,
 };
+
 export default Dashboard;

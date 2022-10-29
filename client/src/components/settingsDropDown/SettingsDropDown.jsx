@@ -30,7 +30,7 @@ const SettingsDropDown = ({ song, children }) => {
         <div
           className=" cursor-pointer inline-flex w-full justify-center rounded-md  px-4 py-2 text-sm font-medium  "
           onClick={() => {
-            setOpen(true);
+            setOpen(prevState => !prevState);
           }}
         >
           <Icon name={"dotsHorizontal"} size={24} color={"#fff"} />

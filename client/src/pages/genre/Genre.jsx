@@ -14,7 +14,6 @@ import ReproduceSearchPlaylist from "components/reproduceSearchPlaylist";
 
 const Genre = () => {
   const { genre } = useParams();
-  console.log(genre);
 
   const { isLoading, isError, data, error } = useQuery([`genre-${genre}`], () =>
     getSongsByGenre(genre)

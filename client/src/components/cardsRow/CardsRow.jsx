@@ -13,7 +13,7 @@ const CardsRow = () => {
     isLoading: isLoadingPlaylist,
     isError: isPlaylistError,
     error: playlistError,
-  } = useQuery(["fivePlaylist"], getFivePlaylists);
+  } = useQuery(["playlists"], getFivePlaylists);
 
   if (isLoadingPlaylist) {
     return <p>Loading...</p>;

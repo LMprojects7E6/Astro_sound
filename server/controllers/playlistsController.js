@@ -1,15 +1,14 @@
 //!CONNECTION TO MODELS
 const model = require("../models");
-
 //!GET ALL USER PLAYLISTS
 const getAllPlaylists = async (req, res) => {
   const userID = req.id;
-  //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
 
   try {
     const playlistsArray = await model.User.findById(userID).populate(
-      "playlists"
+      "playlists",
+      null,
+      { name: { $ne: "LikedPlaylist" } }
     );
     //GET PLAYLISTS OBJECTS
     if (playlistsArray != null) {
@@ -75,20 +74,22 @@ const getPlaylistsByID = async (req, res) => {
 
 //!POST CREATE NEW PLAYLIST
 const createNewPlaylist = async (req, res) => {
-  const { PlaylistName, PlaylistDescription, playListImage } = req.body;
+  const { playListName, playListDescription } = req.body;
   const userID = req.id;
-  //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   try {
+    if (!req.file) {
+      return res.status(400).send("File doesn't exist");
+    }
+    const playListImage = req.file.path;
     const user = await model.User.findById(userID);
     const createdBy = user.firstName + " " + user.lastName;
 
     //Create playlist
     const playlist = await model.Playlist.create({
-      name: PlaylistName,
-      description: PlaylistDescription,
+      name: playListName,
+      description: playListDescription,
       createdBy: createdBy,
-      playListImage: playListImage,
+      playListImage,
     });
     await playlist.save();
 
@@ -97,7 +98,6 @@ const createNewPlaylist = async (req, res) => {
       $push: { playlists: playlist.id },
     });
     await userPlaylist.save();
-
     res.status(200).send({ message: "Playlist Created" });
   } catch (error) {
     res
@@ -108,30 +108,47 @@ const createNewPlaylist = async (req, res) => {
 
 //!PUT UPDATE PLAYLIST WITH ID
 const updatePlaylist = async (req, res) => {
-  console.log(req.params.playlistID);
-  console.log(req.body);
-
   try {
+    const { playListName: name, playListDescription: description } = req.body;
+    if (!req.file) {
+      return res.status(400).send("playlist doesn't have image");
+    }
+    const playListImage = req.file.path;
     const playlist = await model.Playlist.findByIdAndUpdate(
       req.params.playlistID,
-      req.body,
       {
-        new: true,
+        name,
+        description,
+        playListImage,
       }
     );
-    res.status(200).send(playlist);
+    res.status(200).send("Playlist updated");
   } catch (error) {
-    res
-      .status(504)
-      .send({ errorMsg: "Could not update playlist", error: error });
+    res.status(504).send({ errorMsg: "Could not update playlist", error });
+  }
+};
+
+//!UPDATE ONLY NAME AND DESCRIPTION
+const updatePlaylistNameDescription = async (req, res) => {
+  try {
+    const { playListName: name, playListDescription: description } = req.body;
+    const playlist = await model.Playlist.findByIdAndUpdate(
+      req.params.playlistID,
+      {
+        name,
+        description,
+      }
+    );
+    console.log(playlist);
+    res.status(200).send("Playlist updated");
+  } catch (error) {
+    res.status(504).send({ errorMsg: "Could not update playlist", error });
   }
 };
 
 //!DELETE PLAYLIST
 const deletePlaylist = async (req, res) => {
   const userID = req.id;
-  // //!CODE USED FOR TESTING
-  // const userID = "em8LNfILdNTc5mDQCmc1HxgGDmu1";
   const { playlistID } = req.params;
 
   try {
@@ -162,4 +179,5 @@ module.exports = {
   createNewPlaylist: createNewPlaylist,
   updatePlaylist: updatePlaylist,
   deletePlaylist: deletePlaylist,
+  updatePlaylistNameDescription: updatePlaylistNameDescription,
 };
