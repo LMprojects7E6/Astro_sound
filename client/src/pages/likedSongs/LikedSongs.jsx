@@ -5,6 +5,7 @@ import SongsListContainer from "components/songsListContainer/SongsListContainer
 import { getLikedPlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "components/loader/Loader";
+import { Link } from "react-router-dom";
 
 const LikedSongs = () => {
   const { isLoading, isError, data, error } = useQuery(
@@ -33,11 +34,13 @@ const LikedSongs = () => {
           <SongsListContainer songs={data} />
         </>
       ) : (
-        <div className="w-full text-center mt-20 cursor-pointer">
-          <h4 className="md:mt-0 mt-10 mb-2 text-white text-2xl md:text-2xl">
-            Your list is empty find and listen to the latests songs...
-          </h4>
-        </div>
+        <Link to={"/search"}>
+          <div className="w-full text-center mt-20 cursor-pointer">
+            <h4 className="md:mt-0 mt-10 mb-2 text-white text-2xl md:text-2xl">
+              Your list is empty find and listen to the latests songs...
+            </h4>
+          </div>
+        </Link>
       )}
     </DashboardSection>
   );
