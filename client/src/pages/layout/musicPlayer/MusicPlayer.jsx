@@ -4,6 +4,8 @@ import ReactPlayer from "react-player";
 import actions from "store/actions/musicPlayerActions";
 import { secondsToMinutes } from "utils/convertSecondsMinute";
 import Icon from "../../../components/icons/Icons";
+import './MusicPlayer.css';
+
 
 const MusicPlayer = () => {
   const musicPlayerRef = useRef(null);
@@ -28,6 +30,7 @@ const MusicPlayer = () => {
       payload: { duration: musicPlayerRef.current.getDuration() },
     });
   };
+  console.log(musicPlayerRef);
   //!ACTION PROGRESS
   const handleProgress = (e) => {
     dispatch({
@@ -68,8 +71,18 @@ const MusicPlayer = () => {
     });
   };
   return (
-    <>
-      {/* //!REACT PLAYER  */}
+    <section className="flex flex-row w-full justify-between bg-purple3 absolute md:fixed md:bottom-0 bottom-20">
+      <div className="flex md:flex-col justify-around md:w-60">
+        <div className="md:hidden md:absolute md:mb-96 md:mt-16">
+          <img src={musicPlayerSongs[0].songImage} alt="photo" className=" relative md:w-56 w-16 h-full pr-1" />
+        </div>
+        <div className="text-white pl-3 mt-2">
+          <h2 className="font-semibold">{musicPlayerSongs[0].artist}</h2>
+          <p>{musicPlayerSongs[0].title}</p>
+        </div>
+      </div>
+      {/* //!REACT PLAYER  */}.
+      <div className="md:flex flex-col-reverse bg-purple3 md:w-full w-28">
       <div className="hidden">
         <ReactPlayer
           className="react-player"
@@ -84,22 +97,21 @@ const MusicPlayer = () => {
         ></ReactPlayer>
       </div>
       {/*//!CUSTOM PLAYER */}
-      <div className="md:flex bg-black hidden absolute w-full bottom-0 flex-col">
         {/* //!CONTROLS PLAYER */}
-        <div className="flex w-full justify-around text-xs font-semibold text-white px-4 py-2">
-          <div className="flex space-x-3 p-2">
-            <button className="focus:outline-none">
+        <div className="md:flex md:w-full  justify-around text-xs font-semibold text-white px-4 py-2">
+          <div className="md:flex space-x-5 p-2">
+            <button className="md:flex hidden focus:outline-none">
               <Icon name={"shuffle"} size={24} color={"currentColor"} />
             </button>
             <button
-              className="focus:outline-none"
+              className="md:flex hidden focus:outline-none"
               onClick={(e) => handlePrevious(e)}
             >
               <Icon name={"playerPrev"} size={24} color={"currentColor"} />
             </button>
             <button
               onClick={handlePlay}
-              className="rounded-full w-8 h-8 flex items-center justify-center ring-2 ring-gray-100 focus:outline-none"
+              className="btn-play rounded-full w-8 h-8 flex items-center justify-center ring-2 ring-gray-100 focus:outline-none"
             >
               {controls.playing ? (
                 <Icon name={"pause"} size={24} color={"currentColor"} />
@@ -108,33 +120,34 @@ const MusicPlayer = () => {
               )}
             </button>
             <button
-              className="focus:outline-none"
+              className="md:flex hidden focus:outline-none"
               onClick={(e) => handleNext(e)}
             >
               <Icon name={"playerNext"} size={24} color={"currentColor"} />
             </button>
-            <button className="focus:outline-none">
+            <button className="md:flex hidden focus:outline-none">
               <Icon name={"repeat"} size={24} color={"currentColor"} />
             </button>
           </div>
         </div>
         {/*//!PROGRESS BAR PLAYER*/}
-        <div className="text-white flex m-auto w-80">
-          <div>{secondsToMinutes(controls.played)}</div>
+        <div className="text-white md:flex hidden mx-auto w-5/6 pt-3">
+          <div className="mx-2">{secondsToMinutes(controls.played)}</div>
           <input
-            className="w-full"
+            className="w-full accent-purpleDark"
             type="range"
             min={0}
             max={controls.duration}
             value={controls.played}
             onChange={(e) => handleSeek(e)}
           />
-          <div>{secondsToMinutes(controls.duration)}</div>
+          <div className="mx-2">{secondsToMinutes(controls.duration)}</div>
         </div>
+      </div>
         {/*//!VOLUME BAR */}
-        <div className="text-white flex m-auto w-80">
+        <div className="text-white mr-7 w-60 md:flex hidden">
           <input
-            className="w-full"
+            className="w-full accent-purpleDark"
             type="range"
             min={0}
             max={1}
@@ -143,8 +156,7 @@ const MusicPlayer = () => {
             onChange={(e) => handleVolumeChange(e)}
           />
         </div>
-      </div>
-    </>
+    </section>
   );
 };
 

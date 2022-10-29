@@ -4,7 +4,7 @@ import VerifyForm from "./verifyForm/VerifyForm";
 import { useContext, useRef, useState } from "react";
 import { AuthContext } from "context/AuthProvider";
 import Dropdown from "components/dropdown";
-import "./Profile.css"
+import "./Profile.css";
 import { useQuery } from "@tanstack/react-query";
 import { getSession } from "api/session";
 const Profile = () => {
@@ -16,9 +16,11 @@ const Profile = () => {
 
   return (
     <div className="w-full flex flex-col justify-around h-screen bg-gradient-to-b from-purpleDark to-black">
-      <div className="flex flex-col md:pl-6 md:h-full mt-5 md:mt-5 ">
-          <h1 className="text-4xl md:text-6xl text-center text-white font-bold my-3 md:pb-8">Profile details</h1>
-        <Dropdown data={data}/>
+      <div className="flex flex-col md:pl-6 md:h-full mt-5 md:mt-2 ">
+        <h1 className="text-4xl md:text-6xl text-center text-white font-bold my-3 md:pb-2">
+          Profile details
+        </h1>
+        <Dropdown data={data} />
         <ProfileForm
           formRef={formRef}
           profileImage={profileImage}

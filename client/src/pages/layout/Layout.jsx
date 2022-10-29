@@ -12,7 +12,6 @@ const Layout = () => {
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const { isLoading, data } = useQuery(["getSession"], getSession);
-
   useEffect(() => {
     if (!user) {
       navigate("/login", { replace: true });
@@ -28,7 +27,7 @@ const Layout = () => {
       <section className="flex md:flex-col md:justify-between h-screen">
         <div className="flex md:flex-row h-screen w-screen flex-col-reverse">
           <Aside />
-          <Outlet />
+          <Outlet context={data} />
         </div>
         <MusicPlayer />
       </section>

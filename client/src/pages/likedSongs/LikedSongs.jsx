@@ -1,11 +1,13 @@
 import React from 'react'
 import { getSongs } from 'api/songs'
+import DashboardSection from 'components/dashboardSection'
 
 const LikedSongs = () => {
 
 
   return (
-    <div className="bg-black text-gray-300 min-h-screen p-10 text-white w-full">
+    <DashboardSection>
+    <div className=" text-gray-300 min-h-screen p-10 text-white w-full">
   
     {/* <!-- header --> */}
     <div className="flex">
@@ -27,7 +29,7 @@ const LikedSongs = () => {
         <p>5,055</p>
       </div>
     </div>
-    
+
     {/* <!-- song list   --> */}
     <div className="mt-10">
       {/* <!-- song list header --> */}
@@ -92,6 +94,7 @@ const LikedSongs = () => {
       */}
     </div>
   </div>
+  </DashboardSection>
   )
 }
 

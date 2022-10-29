@@ -17,9 +17,9 @@ const Admin = () => {
       <section className="w-full bg-gradient-to-b from-purpleDark to-black overflow-y-auto">
         <div className="flex flex-col-reverse h-screen md:flex-row">
           <Dropdown admin={true} data={data} />
-          <AsideAdmin page={page} setPage={setPage} />
           <DashboardAdmin page={page} />
-          <MusicPlayer />
+            <AsideAdmin page={page} setPage={setPage} />
+            <MusicPlayer />
         </div>
       </section>
     </>
