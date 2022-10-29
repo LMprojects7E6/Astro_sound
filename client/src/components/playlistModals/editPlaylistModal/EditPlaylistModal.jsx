@@ -29,6 +29,7 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
   //PUT updatePlaylist
   const editPlaylist = useMutation(updatePlaylist, {
     onSuccess: (resp) => {
+      console.log(resp);
       playlistUpdated(resp);
     },
     onError: (err) => {

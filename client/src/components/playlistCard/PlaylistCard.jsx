@@ -28,7 +28,7 @@ const PlaylistCard = ({ playlist }) => {
           <DeletePlaylistModal playlist={playlist} />
         </Modal>
         <Modal background={"bg-grey5"} modalTitle={"Edit"} text={"Edit"}>
-          <EditPlaylistModal />
+          <EditPlaylistModal playlist={playlist} />
         </Modal>
       </SettingsDropDown>
     </div>
