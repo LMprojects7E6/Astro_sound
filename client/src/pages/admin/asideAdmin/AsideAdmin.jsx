@@ -20,7 +20,7 @@ const songsInfo = songs.map((e) => e.songImage)
   return (
     <section className="bg-black flex flex-col md:justify-end md:w-72">
     <nav className="  text-grey hover:text-grey w-full md:h-full md:w-1/6 md:flex justify-center md:justify-start absolute bottom-0">
-      <ul className="flex md:flex-col md:justify-start">
+      <ul className="flex md:flex-col justify-center md:justify-start">
         <li className="flex flex-col">
           <div className="hidden md:flex md:justify-center md:my-3">
             <Logo width={"w-14"} />
