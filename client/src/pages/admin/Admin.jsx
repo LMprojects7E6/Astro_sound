@@ -18,8 +18,8 @@ const Admin = () => {
         <div className="flex flex-col-reverse h-screen md:flex-row">
           <Dropdown admin={true} data={data} />
           <DashboardAdmin page={page} />
-            <AsideAdmin page={page} setPage={setPage} />
-            <MusicPlayer />
+          <AsideAdmin page={page} setPage={setPage} />
+          <MusicPlayer />
         </div>
       </section>
     </>
