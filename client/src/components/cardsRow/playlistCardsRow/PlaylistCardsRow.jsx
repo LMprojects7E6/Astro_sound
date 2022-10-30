@@ -16,7 +16,7 @@ const PlaylistCardsRow = () => {
   if (isLoadingAllPlaylist) {
     return <p>Loading...</p>;
   } else if (isAllPlaylistError) {
-    toast.error(allPlaylistError);
+    return <p>error...</p>;
   } else {
     return (
       <>

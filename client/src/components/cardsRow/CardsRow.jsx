@@ -29,7 +29,7 @@ const CardsRow = () => {
         <div
           className={`${
             fivePlaylist.length > 0
-              ? "grid md:grid-cols-5 grid-cols-3 gap-5 md:gap-6  overflow-x-auto p-5"
+              ? "flex flex-col md:grid md:grid-cols-5 gap-5  md:gap-6  md:overflow-x-auto "
               : "flex flex-col"
           }`}
         >
