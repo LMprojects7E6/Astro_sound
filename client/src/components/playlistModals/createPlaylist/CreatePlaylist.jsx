@@ -28,6 +28,7 @@ const CreatePlaylist = ({ setShowModal }) => {
       playlistCreated(resp);
     },
     onError: (err) => {
+      console.log(err.response.data);
       toast.error(err.response.data.errorMsg);
     },
   });
