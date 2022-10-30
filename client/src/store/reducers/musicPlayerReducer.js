@@ -26,6 +26,7 @@ const onReady = (currentState, payload) => {
   const { duration } = payload;
   return {
     ...currentState,
+    playing: true,
     duration,
   };
 };
@@ -54,6 +55,7 @@ const seekChange = (currentState, payload) => {
 //!VOLUME CHANGE
 const volumeChange = (currentState, payload) => {
   const { volume } = payload;
+
   return {
     ...currentState,
     volume,
