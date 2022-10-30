@@ -1,9 +1,11 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addToSearchedSongs } from "api/songs";
-import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
+import { useRef } from "react";
 import toast from "react-hot-toast";
 
 const ResultContainer = ({ setShowModal, song }) => {
+  const likeIconRef = useRef(null);
+
   const queryClient = useQueryClient();
 
   const saveSearchedSong = useMutation(addToSearchedSongs, {
@@ -15,7 +17,7 @@ const ResultContainer = ({ setShowModal, song }) => {
     },
   });
 
-  const handelClick = () => {
+  const handelClick = (e) => {
     console.log("play");
     saveSearchedSong.mutate(song._id);
     setShowModal(false);
@@ -23,7 +25,7 @@ const ResultContainer = ({ setShowModal, song }) => {
   return (
     <div
       className="cursor-pointer flex flex-row ml-5 mr-5  border-2 border-black space-around  items-center bg-purple3  max-w-full "
-      onClick={() => handelClick()}
+      onClick={(e) => handelClick(e)}
     >
       <div
         className=" z-0 m-2 w-16 h-16   bg-cover bg-no-repeat bg-center"
@@ -34,9 +36,6 @@ const ResultContainer = ({ setShowModal, song }) => {
           {song.title}
         </h5>
         <p className=" text-white">{song.artist}</p>
-      </div>
-      <div className=" flex-none flex  mb-2 pr-5 max-w-full ">
-        <AddRemoveLikedSongs song={song} />
       </div>
     </div>
   );

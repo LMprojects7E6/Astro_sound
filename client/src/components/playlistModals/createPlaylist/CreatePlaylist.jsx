@@ -40,6 +40,7 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const onSubmit = () => {
     const dataForm = new FormData(formRef.current);
+    console.log(dataForm);
     newPLaylist.mutate(dataForm);
   };
 
@@ -67,7 +68,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               />
             ) : (
               <div className="flex flex-col justify-center items-center p-5  ">
-                <Icon name={"addImage"} size={50} />
+                <Icon name={"addImage"} size={50} color={"white"} />
                 <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                   <span className="font-semibold">Click to upload</span>
                 </p>
@@ -84,7 +85,8 @@ const CreatePlaylist = ({ setShowModal }) => {
                   message: "Image is required.",
                 },
                 validate: {
-                  lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
+                  lessThan5MB: () =>
+                    uploadedPhoto?.size < 5000000 || "Max 10MB",
                 },
                 accept: "image/png, image/jpg, image/jpeg",
               })}

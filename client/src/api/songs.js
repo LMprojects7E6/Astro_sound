@@ -41,7 +41,7 @@ export const addSongToPlaylist = async (data) => {
   const response = await api.post(
     `/songs/playlist/${data.songId}/${data.playlistId}`
   );
-  return response.data;
+  return response;
 };
 
 //!POST UPDATE LIKED PLAYLIST WITH A NEW SONG

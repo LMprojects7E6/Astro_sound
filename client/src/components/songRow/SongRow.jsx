@@ -1,10 +1,14 @@
+import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
 import React from "react";
 
-const SongRow = ({ songFile, title, artist, album, genre }) => {
+const SongRow = ({ song }) => {
+  const { songFile, title, artist, album, genre } = song;
   return (
     <div className="flex border-b border-gray-800 hover:bg-gray-800">
       <div className="p-3 w-8 flex-shrink-0">▶️</div>
-      <div className="p-3 w-8 flex-shrink-0">❤️</div>
+      <div className="p-3 w-8 flex-shrink-0">
+        <AddRemoveLikedSongs song={song} />
+      </div>
       <div className="p-3 w-full">{title}</div>
       <div className="p-3 w-full">{album}</div>
       <div className="p-3 w-full">{artist}</div>

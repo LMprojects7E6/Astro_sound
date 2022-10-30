@@ -16,8 +16,6 @@ export default function Modal({
 }) {
   const [showModal, setShowModal] = useState(false);
 
-  console.log();
-
   const handelCloseModal = () => {
     open && setOpen(!open);
     setShowModal(false);
@@ -57,9 +55,9 @@ export default function Modal({
                     />
                   </div>
                 </div>
-                <div className="relative pr-4 px-4 hidden md:block">
+                {/* <div className="relative pr-4 px-4 hidden md:block">
                   <hr />
-                </div>
+                </div> */}
                 {/*body*/}
                 {Children.map(children, (child) =>
                   cloneElement(child, { setShowModal, open, setOpen })

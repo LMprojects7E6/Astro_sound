@@ -75,13 +75,19 @@ const addSongToPlaylist = async (req, res) => {
   const { songID } = req.params;
 
   try {
-    //Add song to playlist
-    const playlist = await model.Playlist.findByIdAndUpdate(playlistID, {
-      $push: { songList: songID },
-    });
-    await playlist.save();
+    const playlist = await model.Playlist.findById(playlistID);
+    const songsInPlaylist = playlist.songList;
+    const foundInPlaylist = songsInPlaylist.find((e) => e == songID);
+    if (foundInPlaylist) {
+      res.status(208).send(`Song already in  ${playlist.name}`);
+    } else {
+      const playlist = await model.Playlist.findByIdAndUpdate(playlistID, {
+        $push: { songList: songID },
+      });
+      await playlist.save();
 
-    res.status(200).send(`Song added to ${playlist.name}`);
+      res.status(200).send(`Song added to ${playlist.name}`);
+    }
   } catch (error) {
     res
       .status(200)
