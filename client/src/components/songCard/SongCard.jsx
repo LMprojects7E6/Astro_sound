@@ -9,7 +9,7 @@ import AddToPlaylist from "components/playlistModals/addToPlaylist";
 
 const SongCard = ({ song }) => {
   return (
-    <div className=" relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  md:m-20">
+    <div className=" relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  ">
       <div
         className=" z-0 m-2 w-16 h-16 md:w-36  md:h-36 bg-cover bg-no-repeat bg-center  md:rounded-full "
         style={{ backgroundImage: `url(${song.songImage})` }}

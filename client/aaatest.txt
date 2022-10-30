@@ -1,0 +1,26 @@
+-home page: when loading it shows loading text whit no style.
+- al hacer click en el botton de profile se ve el form, este form tiene que centrar los botones mismo tamaño quedan mal asi
+-modal profil no salen los errores si no rellenas las inputs, botton verify no funciona el form en si no funciona
+
+HOME PAGE:
+1ST Step go to profile and  change the password, (now it dosen't work), we have to center the buttons of the principal form."verify and submit".
+After change of password we make a logout and login again.(Show private routes try to go to login or register when we are logged).
+Go to the home page reproduce a playlist from 5 row playlists, reproduce liked songs from the container in the bottom of home page.
+When reproduce the song show how the player works reproduce som of the songs.
+
+SEARCH PAGE:
+Click on the genre containers, go to the genre page and reproduce the songs whit the genre.
+Make a search show how the songs get stored, add remove a song whit like icon, add song to a specific playlist. Clear search history.
+
+LIBRARY PAGE:
+reproduce liked songs container, click on one of the playlist make a search reproduce the song searched.
+
+CREATE PLAYLIST:
+Import an image and create a playlist, after that go to a song and add it to a playlist.
+When create a playlist fails no error message is returned.!!
+
+
+
+
+
+
