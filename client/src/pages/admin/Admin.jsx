@@ -15,11 +15,11 @@ const Admin = () => {
   return (
     <>
       <section className="w-full bg-gradient-to-b from-purpleDark to-black overflow-y-auto">
-        <div className="flex flex-col-reverse h-screen md:flex-row">
+        <div className="flex flex-col-reverse h-screen md:flex-row-reverse">
           <Dropdown admin={true} data={data} />
           <DashboardAdmin page={page} />
-            <AsideAdmin page={page} setPage={setPage} />
-            <MusicPlayer />
+          <AsideAdmin page={page} setPage={setPage} />
+          <MusicPlayer />
         </div>
       </section>
     </>

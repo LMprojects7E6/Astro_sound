@@ -38,7 +38,7 @@ const FormAdmin = ({ mutate }) => {
 
   return (
     <>
-      <div className="md:w-full md:h-screen h-full flex justify-center items-center text-white flex-col">
+      <div className="md:w-full md:h-screen h-full flex items-center text-white flex-col">
         <div className="md:flex md:text-8xl text-5xl font-bold">
           <h1>Upload Songs</h1>
         </div>
