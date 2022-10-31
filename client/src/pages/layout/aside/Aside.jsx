@@ -75,7 +75,7 @@ const Aside = () => {
           <li className="hidden md:flex">
             <Modal
               className="font-bold"
-              modalTitle={"Create PLaylist"}
+              modalTitle={"Create Playlist"}
               icon={"plus"}
               iconSize={22}
               iconColor={"currentColor"}
