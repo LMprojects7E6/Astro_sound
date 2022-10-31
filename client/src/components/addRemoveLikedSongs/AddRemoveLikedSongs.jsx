@@ -41,14 +41,14 @@ const AddRemoveLikedSongs = ({ song }) => {
     <>
       {isLiked ? (
         <span
-          className="cursor-pointer"
+          className="cursor-pointer m-0"
           onClick={() => removeFromLikedSongs.mutate(song._id)}
         >
           <Icon name={"heartFilled"} size={24} color={"#fff"} />
         </span>
       ) : (
         <span
-          className="cursor-pointer"
+          className="cursor-pointer m-0"
           onClick={() => addToLikedSongs.mutate(song._id)}
         >
           <Icon name={"heart"} size={24} color={"#fff"} />

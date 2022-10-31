@@ -8,13 +8,8 @@ import ErrorParagraph from "components/errorParagraph";
 const FormAdmin = ({ mutate }) => {
   const formRef = useRef(null);
 
-
   const onSubmit = (e) => {
-    // e.preventDefault();
-    console.log(e)
-    console.log(e.target)
     const data = new FormData(e.target);
-    console.log(data);
     mutate(data);
   };
 
@@ -28,7 +23,6 @@ const FormAdmin = ({ mutate }) => {
       });
     }
   };
-
 
   const {
     register,

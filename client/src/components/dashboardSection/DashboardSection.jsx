@@ -7,8 +7,8 @@ const DashboardSection = ({ children }) => {
   const data = useQuery(["getSession"], getSession);
   return (
     <section className=" h-screen w-full bg-gradient-to-b from-purpleDark to-black mobile:h-full mobile:w-full overflow-y-auto p-8">
-      <Dropdown data={data}/>
-      <div>{children}</div>
+      <Dropdown data={data} />
+      {children}
     </section>
   );
 };

@@ -4,8 +4,7 @@ import ReactPlayer from "react-player";
 import actions from "store/actions/musicPlayerActions";
 import { secondsToMinutes } from "utils/convertSecondsMinute";
 import Icon from "../../../components/icons/Icons";
-import './MusicPlayer.css';
-
+import "./MusicPlayer.css";
 
 const MusicPlayer = () => {
   const musicPlayerRef = useRef(null);
@@ -15,8 +14,10 @@ const MusicPlayer = () => {
     controls,
   } = useContext(MusicPlayerContext);
   const { songNumber } = controls;
-  const songsURL = musicPlayerSongs.map((song) => song.songFile);
-
+  const songsURL =
+    musicPlayerSongs.length > 0
+      ? musicPlayerSongs.map((song) => song.songFile)
+      : [];
   //!ACTION PLAY/PAUSE
   const handlePlay = () => {
     dispatch({
@@ -30,7 +31,6 @@ const MusicPlayer = () => {
       payload: { duration: musicPlayerRef.current.getDuration() },
     });
   };
-  console.log(musicPlayerRef);
   //!ACTION PROGRESS
   const handleProgress = (e) => {
     dispatch({
@@ -49,7 +49,7 @@ const MusicPlayer = () => {
   const handleVolumeChange = (e) => {
     dispatch({
       type: actions.volumeChange,
-      payload: { volume: e.target.value },
+      payload: { volume: parseFloat(e.target.value) },
     });
   };
   //!HANDLE NEXT SONG
@@ -74,29 +74,35 @@ const MusicPlayer = () => {
     <section className="flex flex-row w-full justify-between bg-purple3 absolute md:fixed md:bottom-0 bottom-20">
       <div className="flex md:flex-col justify-around md:w-60">
         <div className="md:hidden md:absolute md:mb-96 md:mt-16">
-          <img src={musicPlayerSongs[0].songImage} alt="photo" className=" relative md:w-56 w-16 h-full pr-1" />
+          <img
+            src={musicPlayerSongs[songNumber]?.songImage}
+            alt="photo"
+            className=" relative md:w-56 w-16 h-full pr-1"
+          />
         </div>
         <div className="text-white pl-3 mt-2">
-          <h2 className="font-semibold">{musicPlayerSongs[0].artist}</h2>
-          <p>{musicPlayerSongs[0].title}</p>
+          <h2 className="font-semibold">
+            {musicPlayerSongs[songNumber]?.artist}
+          </h2>
+          <p>{musicPlayerSongs[songNumber]?.title}</p>
         </div>
       </div>
       {/* //!REACT PLAYER  */}.
       <div className="md:flex flex-col-reverse bg-purple3 md:w-full w-28">
-      <div className="hidden">
-        <ReactPlayer
-          className="react-player"
-          url={songsURL[songNumber]}
-          muted={controls.muted}
-          playing={controls.playing}
-          volume={controls.volume}
-          ref={musicPlayerRef}
-          onProgress={(e) => handleProgress(e)}
-          onEnded={() => handleNext()}
-          onReady={() => handleOnReady()}
-        ></ReactPlayer>
-      </div>
-      {/*//!CUSTOM PLAYER */}
+        <div className="hidden">
+          <ReactPlayer
+            className="react-player"
+            url={songsURL[songNumber]}
+            muted={controls.muted}
+            playing={controls.playing}
+            volume={controls.volume}
+            ref={musicPlayerRef}
+            onProgress={(e) => handleProgress(e)}
+            onEnded={() => handleNext()}
+            onReady={() => handleOnReady()}
+          ></ReactPlayer>
+        </div>
+        {/*//!CUSTOM PLAYER */}
         {/* //!CONTROLS PLAYER */}
         <div className="md:flex md:w-full  justify-around text-xs font-semibold text-white px-4 py-2">
           <div className="md:flex space-x-5 p-2">
@@ -144,18 +150,18 @@ const MusicPlayer = () => {
           <div className="mx-2">{secondsToMinutes(controls.duration)}</div>
         </div>
       </div>
-        {/*//!VOLUME BAR */}
-        <div className="text-white mr-7 w-60 md:flex hidden">
-          <input
-            className="w-full accent-purpleDark"
-            type="range"
-            min={0}
-            max={1}
-            step={0.01}
-            value={controls.volume}
-            onChange={(e) => handleVolumeChange(e)}
-          />
-        </div>
+      {/*//!VOLUME BAR */}
+      <div className="text-white mr-7 w-60 md:flex hidden">
+        <input
+          className="w-full accent-purpleDark"
+          type="range"
+          min={0}
+          max={1}
+          step={0.01}
+          value={controls.volume}
+          onChange={(e) => handleVolumeChange(e)}
+        />
+      </div>
     </section>
   );
 };
