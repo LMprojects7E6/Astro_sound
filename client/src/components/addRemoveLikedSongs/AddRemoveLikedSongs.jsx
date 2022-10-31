@@ -1,19 +1,15 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import Icon from "components/icons";
+import toast from "react-hot-toast";
+
 import { getLikedPlaylists } from "api/playlists";
 import { addSongToLikedPlaylist, removeSongFromLikedPlaylist } from "api/songs";
-import Icon from "components/icons";
 
-import toast from "react-hot-toast";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 const AddRemoveLikedSongs = ({ song }) => {
   const queryClient = useQueryClient();
 
-  const {
-    isLoading: isLoadingLikedSongs,
-    isError: isErrorLikedSongs,
-    data: likedSongs,
-    error: likedSongsError,
-  } = useQuery(["liked-songs"], getLikedPlaylists);
+  const { data: likedSongs } = useQuery(["liked-songs"], getLikedPlaylists);
 
   const addToLikedSongs = useMutation(addSongToLikedPlaylist, {
     onSuccess: () => {

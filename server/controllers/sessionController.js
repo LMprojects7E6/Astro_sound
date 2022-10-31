@@ -3,15 +3,12 @@ const getSessionRole = async (req, res, next) => {
   try {
     const { id } = req;
     const user = await model.User.findOne({ _id: id });
-    console.log();
-    res
-      .status(200)
-      .send({
-        role: user.role,
-        id: user._id,
-        firstName: user.firstName,
-        lastName: user.lastName,
-      });
+    res.status(200).send({
+      role: user.role,
+      id: user._id,
+      firstName: user.firstName,
+      lastName: user.lastName,
+    });
   } catch (error) {
     res.status(400).send(error);
   }

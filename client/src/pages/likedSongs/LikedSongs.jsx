@@ -5,20 +5,23 @@ import SongsListContainer from "components/songsListContainer/SongsListContainer
 import { getLikedPlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "components/loader/Loader";
-import Error from "components/error";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const LikedSongs = () => {
+  const navigate = useNavigate();
   const { isLoading, isError, data, error } = useQuery(
     ["liked-songs"],
     getLikedPlaylists
   );
 
   if (isLoading) {
-    return <Loader/>
-  } else if (isError) {
-    return <Error />
-  } else {
+    return <Loader />;
+  }
+
+  if (isError) {
+    navigate("/error");
+  }
+
   return (
     <DashboardSection>
       <div className="flex w-full items-center align-middle">
@@ -48,7 +51,6 @@ const LikedSongs = () => {
       )}
     </DashboardSection>
   );
-      }
 };
 
 export default LikedSongs;

@@ -9,10 +9,12 @@ import Icon from "../../../components/icons/Icons";
 const Aside = () => {
   const style =
     "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col md:flex-row items-center";
-  const activeStyle = "bg-active hover:text-white flex flex-col items-center";
+  const activeStyle =
+    "bg-active hover:text-white flex flex-col items-center text-white";
 
   const { musicPlayer: musicPlayerSongs, controls } =
     useContext(MusicPlayerContext);
+
   const songImages = musicPlayerSongs
     ? musicPlayerSongs.map((song) => song.songImage)
     : null;
@@ -28,6 +30,7 @@ const Aside = () => {
                 Astro Sounds
               </h3>
             </div>
+
             <NavLink
               to={"/"}
               className={({ isActive }) =>

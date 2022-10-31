@@ -152,8 +152,6 @@ const removeSongFromLikedPlaylist = async (req, res) => {
 const removeSongFromPlaylist = async (req, res) => {
   const { playlistID } = req.params;
   const { songID } = req.params;
-  console.log(playlistID);
-  console.log(songID);
 
   try {
     // Delete song from playlist
