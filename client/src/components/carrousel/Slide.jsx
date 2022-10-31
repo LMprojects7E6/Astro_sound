@@ -1,11 +1,15 @@
-import Button from "components/button/Button";
 import React from "react";
+import Logo from "components/logo";
 
-const Slide = ({ text, slideImage }) => {
+const Slide = ({ title, slideImage }) => {
   return (
-    <div className="w-full flex rounded-lg flex-auto h-full  md:shrink-0 bg-cover" style={{backgroundImage: `url(${slideImage})`}}>
-      <div>{text}</div>
-      {/* <img src={slideImage} alt="" className="h-50" /> */}
+    <div className="w-full flex rounded-lg flex-auto relative">
+      <div className=" flex  absolute bottom-1/2 left-1/4 bg-purpleDark p-2 rounded-md">
+        <p className="text-white text-center  text-sm md:text-xl xl:text-5xl">
+          {title}
+        </p>
+      </div>
+      <img src={slideImage} alt="" className="min-h-full " />
     </div>
   );
 };

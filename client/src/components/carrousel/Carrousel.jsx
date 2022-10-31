@@ -10,9 +10,11 @@ const Carrousel = () => {
   let pos = -1;
 
   const threeSlides = [
-    { text: "Don’t just listen, feel the music.", image: img.h },
-    { text: "it will transport you to another world.", image: img.f },
-    { text: "Where the music never stops!", image: img.g },
+    { text: "Don’t just listen, feel the music.", image: img.a },
+    { text: "It will transport you to another world.", image: img.b },
+    { text: "Where the music never stops!", image: img.c },
+    
+    
   ];
   const {
     data: threeSongs,
@@ -27,7 +29,7 @@ const Carrousel = () => {
     toast.error(songError);
   } else {
     return (
-      <div className="md:flex hidden mt-8 h-60 ">
+      <div className="md:flex hidden mt-8 ">
         <Carousel slideInterval={5000}>
           {threeSlides.map((slide, index) => {
             pos++;
