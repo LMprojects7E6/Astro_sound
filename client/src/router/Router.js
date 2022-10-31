@@ -12,7 +12,7 @@ import LikedSongs from "pages/likedSongs";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
 import Genre from "pages/genre";
 import CheckEmail from "pages/checkEmail/CheckEmail";
-import Error from "components/error/Error";
+import Error from "components/error/Error"
 
 const Router = () => {
   return (
