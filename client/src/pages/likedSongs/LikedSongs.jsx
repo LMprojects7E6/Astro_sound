@@ -22,12 +22,9 @@ const LikedSongs = () => {
   return (
     <DashboardSection>
       <div className="flex w-full items-center align-middle">
-        <img
-          className="mr-6 hidden md:flex"
-          src={require("../../assets/likedsong.png")}
-        />
+        <img className="hidden md:flex mr-6" src={require("../../assets/likedsong.png")} />
         <div className="flex flex-col justify-center">
-          <h2 className="md:mt-0 mt-10 mb-2 text-white text-2xl md:text-8xl">
+          <h2 className="md:mt-0 mt-10 mb-2 text-white text-4xl md:text-8xl">
             Liked Songs
           </h2>
         </div>

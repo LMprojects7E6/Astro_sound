@@ -16,7 +16,7 @@ const Profile = () => {
 
   return (
     <DashboardSection>
-      <div className="flex flex-col md:pl-6 md:h-full mt-5 md:mt-2 ">
+      <div className="flex flex-col md:pl-6 md:h-full mt-5">
         <h1 className="text-4xl md:text-6xl text-center text-white font-bold my-3 md:pb-2">
           Profile details
         </h1>
