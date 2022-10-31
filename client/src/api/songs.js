@@ -63,8 +63,10 @@ export const removeSongFromLikedPlaylist = async (songID) => {
 };
 
 //!DELETE REMOVE SONG FROM PLAYLIST
-export const removeSongFromPlaylist = async (songID, playlistID) => {
-  const response = await api.delete(`/songs/${songID}/${playlistID}`);
+export const removeSongFromPlaylist = async (data) => {
+  const response = await api.delete(
+    `/songs/playlist/${data.songId}/${data.playlistId}`
+  );
   return response.data;
 };
 

@@ -7,8 +7,10 @@ import SettingsDropDown from "components/settingsDropDown";
 import Modal from "components/modal";
 import AddToPlaylist from "components/playlistModals/addToPlaylist";
 import { MusicPlayerContext } from "context/MusicPlayerProvider";
+import DeleteFromPlaylist from "components/playlistModals/deleteFromPlaylist";
 
-const SongCard = ({ song }) => {
+const SongCard = ({ song, playlist }) => {
+  console.log(playlist);
   const { setMusicPlayer } = useContext(MusicPlayerContext);
   const handleClick = () => {
     setMusicPlayer([song]);
@@ -38,15 +40,34 @@ const SongCard = ({ song }) => {
           <AddRemoveLikedSongs song={song} />
         </span>
         <span className="ml-10">
-          <SettingsDropDown song={song}>
-            <Modal
-              background={"bg-grey5"}
-              modalTitle={"Add to playlist"}
-              text={"Add to playlist"}
-            >
-              <AddToPlaylist song={song} />
-            </Modal>
-          </SettingsDropDown>
+          {playlist ? (
+            <SettingsDropDown key={song.title} song={song}>
+              <Modal
+                background={"bg-grey5"}
+                modalTitle={"Add to playlist"}
+                text={"Add to playlist"}
+              >
+                <AddToPlaylist song={song} />
+              </Modal>
+              <Modal
+                background={"bg-grey5"}
+                modalTitle={"Remove from playlist"}
+                text={"Remove"}
+              >
+                <DeleteFromPlaylist song={song} playlist={playlist} />
+              </Modal>
+            </SettingsDropDown>
+          ) : (
+            <SettingsDropDown key={song.title} song={song}>
+              <Modal
+                background={"bg-grey5"}
+                modalTitle={"Add to playlist"}
+                text={"Add to playlist"}
+              >
+                <AddToPlaylist song={song} />
+              </Modal>
+            </SettingsDropDown>
+          )}
         </span>
       </div>
     </div>
