@@ -8,7 +8,6 @@ import { getPlaylistsByID } from "api/playlists";
 import ReproduceSearchPlaylist from "components/reproduceSearchPlaylist";
 import PlayListHeader from "components/playListHeader";
 import Error from "components/error";
-import { useEffect } from "react";
 import { useState } from "react";
 
 const Playlist = () => {
@@ -39,7 +38,6 @@ const Playlist = () => {
     </DashboardSection>;
   }
 
-  console.log(playlist.songList);
   return (
     <DashboardSection>
       <PlayListHeader playlist={playlist} />

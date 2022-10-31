@@ -24,7 +24,6 @@ const CreatePlaylist = ({ setShowModal }) => {
   //POST createPlaylist
   const newPLaylist = useMutation(createNewPlaylist, {
     onSuccess: (resp) => {
-      console.log(resp);
       playlistCreated(resp);
     },
     onError: (err) => {
@@ -40,12 +39,10 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const onSubmit = () => {
     const dataForm = new FormData(formRef.current);
-    console.log(dataForm);
     newPLaylist.mutate(dataForm);
   };
 
   const handleUpload = (e) => {
-    console.log(e.target.files);
     const file = e.target.files[0];
     setUploadedPhoto(file);
     setPhotoPreview(URL.createObjectURL(file));

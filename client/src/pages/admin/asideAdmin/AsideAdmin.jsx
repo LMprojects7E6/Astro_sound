@@ -9,9 +9,9 @@ const AsideAdmin = ({ setPage, page }) => {
   const activeStyle =
     "bg-active text-white hover:text-white flex flex-col items-center";
 
-const {musicPlayer: musicPlayerSongs }= useContext(MusicPlayerContext)
-const songs = musicPlayerSongs.map((song) => song);
-const songsInfo = songs.map((e) => e.songImage)
+  const { musicPlayer: musicPlayerSongs } = useContext(MusicPlayerContext);
+  const songs = musicPlayerSongs.map((song) => song);
+  const songsInfo = songs.map((e) => e.songImage);
 
   return (
     <section className="bg-black flex flex-col md:justify-end md:w-72">
@@ -61,12 +61,14 @@ const songsInfo = songs.map((e) => e.songImage)
       </ul>
     </nav>
       <div className="md:flex hidden w-full">
-          <img src={songsInfo[0]} alt="photo" className="md:w-full md:mb-24 pr-1 md:pr-0"/>
+        <img
+          src={songsInfo[0]}
+          alt="photo"
+          className="md:w-full md:mb-24 pr-1 md:pr-0"
+        />
       </div>
     </section>
   );
 };
 
-
-
-export default AsideAdmin
+export default AsideAdmin;

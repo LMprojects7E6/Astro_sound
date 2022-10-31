@@ -19,16 +19,9 @@ const Slider = ({ threeSongs }) => {
                 type={"button"}
                 text={"Play"}
                 radius={"rounded-md"}
-                // onClick={onLogout}
                 background={"bg-purple"}
               />
             </div>
-
-            {/* <img
-                  src={song.songImage}
-                  alt={song.artist}
-                  className="bg-cover"
-                /> */}
           </div>
         );
       })}

@@ -2,7 +2,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeSearchedSongs } from "api/songs";
 import SongCard from "components/songCard";
 import toast from "react-hot-toast";
-import Icon from "components/icons";
 import Button from "components/button";
 
 const SearchedSongsContainer = ({ searchedSongs, title }) => {

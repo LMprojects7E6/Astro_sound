@@ -29,7 +29,6 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
   //PUT updatePlaylist
   const editPlaylist = useMutation(updatePlaylist, {
     onSuccess: (resp) => {
-      console.log(resp);
       playlistUpdated(resp);
     },
     onError: (err) => {
@@ -82,9 +81,6 @@ const EditPlaylistModal = ({ setShowModal, playlist }) => {
                   value: false,
                   message: "Image is required.",
                 },
-                // validate: {
-                //   lessThan5MB: () => uploadedPhoto?.size < 5000000 || "Max 5MB",
-                // },
                 accept: "image/png, image/jpg, image/jpeg",
               })}
               type="file"

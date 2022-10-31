@@ -38,19 +38,15 @@ const SearchResults = ({ setShowModal, songs }) => {
             : ""}
         </h5>
         <div className="overflow-y-auto h-full">
-          {searchData ? (
-            searchData.map((song) => {
-              return (
-                <ResultContainer
-                  key={song._id}
-                  song={song}
-                  setShowModal={setShowModal}
-                />
-              );
-            })
-          ) : (
-            <h3 className="text-white">asdasd</h3>
-          )}
+          {searchData.map((song) => {
+            return (
+              <ResultContainer
+                key={song._id}
+                song={song}
+                setShowModal={setShowModal}
+              />
+            );
+          })}
         </div>
       </div>
     </>
