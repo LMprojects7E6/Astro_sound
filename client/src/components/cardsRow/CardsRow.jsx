@@ -45,7 +45,7 @@ const CardsRow = () => {
             <button className="bg-black pr-7 pl-0 text-lg flex mt-5 rounded-md">
               <Modal
                 className="font-bold"
-                modalTitle={"Create PLaylist"}
+                modalTitle={"Create Playlist"}
                 icon={"plus"}
                 iconSize={22}
                 iconColor={"currentColor"}
