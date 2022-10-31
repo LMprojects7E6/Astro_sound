@@ -107,9 +107,6 @@ const MusicPlayer = () => {
         {/* //!CONTROLS PLAYER */}
         <div className="md:flex md:w-full  justify-around text-xs font-semibold text-white px-4 py-2">
           <div className="md:flex space-x-5 p-2 h-full  md:flex-row md:items-center md:justify-center">
-            <button className="md:flex hidden focus:outline-none">
-              <Icon name={"shuffle"} size={24} color={"currentColor"} />
-            </button>
             <button
               className="md:flex hidden focus:outline-none"
               onClick={(e) => handlePrevious(e)}
@@ -132,9 +129,6 @@ const MusicPlayer = () => {
             >
               <Icon name={"playerNext"} size={24} color={"currentColor"} />
             </button>
-            <button className="md:flex hidden focus:outline-none">
-              <Icon name={"repeat"} size={24} color={"currentColor"} />
-            </button>
           </div>
         </div>
         {/*//!PROGRESS BAR PLAYER*/}
@@ -152,7 +146,8 @@ const MusicPlayer = () => {
         </div>
       </div>
       {/*//!VOLUME BAR */}
-      <div className="text-white mr-7 w-60 md:flex hidden">
+      <div className="text-white mr-7 w-60 md:flex md:flex-row md:items-center hidden">
+        <Icon name={"volLow"} size={24} color={"currentColor"} />
         <input
           className="w-full accent-purpleDark"
           type="range"
