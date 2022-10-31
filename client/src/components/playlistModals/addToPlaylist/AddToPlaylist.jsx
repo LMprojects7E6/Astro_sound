@@ -63,7 +63,7 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
           width={"w-max"}
           radius={"rounded"}
           text={"+ Create new playlist"}
-          modalTitle={"Create PLaylist"}
+          modalTitle={"Create Playlist"}
         >
           <CreatePlaylist />
         </Modal>

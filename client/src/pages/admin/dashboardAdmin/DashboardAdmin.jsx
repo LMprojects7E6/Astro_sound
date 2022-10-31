@@ -2,6 +2,8 @@
 import React from "react";
 import FormAdmin from "../formAdmin";
 import Statistics from "../statistics";
+import Search from "pages/search";
+import Profile from "pages/profile";
 
 const DashboardAdmin = ({ page }) => {
   return <>{chooseDashboard[page]}</>;
@@ -9,9 +11,9 @@ const DashboardAdmin = ({ page }) => {
 
 const chooseDashboard = {
   home: <FormAdmin />,
-  search: "<Search />",
+  search: <Search />,
   statistics: <Statistics />,
-  profile: "<Profile />",
+  profile: <Profile />,
 };
 
 export default DashboardAdmin;

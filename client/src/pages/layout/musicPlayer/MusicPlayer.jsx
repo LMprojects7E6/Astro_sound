@@ -74,11 +74,12 @@ const MusicPlayer = () => {
     <section className="flex flex-row w-full justify-between bg-purple3 absolute md:fixed md:bottom-0 bottom-20">
       <div className="flex md:flex-col justify-around md:w-60">
         <div className="md:hidden md:absolute md:mb-96 md:mt-16">
-          <img
+          {musicPlayerSongs[songNumber]?.songImage &&   <img
             src={musicPlayerSongs[songNumber]?.songImage}
             alt="photo"
             className=" relative md:w-56 w-16 h-full pr-1"
-          />
+          />}
+        
         </div>
         <div className="text-white pl-3 mt-2">
           <h2 className="font-semibold">
@@ -105,10 +106,7 @@ const MusicPlayer = () => {
         {/*//!CUSTOM PLAYER */}
         {/* //!CONTROLS PLAYER */}
         <div className="md:flex md:w-full  justify-around text-xs font-semibold text-white px-4 py-2">
-          <div className="md:flex space-x-5 p-2">
-            <button className="md:flex hidden focus:outline-none">
-              <Icon name={"shuffle"} size={24} color={"currentColor"} />
-            </button>
+          <div className="md:flex space-x-5 p-2 h-full  md:flex-row md:items-center md:justify-center">
             <button
               className="md:flex hidden focus:outline-none"
               onClick={(e) => handlePrevious(e)}
@@ -117,7 +115,7 @@ const MusicPlayer = () => {
             </button>
             <button
               onClick={handlePlay}
-              className="btn-play rounded-full w-8 h-8 flex items-center justify-center ring-2 ring-gray-100 focus:outline-none"
+              className="btn-play rounded-full w-8 h-8 p-1 flex justify-center ring-2 focus:outline-none"
             >
               {controls.playing ? (
                 <Icon name={"pause"} size={24} color={"currentColor"} />
@@ -130,9 +128,6 @@ const MusicPlayer = () => {
               onClick={(e) => handleNext(e)}
             >
               <Icon name={"playerNext"} size={24} color={"currentColor"} />
-            </button>
-            <button className="md:flex hidden focus:outline-none">
-              <Icon name={"repeat"} size={24} color={"currentColor"} />
             </button>
           </div>
         </div>
@@ -151,7 +146,8 @@ const MusicPlayer = () => {
         </div>
       </div>
       {/*//!VOLUME BAR */}
-      <div className="text-white mr-7 w-60 md:flex hidden">
+      <div className="text-white mr-7 w-60 md:flex md:flex-row md:items-center hidden">
+        <Icon name={"volLow"} size={24} color={"currentColor"} />
         <input
           className="w-full accent-purpleDark"
           type="range"

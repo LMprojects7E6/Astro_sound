@@ -3,6 +3,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "context/AuthProvider";
 import Modal from "components/modal/Modal";
 import PasswordChangeForm from "../passwordChangeForm/PasswordChangeForm";
+import Icons from "components/icons";
 
 const ProfileForm = ({
   formRef,
@@ -24,19 +25,25 @@ const ProfileForm = ({
         className="flex flex-col md:w-full md:items-center"
         ref={formRef}
       >
-        <div className="flex flex-col items-center md:flex-col w-full">
-          <label htmlFor="profileImage" className="md:flex md:h-full">
+        <div className="flex flex-col items-center md:flex-col w-full ">
+          <label htmlFor="profileImage" className="md:flex md:h-full group">
             {profileImage ? (
-              // eslint-disable-next-line jsx-a11y/img-redundant-alt
+              <>
               <img
                 src={profileImage}
-                alt="profile photo"
+                alt="profilePhoto"
                 className="w-60 h-60 rounded-full"
               />
-            ) : (
+              <div class="opacity-0 w-60 h-60 backdrop-blur-sm backdrop-grayscale rounded-full group-hover:opacity-100 duration-300 absolute z-10 hidden md:flex justify-center items-center text-2xl text-white font-semibold">
+                <Icons name="Pencil" size={24} color="white"/> Edit Image
+              </div>
+              </>) : (
               <div className="w-32 h-32 bg-grey3 rounded-full"></div>
             )}
           </label>
+              <div className="text-white m-0 p-1 w-80 md:hidden flex flex-row justify-center">
+              <Icons name="Pencil" size={24} color="white"/> Edit Image
+             </div>
         </div>
         <input
           className="hidden"
@@ -62,23 +69,25 @@ const ProfileForm = ({
           <div className="flex flex-col  md:w-full md:items-center">
             <label className="font-medium pb-2 md:mr-60">PASSWORD:</label>
             <input
-              className="rounded pl-2 w-full md:w-80 mb-2 md:mr-2 md:mb-5"
+              className="rounded pl-2 w-full md:w-80 md:mr-2"
               type="password"
               disabled={true}
               placeholder="**************"
             />
+            <div className="text-white m-0 p-0 w-80 flex flex-row justify-end">
+                <Modal
+                      className="font-bold"
+                      modalTitle={"Change Password"}
+                      icon={"Pencil"}
+                      iconSize={22}
+                      iconColor={"white"}
+                      text={"Change Password"}
+                    >
+                  <PasswordChangeForm />
+              </Modal>
+            </div>
           </div>
         </div>
-      <Modal
-        modalTitle={"Change password"}
-        text={"Change password"}
-        background={"bg-purple"}
-        width={"w-44"}
-      >
-        <div className="password-change__container">
-          <PasswordChangeForm />
-        </div>
-      </Modal>
     </div>
   );
 };
