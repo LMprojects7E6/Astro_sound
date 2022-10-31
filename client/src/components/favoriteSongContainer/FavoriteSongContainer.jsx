@@ -22,7 +22,7 @@ const FavoriteSongContainer = () => {
     navigate("/error");
   } else {
     return (
-      <Link to={navigate("/likedSongs")}>
+      <Link to={("/likedSongs")}>
         <section className="w-full mainButtonBg flex text-white rounded-lg mb-20 ">
           <div className="md:p-5 p-3 w-full flex flex-col justify-around ml-5">
             <div className="overflow-y-auto h-52">
