@@ -14,16 +14,20 @@ const SongCard = ({ song }) => {
     setMusicPlayer([song]);
   };
   return (
-    <div className=" relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  md:m-20">
+    <div className=" relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  ">
       <div
         className=" z-0 m-2 w-16 h-16 md:w-36  md:h-36 bg-cover bg-no-repeat bg-center  md:rounded-full "
         style={{ backgroundImage: `url(${song.songImage})` }}
+        onClick={handleClick}
       >
         <div className=" flex-none z-50 hidden md:block border-2 pl-1.5 pt-1.5 w-10 h-10 mt-24 ml-24   overflow-auto rounded-full bg-purple2 align-center ">
           <Button icon={"play"} iconSize={24} onClick={handleClick} />
         </div>
       </div>
-      <div className=" grow flex flex-col justify-between md:my-10  ">
+      <div
+        className=" grow flex flex-col justify-between md:my-10  "
+        onClick={handleClick}
+      >
         <h5 className=" md:text-xl w-max font-bold tracking-tight dark:text-white">
           {song.title}
         </h5>

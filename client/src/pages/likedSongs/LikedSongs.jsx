@@ -5,6 +5,7 @@ import SongsListContainer from "components/songsListContainer/SongsListContainer
 import { getLikedPlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "components/loader/Loader";
+import Error from "components/error";
 import { Link } from "react-router-dom";
 
 const LikedSongs = () => {
@@ -14,9 +15,10 @@ const LikedSongs = () => {
   );
 
   if (isLoading) {
-    return <Loader />;
-  }
-
+    return <Loader/>
+  } else if (isError) {
+    return <Error />
+  } else {
   return (
     <DashboardSection>
       <div className="flex w-full items-center align-middle">
@@ -43,6 +45,7 @@ const LikedSongs = () => {
       )}
     </DashboardSection>
   );
+      }
 };
 
 export default LikedSongs;

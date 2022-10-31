@@ -1,10 +1,13 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { addToSearchedSongs } from "api/songs";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
+import { useContext } from "react";
 import { useRef } from "react";
 import toast from "react-hot-toast";
 
 const ResultContainer = ({ setShowModal, song }) => {
   const likeIconRef = useRef(null);
+  const { setMusicPlayer } = useContext(MusicPlayerContext);
 
   const queryClient = useQueryClient();
 
@@ -18,7 +21,7 @@ const ResultContainer = ({ setShowModal, song }) => {
   });
 
   const handelClick = (e) => {
-    console.log("play");
+    setMusicPlayer([song]);
     saveSearchedSong.mutate(song._id);
     setShowModal(false);
   };
