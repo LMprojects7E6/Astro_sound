@@ -2,6 +2,8 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { removeSearchedSongs } from "api/songs";
 import SongCard from "components/songCard";
 import toast from "react-hot-toast";
+import Icon from "components/icons";
+import Button from "components/button";
 
 const SearchedSongsContainer = ({ searchedSongs, title }) => {
   const queryClient = useQueryClient();
@@ -32,12 +34,17 @@ const SearchedSongsContainer = ({ searchedSongs, title }) => {
       <div
         className={`${
           searchedSongs.length > 0
-            ? " md:text-2xl mt-2 text-white mb-5 mx-2 cursor-pointer"
+            ? "   md:text-xl mt-2 text-white mb-5 mx-2 cursor-pointer "
             : "hidden"
         }`}
-        onClick={() => clearSearchedSong.mutate()}
       >
-        Clear search history
+        <Button
+          background={"bg-black"}
+          width={"w-"}
+          radius={"rounded"}
+          text={"Clear history"}
+          onClick={() => clearSearchedSong.mutate()}
+        />
       </div>
     </section>
   );
