@@ -29,8 +29,8 @@ const Profile = () => {
         <div className="password-change__container md:h-full">
           <Modal
             modalTitle={"Verify account"}
-            text={"Submit"}
-            background={"bg-purple"}
+            text={"Update Profile"}
+            background={"bg-purple2"}
           >
             <VerifyForm
               formRef={formRef}

@@ -22,7 +22,7 @@ const songsInfo = songs.map((e) => e.songImage)
     <nav className="  text-grey hover:text-grey w-full md:h-full md:w-1/6 md:flex justify-center md:justify-start absolute bottom-0">
       <ul className="flex md:flex-col justify-center md:justify-start">
         <li className="flex flex-col">
-          <div className="hidden md:flex md:justify-center md:my-3">
+          <div className="hidden md:flex md:justify-center md:my-3 md:ml-1">
             <Logo width={"w-14"} />
             <h3 className="text-white flex md:flex-col justify-center">
               Astro Sounds
@@ -71,4 +71,6 @@ const songsInfo = songs.map((e) => e.songImage)
   );
 };
 
-export default AsideAdmin;
+
+
+export default AsideAdmin
