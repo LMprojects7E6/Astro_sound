@@ -4,10 +4,17 @@ import SettingsDropDown from "components/settingsDropDown";
 import SongCard from "components/songCard";
 import Modal from "components/modal/Modal";
 import React from "react";
+import { useContext } from "react";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
 
 const SongsListContainer = ({ songs }) => {
   const thStyle = "border-b-2 border-white text-left ";
   const tdStyle = "";
+  const { setMusicPlayer } = useContext(MusicPlayerContext);
+
+  const handleClick = (song) => {
+    setMusicPlayer([song]);
+  };
   return (
     <>
       <div className="md:hidden ">
@@ -30,6 +37,7 @@ const SongsListContainer = ({ songs }) => {
               <tr
                 key={song._id}
                 className="hover:bg-purple hover:text-black  transition duration-75 ease-in-out cursor-pointer"
+                onClick={() => handleClick(song)}
               >
                 <td className={`${tdStyle}`}>
                   <div className=" flex flex-row  items-center">
