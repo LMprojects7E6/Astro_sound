@@ -4,10 +4,17 @@ import SettingsDropDown from "components/settingsDropDown";
 import SongCard from "components/songCard";
 import Modal from "components/modal/Modal";
 import React from "react";
+import { useContext } from "react";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
 
 const SongsListContainer = ({ songs }) => {
   const thStyle = "border-b-2 border-white text-left ";
   const tdStyle = "";
+  const { setMusicPlayer } = useContext(MusicPlayerContext);
+
+  const handleClick = (song) => {
+    setMusicPlayer([song]);
+  };
   return (
     <>
       <div className="md:hidden ">
@@ -27,11 +34,15 @@ const SongsListContainer = ({ songs }) => {
           </thead>
           <tbody>
             {songs.map((song) => (
-              <tr key={song._id}>
+              <tr
+                key={song._id}
+                className="hover:bg-purple hover:text-black  transition duration-75 ease-in-out cursor-pointer"
+                onClick={() => handleClick(song)}
+              >
                 <td className={`${tdStyle}`}>
                   <div className=" flex flex-row  items-center">
                     <div
-                      className=" z-0 m-2 w-16 h-16  bg-cover bg-no-repeat bg-center   "
+                      className=" z-0 m-2 w-16 h-16  bg-cover bg-no-repeat bg-center "
                       style={{ backgroundImage: `url(${song.songImage})` }}
                     ></div>
                     <div className=" grow flex flex-col justify-between  ">
