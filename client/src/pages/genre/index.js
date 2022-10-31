@@ -1,1 +1,1 @@
-export { default } from "./Genre";
+export { default } from "./Genre.jsx";

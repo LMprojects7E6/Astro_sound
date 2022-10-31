@@ -1,1 +1,1 @@
-export { default } from "./LikedSongs";
+export { default } from "./LikedSongs.jsx";

@@ -9,12 +9,23 @@ import { useContext, useEffect } from "react";
 import { AuthContext } from "context/AuthProvider";
 
 const Layout = () => {
-  const { user } = useContext(AuthContext);
+  const { user, verifyTokenExpiration, signOut } = useContext(AuthContext);
   const navigate = useNavigate();
   const { isLoading, data } = useQuery(["getSession"], getSession);
   useEffect(() => {
     if (!user) {
       navigate("/login", { replace: true });
+    } else {
+      const verifyToken = async () => {
+        try {
+          await verifyTokenExpiration();
+        } catch (error) {
+          await signOut();
+          navigate("/login");
+          console.log("Token expired, SIGN OUT!!");
+        }
+      };
+      verifyToken();
     }
   }, []);
 
