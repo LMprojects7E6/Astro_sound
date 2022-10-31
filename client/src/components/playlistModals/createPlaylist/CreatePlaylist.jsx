@@ -123,7 +123,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               placeholder="Playlist Name"
               name="playListName"
               id="playListName"
-              className="bg-grey4 w-full my-2 pl-5 pr-5 py-2 placeholder-white"
+              className="bg-grey4 w-full my-2 pl-5 pr-5 py-2 placeholder-white outline-none"
             />
             {errors.playListName && (
               <ErrorParagraph>{errors.playListName.message}</ErrorParagraph>
@@ -144,7 +144,7 @@ const CreatePlaylist = ({ setShowModal }) => {
               placeholder="Playlist Description"
               name="playListDescription"
               id="playListDescription"
-              className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white"
+              className="bg-grey4 w-full pl-5 pr-5 py-2 h-28 resize-none rounded  placeholder-white outline-none"
             />
             {errors.playListDescription && (
               <ErrorParagraph>

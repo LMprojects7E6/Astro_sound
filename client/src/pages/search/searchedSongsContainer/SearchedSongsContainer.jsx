@@ -34,14 +34,14 @@ const SearchedSongsContainer = ({ searchedSongs, title }) => {
       <div
         className={`${
           searchedSongs.length > 0
-            ? "   md:text-xl mt-2 text-white mb-5 mx-2 cursor-pointer "
+            ? "   md:text-xl mt-4 text-white mb-5 mx-2  bg cursor-pointer "
             : "hidden"
         }`}
       >
         <Button
-          background={"bg-black"}
+          background={"bg-purple2"}
           width={"w-"}
-          radius={"rounded"}
+          radius={"rounded-md"}
           text={"Clear history"}
           onClick={() => clearSearchedSong.mutate()}
         />
