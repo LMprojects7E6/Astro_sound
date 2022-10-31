@@ -15,8 +15,12 @@ const Dropdown = ({ admin }) => {
     <Menu as="div" className="absolute right-2 top-3 mr-1  md:right-7 z-10">
       <div className="flex flex-row items-center">
         <Menu.Button className="inline-flex w-full justify-center rounded-md bg-grey2 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-50 hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
-          <ImageProfile name={"userImage"} size={22} />
-          Elliot Alderson
+          <ImageProfile />
+          <div className="hidden md:flex">
+          {data.data?.firstName}
+          &nbsp;
+          {data.data?.lastName}
+          </div>
           <Icons name={"downDir"} size={20} color={"currentColor"} />
         </Menu.Button>
       </div>
