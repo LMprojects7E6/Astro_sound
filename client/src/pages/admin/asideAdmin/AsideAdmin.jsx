@@ -1,13 +1,9 @@
 import React, { useContext } from "react";
 import Logo from "components/logo";
-import Modal from "components/modal";
-import CreatePlaylist from "components/playlistModals/createPlaylist";
-import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
 import { MusicPlayerContext } from "context/MusicPlayerProvider";
 
 const AsideAdmin = ({ setPage, page }) => {
-  console.log(page);
   const style =
     "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col lg:flex-row items-center cursor-pointer";
   const activeStyle =
@@ -38,7 +34,7 @@ const songsInfo = songs.map((e) => e.songImage)
             Home
           </div>
         </li>
-        <li className="flex-col">
+        {/* <li className="flex-col">
           <div
             className={page === "search" ? activeStyle + " " + style : style}
             onClick={() => setPage("search")}
@@ -61,7 +57,7 @@ const songsInfo = songs.map((e) => e.songImage)
             </span>
             Statistics
           </div>
-        </li>
+        </li> */}
       </ul>
     </nav>
       <div className="md:flex hidden w-full">

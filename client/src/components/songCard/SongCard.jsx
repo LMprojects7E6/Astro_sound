@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-
 import Button from "components/button";
-import Icon from "components/icons";
 import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
 import SettingsDropDown from "components/settingsDropDown";
 import Modal from "components/modal";
@@ -10,7 +8,6 @@ import { MusicPlayerContext } from "context/MusicPlayerProvider";
 import DeleteFromPlaylist from "components/playlistModals/deleteFromPlaylist";
 
 const SongCard = ({ song, playlist }) => {
-  console.log(playlist);
   const { setMusicPlayer } = useContext(MusicPlayerContext);
   const handleClick = () => {
     setMusicPlayer([song]);
