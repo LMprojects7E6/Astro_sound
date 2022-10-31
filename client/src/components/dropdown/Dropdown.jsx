@@ -2,7 +2,7 @@ import React from "react";
 import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import Icons from "components/icons";
-import Logout from "components/button/Logout";
+import Logout from "components/logout";
 import { Link } from "react-router-dom";
 import ImageProfile from "components/imageProfile";
 
@@ -17,10 +17,9 @@ const Dropdown = ({ admin, data }) => {
             &nbsp;
             {data.data?.lastName}
             &nbsp;
-          {/* <Icons name={"downDir"} size={20} color={"currentColor"}/> */}
           </div>
           <div className="flex h-full flex-col justify-center">
-          <Icons name={"downDir"} size={20} color={"currentColor"}/>
+            <Icons name={"downDir"} size={20} color={"currentColor"} />
           </div>
         </Menu.Button>
       </div>

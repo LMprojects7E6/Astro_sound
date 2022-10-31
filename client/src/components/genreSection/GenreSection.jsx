@@ -6,8 +6,10 @@ const GenreSection = () => {
   const genre = [
     { genre: "jazz", color: "purple" },
     { genre: "pop", color: "purple2" },
-    { genre: "caca", color: "grey2" },
+    { genre: "reggaeton", color: "grey2" },
     { genre: "rap", color: "purple3" },
+    { genre: "rock", color: "grey3" },
+    { genre: "soul", color: "purpleDark" },
   ];
 
   const slideLeft = () => {

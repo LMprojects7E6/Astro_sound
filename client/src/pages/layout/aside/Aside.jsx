@@ -9,10 +9,12 @@ import Icon from "../../../components/icons/Icons";
 const Aside = () => {
   const style =
     "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col md:flex-row items-center";
-  const activeStyle = "bg-active hover:text-white flex flex-col items-center";
+  const activeStyle =
+    "bg-active hover:text-white flex flex-col items-center text-white";
 
   const { musicPlayer: musicPlayerSongs, controls } =
     useContext(MusicPlayerContext);
+
   const songImages = musicPlayerSongs
     ? musicPlayerSongs.map((song) => song.songImage)
     : null;
@@ -22,7 +24,10 @@ const Aside = () => {
       <nav className="  text-grey hover:text-grey w-full md:w-44 flex justify-center md:justify-start md:flex-col">
         <ul className="flex md:flex-col ">
           <li className="flex flex-col">
-            <Link to="/" className="hidden md:flex md:justify-center md:my-3 cursor-pointer">
+            <Link
+              to="/"
+              className="hidden md:flex md:justify-center md:my-3 cursor-pointer"
+            >
               <Logo width={"w-14"} />
               <h3 className="text-white flex md:flex-col justify-center">
                 Astro Sounds

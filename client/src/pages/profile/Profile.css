@@ -1,14 +1,8 @@
-.password-change__container > button{
-   max-width: max-content;
-   margin-top: 1rem;
+.password-change__container > button {
+  max-width: max-content;
+  margin-top: 1rem;
 }
 
-.password-change__container{
-    margin: auto;
+.password-change__container {
+  margin: auto;
 }
-
-/* @media only screen and (max-width: 600px) {
-    .password-change__container{
-      position: absolute;
-    }
-  } */

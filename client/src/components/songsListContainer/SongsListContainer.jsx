@@ -66,7 +66,7 @@ const SongsListContainer = ({ songs, playlist }) => {
                 </td>
                 <td className={`${tdStyle} relative mb-7`}>
                   <div className="absolute  bottom-5 ">
-                    {page !== "likedSongs" ? (
+                    {page === "playlist" ? (
                       <SettingsDropDown key={song.title} song={song}>
                         <Modal
                           background={"bg-grey5"}

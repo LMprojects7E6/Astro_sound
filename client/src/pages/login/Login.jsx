@@ -21,7 +21,6 @@ const Login = () => {
           navigate("/", { replace: true });
         } catch (error) {
           await signOut();
-          console.log("Token expired, SIGN OUT!!");
         }
       };
       verifyToken();
