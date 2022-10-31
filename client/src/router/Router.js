@@ -12,6 +12,7 @@ import LikedSongs from "pages/likedSongs";
 import ForgotPassword from "pages/forgotPassword/ForgotPassword";
 import Genre from "pages/genre";
 import CheckEmail from "pages/checkEmail/CheckEmail";
+import Error from "components/error/Error";
 
 const Router = () => {
   return (
@@ -29,6 +30,7 @@ const Router = () => {
           <Route path="genre/:genre" element={<Genre />} />
           <Route path="search" element={<Search />} />
           <Route path="profile" element={<Profile />} />
+          <Route path="error" element={<Error />} />
         </Route>
       </Route>
     </Routes>

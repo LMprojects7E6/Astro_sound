@@ -1,13 +1,15 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import Icon from "components/icons/Icons";
 import image from "assets/threeSongs/quevedo.png";
 import LikedSong from "./LikedSong";
 import { getLikedPlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import Loader from "components/loader/Loader";
 import { Link } from "react-router-dom";
 
 const FavoriteSongContainer = () => {
+  const navigate = useNavigate();
   const {
     isLoading: isLoadingLikedSongs,
     isError: isErrorLikedSongs,
@@ -16,9 +18,9 @@ const FavoriteSongContainer = () => {
   } = useQuery(["liked-songs"], getLikedPlaylists);
 
   if (isLoadingLikedSongs) {
-    return <p>Loading...</p>;
+    return <Loader/>
   } else if (isErrorLikedSongs) {
-    toast.error(likedSongsError);
+    navigate("/error");
   } else {
     return (
       <section className="w-full mainButtonBg flex text-white rounded-lg mb-20 ">

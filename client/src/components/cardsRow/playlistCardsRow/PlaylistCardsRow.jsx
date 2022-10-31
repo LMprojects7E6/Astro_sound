@@ -1,7 +1,8 @@
 import React from "react";
 import { getAllPlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import Loader from "components/loader/Loader";
+import Error from "components/error";
 import PlaylistCard from "components/playlistCard";
 import { Link } from "react-router-dom";
 
@@ -14,9 +15,9 @@ const PlaylistCardsRow = () => {
   } = useQuery(["playlists"], getAllPlaylists);
 
   if (isLoadingAllPlaylist) {
-    return <p>Loading...</p>;
+    return <Loader/>
   } else if (isAllPlaylistError) {
-    toast.error(allPlaylistError);
+    return <Error />
   } else {
     return (
       <>

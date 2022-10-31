@@ -1,12 +1,14 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { Carousel } from "flowbite-react";
 import { getThreeSongs } from "api/songs";
 import { useQuery } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import Loader from "components/loader/Loader";
 import Slide from "./Slide";
 import img from "assets/slides/index";
 
 const Carrousel = () => {
+  const navigate = useNavigate();
   let pos = -1;
 
   const threeSlides = [
@@ -22,9 +24,9 @@ const Carrousel = () => {
   } = useQuery(["threeSongs"], getThreeSongs);
 
   if (isLoadingSong) {
-    return <p>Loading...</p>;
+    return <Loader/>
   } else if (isSongError) {
-    toast.error(songError);
+    navigate("/error");
   } else {
     return (
       <div className="md:flex hidden mt-8 ">

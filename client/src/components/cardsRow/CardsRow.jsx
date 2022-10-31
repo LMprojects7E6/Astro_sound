@@ -1,13 +1,14 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 import { getFivePlaylists } from "api/playlists";
 import { useQuery } from "@tanstack/react-query";
-import toast from "react-hot-toast";
+import Loader from "components/loader/Loader";
 import PlaylistCard from "components/playlistCard/PlaylistCard";
 import Modal from "components/modal/Modal";
 import CreatePlaylist from "components/playlistModals/createPlaylist";
 
 const CardsRow = () => {
+  const navigate = useNavigate();
   const {
     data: fivePlaylist,
     isLoading: isLoadingPlaylist,
@@ -16,9 +17,9 @@ const CardsRow = () => {
   } = useQuery(["playlists"], getFivePlaylists);
 
   if (isLoadingPlaylist) {
-    return <p>Loading...</p>;
+    return <Loader/>
   } else if (isPlaylistError) {
-    toast.error(playlistError);
+    navigate("/error");
   } else {
     return (
       <section className="md:my-10 my-5">
