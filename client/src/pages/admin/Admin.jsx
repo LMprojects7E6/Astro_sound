@@ -1,49 +1,27 @@
-
-import { useMutation } from "@tanstack/react-query";
-import { postSong } from "api/songs";
-import DashboardSection from "components/dashboardSection";
+import { useQuery } from "@tanstack/react-query";
+import { getSession } from "api/session";
 import Dropdown from "components/dropdown";
-import Icons from "components/icons";
-import Loader from "components/loader/Loader";
-import { AuthContext } from "context/AuthProvider";
+
 import MusicPlayer from "pages/layout/musicPlayer";
-import { useContext } from "react";
-import { toast } from "react-hot-toast";
+import { useState } from "react";
+
 import AsideAdmin from "./asideAdmin";
 import DashboardAdmin from "./dashboardAdmin";
-import FormAdmin from "./formAdmin";
-// import Dashboard from "./dashboard/Dashboard"
-
 
 const Admin = () => {
-  const { user } = useContext(AuthContext);
-  console.log(user);
-  const { mutate, isLoading } = useMutation(postSong, {
-    onSuccess: (res) => {
-      console.log(res);
-      toast.success(res);
-    },
-    onError: (error) => {
-      toast.error(error.response.data);
-    },
-  });
+  const [page, setPage] = useState("home");
+  const data = useQuery(["getSession"], getSession);
 
   return (
     <>
-      {isLoading && (
-        <div className="bg-opacity-loader absolute flex justify-center md:w-screen md:h-screen text-white">
-          <Loader />
+      <section className="w-full bg-gradient-to-b from-purpleDark to-black overflow-y-auto">
+        <div className="flex flex-col-reverse h-screen md:flex-row-reverse">
+          <Dropdown admin={true} data={data} />
+          <DashboardAdmin page={page} />
+          <AsideAdmin page={page} setPage={setPage} />
+          <MusicPlayer />
         </div>
-      )}
-      <DashboardAdmin>
-      <div className="flex flex-col-reverse h-screen">
-        <Dropdown admin={true}/>
-        <AsideAdmin />
-        {/* <Dashboard /> */}
-        <FormAdmin mutate={mutate}/>
-        <MusicPlayer />
-      </div>
-      </DashboardAdmin>
+      </section>
     </>
   );
 };

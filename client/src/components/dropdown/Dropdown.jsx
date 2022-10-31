@@ -6,22 +6,22 @@ import Logout from "components/button/Logout";
 import { Link } from "react-router-dom";
 import ImageProfile from "components/imageProfile";
 
-// function classNames(...classes) {
-//   return classes.filter(Boolean).join(" ");
-// }
-
-const Dropdown = ({ admin }) => {
+const Dropdown = ({ admin, data }) => {
   return (
     <Menu as="div" className="absolute right-2 top-3 mr-1  md:right-7 z-10">
-      <div className="flex flex-row items-center">
-        <Menu.Button className="inline-flex w-full justify-center rounded-md bg-grey2 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-50 hover:text-black focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+      <div className="flex flex-row justify-center h-full">
+        <Menu.Button className="flex w-full justify-center rounded-md bg-grey2 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-gray-50 hover:text-grey focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
           <ImageProfile />
-          <div className="hidden md:flex">
-          {data.data?.firstName}
-          &nbsp;
-          {data.data?.lastName}
+          <div className="hidden md:flex md:flex-row md:items-center md:h-full ">
+            {data.data?.firstName}
+            &nbsp;
+            {data.data?.lastName}
+            &nbsp;
+          {/* <Icons name={"downDir"} size={20} color={"currentColor"}/> */}
           </div>
-          <Icons name={"downDir"} size={20} color={"currentColor"} />
+          <div className="flex h-full flex-col justify-center">
+          <Icons name={"downDir"} size={20} color={"currentColor"}/>
+          </div>
         </Menu.Button>
       </div>
 

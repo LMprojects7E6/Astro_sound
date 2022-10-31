@@ -25,10 +25,10 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
     },
   });
 
-  const playlistUpdated = (data) => {
+  const playlistUpdated = (resp) => {
     queryClient.invalidateQueries(["getAllPlaylists"]);
     setShowModal(false);
-    toast.success(data);
+    resp.status === 208 ? toast.error(resp.data) : toast.success(resp.data);
   };
 
   const handelClick = (list) => {
@@ -36,7 +36,7 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
       songId: song._id,
       playlistId: list._id,
     });
-    setOpen(!open);
+    setOpen(false);
   };
 
   return (
@@ -62,6 +62,7 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
           width={"w-max"}
           radius={"rounded"}
           text={"+ Create new playlist"}
+          modalTitle={"Create PLaylist"}
         >
           <CreatePlaylist />
         </Modal>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Icons from "components/icons";
 import { useForm } from "react-hook-form";
 import Input from "components/input";
@@ -6,14 +6,10 @@ import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
 
 const FormAdmin = ({ mutate }) => {
-
+  const formRef = useRef(null);
 
   const onSubmit = (e) => {
-    // e.preventDefault();
-    console.log(e)
-    console.log(e.target)
     const data = new FormData(e.target);
-    console.log(data);
     mutate(data);
   };
 
@@ -28,20 +24,11 @@ const FormAdmin = ({ mutate }) => {
     }
   };
 
-  // const handleUpload = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append("image", image.raw);
-  // };
-
-
-
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-
 
   return (
       <div className="md:w-full md:h-screen h-full flex items-center text-white flex-col overflow-auto">
@@ -177,63 +164,70 @@ const FormAdmin = ({ mutate }) => {
                       </span>
                     </>
                   )}
+
+                  <input
+                    id="upload-button"
+                    name="songImage"
+                    type="file"
+                    className="hidden"
+                    accept=".jpg, .jpeg, .png"
+                    errors={errors}
+                    {...register("songImage", {
+                      onChange: (e) => {
+                        handleChange(e);
+                      },
+                      required: true,
+                      message: "Song image required",
+                    })}
+                  />
+                </label>
+                {errors.songImage?.type === "required" && (
+                  <ErrorParagraph>This is field required</ErrorParagraph>
+                )}
+                {/* INPUT SONGFILE */}
+              </div>
+              <div>
                 <input
-                  id="upload-button"
-                  name="songFile"
+                  className="flex w-full text-sm text-gray-900 text-white mt-2 px-5"
+                  id="file_input"
                   type="file"
-                  className="hidden"
-                  accept=".jpg, .jpeg, .png"
-                  multiple
-                  required
-                  onChange={handleChange}
+                  name="songFile"
                   register={register}
                   errors={errors}
+                  accept=".mp3, .mp4"
+                  {...register("songFile", {
+                    required: true,
+                    message: "Song file required",
+                  })}
                 />
-                {errors.songImage?.type === "required" && (
-                <ErrorParagraph>This is field required</ErrorParagraph>
+                {errors.songFile?.type === "required" && (
+                  <ErrorParagraph>This is field required</ErrorParagraph>
                 )}
-              </label>
-            {/* INPUT SONGFILE */}
+              </div>
+            </div>
+          </div>
+          <div className=" flex items-center justify-around mx-3 mt-3">
+            <div>
+              <Button
+                bg={"mainButtonBg"}
+                width={"w-full"}
+                radius={"rounded"}
+                text={"Cancel"}
+                type={"reset"}
+              />
             </div>
             <div>
-            <input
-              className="flex w-full text-sm text-white mt-5"
-              id="file_input"
-              type="file"
-              accept=".mp3, .mp4"
-              name="songFile"
-              required
-              register={register}
-              errors={errors}
-            />
-              {errors.songFile?.type === "required" && (
-              <ErrorParagraph>This is field required</ErrorParagraph>
-            )}
+              <Button
+                bg={"mainButtonBg"}
+                width={"w-full"}
+                radius={"rounded"}
+                text={"Submit"}
+                type={"submit"}
+              />
             </div>
           </div>
-        </div>
-        <div className=" flex items-center justify-around">
-          <div>
-            <Button
-              bg={"mainButtonBg"}
-              width={"w-full"}
-              radius={"rounded"}
-              text={"Cancel"}
-              type={"reset"}
-            />
-          </div>
-          <div>
-            <Button
-              bg={"mainButtonBg"}
-              width={"w-full"}
-              radius={"rounded"}
-              text={"Submit"}
-              type={"submit"}
-            />
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
   );
 };
 

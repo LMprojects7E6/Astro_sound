@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useContext } from "react";
 import Logo from "components/logo";
 import Modal from "components/modal";
 import CreatePlaylist from "components/playlistModals/createPlaylist";
 import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
 
-const AsideAdmin = () => {
+const AsideAdmin = ({ setPage, page }) => {
+  console.log(page);
+  const style =
+    "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col lg:flex-row items-center cursor-pointer";
+  const activeStyle =
+    "bg-active text-white hover:text-white flex flex-col items-center";
 
-    const style =
-    "md:px-5 md:py-3 py-5 px-6 md:flex md:gap-x-4 items-center font-semibold text-link px-4 hover:text-white flex flex-col lg:flex-row items-center";
-    const activeStyle = "bg-active hover:text-white flex flex-col items-center";
+const {musicPlayer: musicPlayerSongs }= useContext(MusicPlayerContext)
+const songs = musicPlayerSongs.map((song) => song);
+const songsInfo = songs.map((e) => e.songImage)
 
   return (
     <section className="bg-black flex flex-col md:justify-end md:w-72">

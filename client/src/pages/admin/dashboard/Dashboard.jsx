@@ -1,6 +1,6 @@
 import Search from "pages/search";
 import Admin from "..";
-import Estatistics from "../estatistics";
+import Estatistics from "../statistics";
 
 const Dashboard = ({ page }) => {
   return <>{chooseDashboard[page]}</>;

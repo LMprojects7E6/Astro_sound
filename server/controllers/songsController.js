@@ -75,14 +75,19 @@ const addSongToPlaylist = async (req, res) => {
   const { songID } = req.params;
 
   try {
-    // const song = await model.Song.findById(songID);
-    //Add song to playlist
-    const playlist = await model.Playlist.findByIdAndUpdate(playlistID, {
-      $push: { songList: songID },
-    });
-    await playlist.save();
+    const playlist = await model.Playlist.findById(playlistID);
+    const songsInPlaylist = playlist.songList;
+    const foundInPlaylist = songsInPlaylist.find((e) => e == songID);
+    if (foundInPlaylist) {
+      res.status(208).send(`Song already in  ${playlist.name}`);
+    } else {
+      const playlist = await model.Playlist.findByIdAndUpdate(playlistID, {
+        $push: { songList: songID },
+      });
+      await playlist.save();
 
-    res.status(200).send(`Song added to ${playlist.name}`);
+      res.status(200).send(`Song added to ${playlist.name}`);
+    }
   } catch (error) {
     res
       .status(200)
@@ -166,6 +171,74 @@ const removeSongFromPlaylist = async (req, res) => {
   }
 };
 
+//!GET SEARCHED SONGS
+const getSearchedSongs = async (req, res) => {
+  const userID = req.id;
+
+  try {
+    const searchedSongsArray = await model.User.findById(userID).populate(
+      "searchedSongs"
+    );
+    //GET PLAYLISTS OBJECTS
+    if (searchedSongsArray != null) {
+      const { searchedSongs } = searchedSongsArray;
+      res.status(200).send(searchedSongs);
+    } else res.status(200).send({ message: "User has no recent searches" });
+  } catch (error) {
+    res.status(504).send({ message: error.message });
+  }
+};
+
+//!POST SEARCHED SONGS
+const addToSearchedSongs = async (req, res) => {
+  const userID = req.id;
+  const { songID } = req.params;
+
+  try {
+    const user = await model.User.findById(userID);
+    const searchedSongs = user.searchedSongs;
+
+    const found = searchedSongs.find((element) => element._id == songID);
+
+    if (found) {
+      res.status(200).send(searchedSongs);
+    } else {
+      //Add song to recent searches
+      const searchedSongs = await model.User.findByIdAndUpdate(userID, {
+        $push: { searchedSongs: songID },
+      });
+      await searchedSongs.save();
+
+      res.status(200).send(searchedSongs);
+    }
+  } catch (error) {
+    res.status(200).send({
+      errMessage: "Song cannot be added to recent searches",
+      error: error,
+    });
+  }
+};
+
+const removeSearchedSongs = async (req, res) => {
+  const userID = req.id;
+
+  try {
+    //Remove  recent searches
+    const searchedSongs = await model.User.findByIdAndUpdate(userID, {
+      $set: {
+        searchedSongs: [],
+      },
+    });
+    await searchedSongs.save();
+    res.status(200).send("Searched songs has been removed");
+  } catch (error) {
+    res.status(200).send({
+      errMessage: "cannot remove searched songs",
+      error: error,
+    });
+  }
+};
+
 module.exports = {
   addSong: addSong,
   getAllSongs: getAllSongs,
@@ -176,4 +249,7 @@ module.exports = {
   addSongToLikedPlaylist: addSongToLikedPlaylist,
   removeSongFromLikedPlaylist: removeSongFromLikedPlaylist,
   removeSongFromPlaylist: removeSongFromPlaylist,
+  getSearchedSongs: getSearchedSongs,
+  addToSearchedSongs: addToSearchedSongs,
+  removeSearchedSongs: removeSearchedSongs,
 };

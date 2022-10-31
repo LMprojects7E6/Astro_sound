@@ -36,7 +36,6 @@ const VerifyForm = ({
   //!UPLOAD TO CLOUDINARY
   const uploadPhotoURL = async () => {
     const data = new FormData(formRef.current);
-    console.log(inputPicture);
     if (currentPicture !== inputPicture && inputFileRef.current.value) {
       mutate(data);
     }
@@ -69,20 +68,23 @@ const VerifyForm = ({
   };
 
   return (
+    <>
+    <hr className="mx-5"/>
     <form
       action=""
-      className="flex flex-col mt-3 px-5 text-white"
+      className="flex flex-col mt-4 px-5 text-white"
       onSubmit={verifyCredentials}>
       <label>Email:</label>
-      <input type="email" name="verifyEmail" id="" className="rounded my-1"/>
+      <input type="email" name="verifyEmail" required id="" className="rounded my-2 pl-1 text-black"/>
       <label>Password:</label>
-      <input type="password" name="verifyPassword" className="rounded my-1"/>
+      <input type="password" name="verifyPassword" required className="rounded my-1 pl-1 text-black"/>
       <div className="flex flex-row justify-center mt-3">
-      <button type="submit" className="font-medium w-28 bg-purple2 rounded">
+      <button type="submit" className="font-medium w-full py-1 mt-4 bg-purple2 rounded">
         VERIFY
       </button>
       </div>
     </form>
+    </>
   );
 };
 
