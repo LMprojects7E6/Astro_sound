@@ -4,15 +4,27 @@ import SettingsDropDown from "components/settingsDropDown";
 import SongCard from "components/songCard";
 import Modal from "components/modal/Modal";
 import React from "react";
+import { useContext } from "react";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
+import DeleteFromPlaylist from "components/playlistModals/deleteFromPlaylist";
+import { useLocation } from "react-router-dom";
 
-const SongsListContainer = ({ songs }) => {
+const SongsListContainer = ({ songs, playlist }) => {
+  const location = useLocation();
+  const [, page] = location.pathname.split("/");
+
   const thStyle = "border-b-2 border-white text-left ";
   const tdStyle = "";
+  const { setMusicPlayer } = useContext(MusicPlayerContext);
+
+  const handleClick = (song) => {
+    setMusicPlayer([song]);
+  };
   return (
     <>
       <div className="md:hidden ">
         {songs.map((song) => (
-          <SongCard key={song._id} song={song} />
+          <SongCard key={song._id} song={song} playlist={playlist} />
         ))}
       </div>
       <div className="text-white hidden md:flex ">
@@ -27,11 +39,15 @@ const SongsListContainer = ({ songs }) => {
           </thead>
           <tbody>
             {songs.map((song) => (
-              <tr key={song._id}>
+              <tr
+                key={song._id}
+                className="hover:bg-purple1   transition duration-75 ease-in-out cursor-pointer"
+                onClick={() => handleClick(song)}
+              >
                 <td className={`${tdStyle}`}>
                   <div className=" flex flex-row  items-center">
                     <div
-                      className=" z-0 m-2 w-16 h-16  bg-cover bg-no-repeat bg-center   "
+                      className=" z-0 m-2 w-16 h-16  bg-cover bg-no-repeat bg-center "
                       style={{ backgroundImage: `url(${song.songImage})` }}
                     ></div>
                     <div className=" grow flex flex-col justify-between  ">
@@ -50,15 +66,34 @@ const SongsListContainer = ({ songs }) => {
                 </td>
                 <td className={`${tdStyle} relative mb-7`}>
                   <div className="absolute  bottom-5 ">
-                    <SettingsDropDown key={song.title} song={song}>
-                      <Modal
-                        background={"bg-grey5"}
-                        modalTitle={"Add to playlist"}
-                        text={"Add to playlist"}
-                      >
-                        <AddToPlaylist song={song} />
-                      </Modal>
-                    </SettingsDropDown>
+                    {page !== "likedSongs" ? (
+                      <SettingsDropDown key={song.title} song={song}>
+                        <Modal
+                          background={"bg-grey5"}
+                          modalTitle={"Add to playlist"}
+                          text={"Add to playlist"}
+                        >
+                          <AddToPlaylist song={song} />
+                        </Modal>
+                        <Modal
+                          background={"bg-grey5"}
+                          modalTitle={"Remove from playlist"}
+                          text={"Remove"}
+                        >
+                          <DeleteFromPlaylist song={song} playlist={playlist} />
+                        </Modal>
+                      </SettingsDropDown>
+                    ) : (
+                      <SettingsDropDown key={song.title} song={song}>
+                        <Modal
+                          background={"bg-grey5"}
+                          modalTitle={"Add to playlist"}
+                          text={"Add to playlist"}
+                        >
+                          <AddToPlaylist song={song} />
+                        </Modal>
+                      </SettingsDropDown>
+                    )}
                   </div>
                 </td>
               </tr>

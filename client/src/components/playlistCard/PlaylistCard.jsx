@@ -17,7 +17,7 @@ const PlaylistCard = ({ playlist }) => {
           />
         </div>
         <div className="playlist--content mt-2 md:text-left">
-          <h2 className="md:text-xl md:mb-3 ">{playlist.name}</h2>
+          <h2 className="md:text-xl md:mb-3 mb-2 ">{playlist.name}</h2>
           <p className="text-grey overflow-y-auto md:flex hidden">
             {playlist.description}
           </p>

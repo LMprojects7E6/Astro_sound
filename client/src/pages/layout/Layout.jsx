@@ -30,10 +30,14 @@ const Layout = () => {
   }, []);
 
   if (isLoading) {
-    return <Loader></Loader>;
-  } else if (data.role === "admin") {
-    return <Admin></Admin>;
-  } else if (data.role === "user") {
+    return <Loader />;
+  }
+
+  if (data.role === "admin") {
+    return <Admin />;
+  }
+
+  if (data.role === "user") {
     return (
       <section className="flex md:flex-col md:justify-between h-screen">
         <div className="flex md:flex-row h-screen w-screen flex-col-reverse">

@@ -12,7 +12,7 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
   const queryClient = useQueryClient();
 
   const { isLoading, isError, data, error } = useQuery(
-    ["getAllPlaylists"],
+    ["playlists"],
     getAllPlaylists
   );
 
@@ -26,7 +26,7 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
   });
 
   const playlistUpdated = (resp) => {
-    queryClient.invalidateQueries(["getAllPlaylists"]);
+    queryClient.invalidateQueries(["playlists"]);
     setShowModal(false);
     resp.status === 208 ? toast.error(resp.data) : toast.success(resp.data);
   };
@@ -62,7 +62,7 @@ const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
           width={"w-max"}
           radius={"rounded"}
           text={"+ Create new playlist"}
-          modalTitle={"Create PLaylist"}
+          modalTitle={"Create Playlist"}
         >
           <CreatePlaylist />
         </Modal>

@@ -8,15 +8,19 @@ import { getPlaylistsByID } from "api/playlists";
 import ReproduceSearchPlaylist from "components/reproduceSearchPlaylist";
 import PlayListHeader from "components/playListHeader";
 import Error from "components/error";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const Playlist = () => {
   const { id } = useParams();
+
+  const [playlistData, setPlaylistData] = useState();
 
   const {
     isLoading: playlistIsLoading,
     isError: playlistIsError,
     data: playlist,
-  } = useQuery(["playlistById"], () => getPlaylistsByID(id));
+  } = useQuery([`playlistBy-${id}`], () => getPlaylistsByID(id));
 
   const {
     isLoading,
@@ -27,22 +31,25 @@ const Playlist = () => {
 
   if (isLoading || playlistIsLoading) {
     return <Loader />;
-  } else if (isError) {
+  }
+
+  if (isError || playlistIsError) {
     <DashboardSection>
       <Error />
     </DashboardSection>;
-  } else {
-    return (
-      <DashboardSection>
-        <PlayListHeader playlist={playlist} />
-        <ReproduceSearchPlaylist
-          songsList={AllSongsFromPlaylist}
-          listName={playlist.name}
-        />
-        <SongsListContainer songs={AllSongsFromPlaylist} />
-      </DashboardSection>
-    );
   }
+
+  console.log(playlist.songList);
+  return (
+    <DashboardSection>
+      <PlayListHeader playlist={playlist} />
+      <ReproduceSearchPlaylist
+        songsList={AllSongsFromPlaylist}
+        listName={playlist.name}
+      />
+      <SongsListContainer songs={AllSongsFromPlaylist} playlist={playlist} />
+    </DashboardSection>
+  );
 };
 
 export default Playlist;
