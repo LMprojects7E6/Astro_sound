@@ -30,7 +30,7 @@ const SongCard = ({ song, playlist }) => {
         className=" grow flex flex-col justify-between md:my-10  "
         onClick={handleClick}
       >
-        <h5 className=" md:text-xl w-max font-bold tracking-tight dark:text-white">
+        <h5 className=" md:text-xl w-max font-bold tracking-tight text-white">
           {song.title}
         </h5>
         <p className=" text-white">{song.artist}</p>

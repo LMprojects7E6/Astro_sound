@@ -24,23 +24,25 @@ const Carrousel = () => {
   } = useQuery(["threeSongs"], getThreeSongs);
 
   if (isLoadingSong) {
-    return <Loader/>
-  } else if (isSongError) {
-    navigate("/error");
-  } else {
-    return (
-      <div className="md:flex hidden mt-8 ">
-        <Carousel slideInterval={5000}>
-          {threeSlides.map((slide, index) => {
-            pos++;
-            return (
-              <Slide key={index} title={slide.text} slideImage={slide.image} />
-            );
-          })}
-        </Carousel>
-      </div>
-    );
+    return <Loader />;
   }
+
+  if (isSongError) {
+    navigate("/error");
+  }
+
+  return (
+    <div className="md:flex hidden mt-8 ">
+      <Carousel slideInterval={5000}>
+        {threeSlides.map((slide, index) => {
+          pos++;
+          return (
+            <Slide key={index} title={slide.text} slideImage={slide.image} />
+          );
+        })}
+      </Carousel>
+    </div>
+  );
 };
 
 export default Carrousel;
