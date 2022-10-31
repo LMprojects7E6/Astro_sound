@@ -39,6 +39,7 @@ const Aside = () => {
                 isActive ? activeStyle + " " + style : style
               }
               exact="true"
+              end
             >
               <span>
                 <Icon name={"home"} size={22} color={"currentColor"} />
