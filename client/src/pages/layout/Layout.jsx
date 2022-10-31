@@ -27,6 +27,7 @@ const Layout = () => {
       };
       verifyToken();
     }
+    // eslint-disable-next-line
   }, []);
 
   if (isLoading) {

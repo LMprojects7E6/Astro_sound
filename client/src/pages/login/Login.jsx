@@ -26,6 +26,7 @@ const Login = () => {
       };
       verifyToken();
     }
+    // eslint-disable-next-line
   }, []);
 
   return (

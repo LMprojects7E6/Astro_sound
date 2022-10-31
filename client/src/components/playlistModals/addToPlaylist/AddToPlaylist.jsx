@@ -11,6 +11,7 @@ import CreatePlaylist from "../createPlaylist";
 const AddToPlaylist = ({ setShowModal, song, setOpen, open }) => {
   const queryClient = useQueryClient();
 
+  // eslint-disable-next-line no-unused-vars
   const { isLoading, isError, data, error } = useQuery(
     ["playlists"],
     getAllPlaylists

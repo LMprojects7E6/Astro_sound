@@ -7,7 +7,7 @@ import Button from "components/button";
 import { useState } from "react";
 import { createNewPlaylist } from "api/playlists";
 import { useRef } from "react";
-import { convertFormData } from "utils/convertFormData";
+// import { convertFormData } from "utils/convertFormData";
 
 const CreatePlaylist = ({ setShowModal }) => {
   const formRef = useRef(null);

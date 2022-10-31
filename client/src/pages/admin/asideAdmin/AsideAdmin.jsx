@@ -1,8 +1,5 @@
 import React from "react";
 import Logo from "components/logo";
-import Modal from "components/modal";
-import CreatePlaylist from "components/playlistModals/createPlaylist";
-import { NavLink } from "react-router-dom";
 import Icon from "../../../components/icons/Icons";
 
 const AsideAdmin = ({ setPage, page }) => {

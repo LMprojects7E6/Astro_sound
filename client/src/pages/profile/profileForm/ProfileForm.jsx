@@ -27,6 +27,7 @@ const ProfileForm = ({
         <div className="flex flex-col items-center md:flex-col w-full">
           <label htmlFor="profileImage" className="md:flex md:h-full">
             {profileImage ? (
+              // eslint-disable-next-line jsx-a11y/img-redundant-alt
               <img
                 src={profileImage}
                 alt="profile photo"

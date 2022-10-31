@@ -33,7 +33,7 @@ const LoginForm = () => {
         name="email"
         register={register}
         required
-        pattern={/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g}
+        pattern={/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g}
         placeholder="Enter your email"
         errors={errors}
       />
