@@ -228,8 +228,10 @@ We worked in sprints applying Kanban framework with a daily meeting.
 <!-- CONTACT -->
 ## Contact
 
-- Ivan 
+- Ivan Escribano - Tech Lead / Full-stack developer [GitHub](https://github.com/ivan-escribano)
+- 
 - Volha Afanasenka - Back-end developer [GitHub](https://github.com/averoli)
+- Miguel Dominguez - Back-end developer [GitHub](https://github.com/Dejahar)
 
 
 
