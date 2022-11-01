@@ -220,7 +220,7 @@ We worked in sprints applying Kanban framework with a daily meeting.
 - Implement music player.
 - Created Forget password style and functionality.
 - Added statistic page.
-- Fixed the bugs
+- Deployed the app
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
