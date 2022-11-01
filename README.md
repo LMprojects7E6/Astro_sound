@@ -100,7 +100,6 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![HTML][Html.com]][Html-url]
 * [![CSS][CSS]][CSS-url]
 * [![Tailwind][Tailwind]][Tailwind-url]
-* [![CSS][CSS]][CSS-url]
 * [![Laravel][Laravel.com]][Laravel-url]
 * [![Axios][Axios]][Axios-url]
 * [![React Router][ReactRouter.jsx]][React-Router-url]
@@ -260,7 +259,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [React-url]: https://reactjs.org/
 [Html.com]: https://img.shields.io/badge/Html-35495E?style=for-the-badge&logo=Html5&logoColor=4FC08D
 [Html-url]: https://www.manualweb.net/html5/introduccion-html5/
-[Tailwind.com]: https://img.shields.io/badge/Tailwind-20232A?style=for-the-badge&logo=tailwindcss&logoColor=blue
+[Tailwind]: https://img.shields.io/badge/Tailwind-20232A?style=for-the-badge&logo=tailwindcss&logoColor=blue
 [Tailwind-url]: https://tailwindcss.com/
 [Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
 [Laravel-url]: https://laravel.com
