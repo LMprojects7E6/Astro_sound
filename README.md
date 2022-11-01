@@ -43,7 +43,7 @@
     <a href="https://github.com/LMprojects7E6/astro-sound/tree/main"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/LMprojects7E6/astro-sound">View Demo</a>
+    <a href="https://astro-sound.vercel.app/">View Demo</a>
     ·
     <a href="https://github.com/LMprojects7E6/astro-sound/issues">Report Bug</a>
     ·
