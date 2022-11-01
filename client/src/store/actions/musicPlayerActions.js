@@ -6,6 +6,7 @@ const actions = {
   nextSong: "nextSong",
   previousSong: "previousSong",
   onReady: "onReady",
+  setInitialData: "setInitialData",
 };
 
 export default actions;

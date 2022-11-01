@@ -6,8 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "context/AuthProvider";
+import { MusicPlayerContext } from "context/MusicPlayerProvider";
+import actions from "store/actions/musicPlayerActions";
 
 const LoginForm = () => {
+  const { setMusicPlayer, dispatch } = useContext(MusicPlayerContext);
   const { logIn } = useContext(AuthContext);
   const navigate = useNavigate();
   const {
@@ -20,6 +23,8 @@ const LoginForm = () => {
     const { email, password } = data;
     try {
       await logIn(email, password);
+      setMusicPlayer([]);
+      dispatch({ type: actions.setInitialData });
       navigate("/");
     } catch (error) {
       toast.error("Wrong email and password combination");
