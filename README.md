@@ -228,11 +228,8 @@ We worked in sprints applying Kanban framework with a daily meeting.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
-
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- Ivan 
+- Volha Afanasenka - Back-end developer [GitHub](https://github.com/averoli)
 
 
 
