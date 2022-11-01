@@ -1,16 +1,45 @@
 import React, { useRef, useState } from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import Icons from "components/icons";
 import { useForm } from "react-hook-form";
 import Input from "components/input";
 import Button from "components/button";
 import ErrorParagraph from "components/errorParagraph";
+import toast from "react-hot-toast";
+import { postSong } from "api/songs";
+import Loader from "components/loader/Loader";
 
-const FormAdmin = ({ mutate }) => {
+const FormAdmin = () => {
   const formRef = useRef(null);
 
-  const onSubmit = (e) => {
-    const data = new FormData(e.target);
-    mutate(data);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const queryClient = useQueryClient();
+
+  //POST createPlaylist
+  const { mutate, isLoading } = useMutation(postSong, {
+      onSuccess: (resp) => {
+      SongCreated(resp);
+    },
+    onError: (err) => {
+      toast.error(err.response.data.errorMsg);
+    },
+  });
+
+  const SongCreated = (data) => {
+    queryClient.invalidateQueries(["songs"]);
+    toast.success(data.message);
+    formRef.current.reset();
+    setImage({});
+  };
+
+  const onSubmit = () => {
+    const dataForm = new FormData(formRef.current);
+    mutate(dataForm);
   };
 
   const [image, setImage] = useState({ preview: "", raw: "" });
@@ -24,13 +53,13 @@ const FormAdmin = ({ mutate }) => {
     }
   };
 
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
   return (
+    <>
+      {isLoading && (
+        <div className="bg-opacity-loader absolute flex justify-center md:w-screen md:h-screen text-white">
+          <Loader />
+        </div>
+      )}
       <div className="md:w-full md:h-screen h-full flex items-center text-white flex-col overflow-auto">
         <div className="md:flex md:text-8xl text-5xl font-bold mt-16 md:mt-4">
           <h1>Upload Songs</h1>
@@ -48,11 +77,6 @@ const FormAdmin = ({ mutate }) => {
                 pattern={/[a-zA-Z]{1,}/}
                 placeholder="Title"
                 errors={errors}
-                {...register("title", {
-                  required: true,
-                  message: "Title required",
-                  maxLength: 30,
-                })}
               />
               {errors.title?.type === "required" && (
                 <ErrorParagraph className="m-0">
@@ -78,11 +102,6 @@ const FormAdmin = ({ mutate }) => {
                 register={register}
                 required
                 errors={errors}
-                {...register("artist", {
-                  required: true,
-                  message: "Artist name required",
-                  maxLength: 30,
-                })}
               />
               {errors.artist?.type === "required" && (
                 <ErrorParagraph>This is field required</ErrorParagraph>
@@ -104,11 +123,6 @@ const FormAdmin = ({ mutate }) => {
                 placeholder="Album"
                 register={register}
                 errors={errors}
-                {...register("album", {
-                  required: true,
-                  message: "Album name required",
-                  maxLength: 30,
-                })}
               />
               {errors.album?.type === "required" && (
                 <ErrorParagraph>This is field required</ErrorParagraph>
@@ -192,7 +206,6 @@ const FormAdmin = ({ mutate }) => {
                   id="file_input"
                   type="file"
                   name="songFile"
-                  register={register}
                   errors={errors}
                   accept=".mp3, .mp4"
                   {...register("songFile", {
@@ -228,6 +241,7 @@ const FormAdmin = ({ mutate }) => {
           </div>
         </form>
       </div>
+    </>
   );
 };
 

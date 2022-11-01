@@ -17,7 +17,7 @@ const addSong = async (req, res, next) => {
         songImage,
         genre,
       });
-      res.status(200).send("Song uploaded successfully");
+      res.status(200).send({ message:"Song uploaded successfully"});
     }
   } catch (error) {
     res.status(400).send("Something went wrong try again!!" + error);
