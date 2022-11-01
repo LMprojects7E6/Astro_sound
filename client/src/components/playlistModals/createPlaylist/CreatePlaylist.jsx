@@ -7,7 +7,7 @@ import Button from "components/button";
 import { useState } from "react";
 import { createNewPlaylist } from "api/playlists";
 import { useRef } from "react";
-import { convertFormData } from "utils/convertFormData";
+import { DotSpinner } from "@uiball/loaders";
 
 const CreatePlaylist = ({ setShowModal }) => {
   const formRef = useRef(null);
@@ -22,7 +22,7 @@ const CreatePlaylist = ({ setShowModal }) => {
   const queryClient = useQueryClient();
 
   //POST createPlaylist
-  const newPLaylist = useMutation(createNewPlaylist, {
+  const { mutate, isLoading } = useMutation(createNewPlaylist, {
     onSuccess: (resp) => {
       playlistCreated(resp);
     },
@@ -30,6 +30,15 @@ const CreatePlaylist = ({ setShowModal }) => {
       toast.error(err.response.data.errorMsg);
     },
   });
+
+  if (isLoading) {
+    return (
+      <div className="flex w-60 h-60 justify-center items-center flex-col">
+        <DotSpinner size={100} speed={0.9} color="purple" />
+        <p className="text-2xl mt-5 text-white">LOADING...</p>
+      </div>
+    );
+  }
 
   const playlistCreated = (data) => {
     queryClient.invalidateQueries(["playlists"]);
@@ -39,7 +48,7 @@ const CreatePlaylist = ({ setShowModal }) => {
 
   const onSubmit = () => {
     const dataForm = new FormData(formRef.current);
-    newPLaylist.mutate(dataForm);
+    mutate(dataForm);
   };
 
   const handleUpload = (e) => {
