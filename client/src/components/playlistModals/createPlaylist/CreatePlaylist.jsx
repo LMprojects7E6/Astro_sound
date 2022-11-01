@@ -22,7 +22,7 @@ const CreatePlaylist = ({ setShowModal }) => {
   const queryClient = useQueryClient();
 
   //POST createPlaylist
-  const {mutate , isLoading} = useMutation(createNewPlaylist, {
+  const { mutate, isLoading } = useMutation(createNewPlaylist, {
     onSuccess: (resp) => {
       playlistCreated(resp);
     },
@@ -31,11 +31,13 @@ const CreatePlaylist = ({ setShowModal }) => {
     },
   });
 
-  if(isLoading){
-    return     (<div className="flex w-60 h-60 justify-center items-center flex-col">
-    <DotSpinner size={100} speed={0.9} color="purple" />
-    <p className="text-2xl mt-5 text-white">LOADING...</p>
-  </div>)
+  if (isLoading) {
+    return (
+      <div className="flex w-60 h-60 justify-center items-center flex-col">
+        <DotSpinner size={100} speed={0.9} color="purple" />
+        <p className="text-2xl mt-5 text-white">LOADING...</p>
+      </div>
+    );
   }
 
   const playlistCreated = (data) => {
@@ -45,7 +47,7 @@ const CreatePlaylist = ({ setShowModal }) => {
   };
 
   const onSubmit = () => {
-    const dataForm = new FormData(formRef.current)
+    const dataForm = new FormData(formRef.current);
     mutate(dataForm);
   };
 
