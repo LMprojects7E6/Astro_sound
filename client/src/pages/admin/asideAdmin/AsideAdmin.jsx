@@ -34,30 +34,6 @@ const AsideAdmin = ({ setPage, page }) => {
             Home
           </div>
         </li>
-        {/* <li className="flex-col">
-          <div
-            className={page === "search" ? activeStyle + " " + style : style}
-            onClick={() => setPage("search")}
-          >
-            <span>
-              <Icon name={"search"} size={22} color={"currentColor"} />
-            </span>
-            Search
-          </div>
-        </li>
-        <li className="flex-col">
-          <div
-            className={
-              page === "statistics" ? activeStyle + " " + style : style
-            }
-            onClick={() => setPage("statistics")}
-          >
-            <span>
-              <Icon name={"collection"} size={22} color={"currentColor"} />
-            </span>
-            Statistics
-          </div>
-        </li> */}
       </ul>
     </nav>
       <div className="md:flex hidden w-full">

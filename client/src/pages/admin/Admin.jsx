@@ -19,7 +19,6 @@ const Admin = () => {
           <Dropdown admin={true} data={data} />
           <DashboardAdmin page={page} />
           <AsideAdmin page={page} setPage={setPage} />
-          <MusicPlayer />
         </div>
       </section>
     </>
