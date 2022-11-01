@@ -72,7 +72,7 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#contacts">Contacts</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
@@ -82,7 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-<img src="https://user-images.githubusercontent.com/113899063/199277261-abee0b0d-1e8a-41ad-8837-33229200890c.png" alt='dashboard'>
+[![AstroSound][product-screenshot]]
 
 As the final project for Assembler's Master in Technology our team decided to create AstroSound. In this project we were challeged to create a full backend/frontend app, we could have as an inspiration and having similar functionalities as the app Spotify.
 AstroSound is a music app similar to Spotify, where a user can login/register, create playlists, add songs to those playlists and listening to songs, there is also an Admin page to add new songs.
@@ -178,38 +178,21 @@ To run this application you will need a firebase account and have all its config
 
 Astrosound provides a login/register page which our user can interact with.
 
-### LOGIN
-<img src="https://user-images.githubusercontent.com/113899063/199282173-55eac2a5-9f47-4b69-9b3a-2ece414b8a25.png" alt='login'>
-
-
-### REGISTER
-<img src="https://user-images.githubusercontent.com/113899063/199282173-55eac2a5-9f47-4b69-9b3a-2ece414b8a25.png" alt='register'>
+pic
 
 Using either option if all data is verified and correct the user will go to the app's main page.
 
+pic
 
 In the user's main page we have a side menu, the main dashboard and the user profile.
+The side menu has all options the user can click and access diferent sections of our app.
+Home is the default page were our user can view our amazing slogans, if the user has any playlists or has liked any songs some will be shown here.
 
-### HOME
-<img src="https://user-images.githubusercontent.com/113899063/199283238-3de8bbff-30c7-4e6a-8bac-2e47a50d1d61.png" alt='home'>
+pic home
 
-The side menu has all options the user can click to access the diferent sections of the app.
-Home is the default page were our user can view our beautifull slogans, if the user already has any playlists or as liked any songs they can be seen here.
+Search will take our user to explore our
 
-Search will take our user to explore our library of amazing songs.
-### SEARCH
-<img src="https://user-images.githubusercontent.com/113899063/199283965-434c6840-b474-43e4-929b-dade66ab1d9c.png" alt='search'>
-
-Any searched songs can be added to any playlists the user may have created or they can be liked to add that song to Liked Songs playlist.
-### ADD SONG TO PLAYLIST
-<img src="https://user-images.githubusercontent.com/113899063/199274388-ed08e38b-fac3-4485-9b34-07c18ce27154.JPG" alt='addSong'>
-
-### CREATE PLAYLIST
-<img src="https://user-images.githubusercontent.com/113899063/199274391-f801c81e-6de1-40ff-8928-10d29f812faf.JPG" alt='createPlaylist'>
-
-With songs added to our personal playlist we can view them and listen to their songs.
-### VIEW PLAYLIST
-<img src="https://user-images.githubusercontent.com/113899063/199274390-bbb78bbc-b14e-4fb9-96c1-a7ce9d2fa72d.JPG" alt='viewPlaylist'>
+_For more examples, please refer to the [Documentation](https://example.com)_
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -243,14 +226,14 @@ We worked in sprints applying Kanban framework with a daily meeting.
 
 
 
-<!-- CONTACT -->
-## Contact
+<!-- CONTACTS -->
+## Contacts
 
 - Ivan Escribano - Tech Lead / Full-stack developer [GitHub](https://github.com/ivan-escribano)
-- 
+- Matias Patrignani - Front-end developer [GitHub](https://github.com/MatiasPatrignani)
+- Reduan Senoun - Front-end developer [GitHub](https://github.com/reduansj)
 - Volha Afanasenka - Back-end developer [GitHub](https://github.com/averoli)
 - Miguel Dominguez - Back-end developer [GitHub](https://github.com/Dejahar)
-
 
 
 <!-- ACKNOWLEDGMENTS -->
@@ -285,6 +268,8 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
+[product-screenshot]: images/screenshot.png
+[product-screenshot]:https://user-images.githubusercontent.com/113899063/199277261-abee0b0d-1e8a-41ad-8837-33229200890c.png
 
 [CSS]: https://img.shields.io/badge/CSS-000000?style=for-the-badge&logo=CSS&logoColor=white
 [CSS-url]: https://developer.mozilla.org/docs/Web/CSS
