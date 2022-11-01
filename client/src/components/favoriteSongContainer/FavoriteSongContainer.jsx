@@ -43,7 +43,7 @@ const FavoriteSongContainer = () => {
                 <h2 className="md:text-2xl text-xl mb-8">
                   You don't have any liked songs
                 </h2>
-                <Link className="dark-button" to={"search"}>
+                <Link className="dark-button" to={"/search"}>
                   Search some songs
                 </Link>
               </div>

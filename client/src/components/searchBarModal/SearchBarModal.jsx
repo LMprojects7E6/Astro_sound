@@ -9,7 +9,7 @@ export default function SearchBarModal({ modalTitle, children }) {
   return (
     <>
       <div
-        className=" flex items-center m-10 rounded-lg  lg:ml-80 bg-white  md:max-w-sm  "
+        className=" flex items-center m-10 rounded-lg  lg:ml-80 bg-white  md:max-w-sm overflow-hidden "
         onClick={() => setShowModal(true)}
       >
         <span className="p-2">
