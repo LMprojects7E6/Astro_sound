@@ -93,8 +93,6 @@ AstroSound is a music app similar to Spotify, where a user can login/register, c
 
 ### Built With
 
-This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
-
 * [![React][React.js]][React-url]
 * [![JQuery][JQuery.com]][JQuery-url]
 * [![HTML][Html.com]][Html-url]
@@ -126,12 +124,10 @@ This section should list any major frameworks/libraries used to bootstrap your p
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
+Update your npm to the latest version
+
 * npm
   ```sh
   npm install npm@latest -g
@@ -139,7 +135,27 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
+_To install all dependencies run the following commands._
+
+* cd
+  ```sh
+  cd astro-sound/client
+  ```
+
+* npm
+  ```sh
+  npm install
+  ```
+
+* cd
+  ```sh
+  cd astro-sound/server
+  ```
+
+* npm
+  ```sh
+  npm install
+  ```
 
 1. Get a free API Key at [https://example.com](https://example.com)
 2. Clone the repo
@@ -162,7 +178,21 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Astrosound provides a login/register page which our user can interact with.
+
+pic
+
+Using either option if all data is verified and correct the user will go to the app's main page.
+
+pic
+
+In the user's main page we have a side menu, the main dashboard and the user profile.
+The side menu has all options the user can click and access diferent sections of our app.
+Home is the default page were our user can view our amazing slogans, if the user has any playlists or has liked any songs some will be shown here.
+
+pic home
+
+Search will take our user to explore our 
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
