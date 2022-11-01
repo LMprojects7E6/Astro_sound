@@ -112,6 +112,12 @@ This section should list any major frameworks/libraries used to bootstrap your p
 * [![Mongoose][Mongoose.js]][Mongoose-url]
 * [![Validator][Validator.js]][Validator-url]
 * [![Nodemon][Nodemon]][Nodemon-url]
+* [![Web Vitals][WebVitals.js]][Webvitals-url]
+* [![Flowbite][Flowbite.css]][Flowbite-url]
+* [![Firebase][Firebase.com]][Firebase-url]
+* [![Cloudinary][Cloudinary.com]][Cloudinary-url]
+* [![Jsonwebtoken][Jsonwebtoken.js]][Jsonwebtoken-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -287,5 +293,15 @@ Use this space to list resources you find helpful and would like to give credit 
 [Validator-url]:https://www.npmjs.com/package/validator
 [Nodemon]:https://img.shields.io/badge/Nodemon-20232A?style=for-the-badge&logo=nodemon&logoColor=green
 [Nodemon-url]:https://www.npmjs.com/package/nodemon
+[WebVitals.js]:https://img.shields.io/badge/WebVitals-20232A?style=for-the-badge&logo=webvitals&logoColor=Blue
+[Webvitals-url]:https://web.dev/vitals/
+[Flowbite.css]:https://img.shields.io/badge/Flowbite-0769AD?style=for-the-badge&logo=flowbite&logoColor=Blue
+[Flowbite-url]:https://flowbite.com/
+[Firebase.com]:https://img.shields.io/badge/Firebase-0769AD?style=for-the-badge&logo=Firebase&logoColor=red
+[Firebase-url]:https://firebase.google.com/
+[Cloudinary.com]:https://img.shields.io/badge/Cloudinary-0769AD?style=for-the-badge&logo=cloudinary&logoColor=Blue
+[Cloudinary-url]:https://cloudinary.com/home-102622
+[Jsonwebtoken.js]: https://img.shields.io/badge/Jsonwebtoken-20232A?style=for-the-badge&logo=Jsonwebtoken&logoColor=61DAFB
+[Jsonwebtoken-url]:https://www.npmjs.com/package/jsonwebtoken
 
 
