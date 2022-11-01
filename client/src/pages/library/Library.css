@@ -1,0 +1,14 @@
+.create-playlist__mobile {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 1;
+}
+
+.create-playlist__mobile > button {
+  background-color: black;
+  color: white;
+  width: auto;
+  padding-right: 15px;
+  border-radius: 6px;
+}
