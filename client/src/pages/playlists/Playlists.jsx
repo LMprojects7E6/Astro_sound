@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getAllSongsFromPlaylist } from "api/songs";
 import DashboardSection from "components/dashboardSection";
@@ -8,12 +8,9 @@ import { getPlaylistsByID } from "api/playlists";
 import ReproduceSearchPlaylist from "components/reproduceSearchPlaylist";
 import PlayListHeader from "components/playListHeader";
 import Error from "components/error";
-import { useState } from "react";
 
 const Playlist = () => {
   const { id } = useParams();
-
-  const [playlistData, setPlaylistData] = useState();
 
   const {
     isLoading: playlistIsLoading,
@@ -41,11 +38,25 @@ const Playlist = () => {
   return (
     <DashboardSection>
       <PlayListHeader playlist={playlist} />
-      <ReproduceSearchPlaylist
-        songsList={AllSongsFromPlaylist}
-        listName={playlist.name}
-      />
-      <SongsListContainer songs={AllSongsFromPlaylist} playlist={playlist} />
+      {playlist.songList.length > 0 ? (
+        <>
+          <ReproduceSearchPlaylist
+            songsList={AllSongsFromPlaylist}
+            listName={playlist.name}
+          />
+          <SongsListContainer
+            songs={AllSongsFromPlaylist}
+            playlist={playlist}
+          />{" "}
+        </>
+      ) : (
+        <div className="text-white">
+          <h2 className="md:text-2xl text-xl mb-8">You don't have any song</h2>
+          <Link className="dark-button" to={"/search"}>
+            Add some songs
+          </Link>
+        </div>
+      )}
     </DashboardSection>
   );
 };
