@@ -162,7 +162,7 @@ To run this application you will need a firebase account and have all its config
   npm run start
   ```
 
-  * Server Script
+* Server Script
   ```sh
   npm run server
   ```
