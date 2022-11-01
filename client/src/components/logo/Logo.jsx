@@ -3,7 +3,7 @@ import React from "react";
 const Logo = ({ width }) => {
   return (
     <img
-      className={`${width}`}
+      className={`${width} m-auto`}
       src={require("../../assets/logo.png")}
       alt="logo"
     />
