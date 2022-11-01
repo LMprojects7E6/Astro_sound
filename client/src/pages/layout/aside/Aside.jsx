@@ -20,7 +20,7 @@ const Aside = () => {
     : null;
 
   return (
-    <section className="bg-black flex flex-col justify-between md:w-72">
+    <section className="bg-black flex flex-col justify-between md:w-72 z-10">
       <nav className="  text-grey hover:text-grey w-full md:w-44 flex justify-center md:justify-start md:flex-col">
         <ul className="flex md:flex-col ">
           <li className="flex flex-col">
