@@ -15,6 +15,7 @@ const AsideAdmin = ({ setPage, page }) => {
 
   return (
     <section className="bg-black flex flex-col md:justify-end md:w-72">
+<<<<<<< HEAD
     <nav className="  text-grey hover:text-grey w-full md:h-full md:w-1/6 md:flex justify-center md:justify-start absolute bottom-0">
       <ul className="flex md:flex-col justify-center md:justify-start">
         <li className="flex flex-col">
@@ -43,6 +44,29 @@ const AsideAdmin = ({ setPage, page }) => {
           className="md:w-full md:mb-24 pr-1 md:pr-0"
         />
       </div>
+=======
+      <nav className="  text-grey hover:text-grey w-full md:h-full md:w-1/6 md:flex justify-center md:justify-start absolute bottom-0">
+        <ul className="flex md:flex-col justify-center md:justify-start">
+          <li className="flex flex-col">
+            <div className="hidden md:flex md:justify-center md:my-3 md:ml-1">
+              <Logo width={"w-14"} />
+              <h3 className="text-white flex md:flex-col justify-center">
+                Astro Sounds
+              </h3>
+            </div>
+            <div
+              className={page === "home" ? activeStyle + " " + style : style}
+              onClick={() => setPage("home")}
+            >
+              <span>
+                <Icon name={"home"} size={22} color={"currentColor"} />
+              </span>
+              Home
+            </div>
+          </li>
+        </ul>
+      </nav>
+>>>>>>> 279c30c80b828a42c6a8e8fc9e686ce8eeebad90
     </section>
   );
 };
