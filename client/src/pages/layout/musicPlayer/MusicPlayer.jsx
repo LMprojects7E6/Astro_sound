@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import actions from "store/actions/musicPlayerActions";
 import { secondsToMinutes } from "utils/convertSecondsMinute";
 import Icon from "../../../components/icons/Icons";
-import "./MusicPlayer.css";
 
 const MusicPlayer = () => {
   const musicPlayerRef = useRef(null);
@@ -74,12 +73,13 @@ const MusicPlayer = () => {
     <section className="flex flex-row w-full justify-between bg-purple3 absolute md:fixed md:bottom-0 bottom-20">
       <div className="flex md:flex-col justify-around md:w-60">
         <div className="md:hidden md:absolute md:mb-96 md:mt-16">
-          {musicPlayerSongs[songNumber]?.songImage &&   <img
-            src={musicPlayerSongs[songNumber]?.songImage}
-            alt="photo"
-            className=" relative md:w-56 w-16 h-full pr-1"
-          />}
-        
+          {musicPlayerSongs[songNumber]?.songImage && (
+            <img
+              src={musicPlayerSongs[songNumber]?.songImage}
+              alt="photo"
+              className=" relative md:w-56 w-16 h-full pr-1"
+            />
+          )}
         </div>
         <div className="text-white pl-3 mt-2">
           <h2 className="font-semibold">
@@ -115,7 +115,7 @@ const MusicPlayer = () => {
             </button>
             <button
               onClick={handlePlay}
-              className="btn-play rounded-full w-8 h-8 p-1 flex justify-center ring-2 focus:outline-none"
+              className=" rounded-full w-8 h-8 p-1 flex justify-center ring-2 focus:outline-none"
             >
               {controls.playing ? (
                 <Icon name={"pause"} size={24} color={"currentColor"} />

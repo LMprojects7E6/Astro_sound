@@ -22,7 +22,6 @@ const Layout = () => {
         } catch (error) {
           await signOut();
           navigate("/login");
-          console.log("Token expired, SIGN OUT!!");
         }
       };
       verifyToken();

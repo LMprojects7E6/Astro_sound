@@ -37,10 +37,8 @@ export const updatePlaylist = async (data) => {
     data.dataForm.get("playListImage").size;
   let response;
   if (playlistImage) {
-    console.log("new file");
     response = await api.put(`/playlists/${data.playlistId}`, data.dataForm);
   } else {
-    console.log("no new file");
     response = await api.put(
       `/playlists/noImage/${data.playlistId}`,
       data.dataForm

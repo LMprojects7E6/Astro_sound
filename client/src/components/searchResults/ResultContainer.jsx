@@ -6,7 +6,6 @@ import { useRef } from "react";
 import toast from "react-hot-toast";
 
 const ResultContainer = ({ setShowModal, song }) => {
-  const likeIconRef = useRef(null);
   const { setMusicPlayer } = useContext(MusicPlayerContext);
 
   const queryClient = useQueryClient();

@@ -15,9 +15,9 @@ const Profile = () => {
   const data = useQuery(["getSession"], getSession);
 
   return (
-    <DashboardSection>
-      <div className="flex flex-col md:pl-6 md:h-full mt-5 md:mt-2 ">
-        <h1 className="text-4xl md:text-6xl text-center text-white font-bold my-3 md:pb-2">
+    <div className="h-screen w-full bg-gradient-to-b from-purpleDark to-black mobile:h-full mobile:w-full md:overflow-y-auto p-8">
+      <div className="flex flex-col md:pl-6 md:h-full mt-5 md:mt-0">
+        <h1 className="text-4xl md:text-6xl text-center text-white font-bold my-3 md:my-0 md:pb-2">
           Profile details
         </h1>
         <ProfileForm
@@ -40,7 +40,7 @@ const Profile = () => {
           </Modal>
         </div>
       </div>
-    </DashboardSection>
+    </div>
   );
 };
 

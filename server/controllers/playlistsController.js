@@ -139,7 +139,6 @@ const updatePlaylistNameDescription = async (req, res) => {
         description,
       }
     );
-    console.log(playlist);
     res.status(200).send("Playlist updated");
   } catch (error) {
     res.status(504).send({ errorMsg: "Could not update playlist", error });

@@ -32,9 +32,9 @@ const ProfileForm = ({
               <img
                 src={profileImage}
                 alt="profilePhoto"
-                className="w-60 h-60 rounded-full"
+                className="w-60 h-60 rounded-full "
               />
-              <div class="opacity-0 w-60 h-60 backdrop-blur-sm backdrop-grayscale rounded-full group-hover:opacity-100 duration-300 absolute z-10 hidden md:flex justify-center items-center text-2xl text-white font-semibold">
+              <div class="opacity-0 w-60 h-60 backdrop-blur-sm backdrop-grayscale rounded-full group-hover:opacity-100 duration-300 absolute z-10 hidden md:flex justify-center items-center text-2xl text-white font-semibold cursor-pointer">
                 <Icons name="Pencil" size={24} color="white"/> Edit Image
               </div>
               </>) : (

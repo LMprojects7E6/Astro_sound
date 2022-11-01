@@ -1,7 +1,5 @@
 import React, { useContext } from "react";
-
 import Button from "components/button";
-import Icon from "components/icons";
 import AddRemoveLikedSongs from "components/addRemoveLikedSongs";
 import SettingsDropDown from "components/settingsDropDown";
 import Modal from "components/modal";
@@ -10,13 +8,12 @@ import { MusicPlayerContext } from "context/MusicPlayerProvider";
 import DeleteFromPlaylist from "components/playlistModals/deleteFromPlaylist";
 
 const SongCard = ({ song, playlist }) => {
-  console.log(playlist);
   const { setMusicPlayer } = useContext(MusicPlayerContext);
   const handleClick = () => {
     setMusicPlayer([song]);
   };
   return (
-    <div className=" relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  ">
+    <div className="relative flex flex-row md:m-5 md:border-none border-2 border-black space-around md:flex-col items-center bg-purple3 md:bg-grey5 md:rounded-xl max-w-full md:w-60 md:max-h-72  ">
       <div
         className=" z-0 m-2 w-16 h-16 md:w-36  md:h-36 bg-cover bg-no-repeat bg-center  md:rounded-full "
         style={{ backgroundImage: `url(${song.songImage})` }}

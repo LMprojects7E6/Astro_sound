@@ -16,10 +16,22 @@ const musicPlayerReducer = (currentState, action) => {
       return nextSong(currentState, payload);
     case actions.previousSong:
       return previousSong(currentState, payload);
-
+    case actions.setInitialData:
+      return setInitialData();
     default:
       break;
   }
+};
+//SET INITIAL DATA
+const setInitialData = () => {
+  return {
+    playing: false,
+    duration: 0,
+    played: 0,
+    volume: 0.5,
+    muted: false,
+    songNumber: 0,
+  };
 };
 //!ON START FUNCTION
 const onReady = (currentState, payload) => {

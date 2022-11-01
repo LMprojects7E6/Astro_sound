@@ -17,7 +17,7 @@ const addSong = async (req, res, next) => {
         songImage,
         genre,
       });
-      res.status(200).send("Song uploaded successfully");
+      res.status(200).send({ message:"Song uploaded successfully"});
     }
   } catch (error) {
     res.status(400).send("Something went wrong try again!!" + error);
@@ -152,8 +152,6 @@ const removeSongFromLikedPlaylist = async (req, res) => {
 const removeSongFromPlaylist = async (req, res) => {
   const { playlistID } = req.params;
   const { songID } = req.params;
-  console.log(playlistID);
-  console.log(songID);
 
   try {
     // Delete song from playlist
