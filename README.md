@@ -96,28 +96,13 @@ AstroSound is a music app similar to Spotify, where a user can login/register, c
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
 * [![React][React.js]][React-url]
-* [![JQuery][JQuery.com]][JQuery-url]
-* [![HTML][Html.com]][Html-url]
-* [![CSS][CSS]][CSS-url]
-* [![Tailwind][Tailwind]][Tailwind-url]
+* [![JQuery][JQuery.js]][Next-url]
+* [![Vue][Vue.js]][Vue-url]
+* [![Angular][Angular.io]][Angular-url]
+* [![Svelte][Svelte.dev]][Svelte-url]
 * [![Laravel][Laravel.com]][Laravel-url]
-* [![Axios][Axios]][Axios-url]
-* [![React Router][ReactRouter.jsx]][React-Router-url]
-* [![JavaScript][JavaScript.js]][JavaScript-url]
-* [![Bcrypt][Bcrypt.js]][Bcrypt-url]
-* [![Cors][Cors.js]][Cors-url]
-* [![Dotenv][Dotenv.env]][Dotenv-url]
-* [![Express][Express.js]][Express-url]
-* [![Helmet][Helmet.js]][Helmet-url]
-* [![Mongoose][Mongoose.js]][Mongoose-url]
-* [![Validator][Validator.js]][Validator-url]
-* [![Nodemon][Nodemon]][Nodemon-url]
-* [![Web Vitals][WebVitals.js]][Webvitals-url]
-* [![Flowbite][Flowbite.css]][Flowbite-url]
-* [![Firebase][Firebase.com]][Firebase-url]
-* [![Cloudinary][Cloudinary.com]][Cloudinary-url]
-* [![Jsonwebtoken][Jsonwebtoken.js]][Jsonwebtoken-url]
-
+* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
+* [![JQuery][JQuery.com]][JQuery-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -173,15 +158,26 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [x] Add Changelog
-- [x] Add back to top links
-- [ ] Add Additional Templates w/ Examples
-- [ ] Add "components" document to easily copy & paste sections of the readme
-- [ ] Multi-language Support
-    - [ ] Chinese
-    - [ ] Spanish
-
-See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
+We worked in sprints applying Kanban framework with a daily meeting.
+1 sprint = 1 week
+- [x] Sprint 0. 
+- Created a visual design and HTML-based style guide.
+- [x] Sprint 1. 
+- Set up servers and database structure.
+- Created of endpoints.
+- Configured Tailwind for basic styling elements in the Home and My Library page.
+- Implemented Login and Register page.
+- Created JWT and access to Home/Dashboard.
+- [x] Sprint 2.
+- Implemented User playlist - style and functionality. User can create, edit and delete playlist, add and delete songs to playlist.  
+- Allowed users to search the songs.
+- Created Admin Dashboard: Admin access with admin account and access the menu to upload new songs.
+- Allowed users to edit the profile.
+- [x] Sprint 3.
+- Implement music player.
+- Created Forget password style and functionality.
+- Added statistic page.
+- Fixed the bugs
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -258,50 +254,19 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
-
-[CSS]: https://img.shields.io/badge/CSS-000000?style=for-the-badge&logo=CSS&logoColor=white
-[CSS-url]: https://developer.mozilla.org/docs/Web/CSS
+[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
+[Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
 [React-url]: https://reactjs.org/
-[Html.com]: https://img.shields.io/badge/Html-35495E?style=for-the-badge&logo=Html5&logoColor=4FC08D
-[Html-url]: https://www.manualweb.net/html5/introduccion-html5/
-[Tailwind]: https://img.shields.io/badge/Tailwind-20232A?style=for-the-badge&logo=tailwindcss&logoColor=blue
-[Tailwind-url]: https://tailwindcss.com/
+[Vue.js]: https://img.shields.io/badge/Vue.js-35495E?style=for-the-badge&logo=vuedotjs&logoColor=4FC08D
+[Vue-url]: https://vuejs.org/
+[Angular.io]: https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white
+[Angular-url]: https://angular.io/
+[Svelte.dev]: https://img.shields.io/badge/Svelte-4A4A55?style=for-the-badge&logo=svelte&logoColor=FF3E00
+[Svelte-url]: https://svelte.dev/
 [Laravel.com]: https://img.shields.io/badge/Laravel-FF2D20?style=for-the-badge&logo=laravel&logoColor=white
 [Laravel-url]: https://laravel.com
+[Bootstrap.com]: https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white
+[Bootstrap-url]: https://getbootstrap.com
 [JQuery.com]: https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white
-[JQuery-url]: https://jquery.com
-[Axios]: https://img.shields.io/badge/Axios-0769AD?style=for-the-badge&logo=axios&logoColor=purple
-[Axios-url]:https://axios-http.com/es/docs/intro
-[ReactRouter.jsx]:https://img.shields.io/badge/ReactRouter-0769AD?style=for-the-badge&logo=reactrouter&logoColor=red
-[React-Router-url]:https://reactrouter.com/en/main
-[JavaScript.js]:https://img.shields.io/badge/JavaScript-0769AD?style=for-the-badge&logo=javascript&logoColor=Yellow
-[JavaScript-url]:https://developer.mozilla.org/pt-BR/docs/Web/JavaScript
-[Bcrypt.js]:https://img.shields.io/badge/Bcrypt-0769AD?style=for-the-badge&logo=bcrypt&logoColor=red
-[Bcrypt-url]:https://www.npmjs.com/package/bcrypt
-[Cors.js]:https://img.shields.io/badge/Cors-0769AD?style=for-the-badge&logo=cors&logoColor=red
-[Cors-url]:https://developer.mozilla.org/pt-BR/docs/Web/HTTP/CORS
-[Dotenv.env]:https://img.shields.io/badge/Dotenv-0769AD?style=for-the-badge&logo=dotenv&logoColor=Yellow
-[Dotenv-url]:https://www.npmjs.com/package/dotenv
-[Express.js]:https://img.shields.io/badge/Express-0769AD?style=for-the-badge&logo=express&logoColor=black
-[Express-url]:https://expressjs.com/es/
-[Helmet.js]:https://img.shields.io/badge/Helmet-0769AD?style=for-the-badge&logo=helmet&logoColor=black
-[Helmet-url]:https://helmetjs.github.io/
-[Mongoose.js]: https://img.shields.io/badge/Mongoose-35495E?style=for-the-badge&logo=mongoose&logoColor=4FC08D
-[Mongoose-url]:https://mongoosejs.com/
-[Validator.js]:https://img.shields.io/badge/Validator-20232A?style=for-the-badge&logo=validator&logoColor=61DAFB
-[Validator-url]:https://www.npmjs.com/package/validator
-[Nodemon]:https://img.shields.io/badge/Nodemon-20232A?style=for-the-badge&logo=nodemon&logoColor=green
-[Nodemon-url]:https://www.npmjs.com/package/nodemon
-[WebVitals.js]:https://img.shields.io/badge/WebVitals-20232A?style=for-the-badge&logo=webvitals&logoColor=Blue
-[Webvitals-url]:https://web.dev/vitals/
-[Flowbite.css]:https://img.shields.io/badge/Flowbite-0769AD?style=for-the-badge&logo=flowbite&logoColor=Blue
-[Flowbite-url]:https://flowbite.com/
-[Firebase.com]:https://img.shields.io/badge/Firebase-0769AD?style=for-the-badge&logo=Firebase&logoColor=red
-[Firebase-url]:https://firebase.google.com/
-[Cloudinary.com]:https://img.shields.io/badge/Cloudinary-0769AD?style=for-the-badge&logo=cloudinary&logoColor=Blue
-[Cloudinary-url]:https://cloudinary.com/home-102622
-[Jsonwebtoken.js]: https://img.shields.io/badge/Jsonwebtoken-20232A?style=for-the-badge&logo=Jsonwebtoken&logoColor=61DAFB
-[Jsonwebtoken-url]:https://www.npmjs.com/package/jsonwebtoken
-
-
+[JQuery-url]: https://jquery.com 
