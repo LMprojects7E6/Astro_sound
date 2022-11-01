@@ -32,7 +32,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/LMprojects7E6/astro-sound/tree/main">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/113899063/199276136-6ce59d5b-8a74-4ac0-a769-f3f41a4e3b15.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">AstroSound</h3>
@@ -82,13 +82,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![AstroSound][product-screenshot]]
 
 As the final project for Assembler's Master in Technology our team decided to create AstroSound. In this project we were challeged to create a full backend/frontend app, we could have as an inspiration and having similar functionalities as the app Spotify.
 AstroSound is a music app similar to Spotify, where a user can login/register, create playlists, add songs to those playlists and listening to songs, there is also an Admin page to add new songs.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 ### Built With
@@ -119,7 +118,7 @@ AstroSound is a music app similar to Spotify, where a user can login/register, c
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-+<!-- GETTING STARTED -->
+<!-- GETTING STARTED -->
 ## Getting Started
 
 ### Prerequisites
@@ -190,7 +189,7 @@ Home is the default page were our user can view our amazing slogans, if the user
 
 pic home
 
-Search will take our user to explore our 
+Search will take our user to explore our
 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
@@ -203,9 +202,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 We worked in sprints applying Kanban framework with a daily meeting.
 1 sprint = 1 week
-- [x] Sprint 0. 
+- [x] Sprint 0.
 - Created a visual design and HTML-based style guide.
-- [x] Sprint 1. 
+- [x] Sprint 1.
 - Set up servers and database structure.
 - Created of endpoints.
 - Configured Tailwind for basic styling elements in the Home and My Library page.
@@ -297,6 +296,7 @@ Use this space to list resources you find helpful and would like to give credit 
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
 [product-screenshot]: images/screenshot.png
+[product-screenshot]:https://user-images.githubusercontent.com/113899063/199277261-abee0b0d-1e8a-41ad-8837-33229200890c.png
 
 [CSS]: https://img.shields.io/badge/CSS-000000?style=for-the-badge&logo=CSS&logoColor=white
 [CSS-url]: https://developer.mozilla.org/docs/Web/CSS
