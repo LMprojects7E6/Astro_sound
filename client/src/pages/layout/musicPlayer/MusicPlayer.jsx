@@ -71,7 +71,7 @@ const MusicPlayer = () => {
   };
   return (
     //Player
-    <section className="flex flex-row w-full justify-between bg-purple3 absolute md:fixed md:bottom-0 bottom-7 ">
+    <section className="flex flex-row w-full justify-between bg-purple3 absolute md:fixed md:bottom-0 bottom-6 ">
       <div className="flex md:flex-col justify-around md:w-60">
         <div className="md:hidden md:absolute md:mb-96 md:mt-16">
           {musicPlayerSongs[songNumber]?.songImage && (
