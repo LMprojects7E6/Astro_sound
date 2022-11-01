@@ -94,17 +94,30 @@ AstroSound is a music app similar to Spotify, where a user can login/register, c
 ### Built With
 
 * [![React][React.js]][React-url]
-* [![JQuery][JQuery.js]][Next-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 * [![JQuery][JQuery.com]][JQuery-url]
+* [![HTML][Html.com]][Html-url]
+* [![CSS][CSS]][CSS-url]
+* [![Tailwind][Tailwind]][Tailwind-url]
+* [![Laravel][Laravel.com]][Laravel-url]
+* [![Axios][Axios]][Axios-url]
+* [![React Router][ReactRouter.jsx]][React-Router-url]
+* [![JavaScript][JavaScript.js]][JavaScript-url]
+* [![Bcrypt][Bcrypt.js]][Bcrypt-url]
+* [![Cors][Cors.js]][Cors-url]
+* [![Dotenv][Dotenv.env]][Dotenv-url]
+* [![Express][Express.js]][Express-url]
+* [![Helmet][Helmet.js]][Helmet-url]
+* [![Mongoose][Mongoose.js]][Mongoose-url]
+* [![Validator][Validator.js]][Validator-url]
+* [![Nodemon][Nodemon]][Nodemon-url]
+* [![Web Vitals][WebVitals.js]][Webvitals-url]
+* [![Flowbite][Flowbite.css]][Flowbite-url]
+* [![Firebase][Firebase.com]][Firebase-url]
+* [![Cloudinary][Cloudinary.com]][Cloudinary-url]
+* [![Jsonwebtoken][Jsonwebtoken.js]][Jsonwebtoken-url]
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
